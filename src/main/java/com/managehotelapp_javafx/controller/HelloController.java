@@ -1,4 +1,4 @@
-package com.managehotelapp_javafx;
+package com.managehotelapp_javafx.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
