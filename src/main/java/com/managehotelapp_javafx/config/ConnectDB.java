@@ -1,5 +1,6 @@
 package com.managehotelapp_javafx.config;
 
+import com.managehotelapp_javafx.entity.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -28,8 +29,31 @@ public class ConnectDB {
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
                 settings.put(Environment.HBM2DDL_AUTO, "update");
 
-                configuration.setProperties(settings);
-//                configuration.addAnnotatedClass(User.class);
+                configuration
+                        .setProperties(settings)
+                        .addAnnotatedClass(BookingRoomEntity.class)
+                        .addAnnotatedClass(BookingEntity.class)
+                        .addAnnotatedClass(BookingServiceEntity.class)
+                        .addAnnotatedClass(CouponEntity.class)
+                        .addAnnotatedClass(CustomerEntity.class)
+                        .addAnnotatedClass(CustomerTypeEntity.class)
+                        .addAnnotatedClass(FacilityEntity.class)
+                        .addAnnotatedClass(HotelEntity.class)
+                        .addAnnotatedClass(HotelStatusEntity.class)
+                        .addAnnotatedClass(InvoiceEntity.class)
+                        .addAnnotatedClass(InvoiceStatusEntity.class)
+                        .addAnnotatedClass(RevenueHotelDetailEntity.class)
+                        .addAnnotatedClass(RevenueMonthEntity.class)
+                        .addAnnotatedClass(RoomEntity.class)
+                        .addAnnotatedClass(RoomFacilityEntity.class)
+                        .addAnnotatedClass(RoomStatusEntity.class)
+                        .addAnnotatedClass(RoomTypeEntity.class)
+                        .addAnnotatedClass(ServiceEntity.class)
+                        .addAnnotatedClass(StatusBookingEntity.class)
+                        .addAnnotatedClass(StatusService.class)
+                        .addAnnotatedClass(UserEntity.class)
+                        .addAnnotatedClass(UserRoleEntity.class)
+                        .addAnnotatedClass(UserStatusEntity.class);
 
                 StandardServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties())
