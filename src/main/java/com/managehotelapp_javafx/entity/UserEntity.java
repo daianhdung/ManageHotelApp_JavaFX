@@ -3,10 +3,12 @@ package com.managehotelapp_javafx.entity;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-@Entity(name = "users")
-public class UserEntity {
+@Entity
+@Table(name = "users")
+public class UserEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -131,5 +133,22 @@ public class UserEntity {
 
     public void setUserRole(UserRoleEntity userRole) {
         this.userRole = userRole;
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", fullName='" + fullName + '\'' +
+                ", gender='" + gender + '\'' +
+                ", identity='" + identity + '\'' +
+                ", address='" + address + '\'' +
+                ", createdAt=" + createdAt +
+                ", userStatus=" + userStatus +
+                ", userRole=" + userRole +
+                '}';
     }
 }

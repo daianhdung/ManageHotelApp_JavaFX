@@ -8,6 +8,7 @@ module com.managehotelapp_javafx {
     requires java.persistence;
     requires java.sql;
     requires java.naming;
+    requires jbcrypt;
 
     opens com.managehotelapp_javafx to javafx.fxml;
     exports com.managehotelapp_javafx;
