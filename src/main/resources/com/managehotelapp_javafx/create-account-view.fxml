@@ -10,14 +10,13 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane prefHeight="648.0" prefWidth="234.0" style="-fx-background-color: #00CCFF;">
          <center>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                <image>
-                  <Image url="@../../asset/image/hotel%20(2)%201.png" />
+                  <Image url="@../../asset/image/hotel (2) 1.png" />
                </image>
             </ImageView>
          </center>
@@ -31,28 +30,28 @@
       <TextField layoutX="300.0" layoutY="113.0" prefHeight="26.0" prefWidth="221.0" style="-fx-border-color: #00CCFF;" />
       <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="252.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../asset/image/user%201.png" />
+            <Image url="@../../asset/image/user 1.png" />
          </image>
       </ImageView>
       <Label layoutX="300.0" layoutY="151.0" text="Email" textFill="#00ccff" />
       <TextField layoutX="300.0" layoutY="180.0" prefHeight="26.0" prefWidth="221.0" />
       <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="252.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../asset/image/mail%201.png" />
+            <Image url="@../../asset/image/mail 1.png" />
          </image>
       </ImageView>
       <Label layoutX="300.0" layoutY="223.0" text="Password" textFill="#00ccff" />
       <TextField layoutX="300.0" layoutY="252.0" prefHeight="26.0" prefWidth="221.0" />
       <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="252.0" layoutY="249.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../asset/image/padlock%201.png" />
+            <Image url="@../../asset/image/padlock 1.png" />
          </image>
       </ImageView>
       <Label layoutX="300.0" layoutY="294.0" text="Enter the password" textFill="#00ccff" />
       <TextField layoutX="300.0" layoutY="323.0" prefHeight="26.0" prefWidth="221.0" />
       <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="252.0" layoutY="320.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../asset/image/padlock%20(1)%201.png" />
+            <Image url="@../../asset/image/padlock (1) 1.png" />
          </image>
       </ImageView>
       <Label layoutX="300.0" layoutY="371.0" text="Full Name" textFill="#00ccff" />
@@ -66,7 +65,7 @@
       <RadioButton layoutX="306.0" layoutY="469.0" mnemonicParsing="false" text="Male" />
       <RadioButton layoutX="381.0" layoutY="469.0" mnemonicParsing="false" text="Famale" />
       <RadioButton layoutX="474.0" layoutY="469.0" mnemonicParsing="false" text="Other" />
-      <Label layoutX="300.0" layoutY="510.0" text="Full Name" textFill="#00ccff" />
+      <Label layoutX="300.0" layoutY="510.0" text="Identity" textFill="#00ccff" />
       <TextField layoutX="300.0" layoutY="539.0" prefHeight="26.0" prefWidth="221.0" />
       <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="252.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true">
          <image>
