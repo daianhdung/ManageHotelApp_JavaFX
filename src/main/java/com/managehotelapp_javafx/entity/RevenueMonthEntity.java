@@ -4,7 +4,8 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.Set;
 
-@Entity(name = "revenue_month")
+@Entity
+@Table(name = "revenue_month")
 public class RevenueMonthEntity {
 
     @Id

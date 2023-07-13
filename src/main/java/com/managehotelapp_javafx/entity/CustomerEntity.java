@@ -7,7 +7,8 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Set;
 
-@Entity(name = "customer")
+@Entity
+@Table(name = "customer")
 public class CustomerEntity {
 
     @Id

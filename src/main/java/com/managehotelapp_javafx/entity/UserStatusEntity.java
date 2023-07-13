@@ -3,7 +3,8 @@ package com.managehotelapp_javafx.entity;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity(name = "user_status")
+@Entity
+@Table(name = "user_status")
 public class UserStatusEntity {
 
     @Id

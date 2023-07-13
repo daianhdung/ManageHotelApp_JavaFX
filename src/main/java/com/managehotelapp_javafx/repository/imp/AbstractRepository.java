@@ -28,9 +28,15 @@ public class AbstractRepository<T> implements GenericRepository<T> {
         if(parameters != null){
             setParameter(query, parameters);
         }
-        List<T> result = query.list();
-        session.close();
-        return result;
+        try{
+            List<T> result = query.list();
+            return result;
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }finally {
+            session.close();
+        }
     }
 
     @Override
