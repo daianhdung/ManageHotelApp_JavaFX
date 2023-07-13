@@ -5,48 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bba44588-1ca6-48a5-9237-d44f84fca2fc" name="Changes" comment="login feature">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hotel_database.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/dto/UserDTO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/exception/BadCredentialsException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/exception/UsernameNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/repository/imp/UserRepositoryImp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/services/UserService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/services/imp/UserServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/config/ConnectDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/config/ConnectDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/BookingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/BookingEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/BookingRoomEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/BookingRoomEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/BookingServiceEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/BookingServiceEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/CouponEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/CouponEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/CustomerEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/CustomerEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/CustomerTypeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/CustomerTypeEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/FacilityEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/FacilityEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/HotelEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/HotelEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/HotelStatusEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/HotelStatusEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/InvoiceEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/InvoiceEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/InvoiceStatusEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/InvoiceStatusEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/RevenueHotelDetailEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/RevenueHotelDetailEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/RevenueMonthEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/RevenueMonthEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/RoomEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/RoomEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/RoomFacilityEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/RoomFacilityEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/RoomStatusEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/RoomStatusEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/RoomTypeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/RoomTypeEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/ServiceEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/ServiceEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/StatusBookingEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/StatusBookingEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/StatusService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/StatusService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/UserEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/UserRoleEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/UserRoleEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/UserStatusEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/entity/UserStatusEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/repository/imp/AbstractRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/repository/imp/AbstractRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/managehotelapp_javafx/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/managehotelapp_javafx/login-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/managehotelapp_javafx/home-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/managehotelapp_javafx/home-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,26 +37,30 @@
     </option>
   </component>
   <component name="ProjectId" id="2SQYe3MAtGu1kQuRxNejTmDdERw" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/Users/mac/eclipse-workspace/java2/untitled folder/jul-12/ManageHotelApp_JavaFX",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.41954023",
-    "vcs.patch.path": "/Users/mac/eclipse-workspace/java2/untitled folder/jul-12"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/mac/eclipse-workspace/java2/untitled folder/jul-12/ManageHotelApp_JavaFX&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.41954023&quot;,
+    &quot;vcs.patch.path&quot;: &quot;/Users/mac/eclipse-workspace/java2/untitled folder/jul-12&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.managehotelapp_javafx.controller" />
@@ -152,6 +117,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="test patch" />
     <MESSAGE value="login feature" />
     <option name="LAST_COMMIT_MESSAGE" value="login feature" />
