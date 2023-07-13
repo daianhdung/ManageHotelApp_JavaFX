@@ -6,7 +6,8 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Set;
 
-@Entity(name = "booking_room")
+@Entity
+@Table(name = "booking_room")
 public class BookingRoomEntity {
 
     @Id

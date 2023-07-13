@@ -8,7 +8,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.control.PasswordField?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.LoginController">
    <children>
       <ImageView fitHeight="186.0" fitWidth="186.0" layoutX="207.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -20,8 +21,8 @@
             <Font size="16.0" />
          </font>
       </Label>
-      <TextField layoutX="220.0" layoutY="316.0" prefHeight="26.0" prefWidth="170.0" style="-fx-border-color: #00CCFF;" />
-      <TextField layoutX="222.0" layoutY="380.0" prefHeight="26.0" prefWidth="170.0" style="-fx-border-color: #00CCFF;" />
+      <TextField fx:id="usernameTxt" layoutX="220.0" layoutY="316.0" prefHeight="26.0" prefWidth="170.0" style="-fx-border-color: #00CCFF;" />
+      <PasswordField fx:id="passwordTxt" layoutX="222.0" layoutY="380.0" prefHeight="26.0" prefWidth="170.0" style="-fx-border-color: #00CCFF;" />
       <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="170.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../asset/image/login 1.png" />
@@ -32,7 +33,7 @@
             <Image url="@../../asset/image/password 1.png" />
          </image>
       </ImageView>
-      <Button layoutX="224.0" layoutY="458.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="151.0" style="-fx-background-color: #00CCFF;" text="Login" />
+      <Button layoutX="224.0" layoutY="458.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="30.0" prefWidth="151.0" style="-fx-background-color: #00CCFF;" text="Login" />
       <Label layoutX="255.0" layoutY="212.0" text="Login" textFill="#00ccff">
          <font>
             <Font size="36.0" />

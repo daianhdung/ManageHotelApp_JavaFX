@@ -6,7 +6,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-@Entity(name = "booking_service")
+@Entity
+@Table(name = "booking_service")
 @IdClass(BookingServiceId.class)
 public class BookingServiceEntity {
 
