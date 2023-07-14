@@ -5,15 +5,13 @@ import javafx.fxml.FXMLLoader;
 
 public class FXMLLoaderConstant {
 
-    private static final FXMLLoader homeScene = new FXMLLoader(HelloApplication.class.getResource("home-view.fxml"));
-
-    private static final FXMLLoader bookingScene = new FXMLLoader(HelloApplication.class.getResource("booking/booking-view.fxml"));
-
     public static FXMLLoader getHomeScene(){
-        return homeScene;
-    }
+        return new FXMLLoader(HelloApplication.class.getResource("home-view.fxml"));}
 
     public static FXMLLoader getBookingScene(){
-        return bookingScene;
+        return new FXMLLoader(HelloApplication.class.getResource("booking/booking-view.fxml"));}
+
+    public static FXMLLoader getLoginScene(){
+        return new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
     }
 }

@@ -4,6 +4,7 @@ import com.managehotelapp_javafx.HelloApplication;
 import com.managehotelapp_javafx.services.UserService;
 import com.managehotelapp_javafx.services.imp.UserServiceImp;
 import com.managehotelapp_javafx.utils.constant.FXMLLoaderConstant;
+import com.managehotelapp_javafx.utils.session.SessionUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,9 +33,21 @@ public class LoginController {
     private Alert alert = new Alert(Alert.AlertType.WARNING);
 
     @FXML
+    void onBtnManager(ActionEvent event) {
+        usernameTxt.setText("nguyenvana");
+        passwordTxt.setText("admin123");
+    }
+
+    @FXML
+    void onBtnReceptionist(ActionEvent event) {
+        usernameTxt.setText("nhanvien");
+        passwordTxt.setText("admin123");
+    }
+
+    @FXML
     void onLogin(ActionEvent event) {
-        String username = "nguyenvana";
-        String password = "admin123";
+        String username = usernameTxt.getText();
+        String password = passwordTxt.getText();
 
         if(checkAllTextField()){
             try{

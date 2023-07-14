@@ -29,13 +29,7 @@ public class HomeController {
     private Button btn_guestinfo;
 
     @FXML
-    private Button btn_home;
-
-    @FXML
     private Button btn_invoice;
-
-    @FXML
-    private Button btn_revenue;
 
     @FXML
     private Button btn_room;
@@ -52,81 +46,43 @@ public class HomeController {
     @FXML
     private Label lbl_rev;
 
-    @FXML
-    private Button btn_Logout;
+
 
     private Stage primaryStage;
     private FXMLLoader fxmlLoader;
 
+//
+//    @FXML
+//    private void setBtn_guestinfo() {
+//        primaryStage = (Stage) btn_home.getScene().getWindow();
+//        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home-view.fxml"));
+//        try {
+//            primaryStage.setScene(new Scene(fxmlLoader.load()));
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+//    @FXML
+//    private void setBtn_invoice() {
+//        primaryStage = (Stage) btn_home.getScene().getWindow();
+//        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home-view.fxml"));
+//        try {
+//            primaryStage.setScene(new Scene(fxmlLoader.load()));
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
-    @FXML
-    private void home() {
-        primaryStage = (Stage) btn_home.getScene().getWindow();
-        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home-view.fxml"));
-        try {
-            primaryStage.setScene(new Scene(fxmlLoader.load()));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
+//    @FXML
+//    private void setBtn_room() {
+//        primaryStage = (Stage) btn_home.getScene().getWindow();
+//        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home-view.fxml"));
+//        try {
+//            primaryStage.setScene(new Scene(fxmlLoader.load()));
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
 
-
-    @FXML
-    private void setBtn_guestinfo() {
-        primaryStage = (Stage) btn_home.getScene().getWindow();
-        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home-view.fxml"));
-        try {
-            primaryStage.setScene(new Scene(fxmlLoader.load()));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    @FXML
-    private void setBtn_invoice() {
-        primaryStage = (Stage) btn_home.getScene().getWindow();
-        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home-view.fxml"));
-        try {
-            primaryStage.setScene(new Scene(fxmlLoader.load()));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    @FXML
-    private void setBtn_revenue() {
-        primaryStage = (Stage) btn_home.getScene().getWindow();
-        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home-view.fxml"));
-        try {
-            primaryStage.setScene(new Scene(fxmlLoader.load()));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    @FXML
-    private void setBtn_room() {
-        primaryStage = (Stage) btn_home.getScene().getWindow();
-        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home-view.fxml"));
-        try {
-            primaryStage.setScene(new Scene(fxmlLoader.load()));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-    @FXML
-    private void setBtn_Logout() {
-        primaryStage = (Stage) btn_home.getScene().getWindow();
-        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirm");
-        alert.setHeaderText("Logout");
-
-        if(alert.showAndWait().get() == ButtonType.OK){
-            try {
-                primaryStage.setScene(new Scene(fxmlLoader.load()));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-    }
 }
 
