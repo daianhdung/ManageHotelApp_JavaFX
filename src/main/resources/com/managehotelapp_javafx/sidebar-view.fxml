@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.managehotelapp_javafx.controller.SidebarController"
+            prefHeight="400.0" prefWidth="600.0">
+
+
+    <Pane layoutX="14.0" layoutY="44.0" prefHeight="445.0" prefWidth="242.0">
+        <children>
+            <Button fx:id="btn_home" alignment="BASELINE_LEFT" layoutY="52.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="242.0" style="-fx-background-color: #00CCFF;" text="HOME">
+                <font>
+                    <Font name="System Bold" size="29.0" />
+                </font>
+            </Button>
+            <Button fx:id="btn_room" alignment="BASELINE_LEFT" layoutY="115.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="242.0" style="-fx-background-color: #00CCFF;" text="ROOM">
+                <font>
+                    <Font name="System Bold" size="29.0" />
+                </font>
+            </Button>
+            <Button fx:id="btnBooking" alignment="BASELINE_LEFT" layoutY="177.0" mnemonicParsing="false" onAction="#onBooking" prefHeight="55.0" prefWidth="242.0" style="-fx-background-color: #00CCFF;" text="BOOKING">
+                <font>
+                    <Font name="System Bold" size="29.0" />
+                </font>
+            </Button>
+            <Button fx:id="btn_guestinfo" alignment="BASELINE_LEFT" layoutY="241.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="242.0" style="-fx-background-color: #00CCFF;" text="GUEST INFO">
+                <font>
+                    <Font name="System Bold" size="29.0" />
+                </font>
+            </Button>
+            <Button fx:id="btn_invoice" alignment="BASELINE_LEFT" layoutY="312.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="242.0" style="-fx-background-color: #00CCFF;" text="INVOICE">
+                <font>
+                    <Font name="System Bold" size="29.0" />
+                </font>
+            </Button>
+            <Button fx:id="btn_revenue" alignment="BASELINE_LEFT" layoutY="387.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="242.0" style="-fx-background-color: #00CCFF;" text="REVENUE">
+                <font>
+                    <Font name="System Bold" size="29.0" />
+                </font>
+            </Button>
+        </children>
+    </Pane>
+</AnchorPane>

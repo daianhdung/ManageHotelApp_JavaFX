@@ -33,7 +33,9 @@
             <Image url="@../../asset/image/password 1.png" />
          </image>
       </ImageView>
-      <Button layoutX="224.0" layoutY="458.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="30.0" prefWidth="151.0" style="-fx-background-color: #00CCFF;" text="Login" />
+
+      <Button layoutX="224.0" layoutY="458.0" mnemonicParsing="false" fx:id="btnLogin" onAction="#onLogin" prefHeight="30.0" prefWidth="151.0" style="-fx-background-color: #00CCFF;" text="Login" />
+
       <Label layoutX="255.0" layoutY="212.0" text="Login" textFill="#00ccff">
          <font>
             <Font size="36.0" />
