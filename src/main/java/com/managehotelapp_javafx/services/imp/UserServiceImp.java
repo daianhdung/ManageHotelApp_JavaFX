@@ -26,4 +26,14 @@ public class UserServiceImp implements UserService {
             throw new UsernameNotFoundException("Username not exist");
         }
     }
+
+    @Override
+    public boolean insertUser(UserEntity user) {
+        if (userRepository.findUserByUsername(user.getUsername()) == null){
+            userRepository.insertUser(user);
+            return true;
+        }
+
+        return false;
+    }
 }
