@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bba44588-1ca6-48a5-9237-d44f84fca2fc" name="Changes" comment="login feature">
+
       <change afterPath="$PROJECT_DIR$/src/main/java/com/managehotelapp_javafx/utils/session/SessionUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/hotel_database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/hotel_database.sql" afterDir="false" />

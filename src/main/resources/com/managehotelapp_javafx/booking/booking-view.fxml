@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
 <?import javafx.scene.layout.BorderPane?>
 
 
@@ -9,3 +10,4 @@
         <fx:include source="../sidebar-view.fxml" fx:id="sidebar"/>
     </left>
 </BorderPane>
+

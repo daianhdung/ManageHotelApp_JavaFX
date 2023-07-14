@@ -13,5 +13,6 @@ public class FXMLLoaderConstant {
 
     public static FXMLLoader getLoginScene(){
         return new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
+
     }
 }

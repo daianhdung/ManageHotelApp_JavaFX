@@ -46,8 +46,6 @@ public class HomeController {
     @FXML
     private Label lbl_rev;
 
-
-
     private Stage primaryStage;
     private FXMLLoader fxmlLoader;
 
@@ -83,6 +81,5 @@ public class HomeController {
 //            throw new RuntimeException(e);
 //        }
 //    }
-
 }
 
