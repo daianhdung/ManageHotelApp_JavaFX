@@ -29,10 +29,6 @@ public class BookingRoomEntity {
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "bookingRoom")
     private Set<BookingServiceEntity> bookingServiceEntities;
 
-    @CreationTimestamp
-    @Column(name = "created_at")
-    private Timestamp createdAt;
-
     @Column(name = "checkout_date")
     private Timestamp checkoutDate;
 
@@ -77,14 +73,6 @@ public class BookingRoomEntity {
 
     public void setBookingServiceEntities(Set<BookingServiceEntity> bookingServiceEntities) {
         this.bookingServiceEntities = bookingServiceEntities;
-    }
-
-    public Timestamp getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Timestamp createdAt) {
-        this.createdAt = createdAt;
     }
 
     public Timestamp getCheckoutDate() {

@@ -34,7 +34,7 @@ public class UserEntity{
     private String address;
 
     @CreationTimestamp
-    @Column(name = "created_at")
+    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT now()")
     private Timestamp createdAt;
 
     @ManyToOne

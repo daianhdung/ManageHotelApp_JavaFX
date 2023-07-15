@@ -61,7 +61,7 @@ public class BookingEntity {
     private Set<BookingRoomEntity> bookingRoomEntities;
 
     @CreationTimestamp
-    @Column(name = "created_at")
+    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT now()")
     private Timestamp createdAt;
 
     public int getId() {

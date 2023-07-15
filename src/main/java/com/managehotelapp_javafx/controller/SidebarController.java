@@ -28,7 +28,7 @@ public class SidebarController implements Initializable {
 
     private Stage primaryStage;
     private FXMLLoader fxmlLoader;
-
+    @FXML
     private boolean isManager;
 
     @FXML

@@ -56,7 +56,7 @@ public class CustomerEntity {
     private String country;
 
     @CreationTimestamp
-    @Column(name = "created_at")
+    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT now()")
     private Timestamp createdAt;
 
     @Column(name = "booking_count")

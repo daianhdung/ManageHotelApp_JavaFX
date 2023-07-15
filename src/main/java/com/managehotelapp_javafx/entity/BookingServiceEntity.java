@@ -21,7 +21,7 @@ public class BookingServiceEntity {
     private boolean statusPayment;
 
     @CreationTimestamp
-    @Column(name = "created_at")
+    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT now()")
     private Timestamp createdAt;
 
     @ManyToOne
