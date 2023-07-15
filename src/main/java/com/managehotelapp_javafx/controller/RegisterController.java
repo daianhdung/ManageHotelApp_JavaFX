@@ -189,7 +189,7 @@ public class RegisterController implements Initializable {
     public UserStatusEntity getUserStatus() {
         UserStatusRepository userStatusRepository = new UserStatusRepositoryImp();
         // default userStatus = active
-        return userStatusRepository.findUserStatusById(2);
+        return userStatusRepository.findUserStatusById(1);
     }
 
     public UserRoleEntity getUserRole() {
