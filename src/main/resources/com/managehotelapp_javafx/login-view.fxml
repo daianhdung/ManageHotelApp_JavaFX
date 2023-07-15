@@ -2,13 +2,13 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<?import javafx.scene.control.PasswordField?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.LoginController">
    <children>
       <ImageView fitHeight="186.0" fitWidth="186.0" layoutX="207.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -33,7 +33,14 @@
             <Image url="@../../asset/image/password 1.png" />
          </image>
       </ImageView>
-      <Button layoutX="224.0" layoutY="458.0" mnemonicParsing="false" fx:id="btn_login" onAction="#onLogin" prefHeight="30.0" prefWidth="151.0" style="-fx-background-color: #00CCFF;" text="Login" />
+
+
+      <Button fx:id="btnLogin" layoutX="224.0" layoutY="458.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="30.0" prefWidth="151.0" style="-fx-background-color: #00CCFF;" text="Login" />
+
+      <Button fx:id="btnManager" layoutX="413.0" layoutY="458.0" mnemonicParsing="false" onAction="#onBtnManager" prefHeight="30.0" prefWidth="151.0" style="-fx-background-color: #00CCFF;" text="Generate Manger Acc" />
+      <Button fx:id="btnReceptionist" layoutX="61.0" layoutY="458.0" mnemonicParsing="false" onAction="#onBtnReceptionist" prefHeight="30.0" prefWidth="151.0" style="-fx-background-color: #00CCFF;" text="Generate Receptionist Acc" />
+
+
       <Label layoutX="255.0" layoutY="212.0" text="Login" textFill="#00ccff">
          <font>
             <Font size="36.0" />
