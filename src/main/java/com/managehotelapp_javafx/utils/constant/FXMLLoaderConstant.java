@@ -14,4 +14,8 @@ public class FXMLLoaderConstant {
     public static FXMLLoader getLoginScene(){
         return new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
     }
+
+    public static FXMLLoader getAddUserScene(){
+        return new FXMLLoader(HelloApplication.class.getResource("create-account-view.fxml"));
+    }
 }

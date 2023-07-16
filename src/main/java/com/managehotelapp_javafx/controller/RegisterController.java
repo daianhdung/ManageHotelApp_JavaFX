@@ -8,17 +8,28 @@ import com.managehotelapp_javafx.repository.UserStatusRepository;
 import com.managehotelapp_javafx.repository.imp.UserRepositoryImp;
 import com.managehotelapp_javafx.repository.imp.UserRoleRepositoryImp;
 import com.managehotelapp_javafx.repository.imp.UserStatusRepositoryImp;
+import com.managehotelapp_javafx.services.UserRoleService;
 import com.managehotelapp_javafx.services.UserService;
+import com.managehotelapp_javafx.services.UserStatusService;
+import com.managehotelapp_javafx.services.imp.UserRoleServiceImp;
 import com.managehotelapp_javafx.services.imp.UserServiceImp;
+import com.managehotelapp_javafx.services.imp.UserStatusServiceImp;
+import com.managehotelapp_javafx.utils.constant.FXMLLoaderConstant;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -52,12 +63,14 @@ public class RegisterController implements Initializable {
     @FXML
     private TextField usernameTxt;
     @FXML
-    private Label usernameLabel, emailLabel, password1Label, password2Label, fullnameLabel, genderLabel, identityLabel;
+    private Label usernameLabel, emailLabel, password1Label, password2Label, fullnameLabel, identityLabel;
+
     @FXML
     private Button signUpBtn;
 
     Alert alert;
-
+    UserStatusService userStatusService = new UserStatusServiceImp();
+    UserRoleService userRoleService = new UserRoleServiceImp();
 
     public boolean checkAllTextField() {
         boolean result = false;
@@ -79,7 +92,7 @@ public class RegisterController implements Initializable {
         }, password2Txt.textProperty());
 
         BooleanBinding fullnameBinding = Bindings.createBooleanBinding(() -> {
-            return fullnameTxt.getText().matches("^[a-z ]{2,29}$");
+            return fullnameTxt.getText().matches("^[A-Za-z ]{2,30}$");
         }, fullnameTxt.textProperty());
 
 
@@ -90,33 +103,42 @@ public class RegisterController implements Initializable {
 
         usernameTxt.focusedProperty().addListener(((observableValue, oldValue, newValue) -> {
             if (newValue) {
+                usernameLabel.setText("- Must be between 6-12 characters\n" +
+                        "- Only letters (a-z), numbers (0-9), underscore(_), hyphen (-)");
                 usernameLabel.visibleProperty().bind(usernameBinding.not());
             }
         }));
         emailTxt.focusedProperty().addListener(((observableValue, oldValue, newValue) -> {
             if (newValue) {
+                emailLabel.setText("- Pls enter a valid email address (ex: abc@gmail.com)");
                 emailLabel.visibleProperty().bind(emailBinding.not());
             }
         }));
 
         password1Txt.focusedProperty().addListener(((observableValue, oldValue, newValue) -> {
             if (newValue) {
+                password1Label.setText("- Must be at least 8 characters\n" +
+                        "- Must contain at least 1 lowercase/uppercase letter, 1 digit, 1 special character from the set @$!%*?&# ");
+                password1Label.setWrapText(true);
                 password1Label.visibleProperty().bind(password1Binding.not());
             }
         }));
         password2Txt.focusedProperty().addListener(((observableValue, oldValue, newValue) -> {
             if (newValue) {
+                password2Label.setText("- Pls re-enter your password");
                 password2Label.visibleProperty().bind(password2Binding.not());
             }
         }));
         fullnameTxt.focusedProperty().addListener(((observableValue, oldValue, newValue) -> {
             if (newValue) {
+                fullnameLabel.setText("- Must be between 2-30 characters and only letters");
                 fullnameLabel.visibleProperty().bind(fullnameBinding.not());
             }
         }));
 
         identityTxt.focusedProperty().addListener(((observableValue, oldValue, newValue) -> {
             if (newValue) {
+                identityLabel.setText("- Only 10 digits");
                 identityLabel.visibleProperty().bind(identityBinding.not());
             }
         }));
@@ -146,7 +168,7 @@ public class RegisterController implements Initializable {
     }
 
     @FXML
-    void onSignUp(ActionEvent event) {
+    void onSignUp() {
         if (checkAllTextField()) {
             UserEntity user = new UserEntity();
             user.setAddress("");
@@ -157,8 +179,8 @@ public class RegisterController implements Initializable {
             user.setIdentity(identityTxt.getText());
             user.setPassword(getPassword());
             user.setUsername(usernameTxt.getText());
-            user.setUserRole(getUserRole());
-            user.setUserStatus(getUserStatus());
+            user.setUserRole(userRoleService.findUserRoleById(2));
+            user.setUserStatus(userStatusService.findUserStatusById(2));
 
             UserService userService = new UserServiceImp();
             boolean isCreated = userService.insertUser(user);
@@ -180,22 +202,8 @@ public class RegisterController implements Initializable {
             alert.setTitle("Warning");
             alert.setHeaderText("Please fill all fields");
             alert.showAndWait();
-
-
         }
 
-    }
-
-    public UserStatusEntity getUserStatus() {
-        UserStatusRepository userStatusRepository = new UserStatusRepositoryImp();
-        // default userStatus = active
-        return userStatusRepository.findUserStatusById(1);
-    }
-
-    public UserRoleEntity getUserRole() {
-        UserRoleRepository userRoleRepository = new UserRoleRepositoryImp();
-        // set default userRole = receptionist
-        return userRoleRepository.findUserRoleById(1);
     }
 
     public String getPassword() {
@@ -217,8 +225,28 @@ public class RegisterController implements Initializable {
         return selectedBtn != null ? selectedBtn.getText() : null;
     }
 
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         checkAllTextField();
+        signUpBtn.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) onSignUp();
+        });
+    }
+
+    @FXML
+    private Button btnBack;
+    private Stage primaryStage;
+    private FXMLLoader fxmlLoader;
+    @FXML
+    private void onBackHome() {
+        primaryStage = (Stage) btnBack.getScene().getWindow();
+        fxmlLoader = FXMLLoaderConstant.getHomeScene();
+        try {
+            primaryStage.setScene(new Scene(fxmlLoader.load()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
