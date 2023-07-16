@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -10,7 +9,10 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="558.0" prefWidth="1033.0" style="-fx-background-color: #00CCFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.HomeController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="558.0"
+            prefWidth="1033.0" style="-fx-background-color: #00CCFF;" xmlns="http://javafx.com/javafx/19"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.HomeController">
 
     <Pane layoutX="-1.0" prefHeight="558.0" prefWidth="147.0">
         <fx:include fx:id="sidebar" source="sidebar-view.fxml" />
@@ -86,5 +88,4 @@
             </children>
         </Pane>
     </Pane>
-
 </AnchorPane>

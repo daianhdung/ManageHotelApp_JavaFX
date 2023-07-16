@@ -57,7 +57,8 @@ public class BookingEntity {
     @JoinColumn(name = "status_booking_id")
     private StatusBookingEntity statusBooking;
 
-    @OneToMany(mappedBy = "booking")
+
+    @OneToMany(mappedBy = "booking", fetch = FetchType.EAGER)
     private Set<BookingRoomEntity> bookingRoomEntities;
 
     @CreationTimestamp

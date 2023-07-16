@@ -30,6 +30,9 @@ public class UserEntity{
     @Column(name = "identity", length = 12, nullable = false)
     private String identity;
 
+    @Column(name = "phone_number", length = 10)
+    private String phoneNumber;
+
     @Column(name = "address", length =200)
     private String address;
 
@@ -99,6 +102,14 @@ public class UserEntity{
 
     public void setIdentity(String identity) {
         this.identity = identity;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getAddress() {

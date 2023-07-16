@@ -32,7 +32,7 @@ public class BookingRoomEntity {
     @Column(name = "checkout_date")
     private Timestamp checkoutDate;
 
-    @Column(name = "payment")
+    @Column(name = "payment", columnDefinition = "integer default 0")
     private int payment;
 
     public int getId() {

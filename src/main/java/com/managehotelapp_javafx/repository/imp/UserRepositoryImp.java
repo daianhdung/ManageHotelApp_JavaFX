@@ -31,9 +31,10 @@ public class UserRepositoryImp extends AbstractRepository<UserEntity> implements
     }
 
     @Override
-    public boolean createUser(UserEntity user) {
-        return false;
+    public boolean insertUser(UserEntity user) {
+        return insert(user);
     }
+
 
     @Override
     public boolean updateUser(UserEntity user, int idUser) {

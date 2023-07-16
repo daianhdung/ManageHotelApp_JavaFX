@@ -11,7 +11,6 @@ VALUES('nguyenvana', '$2a$12$SPwKh2SjFparWB.LrEfvbOkcV0gi6hKjzWSDXePmqSbdaKHXbHR
 INSERT INTO users(username, password, identity, user_role_id)
 VALUES('nhanvien', '$2a$12$SPwKh2SjFparWB.LrEfvbOkcV0gi6hKjzWSDXePmqSbdaKHXbHRY2', '012345678912', 2);
 
-
 INSERT INTO room_type(description, price)
 VALUES('Double room (2 beds)', 40);
 INSERT INTO room_type(description, price)
@@ -66,3 +65,15 @@ VALUES(2, 1);
 
 INSERT INTO booking_room(booking_id, room_id)
 VALUES(2, 2);
+
+
+INSERT INTO room_status(description, title)
+VALUES('', 'Reserved');
+INSERT INTO room_status(description, title)
+VALUES('', 'Available');
+INSERT INTO room_status(description, title)
+VALUES('', 'Occupied');
+INSERT INTO room_status(description, title)
+VALUES('', 'Vacant dirty');
+INSERT INTO room_status(description, title)
+VALUES('', 'Maintenance');
