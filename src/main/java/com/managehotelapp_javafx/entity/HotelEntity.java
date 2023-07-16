@@ -6,7 +6,8 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Set;
 
-@Entity(name = "hotel")
+@Entity
+@Table(name = "hotel")
 public class HotelEntity {
 
     @Id
@@ -20,7 +21,7 @@ public class HotelEntity {
     private int numEmployee;
 
     @CreationTimestamp
-    @Column(name = "created_at")
+    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT now()")
     private Timestamp createdAt;
 
     @ManyToOne

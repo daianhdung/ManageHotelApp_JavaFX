@@ -6,7 +6,8 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Set;
 
-@Entity(name = "booking")
+@Entity
+@Table(name = "booking")
 public class BookingEntity {
 
     @Id
@@ -56,11 +57,12 @@ public class BookingEntity {
     @JoinColumn(name = "status_booking_id")
     private StatusBookingEntity statusBooking;
 
-    @OneToMany(mappedBy = "booking")
+
+    @OneToMany(mappedBy = "booking", fetch = FetchType.EAGER)
     private Set<BookingRoomEntity> bookingRoomEntities;
 
     @CreationTimestamp
-    @Column(name = "created_at")
+    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT now()")
     private Timestamp createdAt;
 
     public int getId() {

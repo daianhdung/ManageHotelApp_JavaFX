@@ -6,7 +6,8 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Set;
 
-@Entity(name = "invoice")
+@Entity
+@Table(name = "invoice")
 public class InvoiceEntity {
 
     @Id
@@ -34,7 +35,7 @@ public class InvoiceEntity {
     private InvoiceStatusEntity invoiceStatus;
 
     @CreationTimestamp
-    @Column(name = "created_at")
+    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT now()")
     private Timestamp createdAt;
 
     public int getId() {

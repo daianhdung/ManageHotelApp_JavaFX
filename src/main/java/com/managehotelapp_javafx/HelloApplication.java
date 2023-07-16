@@ -1,6 +1,9 @@
 package com.managehotelapp_javafx;
 
 import com.managehotelapp_javafx.config.ConnectDB;
+
+import com.managehotelapp_javafx.entity.UserEntity;
+import com.managehotelapp_javafx.repository.imp.UserRepositoryImp;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -43,5 +46,6 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
         launch();
+
     }
 }

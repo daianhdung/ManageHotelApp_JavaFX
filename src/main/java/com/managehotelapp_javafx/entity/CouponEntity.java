@@ -2,7 +2,8 @@ package com.managehotelapp_javafx.entity;
 
 import javax.persistence.*;
 
-@Entity(name = "coupon")
+@Entity
+@Table(name = "coupon")
 public class CouponEntity {
 
     @Id

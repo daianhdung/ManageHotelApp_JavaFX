@@ -6,7 +6,8 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-@Entity(name = "booking_service")
+@Entity
+@Table(name = "booking_service")
 @IdClass(BookingServiceId.class)
 public class BookingServiceEntity {
 
@@ -20,7 +21,7 @@ public class BookingServiceEntity {
     private boolean statusPayment;
 
     @CreationTimestamp
-    @Column(name = "created_at")
+    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT now()")
     private Timestamp createdAt;
 
     @ManyToOne

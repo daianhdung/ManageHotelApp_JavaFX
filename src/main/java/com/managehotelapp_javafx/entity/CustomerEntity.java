@@ -7,7 +7,8 @@ import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Set;
 
-@Entity(name = "customer")
+@Entity
+@Table(name = "customer")
 public class CustomerEntity {
 
     @Id
@@ -55,7 +56,7 @@ public class CustomerEntity {
     private String country;
 
     @CreationTimestamp
-    @Column(name = "created_at")
+    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT now()")
     private Timestamp createdAt;
 
     @Column(name = "booking_count")

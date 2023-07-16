@@ -24,7 +24,11 @@ public class ConnectDB {
                 settings.put(Environment.URL, "jdbc:postgresql://dpg-cimjn7l9aq07op9n1if0-a.singapore-postgres.render.com/manager_hotel_javafx");
                 settings.put(Environment.USER, "daidung");
                 settings.put(Environment.PASS,"h7nF4ML0dMuzu2tWrlrWBm8OpCKsXnI3");
-                
+
+//                // Local
+//                settings.put(Environment.URL, "jdbc:postgresql://localhost:5432/manage_hotel_javafx");
+//                settings.put(Environment.USER, "postgres");
+//                settings.put(Environment.PASS,"123");
                 
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
 

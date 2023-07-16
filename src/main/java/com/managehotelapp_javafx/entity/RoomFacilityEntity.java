@@ -4,7 +4,8 @@ import com.managehotelapp_javafx.entity.id.RoomFacilityId;
 
 import javax.persistence.*;
 
-@Entity(name = "room_facility")
+@Entity
+@Table(name = "room_facility")
 @IdClass(RoomFacilityId.class)
 public class RoomFacilityEntity {
 

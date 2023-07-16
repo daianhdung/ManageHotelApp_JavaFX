@@ -5,17 +5,17 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-@Entity(name = "users")
-public class UserEntity {
+@Entity
+@Table(name = "users")
+public class UserEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @Column(name = "username", length = 30, nullable = false, unique = true)
     private String username;
 
-    @Column(name = "password", length =30, nullable = false)
+    @Column(name = "password", length =100, nullable = false)
     private String password;
 
     @Column(name = "email", length = 30)
@@ -30,11 +30,14 @@ public class UserEntity {
     @Column(name = "identity", length = 12, nullable = false)
     private String identity;
 
+    @Column(name = "phone_number", length = 10)
+    private String phoneNumber;
+
     @Column(name = "address", length =200)
     private String address;
 
     @CreationTimestamp
-    @Column(name = "created_at")
+    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT now()")
     private Timestamp createdAt;
 
     @ManyToOne
@@ -99,6 +102,14 @@ public class UserEntity {
 
     public void setIdentity(String identity) {
         this.identity = identity;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public String getAddress() {

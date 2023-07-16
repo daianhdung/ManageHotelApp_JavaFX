@@ -3,15 +3,16 @@ package com.managehotelapp_javafx.entity;
 import javax.persistence.*;
 import java.util.Set;
 
-@Entity(name = "user_role")
+@Entity
+@Table(name = "user_role")
 public class UserRoleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "tittle", length = 30, nullable = false, unique = true)
-    private String tittle;
+    @Column(name = "title", length = 30, nullable = false, unique = true)
+    private String title;
 
     @Column(name = "description", length =30, nullable = false)
     private String description;
@@ -28,12 +29,12 @@ public class UserRoleEntity {
         this.id = id;
     }
 
-    public String getTittle() {
-        return tittle;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTittle(String tittle) {
-        this.tittle = tittle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getDescription() {
