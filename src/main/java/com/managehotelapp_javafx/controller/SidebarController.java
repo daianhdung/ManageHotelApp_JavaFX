@@ -1,7 +1,5 @@
 package com.managehotelapp_javafx.controller;
 
-
-import com.managehotelapp_javafx.HelloApplication;
 import com.managehotelapp_javafx.utils.constant.FXMLLoaderConstant;
 import com.managehotelapp_javafx.utils.session.SessionUser;
 import javafx.event.Event;
@@ -29,11 +27,14 @@ public class SidebarController implements Initializable {
 
     private Stage primaryStage;
     private FXMLLoader fxmlLoader;
-
+    @FXML
     private boolean isManager;
 
     @FXML
     private Button btnRevenue;
+
+    @FXML
+    private Button btnAddUser;
 
     @FXML
     private void onBooking(Event event) {
@@ -75,6 +76,17 @@ public class SidebarController implements Initializable {
         }
     }
 
+    @FXML
+    private void onAddUserScene() {
+        primaryStage = (Stage) btnAddUser.getScene().getWindow();
+        fxmlLoader = FXMLLoaderConstant.getAddUserScene();
+        try {
+            primaryStage.setScene(new Scene(fxmlLoader.load()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     //    @FXML
 //    private void setBtnRevenue() {
 //        primaryStage = (Stage) btn_home.getScene().getWindow();
@@ -86,9 +98,11 @@ public class SidebarController implements Initializable {
 //        }
 //    }
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         isManager = SessionUser.getInstance().getRole().equals("Role Manager");
         btnRevenue.setVisible(isManager);
+        btnAddUser.setVisible(isManager);
     }
 }

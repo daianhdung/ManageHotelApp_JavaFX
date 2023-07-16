@@ -35,7 +35,7 @@ public class InvoiceEntity {
     private InvoiceStatusEntity invoiceStatus;
 
     @CreationTimestamp
-    @Column(name = "created_at")
+    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT now()")
     private Timestamp createdAt;
 
     public int getId() {

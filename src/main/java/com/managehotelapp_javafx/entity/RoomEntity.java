@@ -29,7 +29,7 @@ public class RoomEntity {
     private String roomNumber;
 
     @CreationTimestamp
-    @Column(name = "created_at")
+    @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT now()")
     private Timestamp createdAt;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "room")

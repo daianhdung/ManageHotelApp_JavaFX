@@ -22,4 +22,7 @@ module com.managehotelapp_javafx {
     exports com.managehotelapp_javafx.entity.id;
     opens com.managehotelapp_javafx.entity.id to org.hibernate.orm.core;
 
+    exports com.managehotelapp_javafx.dto;
+    opens com.managehotelapp_javafx.dto to javafx.fxml;
+
 }
