@@ -7,4 +7,6 @@ import java.util.List;
 public interface BookingRoomService {
 
     List<BookingRoomDTO> getAllBookingsRoom();
+
+    BookingRoomDTO getBookingRoomById(int id);
 }
