@@ -37,7 +37,7 @@ public class UserRepositoryImp extends AbstractRepository<UserEntity> implements
 
 
     @Override
-    public boolean updateUser(UserEntity user, int idUser) {
+    public boolean updateUser(UserEntity user) {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("id", user.getId());
         parameters.put("address", user.getAddress());

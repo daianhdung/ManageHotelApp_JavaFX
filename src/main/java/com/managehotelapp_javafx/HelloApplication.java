@@ -21,7 +21,7 @@ public class HelloApplication extends Application {
     public void start(Stage stage) throws IOException {
         ConnectDB.getSessionFactory().createEntityManager();
 
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("user-table-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
         stage.setTitle("Hello!");

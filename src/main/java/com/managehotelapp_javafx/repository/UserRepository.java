@@ -14,7 +14,7 @@ public interface UserRepository extends GenericRepository<UserEntity>  {
 
     UserEntity findUserByUsername(String username);
 
-    boolean updateUser(UserEntity user, int idUser);
+    boolean updateUser(UserEntity user);
 
     boolean deleteUser(int idUser);
 
