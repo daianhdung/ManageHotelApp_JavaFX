@@ -1,19 +1,26 @@
 package com.managehotelapp_javafx.controller;
 
+import com.managehotelapp_javafx.HelloApplication;
 import com.managehotelapp_javafx.dto.BookingRoomDTO;
 import com.managehotelapp_javafx.services.BookingRoomService;
 import com.managehotelapp_javafx.services.BookingService;
 import com.managehotelapp_javafx.services.imp.BookingRoomServiceImp;
 import com.managehotelapp_javafx.services.imp.BookingServiceImp;
+import com.managehotelapp_javafx.utils.constant.FXMLLoaderConstant;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -48,6 +55,9 @@ public class BookingController implements Initializable {
 
     ObservableList<BookingRoomDTO> listBookingRoom = FXCollections.observableArrayList();
 
+    private Stage primaryStage;
+    private FXMLLoader fxmlLoader;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         roomNo.setCellValueFactory(new PropertyValueFactory<>("roomNo"));
@@ -68,9 +78,18 @@ public class BookingController implements Initializable {
                             setGraphic(null);
                         } else {
                             btn.setOnAction(event -> {
+                                primaryStage = (Stage) btn.getScene().getWindow();
                                 BookingRoomDTO booking = getTableView().getItems().get(getIndex());
-                                System.out.println(booking.getRoomNo()
-                                        + "   " + booking.getPhoneNumber());
+                                fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("booking-detail-view.fxml"));
+                                try {
+                                    Parent root = fxmlLoader.load();
+                                    BookingDetailController bookingDetailController = fxmlLoader.getController();
+                                    bookingDetailController.displayData(bookingRoomService.getBookingRoomById(booking.getId()));
+                                    primaryStage.setScene(new Scene(root));
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+
                             });
                             setGraphic(btn);
                         }

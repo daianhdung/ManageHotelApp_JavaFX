@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="558.0" prefWidth="1033.0" style="-fx-background-color: #00CCFF;" stylesheets="@./booking/global-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.BookingDetailController">
+    <Pane layoutX="-1.0" prefHeight="558.0" prefWidth="210.0" style="-fx-background-color: #00CCFF;">
+        <fx:include fx:id="sidebar" source="sidebar-view.fxml" />
+    </Pane>
+    <Pane layoutX="209.0" prefHeight="558.0" prefWidth="824.0" style="-fx-background-color: #fff;">
+        <children>
+            <GridPane layoutX="10.0" layoutY="94.0" prefHeight="399.0" prefWidth="768.0">
+                <columnConstraints>
+               <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="330.0" minWidth="10.0" prefWidth="48.00000610351563" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="330.0" minWidth="10.0" prefWidth="330.0" />
+                    <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="389.0" minWidth="10.0" prefWidth="51.40001220703124" />
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="330.0" minWidth="10.0" prefWidth="330.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+                <children>
+                    <TextField fx:id="customerName" styleClass="input-field" GridPane.columnIndex="1" />
+                    <TextField fx:id="bookingDate" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <TextField fx:id="checkinDate" styleClass="input-field" GridPane.columnIndex="3" />
+                    <TextField fx:id="checkoutDate" styleClass="input-field" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                    <TextField fx:id="phoneNumber" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    <TextField fx:id="numAdult" styleClass="input-field" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                    <TextField fx:id="email" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                    <TextField fx:id="numChildren" styleClass="input-field" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+               <Label prefHeight="22.0" prefWidth="95.0" text="Check-in Date" textFill="#00ccff" GridPane.columnIndex="3">
+                  <GridPane.margin>
+                     <Insets bottom="50.0" />
+                  </GridPane.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+               <Label text="Check-out Date" textFill="#00ccff" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                  <GridPane.margin>
+                     <Insets bottom="50.0" />
+                  </GridPane.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+               <Label text="Number Of Adult" textFill="#00ccff" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                  <GridPane.margin>
+                     <Insets bottom="50.0" />
+                  </GridPane.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+               <Label text="Number Of Children" textFill="#00ccff" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                  <GridPane.margin>
+                     <Insets bottom="50.0" />
+                  </GridPane.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+               <Label prefHeight="20.0" prefWidth="104.0" text="Customer Name" textFill="#00ccff" GridPane.columnIndex="1">
+                  <GridPane.margin>
+                     <Insets bottom="50.0" />
+                  </GridPane.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+               <Label prefHeight="20.0" prefWidth="102.0" text="Booking Date" textFill="#00ccff" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <GridPane.margin>
+                     <Insets bottom="50.0" />
+                  </GridPane.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+               <Label text="Phone Number" textFill="#00ccff" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <GridPane.margin>
+                     <Insets bottom="50.0" />
+                  </GridPane.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+               <Label prefHeight="20.0" prefWidth="46.0" text="Email" textFill="#00ccff" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <GridPane.margin>
+                     <Insets bottom="50.0" />
+                  </GridPane.margin>
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+               </Label>
+               <Label text="Status" textFill="#00ccff" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <GridPane.margin>
+                     <Insets bottom="50.0" />
+                  </GridPane.margin>
+               </Label>
+               <Label prefHeight="20.0" prefWidth="107.0" text="Special Request" textFill="#00ccff" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <font>
+                     <Font size="14.0" />
+                  </font>
+                  <GridPane.margin>
+                     <Insets bottom="50.0" />
+                  </GridPane.margin>
+               </Label>
+               <ComboBox fx:id="status" prefHeight="26.0" prefWidth="208.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                </children>
+            </GridPane>
+            <Label alignment="CENTER" layoutX="269.0" layoutY="14.0" prefHeight="55.0" prefWidth="273.0" text="Booking Detail">
+                <font>
+                    <Font size="23.0" />
+                </font>
+            </Label>
+         <TextArea fx:id="specialRequest" layoutX="66.0" layoutY="445.0" maxHeight="1.7976931348623157E308" prefHeight="97.0" prefWidth="330.0" />
+         <Button fx:id="btnService" layoutX="665.0" layoutY="37.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="126.0" style="-fx-background-color: #00CCFF;" text="Services" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="17.0" />
+            </font>
+         </Button>
+         <Button layoutX="665.0" layoutY="494.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="126.0" style="-fx-background-color: #f00;" text="Checkout" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="17.0" />
+            </font>
+         </Button>
+         <Label fx:id="roomNo" layoutX="66.0" layoutY="24.0" prefHeight="35.0" prefWidth="68.0">
+            <font>
+               <Font name="System Bold" size="16.0" />
+            </font></Label>
+        </children>
+    </Pane>
+</AnchorPane>

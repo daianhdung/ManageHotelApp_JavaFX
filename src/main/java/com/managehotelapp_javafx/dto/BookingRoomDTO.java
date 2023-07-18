@@ -1,8 +1,8 @@
 package com.managehotelapp_javafx.dto;
 
-import javafx.scene.control.Button;
-
 public class BookingRoomDTO{
+
+    private int id;
 
     private String roomNo;
 
@@ -10,7 +10,24 @@ public class BookingRoomDTO{
     private String phoneNumber;
     private String bookingDate;
     private String checkinDate;
+
+    private int numAdult;
+
+    private int numChildren;
+
+    private String checkoutDate;
     private String status;
+
+    private String email;
+    private String specialRequest;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getRoomNo() {
         return roomNo;
@@ -22,6 +39,46 @@ public class BookingRoomDTO{
 
     public String getCustomerName() {
         return customerName;
+    }
+
+    public String getCheckoutDate() {
+        return checkoutDate;
+    }
+
+    public int getNumAdult() {
+        return numAdult;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getSpecialRequest() {
+        return specialRequest;
+    }
+
+    public void setSpecialRequest(String specialRequest) {
+        this.specialRequest = specialRequest;
+    }
+
+    public void setNumAdult(int numAdult) {
+        this.numAdult = numAdult;
+    }
+
+    public int getNumChildren() {
+        return numChildren;
+    }
+
+    public void setNumChildren(int numChildren) {
+        this.numChildren = numChildren;
+    }
+
+    public void setCheckoutDate(String checkoutDate) {
+        this.checkoutDate = checkoutDate;
     }
 
     public void setCustomerName(String customerName) {

@@ -7,4 +7,6 @@ import java.util.List;
 public interface BookingRoomRepository extends GenericRepository<BookingRoomEntity> {
 
     List<BookingRoomEntity> findAll();
+
+    BookingRoomEntity findById(int id);
 }
