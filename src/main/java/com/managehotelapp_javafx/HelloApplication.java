@@ -2,8 +2,18 @@ package com.managehotelapp_javafx;
 
 import com.managehotelapp_javafx.config.ConnectDB;
 
+import com.managehotelapp_javafx.dto.UserDTO;
 import com.managehotelapp_javafx.entity.UserEntity;
+import com.managehotelapp_javafx.repository.UserRepository;
+import com.managehotelapp_javafx.repository.UserRoleRepository;
+import com.managehotelapp_javafx.repository.UserStatusRepository;
 import com.managehotelapp_javafx.repository.imp.UserRepositoryImp;
+import com.managehotelapp_javafx.repository.imp.UserRoleRepositoryImp;
+import com.managehotelapp_javafx.repository.imp.UserStatusRepositoryImp;
+import com.managehotelapp_javafx.services.UserRoleService;
+import com.managehotelapp_javafx.services.UserService;
+import com.managehotelapp_javafx.services.imp.UserRoleServiceImp;
+import com.managehotelapp_javafx.services.imp.UserServiceImp;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -46,6 +56,5 @@ public class HelloApplication extends Application {
 
     public static void main(String[] args) {
         launch();
-
     }
 }

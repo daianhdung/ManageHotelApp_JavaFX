@@ -8,6 +8,8 @@ import com.managehotelapp_javafx.services.UserStatusService;
 import com.managehotelapp_javafx.services.imp.UserRoleServiceImp;
 import com.managehotelapp_javafx.services.imp.UserServiceImp;
 import com.managehotelapp_javafx.services.imp.UserStatusServiceImp;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -56,7 +58,7 @@ public class UserController implements Initializable {
     @FXML
     private TextField searchInput;
     @FXML
-    private TextField fullnameTxt,identityTxt, phoneTxt, emailTxt, idTxt, usernameTxt;
+    private TextField fullnameTxt, identityTxt, phoneTxt, emailTxt, idTxt, usernameTxt;
     @FXML
     private TextArea addressTxt;
 
@@ -77,9 +79,11 @@ public class UserController implements Initializable {
     private TableView<UserDTO> userTableView;
 
     @FXML
-    private AnchorPane userTableScene,userDetailScene;
+    private AnchorPane userTableScene, userDetailScene;
     @FXML
     private RadioButton gender1, gender2, gender3;
+    @FXML
+    private Label fullnameLabel, identityLabel, phoneLabel, emailLabel, addressLabel, usernameLabel;
 
     @FXML
     private TableColumn<UserDTO, String> usernameCol;
@@ -99,30 +103,176 @@ public class UserController implements Initializable {
     void onAdd(ActionEvent event) {
 
     }
+
     @FXML
     void onDelete(ActionEvent event) {
         String idUser = idTxt.getText();
 
         if (deleteBtn.isFocused()) {
-            alert = new Alert(Alert.AlertType.WARNING);
+            alert = new Alert(Alert.AlertType.CONFIRMATION);
             alert.setTitle("Information");
             alert.setHeaderText("Are you sure you want to delete?");
 
-            if (alert.showAndWait().get() == ButtonType.OK)
+            if (alert.showAndWait().get() == ButtonType.OK) {
                 userService.deleteUser(Integer.parseInt(idUser));
-
-            userDetailScene.setVisible(false);
-            userTableScene.setVisible(true);
-
-            showUserTableView();
+                onBack();
+                showUserTableView();
+            }
         }
     }
 
-    public void onSave(){
+    public void onSave() {
+        if (checkAllTextField()){
+
+            UserDTO userDTO = new UserDTO();
+            userDTO.setId(Integer.parseInt(idTxt.getText()));
+            userDTO.setFullName(fullnameTxt.getText());
+            userDTO.setUsername(usernameTxt.getText());
+            userDTO.setEmail(emailTxt.getText());
+            userDTO.setIdentity(identityTxt.getText());
+            userDTO.setPhone(phoneTxt.getText());
+            userDTO.setRole(roleBox.getSelectionModel().getSelectedItem());
+            userDTO.setStatus(statusBox.getSelectionModel().getSelectedItem());
+            userDTO.setAddress(addressTxt.getText());
+            userDTO.setGender(getGender());
+
+            if (saveBtn.isFocused()){
+                alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Information");
+                alert.setHeaderText("Do you want to save changes?");
+
+                if (alert.showAndWait().get() == ButtonType.OK) {
+                    userService.updateUser(userDTO);
+                    onBack();
+                    showUserTableView();
+                }
+            }
+        }
+
+
 
     }
 
-    public void onBack(){
+    public boolean checkAllTextField() {
+        boolean result = false;
+
+        BooleanBinding usernameBinding = Bindings.createBooleanBinding(() -> {
+            return usernameTxt.getText().matches("[a-z0-9_-]{6,12}$");
+        }, usernameTxt.textProperty());
+
+        BooleanBinding emailBinding = Bindings.createBooleanBinding(() -> {
+            return emailTxt.getText().matches("^[\\w-_\\.+]*[\\w-_\\.]\\@([\\w]+\\.)+[\\w]+[\\w]$");
+        }, emailTxt.textProperty());
+
+
+        BooleanBinding fullnameBinding = Bindings.createBooleanBinding(() -> {
+            return fullnameTxt.getText().matches("^[A-Za-z ]{2,30}$");
+        }, fullnameTxt.textProperty());
+
+
+        BooleanBinding identityBinding = Bindings.createBooleanBinding(() -> {
+            return identityTxt.getText().matches("^\\d{10}$");
+        }, identityTxt.textProperty());
+
+//        BooleanBinding phoneBinding = Bindings.createBooleanBinding(() -> {
+//            return phoneTxt.getText().matches("^\\d{10}$");
+//        }, phoneTxt.textProperty());
+
+//        BooleanBinding phoneBinding = Bindings.createBooleanBinding(() -> {
+////            String regex = "^(0)(3|5|7|8|9)+([0-9]{7})$";
+//            return phoneTxt.getText().matches("^0[0-9]{9}$");
+//        }, phoneTxt.textProperty());
+
+
+        BooleanBinding addressBinding = Bindings.createBooleanBinding(() -> {
+            return addressTxt.getText().matches("^[0-9a-zA-Z\\s,\\-,\\/]+$");
+        }, addressTxt.textProperty());
+
+
+        usernameTxt.focusedProperty().addListener(((observableValue, oldValue, newValue) -> {
+            if (newValue) {
+                usernameLabel.setText("- Must be between 6-12 characters\n" +
+                        "- Only letters (a-z), numbers (0-9), underscore(_), hyphen (-)");
+                usernameLabel.visibleProperty().bind(usernameBinding.not());
+            }
+        }));
+        emailTxt.focusedProperty().addListener(((observableValue, oldValue, newValue) -> {
+            if (newValue) {
+                emailLabel.setText("- Pls enter a valid email address (ex: abc@gmail.com)");
+                emailLabel.visibleProperty().bind(emailBinding.not());
+            }
+        }));
+
+        fullnameTxt.focusedProperty().addListener(((observableValue, oldValue, newValue) -> {
+            if (newValue) {
+                fullnameLabel.setText("- Must be between 2-30 characters and only letters");
+                fullnameLabel.visibleProperty().bind(fullnameBinding.not());
+            }
+        }));
+
+        identityTxt.focusedProperty().addListener(((observableValue, oldValue, newValue) -> {
+            if (newValue) {
+                identityLabel.setText("- Only 10 digits");
+                identityLabel.visibleProperty().bind(identityBinding.not());
+            }
+        }));
+
+//        phoneTxt.focusedProperty().addListener(((observableValue, oldValue, newValue) -> {
+//            if (newValue) {
+//                phoneLabel.setText("- Invalid phone number");
+//                phoneLabel.visibleProperty().bind(phoneBinding.not());
+//            }
+//        }));
+
+        addressTxt.focusedProperty().addListener(((observableValue, oldValue, newValue) -> {
+            if (newValue) {
+                addressLabel.setText("- Special characters are not allowed: @$!%*?&#");
+                addressLabel.visibleProperty().bind(addressBinding.not());
+            }
+        }));
+
+
+        if (!usernameBinding.getValue() || !emailBinding.getValue() || !identityBinding.getValue()
+                || !fullnameBinding.getValue() ||  !addressBinding.getValue()) {
+            if (!usernameBinding.getValue()) {
+                usernameTxt.requestFocus();
+            } else if (!emailBinding.getValue()) {
+                emailTxt.requestFocus();
+            } else if (!identityBinding.getValue()) {
+                identityTxt.requestFocus();
+            } else if (!fullnameBinding.getValue()) {
+                fullnameTxt.requestFocus();
+            } else if (!addressBinding.getValue()) {
+                addressLabel.requestFocus();
+            }
+        } else {
+            result = true;
+        }
+
+//        if (!usernameBinding.getValue() || !emailBinding.getValue() || !identityBinding.getValue()
+//                || !fullnameBinding.getValue() || !phoneBinding.getValue() || !addressBinding.getValue()) {
+//            if (!usernameBinding.getValue()) {
+//                usernameTxt.requestFocus();
+//            } else if (!emailBinding.getValue()) {
+//                emailTxt.requestFocus();
+//            } else if (!identityBinding.getValue()) {
+//                identityTxt.requestFocus();
+//            } else if (!fullnameBinding.getValue()) {
+//                fullnameTxt.requestFocus();
+//            } else if (!phoneBinding.getValue()) {
+//                phoneTxt.requestFocus();
+//            } else if (!addressBinding.getValue()) {
+//                addressLabel.requestFocus();
+//            }
+//        } else {
+//            result = true;
+//        }
+
+        return result;
+    }
+
+
+    public void onBack() {
         userTableScene.setVisible(true);
         userDetailScene.setVisible(false);
     }
@@ -133,16 +283,16 @@ public class UserController implements Initializable {
         FilteredList<UserDTO> filteredList = new FilteredList<>(userObservableList, p -> true);
 
         searchInput.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredList.setPredicate( userSearch -> {
+            filteredList.setPredicate(userSearch -> {
                 String searchKeyword = newValue.toLowerCase();
                 if (newValue.isEmpty() || newValue.isBlank() || newValue == null) return true;
-                
-                if (userSearch.getFullName().toLowerCase().indexOf(searchKeyword) >-1) return true;
-                else if (userSearch.getEmail().toLowerCase().indexOf(searchKeyword) >-1) return true;
-                else if (String.valueOf(userSearch.getId()).indexOf(searchKeyword) >-1) return true;
-                else if (userSearch.getUsername().toLowerCase().indexOf(searchKeyword) >-1 ) return true;
-                else if (userSearch.getStatus().toLowerCase().indexOf(searchKeyword) >-1)return true;
-                else  return false;
+
+                if (userSearch.getFullName().toLowerCase().indexOf(searchKeyword) > -1) return true;
+                else if (userSearch.getEmail().toLowerCase().indexOf(searchKeyword) > -1) return true;
+                else if (String.valueOf(userSearch.getId()).indexOf(searchKeyword) > -1) return true;
+                else if (userSearch.getUsername().toLowerCase().indexOf(searchKeyword) > -1) return true;
+                else if (userSearch.getStatus().toLowerCase().indexOf(searchKeyword) > -1) return true;
+                else return false;
             });
         });
         SortedList<UserDTO> sortedList = new SortedList<>(filteredList);
@@ -158,7 +308,7 @@ public class UserController implements Initializable {
         statusBox.setItems(statusList);
     }
 
-    public void showRoleComboBox(){
+    public void showRoleComboBox() {
         ObservableList<String> roleList = FXCollections.observableArrayList();
         userRoleService.getUserRoleList().forEach(userRoleDTO -> {
             roleList.add(userRoleDTO.getTitle());
@@ -166,11 +316,11 @@ public class UserController implements Initializable {
         roleBox.setItems(roleList);
     }
 
-    public void showUserTableView(){
+    public void showUserTableView() {
         userObservableList = FXCollections.observableArrayList(userService.getUsers());
 
         indexCol.setCellValueFactory(cell -> {
-            String index = cell.getTableView().getItems().indexOf(cell.getValue()) +1 +"";
+            String index = cell.getTableView().getItems().indexOf(cell.getValue()) + 1 + "";
             return new SimpleStringProperty(index);
         });
         idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -183,19 +333,17 @@ public class UserController implements Initializable {
         actionCol.setCellFactory(cell -> tableCellDetailBtn());
 
         userTableView.setItems(userObservableList);
-
-
     }
 
-    public TableCell tableCellDetailBtn(){
+    public TableCell tableCellDetailBtn() {
         Button detailBtn = new Button("Details");
-        TableCell<UserDTO,Boolean>  cell = new TableCell<>(){
+        TableCell<UserDTO, Boolean> cell = new TableCell<>() {
             @Override
             protected void updateItem(Boolean item, boolean empty) {
                 super.updateItem(item, empty);
-                if (empty){
+                if (empty) {
                     setGraphic(null);
-                }else {
+                } else {
                     setGraphic(detailBtn);
                 }
             }
@@ -208,7 +356,7 @@ public class UserController implements Initializable {
         return cell;
     }
 
-    public void getUserDetailScene(UserDTO user){
+    public void getUserDetailScene(UserDTO user) {
         fullnameTxt.setText(user.getFullName());
         identityTxt.setText(user.getIdentity());
         phoneTxt.setText(user.getPhone());
@@ -246,9 +394,6 @@ public class UserController implements Initializable {
         getGender();
         showRoleComboBox();
         showStatusComboBox();
-
-
-
-
+        checkAllTextField();
     }
 }

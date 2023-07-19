@@ -78,7 +78,7 @@ public class UserServiceImp implements UserService {
     @Override
     public boolean updateUser(UserDTO user) {
         UserEntity userEntity = new UserEntity();
-
+        userEntity.setId(user.getId());
         userEntity.setAddress(user.getAddress());
         userEntity.setEmail(user.getEmail());
         userEntity.setFullName(user.getFullName());
@@ -89,8 +89,7 @@ public class UserServiceImp implements UserService {
         userEntity.setUserStatus(userStatusRepository.findUserStatusByTitle(user.getStatus()));
         userEntity.setPhoneNumber(user.getPhone());
 
-        userRepository.updateUser(userEntity);
 
-        return false;
+        return userRepository.updateUser(userEntity);
     }
 }

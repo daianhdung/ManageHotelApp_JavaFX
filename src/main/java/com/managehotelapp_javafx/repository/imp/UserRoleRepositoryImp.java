@@ -24,7 +24,7 @@ public class UserRoleRepositoryImp extends AbstractRepository<UserRoleEntity> im
     @Override
     public UserRoleEntity findUserRoleByTitle(String userRole) {
         Map<String, Object> parameters = new HashMap<>();
-        parameters.put("title", parameters);
+        parameters.put("title", userRole);
         List<UserRoleEntity> result = query("FROM UserRoleEntity WHERE title = :title",parameters);
         return result.isEmpty() ? null : result.get(0);
     }
