@@ -45,7 +45,7 @@
           </Pane>
       </children>
    </AnchorPane>
-   <AnchorPane fx:id="userDetailScene" layoutX="198.0" prefHeight="558.0" prefWidth="835.0" style="-fx-background-color: white;">
+   <AnchorPane fx:id="userDetailScene" layoutX="198.0" prefHeight="558.0" prefWidth="835.0" style="-fx-background-color: white;" visible="false">
       <children>
          <BorderPane layoutX="239.0" layoutY="139.0" prefHeight="558.0" prefWidth="835.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
@@ -87,7 +87,7 @@
                   <children>
                      <TextField fx:id="fullnameTxt" styleClass="input-field" GridPane.columnIndex="1" />
                      <TextField fx:id="identityTxt" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                     <TextField fx:id="idTxt" styleClass="input-field" GridPane.columnIndex="3" />
+                     <TextField fx:id="idTxt" editable="false" styleClass="input-field" GridPane.columnIndex="3" />
                      <TextField fx:id="usernameTxt" styleClass="input-field" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                      <TextField fx:id="phoneTxt" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      <TextField fx:id="emailTxt" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
@@ -155,7 +155,7 @@
                            <Insets bottom="50.0" />
                         </GridPane.margin>
                      </Label>
-                     <ComboBox fx:id="roleBox"  prefHeight="26.0" prefWidth="284.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+                     <ComboBox fx:id="roleBox" prefHeight="26.0" prefWidth="284.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                      <TextArea fx:id="addressTxt" prefHeight="200.0" prefWidth="200.0" styleClass="text-area-field" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      <Label text="Status:" textFill="#00ccff" GridPane.columnIndex="3" GridPane.rowIndex="3">
                         <font>

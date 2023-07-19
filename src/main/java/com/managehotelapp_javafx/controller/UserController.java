@@ -10,6 +10,7 @@ import com.managehotelapp_javafx.services.imp.UserServiceImp;
 import com.managehotelapp_javafx.services.imp.UserStatusServiceImp;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -17,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
@@ -63,7 +65,7 @@ public class UserController implements Initializable {
     @FXML
     private ComboBox<String> statusBox;
     @FXML
-    private Button backBtn, saveBtn, onDelete;
+    private Button backBtn, saveBtn, deleteBtn;
     @FXML
     private GridPane groupGenderBtn;
 
@@ -82,11 +84,13 @@ public class UserController implements Initializable {
     @FXML
     private TableColumn<UserDTO, String> usernameCol;
 
-    ObservableList<UserDTO> userObservableList = FXCollections.observableArrayList();
+    ObservableList<UserDTO> userObservableList;
     UserService userService = new UserServiceImp();
 
     UserRoleService userRoleService = new UserRoleServiceImp();
     UserStatusService userStatusService = new UserStatusServiceImp();
+
+    private Alert alert;
 
     private Stage primaryStage;
     private FXMLLoader fxmlLoader;
@@ -97,7 +101,21 @@ public class UserController implements Initializable {
     }
     @FXML
     void onDelete(ActionEvent event) {
+        String idUser = idTxt.getText();
 
+        if (deleteBtn.isFocused()) {
+            alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Information");
+            alert.setHeaderText("Are you sure you want to delete?");
+
+            if (alert.showAndWait().get() == ButtonType.OK)
+                userService.deleteUser(Integer.parseInt(idUser));
+
+            userDetailScene.setVisible(false);
+            userTableScene.setVisible(true);
+
+            showUserTableView();
+        }
     }
 
     public void onSave(){
@@ -107,8 +125,6 @@ public class UserController implements Initializable {
     public void onBack(){
         userTableScene.setVisible(true);
         userDetailScene.setVisible(false);
-
-//        roleBox.setValue("");
     }
 
     @FXML
@@ -134,23 +150,24 @@ public class UserController implements Initializable {
         userTableView.setItems(sortedList);
     }
 
-    public void showRoleBox(){
+    public void showStatusComboBox() {
+        ObservableList<String> statusList = FXCollections.observableArrayList();
+        userStatusService.getUserStatusList().forEach(userRoleDTO -> {
+            statusList.add(userRoleDTO.getTitle());
+        });
+        statusBox.setItems(statusList);
+    }
+
+    public void showRoleComboBox(){
         ObservableList<String> roleList = FXCollections.observableArrayList();
         userRoleService.getUserRoleList().forEach(userRoleDTO -> {
             roleList.add(userRoleDTO.getTitle());
-            System.out.println("name: " + userRoleDTO.getTitle());
         });
         roleBox.setItems(roleList);
-        roleBox.getItems().add("...");
-        System.out.println(roleList.size());
-        System.out.println(roleList.toString());
-
-
-
     }
 
-    public void showDataUser(){
-        userObservableList.addAll(userService.getUsers());
+    public void showUserTableView(){
+        userObservableList = FXCollections.observableArrayList(userService.getUsers());
 
         indexCol.setCellValueFactory(cell -> {
             String index = cell.getTableView().getItems().indexOf(cell.getValue()) +1 +"";
@@ -187,7 +204,6 @@ public class UserController implements Initializable {
             userTableScene.setVisible(false);
             userDetailScene.setVisible(true);
             getUserDetailScene(cell.getTableRow().getItem());
-
         });
         return cell;
     }
@@ -199,8 +215,8 @@ public class UserController implements Initializable {
         emailTxt.setText(user.getEmail());
         idTxt.setText(String.valueOf(user.getId()));
         usernameTxt.setText(user.getUsername());
-        roleBox.setPromptText(user.getRole());
-        statusBox.setPromptText(user.getStatus());
+        roleBox.getSelectionModel().select(user.getRole());
+        statusBox.getSelectionModel().select(user.getStatus());
         addressTxt.setText(user.getAddress());
 
         if (user.getGender().equalsIgnoreCase(gender1.getText())) {
@@ -225,10 +241,13 @@ public class UserController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        showDataUser();
+        showUserTableView();
         onSearch();
         getGender();
-        showRoleBox();
+        showRoleComboBox();
+        showStatusComboBox();
+
+
 
 
     }
