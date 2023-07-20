@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface UserRoleService {
     UserRoleEntity findUserRoleById(int idUserRole);
+
+    UserRoleEntity findUserRoleByTitle(String userRole);
     List<UserRoleDTO> getUserRoleList ();
  }

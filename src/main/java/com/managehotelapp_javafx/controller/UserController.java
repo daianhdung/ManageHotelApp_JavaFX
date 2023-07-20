@@ -8,6 +8,7 @@ import com.managehotelapp_javafx.services.UserStatusService;
 import com.managehotelapp_javafx.services.imp.UserRoleServiceImp;
 import com.managehotelapp_javafx.services.imp.UserServiceImp;
 import com.managehotelapp_javafx.services.imp.UserStatusServiceImp;
+import com.managehotelapp_javafx.utils.constant.FXMLLoaderConstant;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.SimpleStringProperty;
@@ -21,12 +22,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -58,7 +61,9 @@ public class UserController implements Initializable {
     @FXML
     private TextField searchInput;
     @FXML
-    private TextField fullnameTxt, identityTxt, phoneTxt, emailTxt, idTxt, usernameTxt;
+    private TextField fullnameTxt, identityTxt, emailTxt, idTxt, usernameTxt;
+    @FXML
+    private TextField phoneNumberTxt;
     @FXML
     private TextArea addressTxt;
 
@@ -100,8 +105,14 @@ public class UserController implements Initializable {
     private FXMLLoader fxmlLoader;
 
     @FXML
-    void onAdd(ActionEvent event) {
-
+    void onAdd() {
+        primaryStage = (Stage) addBtn.getScene().getWindow();
+        fxmlLoader = FXMLLoaderConstant.getAddUserScene();
+        try {
+            primaryStage.setScene(new Scene(fxmlLoader.load()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
@@ -130,7 +141,7 @@ public class UserController implements Initializable {
             userDTO.setUsername(usernameTxt.getText());
             userDTO.setEmail(emailTxt.getText());
             userDTO.setIdentity(identityTxt.getText());
-            userDTO.setPhone(phoneTxt.getText());
+            userDTO.setPhone(phoneNumberTxt.getText());
             userDTO.setRole(roleBox.getSelectionModel().getSelectedItem());
             userDTO.setStatus(statusBox.getSelectionModel().getSelectedItem());
             userDTO.setAddress(addressTxt.getText());
@@ -175,17 +186,17 @@ public class UserController implements Initializable {
         }, identityTxt.textProperty());
 
 //        BooleanBinding phoneBinding = Bindings.createBooleanBinding(() -> {
-//            return phoneTxt.getText().matches("^\\d{10}$");
-//        }, phoneTxt.textProperty());
+//            return phoneNumberTxt.getText().matches("^\\d{10}$");
+//        }, phoneNumberTxt.textProperty());
 
-//        BooleanBinding phoneBinding = Bindings.createBooleanBinding(() -> {
-////            String regex = "^(0)(3|5|7|8|9)+([0-9]{7})$";
-//            return phoneTxt.getText().matches("^0[0-9]{9}$");
-//        }, phoneTxt.textProperty());
+        BooleanBinding phoneBinding = Bindings.createBooleanBinding(() -> {
+            String regex = "^(0)(3|5|7|8|9)+([0-9]{7})$";
+            return phoneNumberTxt.getText().matches(regex);
+        }, phoneNumberTxt.textProperty());
 
 
         BooleanBinding addressBinding = Bindings.createBooleanBinding(() -> {
-            return addressTxt.getText().matches("^[0-9a-zA-Z\\s,\\-,\\/]+$");
+            return addressTxt.getText().matches("^[0-9a-zA-Z\\s,\\-,\\/]{5,100}+$");
         }, addressTxt.textProperty());
 
 
@@ -217,12 +228,12 @@ public class UserController implements Initializable {
             }
         }));
 
-//        phoneTxt.focusedProperty().addListener(((observableValue, oldValue, newValue) -> {
-//            if (newValue) {
-//                phoneLabel.setText("- Invalid phone number");
-//                phoneLabel.visibleProperty().bind(phoneBinding.not());
-//            }
-//        }));
+        phoneNumberTxt.focusedProperty().addListener(((observableValue, oldValue, newValue) -> {
+            if (newValue) {
+                phoneLabel.setText("- Invalid phone number");
+                phoneLabel.visibleProperty().bind(phoneBinding.not());
+            }
+        }));
 
         addressTxt.focusedProperty().addListener(((observableValue, oldValue, newValue) -> {
             if (newValue) {
@@ -231,9 +242,11 @@ public class UserController implements Initializable {
             }
         }));
 
+        System.out.println(addressBinding.getValue());
+
 
         if (!usernameBinding.getValue() || !emailBinding.getValue() || !identityBinding.getValue()
-                || !fullnameBinding.getValue() ||  !addressBinding.getValue()) {
+                || !fullnameBinding.getValue() || !phoneBinding.getValue() || !addressBinding.getValue()) {
             if (!usernameBinding.getValue()) {
                 usernameTxt.requestFocus();
             } else if (!emailBinding.getValue()) {
@@ -242,31 +255,14 @@ public class UserController implements Initializable {
                 identityTxt.requestFocus();
             } else if (!fullnameBinding.getValue()) {
                 fullnameTxt.requestFocus();
+            } else if (!phoneBinding.getValue()) {
+                phoneNumberTxt.requestFocus();
             } else if (!addressBinding.getValue()) {
-                addressLabel.requestFocus();
+                addressTxt.requestFocus();
             }
         } else {
             result = true;
         }
-
-//        if (!usernameBinding.getValue() || !emailBinding.getValue() || !identityBinding.getValue()
-//                || !fullnameBinding.getValue() || !phoneBinding.getValue() || !addressBinding.getValue()) {
-//            if (!usernameBinding.getValue()) {
-//                usernameTxt.requestFocus();
-//            } else if (!emailBinding.getValue()) {
-//                emailTxt.requestFocus();
-//            } else if (!identityBinding.getValue()) {
-//                identityTxt.requestFocus();
-//            } else if (!fullnameBinding.getValue()) {
-//                fullnameTxt.requestFocus();
-//            } else if (!phoneBinding.getValue()) {
-//                phoneTxt.requestFocus();
-//            } else if (!addressBinding.getValue()) {
-//                addressLabel.requestFocus();
-//            }
-//        } else {
-//            result = true;
-//        }
 
         return result;
     }
@@ -359,7 +355,7 @@ public class UserController implements Initializable {
     public void getUserDetailScene(UserDTO user) {
         fullnameTxt.setText(user.getFullName());
         identityTxt.setText(user.getIdentity());
-        phoneTxt.setText(user.getPhone());
+        phoneNumberTxt.setText(user.getPhone());
         emailTxt.setText(user.getEmail());
         idTxt.setText(String.valueOf(user.getId()));
         usernameTxt.setText(user.getUsername());

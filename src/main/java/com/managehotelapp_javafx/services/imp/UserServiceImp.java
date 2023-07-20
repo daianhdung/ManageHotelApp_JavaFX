@@ -11,7 +11,9 @@ import com.managehotelapp_javafx.repository.UserStatusRepository;
 import com.managehotelapp_javafx.repository.imp.UserRepositoryImp;
 import com.managehotelapp_javafx.repository.imp.UserRoleRepositoryImp;
 import com.managehotelapp_javafx.repository.imp.UserStatusRepositoryImp;
+import com.managehotelapp_javafx.services.UserRoleService;
 import com.managehotelapp_javafx.services.UserService;
+import com.managehotelapp_javafx.services.UserStatusService;
 import com.managehotelapp_javafx.utils.session.SessionUser;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -21,8 +23,8 @@ import java.util.List;
 public class UserServiceImp implements UserService {
 
     UserRepository userRepository = new UserRepositoryImp();
-    UserRoleRepository userRoleRepository = new UserRoleRepositoryImp();
-    UserStatusRepository userStatusRepository = new UserStatusRepositoryImp();
+    UserRoleService userRoleService = new UserRoleServiceImp();
+    UserStatusService userStatusService = new UserStatusServiceImp();
     @Override
     public boolean checkLogin(String username, String password) {
         UserEntity user = userRepository.findUserByUsername(username);
@@ -85,8 +87,8 @@ public class UserServiceImp implements UserService {
         userEntity.setGender(user.getGender());
         userEntity.setIdentity(user.getIdentity());
         userEntity.setUsername(user.getUsername());
-        userEntity.setUserRole(userRoleRepository.findUserRoleByTitle(user.getRole()));
-        userEntity.setUserStatus(userStatusRepository.findUserStatusByTitle(user.getStatus()));
+        userEntity.setUserRole(userRoleService.findUserRoleByTitle(user.getRole()));
+        userEntity.setUserStatus(userStatusService.findUserStatusByTitle(user.getStatus()));
         userEntity.setPhoneNumber(user.getPhone());
 
 

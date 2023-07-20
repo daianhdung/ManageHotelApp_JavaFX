@@ -10,6 +10,9 @@ public interface UserStatusService {
 
     UserStatusEntity findUserStatusById(int idUserStatus);
 
+
+    UserStatusEntity findUserStatusByTitle(String userStatus);
+
     List<UserRoleDTO> getUserStatusList();
 
 }

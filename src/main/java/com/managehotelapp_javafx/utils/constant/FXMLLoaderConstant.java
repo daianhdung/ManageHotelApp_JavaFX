@@ -15,7 +15,12 @@ public class FXMLLoaderConstant {
         return new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
     }
 
-    public static FXMLLoader getAddUserScene(){
+    public static FXMLLoader getUserScene(){
+        return new FXMLLoader(HelloApplication.class.getResource("user-table-view.fxml"));
+    }
+
+
+    public static FXMLLoader getAddUserScene() {
         return new FXMLLoader(HelloApplication.class.getResource("create-account-view.fxml"));
     }
 

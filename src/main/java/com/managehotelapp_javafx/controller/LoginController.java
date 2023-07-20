@@ -68,8 +68,7 @@ public class LoginController {
     }
 
     public boolean checkAllTextField() {
-        alert.setAlertType(Alert.AlertType.WARNING);
-        alert.setTitle("Notification");
+
         boolean usernameIsEmpty = usernameTxt.getText().isEmpty();
         boolean passwordIsEmpty = passwordTxt.getText().isEmpty();
 

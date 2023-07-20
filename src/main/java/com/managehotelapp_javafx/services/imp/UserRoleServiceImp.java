@@ -18,6 +18,10 @@ public class UserRoleServiceImp implements UserRoleService {
         return userRoleRepository.findUserRoleById(idUserRole);
     }
 
+    public UserRoleEntity findUserRoleByTitle (String userRole) {
+        return userRoleRepository.findUserRoleByTitle(userRole);
+    }
+
     @Override
     public List<UserRoleDTO> getUserRoleList() {
         List<UserRoleDTO> userRoleDTOList = new ArrayList<>();

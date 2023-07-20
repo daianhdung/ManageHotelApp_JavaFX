@@ -45,7 +45,7 @@
           </Pane>
       </children>
    </AnchorPane>
-   <AnchorPane fx:id="userDetailScene" layoutX="198.0" prefHeight="558.0" prefWidth="835.0" style="-fx-background-color: white;">
+   <AnchorPane fx:id="userDetailScene" layoutX="198.0" prefHeight="558.0" prefWidth="835.0" style="-fx-background-color: white;" visible="false">
       <children>
          <BorderPane layoutX="239.0" layoutY="139.0" prefHeight="558.0" prefWidth="835.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
@@ -89,7 +89,7 @@
                      <TextField fx:id="identityTxt" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                      <TextField fx:id="idTxt" editable="false" styleClass="input-field" GridPane.columnIndex="3" />
                      <TextField fx:id="usernameTxt" styleClass="input-field" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                     <TextField fx:id="phoneTxt" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     <TextField fx:id="phoneNumberTxt" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      <TextField fx:id="emailTxt" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      <Label prefHeight="22.0" prefWidth="95.0" text="User id:" textFill="#00ccff" GridPane.columnIndex="3">
                         <GridPane.margin>
