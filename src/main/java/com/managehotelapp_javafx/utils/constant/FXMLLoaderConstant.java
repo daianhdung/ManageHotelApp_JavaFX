@@ -22,4 +22,8 @@ public class FXMLLoaderConstant {
     public static FXMLLoader getBookingDetailScene(){
         return new FXMLLoader(HelloApplication.class.getResource("booking-detail-view.fxml"));
     }
+    
+    public static FXMLLoader getRoomScene(){
+        return new FXMLLoader(HelloApplication.class.getResource("room-view.fxml"));
+    }
 }
