@@ -7,6 +7,7 @@ import com.managehotelapp_javafx.repository.imp.UserRepositoryImp;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -17,10 +18,11 @@ import java.util.Optional;
 
 public class HelloApplication extends Application {
 
+    public static Stage mainStage;
     @Override
     public void start(Stage stage) throws IOException {
+        mainStage = stage;
         ConnectDB.getSessionFactory().createEntityManager();
-
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
@@ -31,6 +33,7 @@ public class HelloApplication extends Application {
             event.consume();
             stopProgram(stage);
         });
+
         stage.show();
     }
 
