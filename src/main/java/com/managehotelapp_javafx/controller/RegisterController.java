@@ -180,7 +180,7 @@ public class RegisterController implements Initializable {
             user.setPassword(getPassword());
             user.setUsername(usernameTxt.getText());
             user.setUserRole(userRoleService.findUserRoleById(2));
-            user.setUserStatus(userStatusService.findUserStatusById(2));
+            user.setUserStatus(userStatusService.findUserStatusById(1));
 
             UserService userService = new UserServiceImp();
             boolean isCreated = userService.insertUser(user);
@@ -241,12 +241,9 @@ public class RegisterController implements Initializable {
     private FXMLLoader fxmlLoader;
     @FXML
     private void onBackHome() {
+
         primaryStage = (Stage) btnBack.getScene().getWindow();
-        fxmlLoader = FXMLLoaderConstant.getHomeScene();
-        try {
-            primaryStage.setScene(new Scene(fxmlLoader.load()));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        primaryStage.close();
+
     }
 }

@@ -7,4 +7,6 @@ import java.util.List;
 public interface UserRoleRepository extends  GenericRepository<UserRoleEntity>{
     List<UserRoleEntity> getUserRoles();
     UserRoleEntity findUserRoleById(int idUserRole);
+    UserRoleEntity findUserRoleByTitle(String userRole);
+
 }
