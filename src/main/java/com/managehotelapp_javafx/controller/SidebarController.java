@@ -35,6 +35,10 @@ public class SidebarController implements Initializable {
 
     @FXML
     private Button btnAddUser;
+    @FXML
+    private Button btn_room;
+    
+    
 
     @FXML
     private void onBooking(Event event) {
@@ -64,6 +68,8 @@ public class SidebarController implements Initializable {
             }
         }
     }
+    
+    
 
     @FXML
     private void onHomeScene() {
@@ -74,6 +80,17 @@ public class SidebarController implements Initializable {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+    
+    @FXML
+    private void OnRoom() {
+    	 primaryStage = (Stage) btnHome.getScene().getWindow();
+         fxmlLoader = FXMLLoaderConstant.getRoomScene();
+         try {
+             primaryStage.setScene(new Scene(fxmlLoader.load()));
+         } catch (IOException e) {
+             throw new RuntimeException(e);
+         }
     }
 
     @FXML

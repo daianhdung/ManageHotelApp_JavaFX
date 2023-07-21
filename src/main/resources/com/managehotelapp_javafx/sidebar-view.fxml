@@ -4,7 +4,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="483.0" prefWidth="210.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.SidebarController">
+<Pane prefHeight="483.0" prefWidth="210.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.managehotelapp_javafx.controller.SidebarController">
 
     <Button fx:id="btnHome" alignment="CENTER" layoutY="97.0" mnemonicParsing="false" onAction="#onHomeScene" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #00CCFF;" text="HOME" textFill="WHITE">
          <font>
@@ -12,7 +13,7 @@
          </font>
       </Button>
 
-      <Button fx:id="btn_room" alignment="CENTER" layoutY="162.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #00CCFF;" text="ROOM" textFill="WHITE">
+      <Button fx:id="btn_room" alignment="CENTER" layoutY="162.0" mnemonicParsing="false" onAction="#OnRoom" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #00CCFF;" text="ROOM" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
