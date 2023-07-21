@@ -37,6 +37,10 @@ public class SidebarController implements Initializable {
     private Button btnAddUser;
     @FXML
     private Button btn_room;
+    @FXML
+    private Button btn_guestinfo;
+    @FXML
+    private Button btn_invoice;
     
     
 
@@ -83,6 +87,27 @@ public class SidebarController implements Initializable {
     }
     
     @FXML
+    private void onInvoiceScene() {
+        primaryStage = (Stage) btnHome.getScene().getWindow();
+        fxmlLoader = FXMLLoaderConstant.getInvoiceScene();
+        try {
+            primaryStage.setScene(new Scene(fxmlLoader.load()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @FXML
+    private void onGuestInfoScene() {
+        primaryStage = (Stage) btnHome.getScene().getWindow();
+        fxmlLoader = FXMLLoaderConstant.getGuestInfoScene();
+        try {
+            primaryStage.setScene(new Scene(fxmlLoader.load()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    @FXML
     private void OnRoom() {
     	 primaryStage = (Stage) btnHome.getScene().getWindow();
          fxmlLoader = FXMLLoaderConstant.getRoomScene();
@@ -92,6 +117,8 @@ public class SidebarController implements Initializable {
              throw new RuntimeException(e);
          }
     }
+    
+    
 
     @FXML
     private void onAddUserScene() {
