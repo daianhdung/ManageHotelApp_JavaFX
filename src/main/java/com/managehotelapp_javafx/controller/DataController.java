@@ -24,6 +24,7 @@ public class DataController implements Initializable {
     Tab userTab;
 
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -33,18 +34,10 @@ public class DataController implements Initializable {
         if (isManager) {
             fxmlLoader = FXMLLoaderConstant.getUserScene(userTab);
             fxmlLoader = FXMLLoaderConstant.getCusScene(cusTab);
-        }else {
+        } else {
             userTab.getTabPane().getTabs().remove(userTab);
-            fxmlLoader = FXMLLoaderConstant.getUserScene(cusTab);
+            fxmlLoader = FXMLLoaderConstant.getCusScene(cusTab);
         }
-
-
-//        fxmlLoader = FXMLLoaderConstant.getUserScene(userTab);
-//        fxmlLoader = FXMLLoaderConstant.getCusScene(cusTab);
-
-
-
-
 
 
     }

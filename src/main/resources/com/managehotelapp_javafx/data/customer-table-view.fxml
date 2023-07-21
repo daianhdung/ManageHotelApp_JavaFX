@@ -117,27 +117,11 @@
                      <RowConstraints maxHeight="212.70867919921875" minHeight="10.0" prefHeight="81.80044555664062" vgrow="SOMETIMES" />
                   </rowConstraints>
                   <children>
-                     <TextField fx:id="identityTxt" styleClass="input-field" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                        <opaqueInsets>
-                           <Insets />
-                        </opaqueInsets>
-                        <padding>
-                           <Insets right="30.0" />
-                        </padding>
-                        <GridPane.margin>
-                           <Insets right="30.0" />
-                        </GridPane.margin>
-                     </TextField>
                      <TextField fx:id="fullnameTxt" styleClass="input-field" GridPane.columnIndex="1">
                         <GridPane.margin>
                            <Insets right="30.0" />
                         </GridPane.margin></TextField>
                      <TextField fx:id="bookingCountTxt" editable="false" maxWidth="235.0" styleClass="input-field" GridPane.columnIndex="3" />
-                     <TextField fx:id="emailTxt" styleClass="input-field" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                     <TextField fx:id="addressTxt" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                        <GridPane.margin>
-                           <Insets right="30.0" />
-                        </GridPane.margin></TextField>
                      <Label prefHeight="22.0" prefWidth="95.0" text="Booking count:" textFill="#00ccff" GridPane.columnIndex="3">
                         <GridPane.margin>
                            <Insets bottom="50.0" />
@@ -250,10 +234,6 @@
                            <Insets bottom="50.0" />
                         </GridPane.margin>
                      </Label>
-                     <TextField fx:id="phoneTxt" prefHeight="23.0" prefWidth="221.0" styleClass="input-field" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                        <GridPane.margin>
-                           <Insets right="30.0" />
-                        </GridPane.margin></TextField>
                      <ComboBox fx:id="typeBox" prefHeight="26.0" prefWidth="284.0" GridPane.columnIndex="2">
                         <opaqueInsets>
                            <Insets />
@@ -262,14 +242,6 @@
                            <Insets right="30.0" />
                         </GridPane.margin>
                      </ComboBox>
-                     <TextField fx:id="passportTxt" styleClass="input-field" GridPane.columnIndex="3" GridPane.rowIndex="2">
-                        <opaqueInsets>
-                           <Insets />
-                        </opaqueInsets>
-                        <padding>
-                           <Insets right="30.0" />
-                        </padding>
-                     </TextField>
                      <Label prefHeight="20.0" prefWidth="80.0" text="City:" textFill="#00ccff" GridPane.columnIndex="2" GridPane.rowIndex="3">
                         <font>
                            <Font size="14.0" />
@@ -278,12 +250,6 @@
                            <Insets bottom="50.0" />
                         </GridPane.margin>
                      </Label>
-                     <TextField fx:id="cityTxt" styleClass="input-field" GridPane.columnIndex="2" GridPane.rowIndex="3">
-                        <GridPane.margin>
-                           <Insets right="30.0" />
-                        </GridPane.margin>
-                     </TextField>
-                     <TextField fx:id="countryTxt" styleClass="input-field" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                      <Label prefHeight="20.0" prefWidth="102.0" text="Mobile:" textFill="#00ccff" GridPane.columnIndex="2" GridPane.rowIndex="1">
                         <font>
                            <Font size="14.0" />
@@ -319,6 +285,41 @@
                            <Insets top="50.0" />
                         </GridPane.margin>
                      </GridPane>
+                     <TextField fx:id="phoneTxt" styleClass="input-field" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                        <GridPane.margin>
+                           <Insets right="30.0" />
+                        </GridPane.margin>
+                     </TextField>
+                     <TextField fx:id="emailTxt" styleClass="input-field" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                        <GridPane.margin>
+                           <Insets right="30.0" />
+                        </GridPane.margin>
+                     </TextField>
+                     <TextField fx:id="addressTxt" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <GridPane.margin>
+                           <Insets right="30.0" />
+                        </GridPane.margin>
+                     </TextField>
+                     <TextField fx:id="cityTxt" styleClass="input-field" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                        <GridPane.margin>
+                           <Insets right="30.0" />
+                        </GridPane.margin>
+                     </TextField>
+                     <TextField fx:id="countryTxt" styleClass="input-field" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                        <GridPane.margin>
+                           <Insets right="30.0" />
+                        </GridPane.margin>
+                     </TextField>
+                     <TextField fx:id="identityTxt" styleClass="input-field" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                        <GridPane.margin>
+                           <Insets right="30.0" />
+                        </GridPane.margin>
+                     </TextField>
+                     <TextField fx:id="passportTxt" styleClass="input-field" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                        <GridPane.margin>
+                           <Insets right="30.0" />
+                        </GridPane.margin>
+                     </TextField>
                   </children>
                </GridPane>
             </center>
