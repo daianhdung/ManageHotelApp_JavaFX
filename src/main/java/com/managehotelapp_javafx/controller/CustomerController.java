@@ -211,8 +211,13 @@ public class CustomerController implements Initializable {
                 showCustomerTableView();
             }
         }
-
     }
+
+
+
+
+
+
 
     public void showCustomerTypeComboBox() {
         ObservableList<String> customerTypeList = FXCollections.observableArrayList();

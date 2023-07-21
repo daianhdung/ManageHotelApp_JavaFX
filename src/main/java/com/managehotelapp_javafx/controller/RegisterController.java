@@ -241,12 +241,9 @@ public class RegisterController implements Initializable {
     private FXMLLoader fxmlLoader;
     @FXML
     private void onBackHome() {
+
         primaryStage = (Stage) btnBack.getScene().getWindow();
-        fxmlLoader = FXMLLoaderConstant.getUserScene();
-        try {
-            primaryStage.setScene(new Scene(fxmlLoader.load()));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        primaryStage.close();
+
     }
 }

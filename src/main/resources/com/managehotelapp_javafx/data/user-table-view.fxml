@@ -17,35 +17,31 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="558.0" prefWidth="1033.0" style="-fx-background-color: #00CCFF;" stylesheets="@./booking/global-style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.UserController">
-   <AnchorPane fx:id="userTableScene" layoutX="198.0" maxWidth="835.0" prefHeight="558.0" prefWidth="835.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="198.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="813.0" style="-fx-background-color: #00CCFF;" stylesheets="@../booking/global-style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.UserController">
+   <AnchorPane fx:id="userTableScene" maxWidth="835.0" prefHeight="540.0" prefWidth="813.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
-          <Pane layoutY="67.0" prefHeight="493.0" prefWidth="833.0">
+          <Pane prefHeight="46.0" prefWidth="815.0" style="-fx-background-color: white;">
               <children>
-                  <TableView fx:id="userTableView" layoutX="-1.0" layoutY="-5.0" prefHeight="496.0" prefWidth="838.0">
-                      <columns>
-                          <TableColumn fx:id="indexCol" prefWidth="37.0" style="-fx-alignment: center" text="#" />
-                          <TableColumn fx:id="idCol" prefWidth="64.0" style="-fx-alignment: center" text="id" />
-                          <TableColumn fx:id="usernameCol" prefWidth="114.63092041015625" style="-fx-alignment: center" text="Username" />
-                          <TableColumn fx:id="fullnameCol" prefWidth="178.601806640625" style="-fx-alignment: center" text="Fullname" />
-                     <TableColumn fx:id="emailCol" prefWidth="170.58233642578125" style="-fx-alignment: center" text="Email" />
-                          <TableColumn fx:id="roleCol" prefWidth="107.67950439453125" style="-fx-alignment: center" text="Role" />
-                          <TableColumn fx:id="statusCol" prefWidth="72.88348388671875" style="-fx-alignment: center" text="Status" />
-                          <TableColumn fx:id="actionCol" prefWidth="89.11651611328125" style="-fx-alignment: center" text="Action" />
-                      </columns>
-                  </TableView>
+                  <TextField fx:id="searchInput" layoutX="30.0" layoutY="11.0" prefHeight="25.0" prefWidth="361.0" promptText="Search id, name, email..." />
+                  <Button fx:id="searchBtn" layoutX="398.0" layoutY="11.0" mnemonicParsing="false" onAction="#onSearch" prefHeight="24.0" prefWidth="83.0" text="Search" />
+               <Button fx:id="addBtn" layoutX="716.0" layoutY="11.0" mnemonicParsing="false" onAction="#onAdd" prefHeight="24.0" prefWidth="83.0" text="Add User" />
               </children>
           </Pane>
-          <Pane prefHeight="60.0" prefWidth="837.0">
-              <children>
-                  <TextField fx:id="searchInput" layoutY="11.0" prefHeight="39.0" prefWidth="361.0" promptText="Search id, name, email..." />
-                  <Button fx:id="searchBtn" layoutX="368.0" layoutY="11.0" mnemonicParsing="false" onAction="#onSearch" prefHeight="39.0" prefWidth="83.0" text="Search" />
-               <Button fx:id="addBtn" layoutX="746.0" layoutY="11.0" mnemonicParsing="false" onAction="#onAdd" prefHeight="39.0" prefWidth="83.0" text="Add User" />
-              </children>
-          </Pane>
+            <TableView fx:id="userTableView" layoutY="40.0" prefHeight="489.0" prefWidth="813.0">
+                <columns>
+                    <TableColumn fx:id="indexCol" prefWidth="37.0" style="-fx-alignment: center" text="#" />
+                    <TableColumn fx:id="idCol" prefWidth="64.0" style="-fx-alignment: center" text="id" />
+                    <TableColumn fx:id="usernameCol" prefWidth="114.63092041015625" style="-fx-alignment: center" text="Username" />
+                    <TableColumn fx:id="fullnameCol" prefWidth="178.601806640625" style="-fx-alignment: center" text="Fullname" />
+               <TableColumn fx:id="emailCol" prefWidth="151.0" style="-fx-alignment: center" text="Email" />
+                    <TableColumn fx:id="roleCol" prefWidth="116.0" style="-fx-alignment: center" text="Role" />
+                    <TableColumn fx:id="statusCol" minWidth="0.0" prefWidth="66.0" style="-fx-alignment: center" text="Status" />
+                    <TableColumn fx:id="actionCol" prefWidth="83.41461181640625" style="-fx-alignment: center" text="Action" />
+                </columns>
+            </TableView>
       </children>
    </AnchorPane>
-   <AnchorPane fx:id="userDetailScene" layoutX="198.0" prefHeight="558.0" prefWidth="835.0" style="-fx-background-color: white;" visible="false">
+   <AnchorPane fx:id="userDetailScene" layoutX="-3.0" prefHeight="527.0" prefWidth="819.0" style="-fx-background-color: white;" visible="false">
       <children>
          <BorderPane layoutX="239.0" layoutY="139.0" prefHeight="558.0" prefWidth="835.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>

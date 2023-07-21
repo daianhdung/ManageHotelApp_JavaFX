@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="558.0" prefWidth="1033.0" style="-fx-background-color: #00CCFF;" stylesheets="@./booking/global-style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.DataController">
+   <children>
+      <TabPane layoutX="220.0" prefHeight="558.0" prefWidth="813.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab fx:id="cusTab" text="Customers">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;" />
+            </content>
+          </Tab>
+          <Tab fx:id="userTab" text="Users">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+<!--   <AnchorPane fx:id="dataScene" layoutX="198.0" maxWidth="835.0" prefHeight="558.0" prefWidth="835.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="198.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">-->
+<!--      <children>-->
+<!--          <Pane prefHeight="60.0" prefWidth="837.0">-->
+<!--              <children>-->
+<!--                  <TextField fx:id="searchInput" layoutY="11.0" prefHeight="39.0" prefWidth="361.0" promptText="Search id, name, email..." />-->
+<!--                  <Button fx:id="searchBtn" layoutX="368.0" layoutY="11.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="83.0" text="Search" />-->
+<!--               <Button fx:id="addBtn" layoutX="746.0" layoutY="11.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="83.0" text="Add User" />-->
+<!--              </children>-->
+<!--          </Pane>-->
+<!--      </children>-->
+<!--   </AnchorPane>-->
+
+<!--    <Pane layoutX="-1.0" prefHeight="558.0" prefWidth="196.0">-->
+<!--        <fx:include fx:id="sidebar" source="sidebar-view.fxml" />-->
+<!--    </Pane>-->
+
+</AnchorPane>

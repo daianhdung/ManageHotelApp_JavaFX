@@ -106,10 +106,11 @@ public class UserController implements Initializable {
 
     @FXML
     void onAdd() {
-        primaryStage = (Stage) addBtn.getScene().getWindow();
+        primaryStage = new Stage();
         fxmlLoader = FXMLLoaderConstant.getAddUserScene();
         try {
             primaryStage.setScene(new Scene(fxmlLoader.load()));
+            primaryStage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
