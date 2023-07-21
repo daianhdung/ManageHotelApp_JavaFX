@@ -25,4 +25,16 @@ public class FXMLLoaderConstant {
     public static FXMLLoader getRoomScene(){
         return new FXMLLoader(HelloApplication.class.getResource("room-view.fxml"));
     }
+    
+    public static FXMLLoader getRoomDetailScene(){
+        return new FXMLLoader(HelloApplication.class.getResource("room-detail-view.fxml"));
+    }
+    
+    public static FXMLLoader getGuestInfoScene(){
+        return new FXMLLoader(HelloApplication.class.getResource("guest-info-view.fxml"));
+    }
+    
+    public static FXMLLoader getInvoiceScene(){
+        return new FXMLLoader(HelloApplication.class.getResource("invoice-view.fxml"));
+    }
 }
