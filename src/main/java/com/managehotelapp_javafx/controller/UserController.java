@@ -314,6 +314,9 @@ public class UserController implements Initializable {
     }
 
     public void showUserTableView() {
+
+
+
         userObservableList = FXCollections.observableArrayList(userService.getUsers());
 
         indexCol.setCellValueFactory(cell -> {

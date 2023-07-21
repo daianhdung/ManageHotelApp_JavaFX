@@ -53,19 +53,19 @@ public class UserServiceImp implements UserService {
     @Override
     public List<UserDTO> getUsers() {
         List<UserDTO> userDTOList = new ArrayList<>();
-        userRepository.getUsers().forEach(user -> {
+        userRepository.getUsers().forEach(userEntity -> {
             UserDTO userDTO = new UserDTO();
 
-            userDTO.setId(user.getId());
-            userDTO.setUsername(user.getUsername());
-            userDTO.setFullName(user.getFullName());
-            userDTO.setEmail(user.getEmail());
-            userDTO.setPhone(user.getPhoneNumber());
-            userDTO.setIdentity(user.getIdentity());
-            userDTO.setAddress(user.getAddress());
-            userDTO.setRole(user.getUserRole().getTitle());
-            userDTO.setStatus(user.getUserStatus().getTitle());
-            userDTO.setGender(user.getGender());
+            userDTO.setId(userEntity.getId());
+            userDTO.setUsername(userEntity.getUsername());
+            userDTO.setFullName(userEntity.getFullName());
+            userDTO.setEmail(userEntity.getEmail());
+            userDTO.setPhone(userEntity.getPhoneNumber());
+            userDTO.setIdentity(userEntity.getIdentity());
+            userDTO.setAddress(userEntity.getAddress());
+            userDTO.setRole(userEntity.getUserRole().getTitle());
+            userDTO.setStatus(userEntity.getUserStatus().getTitle());
+            userDTO.setGender(userEntity.getGender());
 
             userDTOList.add(userDTO);
         });

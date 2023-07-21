@@ -34,7 +34,7 @@ public class SidebarController implements Initializable {
     private Button btnRevenue;
 
     @FXML
-    private Button btnUser;
+    private Button btnData;
 
     @FXML
     private void onBooking(Event event) {
@@ -77,9 +77,9 @@ public class SidebarController implements Initializable {
     }
 
     @FXML
-    private void onUserScene() {
-        primaryStage = (Stage) btnUser.getScene().getWindow();
-        fxmlLoader = FXMLLoaderConstant.getUserScene();
+    private void onDataScene() {
+        primaryStage = (Stage) btnData.getScene().getWindow();
+        fxmlLoader = FXMLLoaderConstant.getDataScene();
         try {
             primaryStage.setScene(new Scene(fxmlLoader.load()));
         } catch (IOException e) {
@@ -101,8 +101,8 @@ public class SidebarController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        isManager = SessionUser.getInstance().getRole().equals("Role Manager");
-        btnRevenue.setVisible(isManager);
-        btnUser.setVisible(isManager);
+//        isManager = SessionUser.getInstance().getRole().equals("Role Manager");
+//        btnRevenue.setVisible(isManager);
+//        btnUser.setVisible(isManager);
     }
 }

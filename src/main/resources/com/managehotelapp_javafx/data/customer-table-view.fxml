@@ -354,8 +354,5 @@
       </children>
    </AnchorPane>
 
-<!--    <Pane layoutX="-1.0" prefHeight="558.0" prefWidth="196.0">-->
-<!--        <fx:include fx:id="sidebar" source="sidebar-view.fxml" />-->
-<!--    </Pane>-->
 
 </AnchorPane>

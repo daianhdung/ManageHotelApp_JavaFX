@@ -231,23 +231,34 @@ public class CustomerController implements Initializable {
     void onSearch() {
         FilteredList<CustomerDTO> filteredList = new FilteredList<>(customerObservableList, p -> true);
 
-        searchInput.textProperty().addListener((observable, oldValue, newValue) -> {
-            filteredList.setPredicate(customerDTO -> {
-                String keyword = newValue.toLowerCase();
-                if (newValue.isEmpty() || newValue.isBlank() || newValue == null) return true;
+        try {
+            searchInput.textProperty().addListener((observable, oldValue, newValue) -> {
+                filteredList.setPredicate(customerDTO -> {
+                    String keyword = newValue.toLowerCase();
+                    if (newValue.isEmpty() || newValue.isBlank() || newValue == null) return true;
 
-                if (customerDTO.getFullName().toLowerCase().indexOf(keyword) > -1) return true;
-                else if (customerDTO.getIdentity().toLowerCase().indexOf(keyword) > -1) return true;
-                else if (customerDTO.getPassportNo().toLowerCase().indexOf(keyword) > -1) return true;
-                else if (customerDTO.getEmail().toLowerCase().indexOf(keyword) > -1) return true;
-                else if (customerDTO.getCustomerType().toLowerCase().indexOf(keyword) > -1) return true;
-                else if (customerDTO.getCountry().toLowerCase().indexOf(keyword) > -1) return true;
-                else return false;
+                    if (customerDTO.getPassportNo()!= null|| customerDTO.getIdentity() != null){
+                        if (customerDTO.getPassportNo()!= null && customerDTO.getPassportNo().toLowerCase().indexOf(keyword) > -1) {
+                            return true;
+                        }else if(customerDTO.getIdentity().indexOf(keyword) > -1) {
+                            return true;
+                        }
+                    }
+                    if (customerDTO.getFullName().toLowerCase().indexOf(keyword) > -1) return true;
+                    else if (customerDTO.getEmail().toLowerCase().indexOf(keyword) > -1) return true;
+                    else if (customerDTO.getCustomerType().toLowerCase().indexOf(keyword) > -1) return true;
+                    else if (customerDTO.getCountry().toLowerCase().indexOf(keyword) > -1) return true;
+                    return false;
+                });
             });
-        });
-        SortedList<CustomerDTO> sortedList = new SortedList<>(filteredList);
-        sortedList.comparatorProperty().bind(customerTableView.comparatorProperty());
-        customerTableView.setItems(sortedList);
+            SortedList<CustomerDTO> sortedList = new SortedList<>(filteredList);
+            sortedList.comparatorProperty().bind(customerTableView.comparatorProperty());
+            customerTableView.setItems(sortedList);
+
+        }catch (NullPointerException e){
+            System.out.println(e);;
+        }
+
 
     }
 

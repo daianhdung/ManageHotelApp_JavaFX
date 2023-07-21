@@ -22,7 +22,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="btn_guestinfo" alignment="CENTER" layoutY="258.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="196.0" style="-fx-background-color: #00CCFF;" text="GUEST INFO" textFill="WHITE">
+      <Button fx:id="btnData" alignment="CENTER" layoutY="258.0" mnemonicParsing="false" onAction="#onDataScene" prefHeight="55.0" prefWidth="196.0" style="-fx-background-color: #00CCFF;" text="DATA" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -41,11 +41,6 @@
    <Button fx:id="btnLogout" layoutX="10.0" layoutY="549.0" mnemonicParsing="false" onAction="#setBtnLogout" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #00CCFF;" text="Log Out" textFill="WHITE">
       <font>
          <Font name="System Bold Italic" size="12.0" />
-      </font>
-   </Button>
-   <Button fx:id="btnUser" alignment="CENTER" layoutY="457.0" mnemonicParsing="false" onAction="#onUserScene" prefHeight="55.0" prefWidth="196.0" style="-fx-background-color: #00CCFF;" text="USER" textFill="WHITE">
-      <font>
-         <Font name="System Bold" size="15.0" />
       </font>
    </Button>
 </Pane>

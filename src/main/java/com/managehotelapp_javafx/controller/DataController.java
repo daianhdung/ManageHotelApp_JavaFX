@@ -29,15 +29,22 @@ public class DataController implements Initializable {
 
         //  check role access users tab
 
-//        boolean isManager = SessionUser.getInstance().getRole().equals("Role Manager");
-//        if (isManager) {
-//            userTab.getTabPane().getTabs().remove(userTab);
-//            fxmlLoader = FXMLLoaderConstant.getUserScene(userTab);
-//        }
+        boolean isManager = SessionUser.getInstance().getRole().equals("Role Manager");
+        if (isManager) {
+            fxmlLoader = FXMLLoaderConstant.getUserScene(userTab);
+            fxmlLoader = FXMLLoaderConstant.getCusScene(cusTab);
+        }else {
+            userTab.getTabPane().getTabs().remove(userTab);
+            fxmlLoader = FXMLLoaderConstant.getUserScene(cusTab);
+        }
 
 
-        fxmlLoader = FXMLLoaderConstant.getUserScene(userTab);
-        fxmlLoader = FXMLLoaderConstant.getCusScene(cusTab);
+//        fxmlLoader = FXMLLoaderConstant.getUserScene(userTab);
+//        fxmlLoader = FXMLLoaderConstant.getCusScene(cusTab);
+
+
+
+
 
 
     }
