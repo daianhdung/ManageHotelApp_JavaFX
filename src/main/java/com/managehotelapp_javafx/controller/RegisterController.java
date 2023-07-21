@@ -180,7 +180,7 @@ public class RegisterController implements Initializable {
             user.setPassword(getPassword());
             user.setUsername(usernameTxt.getText());
             user.setUserRole(userRoleService.findUserRoleById(2));
-            user.setUserStatus(userStatusService.findUserStatusById(3));
+            user.setUserStatus(userStatusService.findUserStatusById(1));
 
             UserService userService = new UserServiceImp();
             boolean isCreated = userService.insertUser(user);
