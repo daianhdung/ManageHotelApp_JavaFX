@@ -40,6 +40,24 @@ public class AbstractRepository<T> implements GenericRepository<T> {
     }
 
     @Override
+    public int count(String hql, Map<String, Object> parameters) {
+        Session session = ConnectDB.getSessionFactory().openSession();
+        Query query = session.createQuery(hql);
+        if(parameters != null){
+            setParameter(query, parameters);
+        }
+        try{
+           int count = (int) query.uniqueResult();
+           return count;
+        }catch (Exception e){
+            e.printStackTrace();
+            return 0;
+        }finally {
+            session.close();
+        }
+    }
+
+    @Override
     public boolean insert(T t) {
         Session session = ConnectDB.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();

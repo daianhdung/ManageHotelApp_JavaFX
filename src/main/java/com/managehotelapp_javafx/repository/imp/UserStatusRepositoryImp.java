@@ -20,4 +20,12 @@ public class UserStatusRepositoryImp extends AbstractRepository<UserStatusEntity
         List<UserStatusEntity> result = query("FROM UserStatusEntity WHERE id = :id",parameters);
         return result.isEmpty() ? null : result.get(0);
     }
+
+    @Override
+    public UserStatusEntity findUserStatusByTitle(String userStatus) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("title", userStatus);
+        List<UserStatusEntity> result = query("FROM UserStatusEntity WHERE title = :title",parameters);
+        return result.isEmpty() ? null : result.get(0);
+    }
 }

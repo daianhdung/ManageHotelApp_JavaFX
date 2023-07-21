@@ -8,5 +8,7 @@ import java.util.List;
 public interface UserStatusRepository extends GenericRepository<UserStatusEntity> {
     List<UserStatusEntity> getUserStatusList();
     UserStatusEntity findUserStatusById(int idUserStatus);
+
+    UserStatusEntity findUserStatusByTitle( String userStatus);
     
 }

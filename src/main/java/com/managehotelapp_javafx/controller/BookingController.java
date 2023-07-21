@@ -80,7 +80,7 @@ public class BookingController implements Initializable {
                             btn.setOnAction(event -> {
                                 primaryStage = (Stage) btn.getScene().getWindow();
                                 BookingRoomDTO booking = getTableView().getItems().get(getIndex());
-                                fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("booking-detail-view.fxml"));
+                                fxmlLoader = FXMLLoaderConstant.getBookingDetailScene();
                                 try {
                                     Parent root = fxmlLoader.load();
                                     BookingDetailController bookingDetailController = fxmlLoader.getController();
