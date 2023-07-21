@@ -1,15 +1,10 @@
 package com.managehotelapp_javafx.controller;
 
-import com.managehotelapp_javafx.HelloApplication;
 import com.managehotelapp_javafx.services.UserService;
 import com.managehotelapp_javafx.services.imp.UserServiceImp;
 import com.managehotelapp_javafx.utils.constant.FXMLLoaderConstant;
-
-import com.managehotelapp_javafx.utils.session.SessionUser;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -33,7 +28,6 @@ public class LoginController {
     private Button btnLogin;
 
     private Alert alert = new Alert(Alert.AlertType.WARNING);
-
 
     @FXML
     void onBtnManager(ActionEvent event) {
@@ -74,8 +68,7 @@ public class LoginController {
     }
 
     public boolean checkAllTextField() {
-        alert.setAlertType(Alert.AlertType.WARNING);
-        alert.setTitle("Notification");
+
         boolean usernameIsEmpty = usernameTxt.getText().isEmpty();
         boolean passwordIsEmpty = passwordTxt.getText().isEmpty();
 

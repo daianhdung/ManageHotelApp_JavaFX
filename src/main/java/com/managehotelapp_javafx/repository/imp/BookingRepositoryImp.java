@@ -3,6 +3,7 @@ package com.managehotelapp_javafx.repository.imp;
 import com.managehotelapp_javafx.entity.BookingEntity;
 import com.managehotelapp_javafx.repository.BookingRepository;
 
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -69,4 +70,11 @@ public class BookingRepositoryImp extends AbstractRepository<BookingEntity> impl
     public boolean delete(String hql, Map<String, Object> parameters) {
         return super.delete(hql, parameters);
     }
+  
+    @Override
+    public List<BookingEntity> findAllBooking() {
+        return query("FROM BookingEntity", null);
+
+    }
+
 }

@@ -1,6 +1,6 @@
 package com.managehotelapp_javafx.repository;
 
-import com.managehotelapp_javafx.entity.CustomerEntity;
+
 import com.managehotelapp_javafx.entity.UserEntity;
 
 import java.util.List;
@@ -14,9 +14,11 @@ public interface CustomerRepository extends GenericRepository<CustomerEntity>{
 
     CustomerEntity getCustomerByName(String name);
 
-     boolean insert(CustomerEntity customerEntity);
+     List<CustomerEntity> getCustomerList();
+    CustomerEntity findCustomerById(int idCus);
+    CustomerEntity findCustomerByType(String cusType);
+    boolean insertCustomer(CustomerEntity customerEntity);
+    boolean updateCustomer(CustomerEntity customerEntity);
+    boolean deleteCustomer(int idCus);
 
-     boolean update(CustomerEntity customerEntity) ;
-
-     boolean delete(int id) ;
 }

@@ -18,4 +18,10 @@ public interface RoomRepository extends GenericRepository<RoomEntity>{
     boolean updateRoom(RoomEntity room);
 
     boolean deleteRoom(int RoomId);
+  
+  
+    List<RoomEntity> findAll();
+
+    RoomEntity findById(int idUser);
+
 }

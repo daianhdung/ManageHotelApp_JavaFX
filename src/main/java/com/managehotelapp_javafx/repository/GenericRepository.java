@@ -7,6 +7,8 @@ public interface GenericRepository<T> {
 
     List<T> query(String hql, Map<String, Object> parameters);
 
+    int count(String hql, Map<String, Object> parameters);
+
     boolean insert(T t);
 
     boolean update(String hql, Map<String, Object> parameters);

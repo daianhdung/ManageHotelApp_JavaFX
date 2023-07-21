@@ -31,35 +31,36 @@ public class UserRepositoryImp extends AbstractRepository<UserEntity> implements
     }
 
     @Override
-    public boolean createUser(UserEntity user) {
-        return false;
+    public boolean insertUser(UserEntity user) {
+        return insert(user);
     }
 
+
     @Override
-    public boolean updateUser(UserEntity user, int idUser) {
+    public boolean updateUser(UserEntity user) {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("id", user.getId());
         parameters.put("address", user.getAddress());
-        parameters.put("created_at", user.getCreatedAt());
         parameters.put("email", user.getEmail());
         parameters.put("fullname", user.getFullName());
         parameters.put("gender", user.getGender());
         parameters.put("identity", user.getIdentity());
-        parameters.put("password", user.getPassword());
+//        parameters.put("password", user.getPassword());
         parameters.put("username", user.getUsername());
         parameters.put("user_role_id", user.getUserRole());
         parameters.put("user_status_id", user.getUserStatus());
+        parameters.put("phone_number", user.getPhoneNumber());
 
         StringBuffer query = new StringBuffer("UPDATE UserEntity SET address = :address" +
-                ", created_at = :created_at" +
                 ", email = :email" +
                 ", fullname = :fullname" +
                 ", gender = :gender" +
                 ", identity = :identity" +
-                ", password = :password" +
+//                ", password = :password" +
                 ", username = :username" +
                 ", user_role_id = :user_role_id" +
                 ", user_status_id = :user_status_id" +
+                ", phone_number = :phone_number" +
                 " WHERE id = :id");
 
         return update(query.toString(),parameters);

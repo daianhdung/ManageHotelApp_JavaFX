@@ -10,11 +10,11 @@ public interface UserRepository extends GenericRepository<UserEntity>  {
 
     UserEntity getUserById (int idUser);
 
-    boolean createUser(UserEntity user);
+    boolean insertUser(UserEntity user);
 
     UserEntity findUserByUsername(String username);
 
-    boolean updateUser(UserEntity user, int idUser);
+    boolean updateUser(UserEntity user);
 
     boolean deleteUser(int idUser);
 

@@ -3,6 +3,7 @@ package com.managehotelapp_javafx.repository;
 import com.managehotelapp_javafx.entity.BookingEntity;
 
 import java.util.List;
+
 import java.util.Map;
 
 public interface BookingRepository extends GenericRepository<BookingEntity> {
@@ -15,4 +16,7 @@ public interface BookingRepository extends GenericRepository<BookingEntity> {
     boolean update(BookingEntity bookingEntity);
 
     boolean delete(int id);
+  
+  List<BookingEntity> findAllBooking();
+
 }

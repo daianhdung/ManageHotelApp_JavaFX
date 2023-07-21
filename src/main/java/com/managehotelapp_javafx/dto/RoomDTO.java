@@ -44,5 +44,6 @@ public class RoomDTO {
 
     public void setRoomstatus(String roomstatus) {
         this.roomstatus = roomstatus;
+
     }
 }

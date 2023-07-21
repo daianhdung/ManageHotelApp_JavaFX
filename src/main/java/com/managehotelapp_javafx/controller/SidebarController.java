@@ -1,7 +1,5 @@
 package com.managehotelapp_javafx.controller;
 
-
-import com.managehotelapp_javafx.HelloApplication;
 import com.managehotelapp_javafx.utils.constant.FXMLLoaderConstant;
 import com.managehotelapp_javafx.utils.session.SessionUser;
 import javafx.event.Event;
@@ -48,10 +46,21 @@ public class SidebarController implements Initializable {
 
     private Stage primaryStage;
     private FXMLLoader fxmlLoader;
-
+    @FXML
     private boolean isManager;
 
 
+
+
+    @FXML
+    private Button btnAddUser;
+    @FXML
+    private Button btn_room;
+    @FXML
+    private Button btn_invoice;
+
+    @FXML
+    private Button btnData;
 
 
     @FXML
@@ -82,11 +91,58 @@ public class SidebarController implements Initializable {
             }
         }
     }
+    
+    
 
     @FXML
     private void onHomeScene() {
         primaryStage = (Stage) btnHome.getScene().getWindow();
         fxmlLoader = FXMLLoaderConstant.getHomeScene();
+        try {
+            primaryStage.setScene(new Scene(fxmlLoader.load()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    @FXML
+    private void onInvoiceScene() {
+        primaryStage = (Stage) btnHome.getScene().getWindow();
+        fxmlLoader = FXMLLoaderConstant.getInvoiceScene();
+        try {
+            primaryStage.setScene(new Scene(fxmlLoader.load()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    @FXML
+    private void onGuestInfoScene() {
+        primaryStage = (Stage) btnHome.getScene().getWindow();
+        fxmlLoader = FXMLLoaderConstant.getGuestInfoScene();
+        try {
+            primaryStage.setScene(new Scene(fxmlLoader.load()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    @FXML
+    private void OnRoom() {
+    	 primaryStage = (Stage) btnHome.getScene().getWindow();
+         fxmlLoader = FXMLLoaderConstant.getRoomScene();
+         try {
+             primaryStage.setScene(new Scene(fxmlLoader.load()));
+         } catch (IOException e) {
+             throw new RuntimeException(e);
+         }
+    }
+    
+    
+
+    @FXML
+    private void onDataScene() {
+        primaryStage = (Stage) btnData.getScene().getWindow();
+        fxmlLoader = FXMLLoaderConstant.getDataScene();
         try {
             primaryStage.setScene(new Scene(fxmlLoader.load()));
         } catch (IOException e) {
@@ -116,9 +172,11 @@ public class SidebarController implements Initializable {
 //        }
 //    }
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        isManager = SessionUser.getInstance().getRole().equals("Role Manager");
+        isManager = SessionUser.getInstance().getRole().equals("Role Manager");
+
 
         btnRevenue.setVisible(true);
         String buttonHoverStyle = " ;-fx-background-color: #33B5E5; -fx-text-fill: white; -fx-border-color: white;";
@@ -130,5 +188,9 @@ public class SidebarController implements Initializable {
                 button.setOnMouseExited(e -> button.setStyle(currentStyle));
             }
         }
+
+      btnRevenue.setVisible(isManager);
+        btnUser.setVisible(isManager);
+
     }
 }
