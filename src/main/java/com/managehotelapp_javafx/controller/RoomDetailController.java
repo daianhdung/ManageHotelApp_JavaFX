@@ -71,7 +71,7 @@ public class RoomDetailController implements Initializable {
         customer = new CustomerRepositoryImp().getCustomerByPID(tfNationalID.getText());
         //customer.setBookingEntities((Set<BookingEntity>) bookingEntity);
         bookingRoomEntity.setBooking(bookingEntity);
-        bookingRoomEntity.setCreatedAt(new Timestamp(Instant.now().toEpochMilli()));
+        //bookingRoomEntity.setCreatedAt(new Timestamp(Instant.now().toEpochMilli()));
         long coDate = dtpkCheckOut.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
         long ciDate = dtpkCheckIn.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
         bookingRoomEntity.setCheckoutDate(new Timestamp(coDate));
@@ -83,7 +83,7 @@ public class RoomDetailController implements Initializable {
     private Set<String> roomsList = new HashSet<>();
     public void setRooms(Set<String> rooms)
     {
-         this.roomsList = rooms;
+        this.roomsList = rooms;
     };
 
     public Set<String> getRooms()

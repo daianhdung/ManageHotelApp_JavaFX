@@ -45,12 +45,9 @@ public class SidebarController implements Initializable {
     private Pane paneMaintbns;
 
     private Stage primaryStage;
-    private FXMLLoader fxmlLoader;
+    private FXMLLoader fxmlLoader = FXMLLoaderConstant.getRoomScene();
     @FXML
     private boolean isManager;
-
-
-
 
     @FXML
     private Button btnAddUser;
@@ -175,10 +172,12 @@ public class SidebarController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        isManager = SessionUser.getInstance().getRole().equals("Role Manager");
 
+//        isManager = SessionUser.getInstance().getRole().equals("Role Manager");
+//
+//
+//        btnRevenue.setVisible(true);
 
-        btnRevenue.setVisible(true);
         String buttonHoverStyle = " ;-fx-background-color: #33B5E5; -fx-text-fill: white; -fx-border-color: white;";
         for (Node node : paneMaintbns.getChildren()) {
             if (node instanceof Button) {
@@ -189,8 +188,10 @@ public class SidebarController implements Initializable {
             }
         }
 
-      btnRevenue.setVisible(isManager);
-        btnUser.setVisible(isManager);
+
+//      btnRevenue.setVisible(isManager);
+//        btnUser.setVisible(isManager);
+
 
     }
 }

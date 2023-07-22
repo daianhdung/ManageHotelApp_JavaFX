@@ -77,40 +77,7 @@ public class CustomerRepositoryImp extends AbstractRepository<CustomerEntity> im
         return result.isEmpty() ? null : result.get(0);
     }
 
-    @Override
-    public boolean update(CustomerEntity customerEntity) {
-        Map<String, Object> parameters = new HashMap<>();
-        parameters.put("id", customerEntity.getId());
-        parameters.put("name", customerEntity.getAddress());
-        parameters.put("created_at", customerEntity.getCreatedAt());
-        parameters.put("identity", customerEntity.getIdentity());
-        parameters.put("booking_count", customerEntity.getBookingCount());
-        parameters.put("identity", customerEntity.getIdentity());
-        parameters.put("passport_no", customerEntity.getPassportNo());
-        parameters.put("phone", customerEntity.getPhone());
-        parameters.put("email", customerEntity.getEmail());
-        parameters.put("type_id", customerEntity.getCustomerType().getId());
 
-
-        StringBuffer query = new StringBuffer("UPDATE UserEntity SET " +
-                ", created_at = :created_at" +
-                ", email = :email" +
-                ", fullname = :fullname" +
-                ", booking_count = :booking_count" +
-                ", gender = :gender" +
-                ", passport_no = :passport_no" +
-                ", phone = :phone" +
-                ", email = :email" +
-                ", type_id = :type_id" +
-                " WHERE id = :id");
-
-        return update(query.toString(),parameters);
-    }
-
-    @Override
-    public boolean delete(int id) {
-        return false;
-    }
     public boolean updateBooKing(CustomerEntity customerEntity) {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("id", customerEntity.getId());

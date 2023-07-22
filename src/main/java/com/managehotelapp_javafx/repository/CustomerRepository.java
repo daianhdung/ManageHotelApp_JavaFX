@@ -1,6 +1,7 @@
 package com.managehotelapp_javafx.repository;
 
 
+import com.managehotelapp_javafx.entity.CustomerEntity;
 import com.managehotelapp_javafx.entity.UserEntity;
 
 import java.util.List;

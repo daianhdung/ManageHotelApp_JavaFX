@@ -5,9 +5,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class RoomDTO {
-    private String roomname;
-    private String roomtype;
-    private String roomstatus;
 
     public Set<String> getRoomList() {
         return roomList;
@@ -22,28 +19,50 @@ public class RoomDTO {
     }
     private Set<String> roomList = new HashSet<>();
 
-    public String getRoomname() {
-        return roomname;
+    private int id;
+    private String roomNo;
+    private String title;
+    private String status;
+    private String type;
+
+    public int getId() {
+        return id;
     }
 
-    public void setRoomname(String roomname) {
-        this.roomname = roomname;
+
+    public String getType() {
+        return type;
     }
 
-    public String getRoomtype() {
-        return roomtype;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public void setRoomtype(String roomtype) {
-        this.roomtype = roomtype;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getRoomstatus() {
-        return roomstatus;
+    public String getRoomNo() {
+        return roomNo;
     }
 
-    public void setRoomstatus(String roomstatus) {
-        this.roomstatus = roomstatus;
+    public void setRoomNo(String roomNo) {
+        this.roomNo = roomNo;
+    }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

@@ -7,7 +7,8 @@ import java.util.List;
 public interface RoomService {
 
     List<RoomDTO> getAllRoom();
-
+    List<RoomDTO> getAvailableRoom();
+    List<RoomDTO> getUnavailableRoom();
     RoomDTO getRoomById(int id);
 
 }

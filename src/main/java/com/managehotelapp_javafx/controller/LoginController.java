@@ -45,26 +45,31 @@ public class LoginController {
     void onLogin(ActionEvent event) {
         String username = usernameTxt.getText();
         String password = passwordTxt.getText();
-
-        if(checkAllTextField()){
-            try{
-                boolean checkLogin = userService.checkLogin(username,password);
-                if (checkLogin){
-                    Stage primaryStage = (Stage) btnLogin.getScene().getWindow();
-                    try {
-                        primaryStage.setScene(new Scene(FXMLLoaderConstant.getHomeScene().load()));
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-
-                }
-            }catch (Exception e){
-                alert.setAlertType(Alert.AlertType.WARNING);
-                alert.setTitle("Warning");
-                alert.setHeaderText(e.getMessage());
-                alert.showAndWait();
-            }
+        Stage primaryStage = (Stage) btnLogin.getScene().getWindow();
+        try {
+            primaryStage.setScene(new Scene(FXMLLoaderConstant.getHomeScene().load()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
+//        if(checkAllTextField()){
+//            try{
+//                boolean checkLogin = userService.checkLogin(username,password);
+//                if (checkLogin){
+//                    Stage primaryStage = (Stage) btnLogin.getScene().getWindow();
+//                    try {
+//                        primaryStage.setScene(new Scene(FXMLLoaderConstant.getHomeScene().load()));
+//                    } catch (IOException e) {
+//                        throw new RuntimeException(e);
+//                    }
+//
+//                }
+//            }catch (Exception e){
+//                alert.setAlertType(Alert.AlertType.WARNING);
+//                alert.setTitle("Warning");
+//                alert.setHeaderText(e.getMessage());
+//                alert.showAndWait();
+//            }
+//        }
     }
 
     public boolean checkAllTextField() {
