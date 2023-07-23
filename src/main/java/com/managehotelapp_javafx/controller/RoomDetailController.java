@@ -1,5 +1,7 @@
 package com.managehotelapp_javafx.controller;
 
+import com.managehotelapp_javafx.dto.BookingDTO;
+import com.managehotelapp_javafx.dto.CustomerDTO;
 import com.managehotelapp_javafx.dto.RoomDTO;
 import com.managehotelapp_javafx.entity.*;
 import com.managehotelapp_javafx.repository.BookingRepository;
@@ -23,10 +25,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.ResourceBundle;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -62,22 +61,29 @@ public class RoomDetailController implements Initializable {
     @FXML
     private ComboBox cbxStatus;
 
-    BookingEntity bookingEntity = new BookingEntity();
+
     @FXML
     private void setBtnCheckin()
     {
-        CustomerEntity customer = new CustomerEntity();
-        BookingRoomEntity bookingRoomEntity = new BookingRoomEntity();
-        customer = new CustomerRepositoryImp().getCustomerByPID(tfNationalID.getText());
-        //customer.setBookingEntities((Set<BookingEntity>) bookingEntity);
-        bookingRoomEntity.setBooking(bookingEntity);
         //bookingRoomEntity.setCreatedAt(new Timestamp(Instant.now().toEpochMilli()));
         long coDate = dtpkCheckOut.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
         long ciDate = dtpkCheckIn.getValue().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
-        bookingRoomEntity.setCheckoutDate(new Timestamp(coDate));
-        bookingRoomEntity.setCheckoutDate(new Timestamp(ciDate));
-        RoomDetailService service = new RoomDetailServiceImp();
-        service.checkIn((RoomEntity[]) roomsList.toArray(),bookingEntity,customer);
+        BookingDTO bookingDTO = new BookingDTO();
+        bookingDTO.setCustomerIDN(tfNationalID.getText());
+        bookingDTO.setCustomerName(tfName.getText());
+        bookingDTO.setPhoneNumber(tfPhoneNumber.getText());
+        bookingDTO.setBookingDate(dtpkBookingdate.getValue().toString());
+        bookingDTO.setCheckInDate(dtpkCheckIn.getValue().toString());
+        bookingDTO.setCheckOutDate(dtpkCheckOut.getValue().toString());
+        bookingDTO.setStatus(cbxStatus.getSelectionModel().getSelectedItem().toString());
+        RoomDetailServiceImp service = new RoomDetailServiceImp();
+        service.getCustomerByIDN(tfNationalID.getText());
+        service.getRoomListByNames(roomsList);
+
+        if(cbxStatus.getSelectionModel().getSelectedItem()=="Checked In")
+        {
+            service.checkIn(bookingDTO);
+        }
     }
     public  RoomController roomController ;
     private Set<String> roomsList = new HashSet<>();
@@ -101,7 +107,11 @@ public class RoomDetailController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String rooms = "";
-        // Event listener for checking chronological dates
+
+        dtpkCheckIn.setValue(LocalDate.now());
+        dtpkCheckIn.valueProperty().addListener((observable, oldValue, newValue) -> {
+            dtpkCheckOut.setValue(newValue.plusDays(1));
+        });
         dtpkCheckIn.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null && dtpkCheckOut.getValue() != null && newValue.isAfter(dtpkCheckOut.getValue())) {
                 showErrorMessage("Invalid Date Selection", "Check-In date cannot be after Check-Out date.");
@@ -119,7 +129,8 @@ public class RoomDetailController implements Initializable {
             }
             return null;
         }));
-        cbxStatus.getItems().addAll("Checked In","Checked Out");
+        cbxStatus.getItems().addAll("Checked In","Reserve");
+        cbxStatus.setValue("Checked In");
         roomsList = roomController.getSeletedRooms();
         btnCheckin.setOnAction(event -> {
             if(validate())

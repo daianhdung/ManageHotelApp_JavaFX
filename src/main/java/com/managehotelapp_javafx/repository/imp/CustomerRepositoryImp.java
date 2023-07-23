@@ -105,7 +105,11 @@ public class CustomerRepositoryImp extends AbstractRepository<CustomerEntity> im
     }
 
     public boolean insertCustomer(CustomerEntity customerEntity) {
-        return insert(customerEntity);
+        if(getCustomerByPID(customerEntity.getIdentity())==null)
+        {
+            return insert(customerEntity);
+        }
+        return false;
     }
 
     @Override

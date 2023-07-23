@@ -12,7 +12,7 @@
       <fx:define>
          <Image fx:id="home" url="@../../asset/image/home.png" />
       </fx:define>
-      <Button fx:id="btnHome" alignment="BASELINE_LEFT" layoutX="3.0" layoutY="127.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="207.0" style="-fx-background-color: #00CCFF;" text="HOME">
+      <Button fx:id="btnHome" onAction="#onHomeScene" alignment="BASELINE_LEFT" layoutX="3.0" layoutY="127.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="207.0" style="-fx-background-color: #00CCFF;" text="HOME">
          <font>
             <Font name="System Bold" size="29.0" />
          </font>
@@ -35,7 +35,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnBooking" alignment="BASELINE_LEFT" layoutX="3.0" layoutY="259.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="207.0" style="-fx-background-color: #00CCFF;" text="BOOKING">
+      <Button fx:id="btnBooking" onAction="#onBooking" alignment="BASELINE_LEFT" layoutX="3.0" layoutY="259.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="207.0" style="-fx-background-color: #00CCFF;" text="BOOKING">
          <font>
             <Font name="System Bold" size="26.0" />
          </font>
@@ -47,7 +47,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnGuestinfo" alignment="BASELINE_LEFT" layoutX="3.0" layoutY="325.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="207.0" style="-fx-background-color: #00CCFF;" text="GUEST INFO">
+      <Button fx:id="btnGuestinfo" onAction="#onGuestInfoScene" alignment="BASELINE_LEFT" layoutX="3.0" layoutY="325.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="207.0" style="-fx-background-color: #00CCFF;" text="GUEST INFO">
          <font>
             <Font name="System Bold" size="21.0" />
          </font>
@@ -59,7 +59,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="btnRevenue" alignment="BASELINE_LEFT" layoutX="5.0" layoutY="457.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="207.0" style="-fx-background-color: #00CCFF;" text="REVENUE">
+      <Button fx:id="btnRevenue"  alignment="BASELINE_LEFT" layoutX="5.0" layoutY="457.0" mnemonicParsing="false" prefHeight="64.0" prefWidth="207.0" style="-fx-background-color: #00CCFF;" text="REVENUE">
          <font>
             <Font name="System Bold" size="27.0" />
          </font>
@@ -86,7 +86,7 @@
             <Insets top="-1.0" />
          </padding>
       </Button>
-      <Button fx:id="btnInvoice" alignment="BASELINE_LEFT" layoutX="4.0" layoutY="391.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="207.0" style="-fx-background-color: #00CCFF;" text="INVOICE">
+      <Button fx:id="btnInvoice" onAction="#onInvoiceScene" alignment="BASELINE_LEFT" layoutX="4.0" layoutY="391.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="207.0" style="-fx-background-color: #00CCFF;" text="INVOICE">
          <font>
             <Font name="System Bold" size="29.0" />
          </font>

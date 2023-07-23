@@ -1,6 +1,7 @@
 package com.managehotelapp_javafx.repository.imp;
 
 import com.managehotelapp_javafx.entity.BookingEntity;
+import com.managehotelapp_javafx.entity.CustomerEntity;
 import com.managehotelapp_javafx.repository.BookingRepository;
 
 
@@ -10,7 +11,7 @@ import java.util.Map;
 
 public class BookingRepositoryImp extends AbstractRepository<BookingEntity> implements BookingRepository {
 
-    public boolean checkinBookingUpdate(BookingEntity bookingEntity) {
+    public boolean updateCheckIn(BookingEntity bookingEntity) {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("id", bookingEntity.getId());
         parameters.put("status_booking_id", bookingEntity.getStatusBooking().getId());
@@ -77,4 +78,14 @@ public class BookingRepositoryImp extends AbstractRepository<BookingEntity> impl
 
     }
 
+    public BookingEntity getBookingByCustomer(CustomerEntity customerEntity) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("id", customerEntity.getId());
+        List<BookingEntity> result = query("FROM BookingEntity WHERE customer_id = :id and ", parameters);
+        return result.isEmpty() ? null : result.get(0);
+    }
+
+    public void insertCheckIn(BookingEntity bookingEntity) {
+
+    }
 }

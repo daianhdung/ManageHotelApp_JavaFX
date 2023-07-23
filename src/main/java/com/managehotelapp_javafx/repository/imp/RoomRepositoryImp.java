@@ -14,22 +14,26 @@ public class RoomRepositoryImp extends AbstractRepository<RoomEntity> implements
 
     public boolean updateCheckInRoom(RoomEntity roomEntity)
     {
-        Map<String, Object> parameters = new HashMap<>();
-        parameters.put("room_status_id", roomEntity.getRoomStatus().getId());
-        parameters.put("id", roomEntity.getId());
-        StringBuffer query = new StringBuffer("UPDATE RoomEntity SET room_number = :room_number" +
-                ", room_status_id = :room_status_id" +
-                " WHERE id = :id");
-        return update(query.toString(),parameters);
+        if(roomEntity.getRoomStatus().getId()==2) {
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("room_status_id", 1);
+            parameters.put("id", roomEntity.getId());
+            StringBuffer query = new StringBuffer("UPDATE RoomEntity SET " +
+                    "room_status_id = :room_status_id" +
+                    " WHERE id = :id");
+
+            return update(query.toString(), parameters);
+        }
+        return  false;
     }
 
     public List<RoomEntity> getAvailableRooms() {
-        List<RoomEntity> result = query("FROM RoomEntity WHERE room_status_id=1",null);
+        List<RoomEntity> result = query("FROM RoomEntity WHERE room_status_id=2",null);
         return result;
     }
 
     public List<RoomEntity> getUnavailableRooms() {
-        List<RoomEntity> result = query("FROM RoomEntity WHERE room_status_id=0",null);
+        List<RoomEntity> result = query("FROM RoomEntity WHERE room_status_id!=2",null);
         return result;
     }
 

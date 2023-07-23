@@ -10,44 +10,42 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class RoomServiceImp implements RoomService {
-    RoomRepository roomRepository = new RoomRepositoryImp();
+    RoomRepositoryImp roomRepository = new RoomRepositoryImp();
 
     @Override
     public List<RoomDTO> getAllRoom() {
-        return roomRepository.getRooms().stream().map(item -> {
+        return roomRepository.getRooms().stream().filter(item->item.getRoomStatus()!=null).map(item -> {
             RoomDTO roomDTO = new RoomDTO();
+            if(item.getRoomStatus()!=null){
             roomDTO.setId(item.getId());
             roomDTO.setRoomNo(item.getRoomNumber());
             roomDTO.setStatus(item.getRoomStatus().getTitle());
             roomDTO.setType(item.getRoomType().getDescription());
+            }
             return roomDTO;
         }).toList();
     }
 
     @Override
     public List<RoomDTO> getAvailableRoom() {
-        return roomRepository.getRooms().stream().map(item -> {
+        return roomRepository.getAvailableRooms().stream().map(item -> {
                 RoomDTO roomDTO = new RoomDTO();
-            if (Objects.equals(item.getRoomType().getDescription(), "Available")) {
                 roomDTO.setId(item.getId());
                 roomDTO.setRoomNo(item.getRoomNumber());
                 roomDTO.setStatus(item.getRoomStatus().getTitle());
                 roomDTO.setType(item.getRoomType().getDescription());
-            }
                 return roomDTO;
         }).toList();
     }
 
     @Override
     public List<RoomDTO> getUnavailableRoom() {
-        return roomRepository.getRooms().stream().map(item -> {
+        return roomRepository.getUnavailableRooms().stream().map(item -> {
             RoomDTO roomDTO = new RoomDTO();
-            if (Objects.equals(item.getRoomType().getDescription(), "Unavailable")) {
-                roomDTO.setId(item.getId());
-                roomDTO.setRoomNo(item.getRoomNumber());
-                roomDTO.setStatus(item.getRoomStatus().getTitle());
-                roomDTO.setType(item.getRoomType().getDescription());
-            }
+            roomDTO.setId(item.getId());
+            roomDTO.setRoomNo(item.getRoomNumber());
+            roomDTO.setStatus(item.getRoomStatus().getTitle());
+            roomDTO.setType(item.getRoomType().getDescription());
             return roomDTO;
         }).toList();
     }
