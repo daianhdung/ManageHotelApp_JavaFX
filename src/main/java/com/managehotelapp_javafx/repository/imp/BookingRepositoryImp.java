@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class BookingRepositoryImp extends AbstractRepository<BookingEntity> implements BookingRepository {
+public class    BookingRepositoryImp extends AbstractRepository<BookingEntity> implements BookingRepository {
 
     public boolean updateCheckIn(BookingEntity bookingEntity) {
         Map<String, Object> parameters = new HashMap<>();

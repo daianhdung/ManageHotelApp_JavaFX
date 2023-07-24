@@ -1,6 +1,7 @@
 package com.managehotelapp_javafx.controller;
 
 import com.managehotelapp_javafx.HelloApplication;
+import com.managehotelapp_javafx.dto.BookingDTO;
 import com.managehotelapp_javafx.dto.RoomDTO;
 import com.managehotelapp_javafx.entity.RoomEntity;
 import com.managehotelapp_javafx.repository.imp.RoomRepositoryImp;
@@ -260,12 +261,13 @@ public class RoomController implements Initializable {
                 cbSelected.setOnAction(event -> {                   
                         var selectedItem = (Node) event.getSource();
                         Label lr = (Label) selectedItem.getScene().lookup("#lblRoomName_" + RoomName);
-                        BookingDTO  bookingDTO = service.getBookingByRoomName(RoomName);
+                    if (Objects.equals(RoomStatus, "Available")) {
                         if (cbSelected.isSelected()) {
                             seletedRooms.add(lr.getText());
                         } else {
                             seletedRooms.removeIf(s -> s.equals(lr.getText()));
-                        }                    
+                        }
+                    }
                 });
 
                 // Add CheckBox to GridPane
@@ -287,18 +289,18 @@ public class RoomController implements Initializable {
                         seletedRooms = new HashSet<>();
                         var selectedItem = (Node) event.getSource();
                         Label lr = (Label) selectedItem.lookup("#lblRoomName_" + RoomName);
-                        if (Objects.equals(RoomStatus, "Available")) {
-                            seletedRooms.add(lr.getText());
-                            roomDetailController.setRooms(seletedRooms);
-                            fxmlLoader = FXMLLoaderConstant.getRoomDetailScene();
-                            fxmlLoader.setController(roomDetailController);
-                            primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                            try {
-                                primaryStage.setScene(new Scene(fxmlLoader.load()));
-                            } catch (IOException e) {
-                                throw new RuntimeException(e);
-                            }
+
+                        seletedRooms.add(lr.getText());
+                        roomDetailController.setRooms(seletedRooms);
+                        fxmlLoader = FXMLLoaderConstant.getRoomDetailScene();
+                        fxmlLoader.setController(roomDetailController);
+                        primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        try {
+                            primaryStage.setScene(new Scene(fxmlLoader.load()));
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
                         }
+
                     }
                 });
                 gridPane2.add(gridPane, col, row);

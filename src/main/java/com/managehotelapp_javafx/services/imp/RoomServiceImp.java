@@ -1,7 +1,9 @@
 package com.managehotelapp_javafx.services.imp;
 
+import com.managehotelapp_javafx.dto.BookingDTO;
 import com.managehotelapp_javafx.dto.RoomDTO;
 import com.managehotelapp_javafx.repository.RoomRepository;
+import com.managehotelapp_javafx.repository.imp.BookingRepositoryImp;
 import com.managehotelapp_javafx.repository.imp.RoomRepositoryImp;
 import com.managehotelapp_javafx.services.RoomService;
 
@@ -55,9 +57,5 @@ public class RoomServiceImp implements RoomService {
         return null;
     }
 
-    public BookingDTO getBookingByRoomName(String roomName)
-    {
-      var bookingEntity =  bookingRepository.getBookingByRoomName(roomName);
-        return bookingEntity.getDTO();
-    }
+
 }

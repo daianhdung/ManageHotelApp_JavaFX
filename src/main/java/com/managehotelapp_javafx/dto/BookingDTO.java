@@ -1,5 +1,6 @@
 package com.managehotelapp_javafx.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookingDTO {
@@ -8,6 +9,7 @@ public class BookingDTO {
 
     private String roomNo;
     private String customerName;
+
 
     public String getCustomerIDN() {
         return customerIDN;
@@ -32,7 +34,16 @@ public class BookingDTO {
 
     private String checkOutDate;
     private String status;
+    private List<BookingRoomDTO> bookingRoomDTOList = new ArrayList<>();
     private List<BookingDTO> bookingDTOList;
+
+    public List<BookingRoomDTO> getBookingRoomDTOList() {
+        return bookingRoomDTOList;
+    }
+
+    public void setBookingRoomDTOList(List<BookingRoomDTO> bookingRoomDTOList) {
+        this.bookingRoomDTOList = bookingRoomDTOList;
+    }
 
     public String getRoomNo() {
         return roomNo;

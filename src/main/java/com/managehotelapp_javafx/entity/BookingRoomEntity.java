@@ -1,5 +1,6 @@
 package com.managehotelapp_javafx.entity;
 
+import com.managehotelapp_javafx.dto.BookingRoomDTO;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -34,6 +35,8 @@ public class BookingRoomEntity {
 
     @Column(name = "payment", columnDefinition = "integer default 0")
     private int payment;
+
+
 
     public int getId() {
         return id;
@@ -90,4 +93,5 @@ public class BookingRoomEntity {
     public void setPayment(int payment) {
         this.payment = payment;
     }
+
 }

@@ -23,4 +23,5 @@ public class BookingRoomRepositoryImp extends AbstractRepository<BookingRoomEnti
         parameters.put("id", id);
         return query("FROM BookingRoomEntity WHERE id = :id", parameters).get(0);
     }
+
 }

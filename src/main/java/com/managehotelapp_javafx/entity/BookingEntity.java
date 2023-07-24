@@ -1,5 +1,6 @@
 package com.managehotelapp_javafx.entity;
 
+import com.managehotelapp_javafx.dto.BookingDTO;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -64,6 +65,7 @@ public class BookingEntity {
     @CreationTimestamp
     @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT now()")
     private Timestamp createdAt;
+
 
     public int getId() {
         return id;
@@ -193,8 +195,5 @@ public class BookingEntity {
         this.bookingRoomEntities = bookingRoomEntities;
     }
 
-    public BookingDTO getDTO()
-    {
-        
-    }
+
 }

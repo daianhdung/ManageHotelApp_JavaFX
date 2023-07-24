@@ -1,30 +1,16 @@
 package com.managehotelapp_javafx.controller;
 
 import com.managehotelapp_javafx.dto.BookingDTO;
-import com.managehotelapp_javafx.dto.CustomerDTO;
-import com.managehotelapp_javafx.dto.RoomDTO;
-import com.managehotelapp_javafx.entity.*;
-import com.managehotelapp_javafx.repository.BookingRepository;
-import com.managehotelapp_javafx.repository.CustomerRepository;
-import com.managehotelapp_javafx.repository.RoomRepository;
-import com.managehotelapp_javafx.repository.imp.BookingRepositoryImp;
-import com.managehotelapp_javafx.repository.imp.CustomerRepositoryImp;
-import com.managehotelapp_javafx.repository.imp.RoomRepositoryImp;
-import com.managehotelapp_javafx.services.RoomDetailService;
 import com.managehotelapp_javafx.services.imp.RoomDetailServiceImp;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
-import org.controlsfx.validation.Severity;
-import org.controlsfx.validation.Validator;
 
 import java.net.URL;
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -61,7 +47,7 @@ public class RoomDetailController implements Initializable {
     @FXML
     private ComboBox cbxStatus;
 
-
+    private RoomDetailServiceImp service = new RoomDetailServiceImp();
     @FXML
     private void setBtnCheckin()
     {
@@ -76,7 +62,7 @@ public class RoomDetailController implements Initializable {
         bookingDTO.setCheckInDate(dtpkCheckIn.getValue().toString());
         bookingDTO.setCheckOutDate(dtpkCheckOut.getValue().toString());
         bookingDTO.setStatus(cbxStatus.getSelectionModel().getSelectedItem().toString());
-        RoomDetailServiceImp service = new RoomDetailServiceImp();
+
         service.getCustomerByIDN(tfNationalID.getText());
         service.getRoomListByNames(roomsList);
 
@@ -106,8 +92,7 @@ public class RoomDetailController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String rooms = "";
-
+        StringBuilder rooms = new StringBuilder();
         dtpkCheckIn.setValue(LocalDate.now());
         dtpkCheckIn.valueProperty().addListener((observable, oldValue, newValue) -> {
             dtpkCheckOut.setValue(newValue.plusDays(1));
@@ -138,11 +123,30 @@ public class RoomDetailController implements Initializable {
         });
         for (String r :roomsList)
         {
-            rooms += r + ", ";
+            rooms.append(r).append(", ");
         }
-        tfRooms.setText(rooms);
+        tfRooms.setText(rooms.toString());
+        if(service.getRoomListByNames(roomsList).size()==1 && service.getRoomListByNames(roomsList).get(0).getRoomStatus().getId()==1)
+        {
+            setRoomDetail();
+        }
     }
 
+    private  void setRoomDetail()
+    {
+        var rd = service.getRoomDetail();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        var customer = service.getCustomerByIDN(rd.getCustomerIDN());
+        tfNationalID.setText(rd.getCustomerIDN());
+        tfName.setText(rd.getCustomerName());
+        tfPhoneNumber.setText(rd.getPhoneNumber());
+        tfEmail.setText(customer.getEmail());
+        dtpkCheckOut.setValue(LocalDate.parse(rd.getCheckOutDate().split(" ")[0], formatter));
+        dtpkCheckIn.setValue(LocalDate.parse(rd.getCheckinDate().split(" ")[0], formatter));
+        dtpkBookingdate.setValue(LocalDate.parse(rd.getBookingDate().split(" ")[0], formatter));
+        cbxStatus.setValue(rd.getStatus());
+        btnCheckin.setDisable(true);
+    }
     private boolean validate()
     {
         String m = "";
