@@ -257,16 +257,15 @@ public class RoomController implements Initializable {
                 cbSelected.setId("cbSelected");
                 cbSelected.setMnemonicParsing(false);
                 cbSelected.setDisable(!Objects.equals(RoomStatus, "Available"));
-                cbSelected.setOnAction(event -> {
-                    if (Objects.equals(RoomStatus, "Available")) {
+                cbSelected.setOnAction(event -> {                   
                         var selectedItem = (Node) event.getSource();
                         Label lr = (Label) selectedItem.getScene().lookup("#lblRoomName_" + RoomName);
+                        BookingDTO  bookingDTO = service.getBookingByRoomName(RoomName);
                         if (cbSelected.isSelected()) {
                             seletedRooms.add(lr.getText());
                         } else {
                             seletedRooms.removeIf(s -> s.equals(lr.getText()));
-                        }
-                    }
+                        }                    
                 });
 
                 // Add CheckBox to GridPane
