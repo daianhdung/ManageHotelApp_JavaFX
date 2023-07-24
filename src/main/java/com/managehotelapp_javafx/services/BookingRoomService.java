@@ -15,8 +15,8 @@ public interface BookingRoomService {
     List<BookingRoomDTO> getCurrentBookingRoom();
 
     List<BookingRoomDTO> getBookingRoomHistory();
+  
     BookingRoomEntity getBookingRoomByIdInvoice(int id);
 
     List<RoomDTO> getRoomByIdBooking (int idBooking);
-
 }

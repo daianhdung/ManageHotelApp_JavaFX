@@ -38,6 +38,7 @@ public class BookingRoomRepositoryImp extends AbstractRepository<BookingRoomEnti
         }
         return query("FROM BookingRoomEntity WHERE status_booking_id IN (" + sb + ")", parameters);
     }
+
     @Override
     public BookingRoomEntity findByIdInvoice(int idInv) {
         Map<String, Object> parameters = new HashMap<>();
