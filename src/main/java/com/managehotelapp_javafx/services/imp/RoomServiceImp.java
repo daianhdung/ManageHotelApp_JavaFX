@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 
 public class RoomServiceImp implements RoomService {
     RoomRepositoryImp roomRepository = new RoomRepositoryImp();
-
+    BookingRepositoryImp bookingRepository = new BookingRepositoryImp();
     @Override
     public List<RoomDTO> getAllRoom() {
         return roomRepository.getRooms().stream().filter(item->item.getRoomStatus()!=null).map(item -> {
@@ -53,5 +53,11 @@ public class RoomServiceImp implements RoomService {
     @Override
     public RoomDTO getRoomById(int id) {
         return null;
+    }
+
+    public BookingDTO getBookingByRoomName(String roomName)
+    {
+      var bookingEntity =  bookingRepository.getBookingByRoomName(roomName);
+        return bookingEntity.getDTO();
     }
 }
