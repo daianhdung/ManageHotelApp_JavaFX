@@ -165,10 +165,10 @@ public class InvoiceController implements Initializable {
 
     public void showInvoiceTableView() {
         invoiceObservableList = FXCollections.observableList(invoiceService.getInvoiceDTOList());
-        indexInvCol.setCellValueFactory(cell -> {
-            String index = cell.getTableView().getItems().indexOf(cell.getValue()) + 1 + "";
-            return new SimpleStringProperty(index);
-        });
+//        indexInvCol.setCellValueFactory(cell -> {
+//            String index = cell.getTableView().getItems().indexOf(cell.getValue()) + 1 + "";
+//            return new SimpleStringProperty(index);
+//        });
 
         idInvCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         customerCol.setCellValueFactory(new PropertyValueFactory<>("customer"));
@@ -222,7 +222,8 @@ public class InvoiceController implements Initializable {
     }
 
     public void getInvoiceDetailScene(InvoiceDTO invoiceDTO) {
-        int idBookingRoom = bookingRoomService.getBookingRoomByIdInvoice(invoiceDTO.getId()).getId();
+        int idInvoice = invoiceDTO.getId();
+        int idBookingRoom = bookingRoomService.getBookingRoomByIdInvoice(idInvoice).getId();
         String checkInDay = bookingService.getBookingById(idBookingRoom).getActualDateIn().toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         String checkOunDay = bookingService.getBookingById(idBookingRoom).getActualDateOut().toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
@@ -239,7 +240,7 @@ public class InvoiceController implements Initializable {
         getRoomDetailTableView(roomDTOList);
 
         // get booking_service
-        BookingRoomEntity bookingRoom = bookingRoomService.getBookingRoomByIdInvoice(invoiceDTO.getId());
+        BookingRoomEntity bookingRoom = bookingRoomService.getBookingRoomByIdInvoice(idInvoice);
         List<BookingServiceDTO> bookingServiceDTO = bookingService.findBooingServicesByBookingRoomId(bookingRoom.getId());
         getRoomServiceTableView(bookingServiceDTO);
 
@@ -249,17 +250,17 @@ public class InvoiceController implements Initializable {
 
 
         // payment status
-        paymentStatus.setText(invoiceService.findInvoiceById(invoiceDTO.getId()).getInvoiceStatus());
+        paymentStatus.setText(invoiceService.findInvoiceById(idInvoice).getInvoiceStatus());
 
     }
 
     public void getRoomDetailTableView(List<RoomDTO> list){
         ObservableList<RoomDTO> roomObservableList = FXCollections.observableList(list);
 
-//        roomNumberCol.setCellValueFactory(cell -> {
-//
-//           return new SimpleStringProperty(cell.getValue().getRoomNo());
-//        });
+        roomNumberCol.setCellValueFactory(cell -> {
+
+           return new SimpleStringProperty(cell.getValue().getRoomNo());
+        });
         roomTypeCol.setCellValueFactory(cell ->{
             int roomType = Integer.valueOf(roomService.getRoomById(cell.getValue().getId()).getType());
 

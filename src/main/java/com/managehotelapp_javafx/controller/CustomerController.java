@@ -275,7 +275,7 @@ public class CustomerController implements Initializable {
         identityCol.setCellValueFactory(new PropertyValueFactory<>("identity"));
         passportCol.setCellValueFactory(new PropertyValueFactory<>("passportNo"));
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
-        genderCol.setCellValueFactory(new PropertyValueFactory<>("gender"));
+//        genderCol.setCellValueFactory(new PropertyValueFactory<>("gender"));
         typeCol.setCellValueFactory(new PropertyValueFactory<>("customerType"));
         countryCol.setCellValueFactory(new PropertyValueFactory<>("country"));
         actionCol.setCellFactory(cell -> tableCellDetailBtn());
