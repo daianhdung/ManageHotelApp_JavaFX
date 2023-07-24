@@ -1,7 +1,6 @@
 package com.managehotelapp_javafx.controller;
 
 import com.managehotelapp_javafx.dto.CustomerDTO;
-import com.managehotelapp_javafx.dto.UserDTO;
 import com.managehotelapp_javafx.services.CustomerService;
 import com.managehotelapp_javafx.services.CustomerTypeService;
 import com.managehotelapp_javafx.services.imp.CustomerServiceImp;
@@ -11,7 +10,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,7 +21,6 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class CustomerController implements Initializable {
@@ -275,7 +272,7 @@ public class CustomerController implements Initializable {
         identityCol.setCellValueFactory(new PropertyValueFactory<>("identity"));
         passportCol.setCellValueFactory(new PropertyValueFactory<>("passportNo"));
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
-        genderCol.setCellValueFactory(new PropertyValueFactory<>("gender"));
+//        genderCol.setCellValueFactory(new PropertyValueFactory<>("gender"));
         typeCol.setCellValueFactory(new PropertyValueFactory<>("customerType"));
         countryCol.setCellValueFactory(new PropertyValueFactory<>("country"));
         actionCol.setCellFactory(cell -> tableCellDetailBtn());
@@ -300,8 +297,6 @@ public class CustomerController implements Initializable {
             customerTableScene.setVisible(false);
             customerDetailScene.setVisible(true);
             getCustomerDetailScene(cell.getTableRow().getItem());
-//            System.out.println(cell.getTableRow().getItem().toString());
-//            System.out.println(cell.getTableRow().getItem().getFullName());
         });
         return cell;
     }

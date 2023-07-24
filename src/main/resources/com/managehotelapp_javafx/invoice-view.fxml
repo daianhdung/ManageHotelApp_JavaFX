@@ -1,32 +1,305 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="558.0" prefWidth="1033.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="558.0" prefWidth="1033.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.InvoiceController">
    <children>
-      <Pane layoutX="202.0" prefHeight="555.0" prefWidth="824.0">
-         <children>
-            <TextField layoutX="59.0" layoutY="18.0" prefHeight="36.0" prefWidth="171.0" promptText="Search Customer Name ..." />
-            <Button layoutX="483.0" layoutY="18.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="59.0" text="search" />
-            <Pane layoutY="67.0" prefHeight="490.0" prefWidth="824.0">
+      <BorderPane fx:id="invoiceTableScene" layoutX="202.0" prefHeight="558.0" prefWidth="831.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="202.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="46.0" prefWidth="815.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView layoutX="4.0" layoutY="4.0" prefHeight="482.0" prefWidth="817.0">
+                  <TextField fx:id="searchInput" layoutX="30.0" layoutY="11.0" prefHeight="25.0" prefWidth="361.0" promptText="Search ID Invoice..." />
+                  <Button fx:id="searchBtn" layoutX="398.0" layoutY="11.0" mnemonicParsing="false" onAction="#onSearch" prefHeight="24.0" prefWidth="83.0" text="Search" />
+               </children>
+            </AnchorPane>
+         </top>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <TableView fx:id="invoiceTableView" prefHeight="510.0" prefWidth="827.0">
                      <columns>
-                        <TableColumn prefWidth="75.0" text="ID" />
-                        <TableColumn prefWidth="376.79998779296875" text="ID Booking" />
-                        <TableColumn prefWidth="151.20001220703125" text="Price" />
-                        <TableColumn prefWidth="214.39996337890625" text="Action" />
+                        <TableColumn fx:id="idInvCol" prefWidth="113.0" text="ID Invoice" />
+                        <TableColumn fx:id="customerCol" prefWidth="172.0" text="Customer" />
+                        <TableColumn fx:id="amountCol" prefWidth="151.0" text="Amount" />
+                        <TableColumn fx:id="createdAtCol" prefWidth="215.0" text="Created At" />
+                        <TableColumn fx:id="actionCol" prefWidth="175.0" text="Action" />
                      </columns>
                   </TableView>
                </children>
-            </Pane>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+      <AnchorPane fx:id="invoiceDetailScene" layoutX="201.0" maxWidth="-Infinity" prefHeight="558.0" prefWidth="832.0" style="-fx-background-color: white;" styleClass="booking/global-style.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="201.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <BorderPane layoutX="173.0" layoutY="136.0" prefHeight="558.0" prefWidth="832.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <top>
+                  <AnchorPane prefHeight="71.0" prefWidth="832.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <GridPane layoutX="34.0" layoutY="20.0" prefHeight="145.0" prefWidth="832.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="203.07376098632812" minWidth="0.0" prefWidth="177.32080078125" />
+                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="367.41790771484375" minWidth="0.0" prefWidth="94.67919921875" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="413.22601318359375" minWidth="0.0" prefWidth="392.31781005859375" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;">
+                                 <children>
+                                    <GridPane layoutX="2.0" layoutY="2.0" prefHeight="36.0" prefWidth="204.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="107.02130126953125" minWidth="10.0" prefWidth="105.31524658203125" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="105.85995483398438" minWidth="10.0" prefWidth="96.68475341796875" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label prefHeight="18.0" prefWidth="83.0" text="Id Booking  :">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="idBookingLabel" text="Label" GridPane.columnIndex="1">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" GridPane.rowIndex="1">
+                                 <children>
+                                    <GridPane prefHeight="36.0" prefWidth="204.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="107.02130126953125" minWidth="10.0" prefWidth="97.15615844726562" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="97.35787963867188" minWidth="10.0" prefWidth="91.84384155273438" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label prefHeight="18.0" prefWidth="83.0" text="Created At  :">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="createdAtLabel" text="Label" GridPane.columnIndex="1">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: black;" GridPane.columnIndex="1">
+                                 <children>
+                                    <GridPane prefHeight="36.0" prefWidth="214.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="107.02130126953125" minWidth="10.0" prefWidth="97.15615844726562" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="97.35787963867188" minWidth="10.0" prefWidth="91.84384155273438" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label prefHeight="18.0" prefWidth="74.0" text="Check-in  :">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="checkInLabel" text="Label" GridPane.columnIndex="1">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="45.0" prefWidth="213.0" style="-fx-border-color: black;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <children>
+                                    <GridPane layoutX="2.0" layoutY="2.0" prefHeight="33.0" prefWidth="217.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <columnConstraints>
+                                          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="107.02130126953125" minWidth="10.0" prefWidth="97.15615844726562" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="97.35787963867188" minWidth="10.0" prefWidth="91.84384155273438" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                       <children>
+                                          <Label prefHeight="18.0" prefWidth="83.0" text="Check-out  :">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="checkOutLabel" text="Label" GridPane.columnIndex="1">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </GridPane>
+                                 </children>
+                              </AnchorPane>
+                              <GridPane prefHeight="36.0" prefWidth="414.0" GridPane.columnIndex="2">
+                                <columnConstraints>
+                                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="224.28973388671875" minWidth="10.0" prefWidth="216.7254638671875" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="209.1612548828125" minWidth="10.0" prefWidth="197.2745361328125" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label prefHeight="35.0" prefWidth="139.0" text="INVOICE#">
+                                       <font>
+                                          <Font size="29.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="idInvLabel" text="Label" GridPane.columnIndex="1">
+                                       <font>
+                                          <Font size="29.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </GridPane>
+                              <GridPane GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                <columnConstraints>
+                                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <Label text="Customer  :">
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="cusLabel" prefHeight="27.0" prefWidth="200.0" text="Label" GridPane.columnIndex="1">
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                       <font>
+                                          <Font size="21.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+               </top>
+               <center>
+                  <GridPane BorderPane.alignment="CENTER">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="54.0" minHeight="0.0" prefHeight="21.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="187.0" minHeight="10.0" prefHeight="187.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="38.0" minHeight="0.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="150.0" minHeight="10.0" prefHeight="132.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <TableView fx:id="roomTableView" prefHeight="200.0" prefWidth="454.0" GridPane.rowIndex="1">
+                          <columns>
+                            <TableColumn fx:id="roomNumberCol" prefWidth="199.54476928710938" text=" Room  No." />
+                            <TableColumn fx:id="roomTypeCol" prefWidth="432.4552307128906" text="Room Type" />
+                              <TableColumn fx:id="roomPriceCol" prefWidth="192.910400390625" text="Price" />
+                          </columns>
+                        </TableView>
+                        <TableView fx:id="serviceTableView" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
+                          <columns>
+                            <TableColumn fx:id="serviceNameCol" prefWidth="304.5948486328125" text="Service Name" />
+                              <TableColumn fx:id="servicePriceCol" prefWidth="181.40509033203125" text="Price" />
+                              <TableColumn fx:id="serviceQtyCol" prefWidth="147.50311279296875" text="Q'ty" />
+                              <TableColumn fx:id="serviceAmountCol" prefWidth="191.0" text="Amount" />
+                          </columns>
+                        </TableView>
+                        <Label prefHeight="17.0" prefWidth="65.0" text="* ROOM">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <Label prefHeight="19.0" prefWidth="84.0" text="* SERVICES" GridPane.rowIndex="2">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Label>
+                        <GridPane GridPane.rowIndex="4">
+                          <columnConstraints>
+                              <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="636.0" minWidth="10.0" prefWidth="169.0" />
+                              <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="636.0" minWidth="10.0" prefWidth="206.0" />
+                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="636.0" minWidth="10.0" prefWidth="254.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="409.0" minWidth="10.0" prefWidth="235.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="Total  :" GridPane.columnIndex="2">
+                                 <GridPane.margin>
+                                    <Insets right="10.0" />
+                                 </GridPane.margin>
+                              </Label>
+                              <Label fx:id="totalLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="86.0" text="Label" textAlignment="CENTER" GridPane.columnIndex="3" />
+                              <Label prefHeight="17.0" prefWidth="97.0" text="Payment status:" />
+                              <Label fx:id="paymentStatus" text="Label" GridPane.columnIndex="1" />
+                           </children>
+                        </GridPane>
+                     </children>
+                  </GridPane>
+               </center>
+               <bottom>
+                  <AnchorPane prefHeight="51.0" prefWidth="832.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <GridPane layoutX="159.0" layoutY="-31.0" prefHeight="59.0" prefWidth="832.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <columnConstraints>
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Button fx:id="backBtn" maxWidth="150.0" mnemonicParsing="false" onAction="#onBack" text="Back" />
+<!--                              <Button fx:id="deleteBtn" maxWidth="150.0" mnemonicParsing="false" text="Delete" visible="false" GridPane.columnIndex="1" />-->
+<!--                              <Button fx:id="printBtn" maxWidth="150.0" mnemonicParsing="false" text="Print" GridPane.columnIndex="2" />-->
+                           </children>
+                        </GridPane>
+                     </children>
+                  </AnchorPane>
+               </bottom>
+            </BorderPane>
          </children>
-      </Pane>
+      </AnchorPane>
       <Pane layoutX="-8.0" prefHeight="558.0" prefWidth="210.0" style="-fx-background-color: #00CCFF;">
          <children>
             <fx:include fx:id="sidebar" source="sidebar-view.fxml" />

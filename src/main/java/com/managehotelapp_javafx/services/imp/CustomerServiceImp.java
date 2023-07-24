@@ -42,6 +42,29 @@ public class CustomerServiceImp implements CustomerService {
     }
 
     @Override
+    public CustomerDTO findCustomerById(int idcus) {
+
+        CustomerEntity customerEntity = customerRepository.findCustomerById(idcus);
+        CustomerDTO customerDTO = new CustomerDTO();
+
+        customerDTO.setId(customerEntity.getId());
+        customerDTO.setCustomerType(customerEntity.getCustomerType().getTitle());
+        customerDTO.setFullName(customerEntity.getFullName());
+        customerDTO.setDob(customerEntity.getDob());
+        customerDTO.setEmail(customerEntity.getEmail());
+        customerDTO.setGender(customerEntity.getGender());
+        customerDTO.setPhone(customerEntity.getPhone());
+        customerDTO.setIdentity(customerEntity.getIdentity());
+        customerDTO.setPassportNo(customerEntity.getPassportNo());
+        customerDTO.setAddress(customerEntity.getAddress());
+        customerDTO.setCity(customerEntity.getCity());
+        customerDTO.setCountry(customerEntity.getCountry());
+        customerDTO.setBookingCount(customerEntity.getBookingCount());
+
+        return customerDTO;
+    }
+
+    @Override
     public boolean insertCustomer(CustomerDTO customerDTO) {
 
 
