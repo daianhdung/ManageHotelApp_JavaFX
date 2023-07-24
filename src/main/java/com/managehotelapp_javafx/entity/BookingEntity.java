@@ -53,9 +53,7 @@ public class BookingEntity {
     @Column(name = "special_request", length = 1000)
     private String specialRequest;
 
-    @ManyToOne
-    @JoinColumn(name = "status_booking_id")
-    private StatusBookingEntity statusBooking;
+
 
 
     @OneToMany(mappedBy = "booking", fetch = FetchType.EAGER)
@@ -169,13 +167,7 @@ public class BookingEntity {
         this.specialRequest = specialRequest;
     }
 
-    public StatusBookingEntity getStatusBooking() {
-        return statusBooking;
-    }
 
-    public void setStatusBooking(StatusBookingEntity statusBooking) {
-        this.statusBooking = statusBooking;
-    }
 
     public Timestamp getCreatedAt() {
         return createdAt;

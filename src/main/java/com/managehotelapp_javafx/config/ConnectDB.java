@@ -29,6 +29,7 @@ public class ConnectDB {
 //                settings.put(Environment.URL, "jdbc:postgresql://localhost:5432/manage_hotel_javafx");
 //                settings.put(Environment.USER, "postgres");
 //                settings.put(Environment.PASS,"123");
+
                 
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQLDialect");
 

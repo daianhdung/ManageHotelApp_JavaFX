@@ -9,4 +9,8 @@ public interface BookingRoomService {
     List<BookingRoomDTO> getAllBookingsRoom();
 
     BookingRoomDTO getBookingRoomById(int id);
+
+    List<BookingRoomDTO> getCurrentBookingRoom();
+
+    List<BookingRoomDTO> getBookingRoomHistory();
 }

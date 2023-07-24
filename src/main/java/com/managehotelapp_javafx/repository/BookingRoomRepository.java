@@ -9,4 +9,6 @@ public interface BookingRoomRepository extends GenericRepository<BookingRoomEnti
     List<BookingRoomEntity> findAll();
 
     BookingRoomEntity findById(int id);
+
+    List<BookingRoomEntity> findByStatusBookingIdIsIn(List<Integer> listId);
 }

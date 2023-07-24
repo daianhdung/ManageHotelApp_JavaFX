@@ -15,13 +15,31 @@ INSERT INTO room_type(description, price)
 VALUES('Double room (2 beds)', 40);
 INSERT INTO room_type(description, price)
 VALUES('Double room (1 bed)', 40);
+INSERT INTO room_type(description, price)
+VALUES('Quad room (2 bed)', 80);
 
-INSERT INTO room(room_number, room_type_id)
-VALUES('101', 1);
-INSERT INTO room(room_number, room_type_id)
-VALUES('102', 2);
-INSERT INTO room(room_number, room_type_id)
-VALUES('102', 2);
+INSERT INTO room_status(description, title)
+VALUES('', 'Reserved');
+INSERT INTO room_status(description, title)
+VALUES('', 'Available');
+INSERT INTO room_status(description, title)
+VALUES('', 'Occupied');
+INSERT INTO room_status(description, title)
+VALUES('', 'Vacant dirty');
+INSERT INTO room_status(description, title)
+VALUES('', 'Maintenance');
+
+
+INSERT INTO room(room_number, room_status_id, room_type_id)
+VALUES('101', 1, 1);
+INSERT INTO room(room_number, room_status_id , room_type_id)
+VALUES('102', 2, 1);
+INSERT INTO room(room_number, room_status_id , room_type_id)
+VALUES('103', 2, 1);
+INSERT INTO room(room_number, room_status_id , room_type_id)
+VALUES('104', 2, 1);
+INSERT INTO room(room_number, room_status_id, room_type_id)
+VALUES('105', 2, 1);
 
 INSERT INTO customer_type(title, description)
 VALUES('Family', 'Small');
@@ -50,11 +68,11 @@ VALUES('', 'Cancelled');
 INSERT INTO status_booking(description, title)
 VALUES('', 'No-show');
 
-INSERT INTO booking(booking_date, deposit, num_adult, status_booking_id, customer_id, user_id)
-VALUES('2023-08-15 16:07:10.790551', 20, 2, 1, 1, 2);
+INSERT INTO booking(booking_date, deposit, num_adult, num_children, status_booking_id, customer_id, user_id)
+VALUES('2023-08-15 16:07:10.790551', 20, 2, 1, 1, 1, 2);
 
-INSERT INTO booking(booking_date, deposit, num_adult, status_booking_id, customer_id, user_id)
-VALUES('2023-08-16 16:07:10.790551', 20, 2, 1, 2, 2);
+INSERT INTO booking(booking_date, deposit, num_adult, num_children, status_booking_id, customer_id, user_id)
+VALUES('2023-08-16 16:07:10.790551', 20, 2, 1, 1, 2, 2);
 
 
 INSERT INTO booking_room(booking_id, room_id)
@@ -67,13 +85,4 @@ INSERT INTO booking_room(booking_id, room_id)
 VALUES(2, 2);
 
 
-INSERT INTO room_status(description, title)
-VALUES('', 'Reserved');
-INSERT INTO room_status(description, title)
-VALUES('', 'Available');
-INSERT INTO room_status(description, title)
-VALUES('', 'Occupied');
-INSERT INTO room_status(description, title)
-VALUES('', 'Vacant dirty');
-INSERT INTO room_status(description, title)
-VALUES('', 'Maintenance');
+

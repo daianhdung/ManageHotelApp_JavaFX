@@ -1,12 +1,15 @@
-package com.managehotelapp_javafx.controller;
+package com.managehotelapp_javafx.controller.booking;
 
 import com.managehotelapp_javafx.dto.BookingRoomDTO;
 import com.managehotelapp_javafx.services.StatusBookingService;
 import com.managehotelapp_javafx.services.imp.StatusBookingServiceImp;
+import com.managehotelapp_javafx.utils.constant.FXMLLoaderConstant;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
