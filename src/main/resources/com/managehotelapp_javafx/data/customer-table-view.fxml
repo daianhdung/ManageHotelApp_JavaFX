@@ -30,14 +30,13 @@
                 <columns>
                     <TableColumn fx:id="indexCol" prefWidth="37.0" style="-fx-alignment: center" text="#" />
                     <TableColumn fx:id="fullnameCol" prefWidth="96.11744689941406" style="-fx-alignment: center" text="Fullname" />
-               <TableColumn fx:id="mobileCol" prefWidth="105.29093933105469" style="-fx-alignment: center" text="Mobile" />
-               <TableColumn fx:id="identityCol" prefWidth="108.70904541015625" style="-fx-alignment: center" text="Identity" />
-               <TableColumn fx:id="passportCol" prefWidth="151.72320556640625" style="-fx-alignment: center" text="Passport Number" />
-               <TableColumn fx:id="genderCol" prefWidth="102.90576171875" style="-fx-alignment: center" text="Gender" />
-                    <TableColumn fx:id="typeCol" prefWidth="102.90576171875" style="-fx-alignment: center" text="Type" />
-               <TableColumn fx:id="emailCol" prefWidth="102.27679443359375" style="-fx-alignment: center" text="Email" />
-                    <TableColumn fx:id="countryCol" prefWidth="110.91204833984375" style="-fx-alignment: center" text="Country" />
-                    <TableColumn fx:id="actionCol" prefWidth="114.77996826171875" style="-fx-alignment: center" text="Action" />
+               <TableColumn fx:id="mobileCol" prefWidth="95.97123718261719" style="-fx-alignment: center" text="Mobile" />
+               <TableColumn fx:id="identityCol" prefWidth="96.93380737304688" style="-fx-alignment: center" text="Identity" />
+               <TableColumn fx:id="passportCol" prefWidth="116.92510986328125" style="-fx-alignment: center" text="Passport Number" />
+                    <TableColumn fx:id="typeCol" prefWidth="75.84161376953125" style="-fx-alignment: center" text="Type" />
+               <TableColumn fx:id="emailCol" prefWidth="137.15838623046875" style="-fx-alignment: center" text="Email" />
+                    <TableColumn fx:id="countryCol" prefWidth="74.593994140625" style="-fx-alignment: center" text="Country" />
+                    <TableColumn fx:id="actionCol" prefWidth="84.93817138671875" style="-fx-alignment: center" text="Action" />
                 </columns>
             </TableView>
       </children>

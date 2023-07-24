@@ -1,7 +1,6 @@
 package com.managehotelapp_javafx.controller;
 
 import com.managehotelapp_javafx.dto.UserDTO;
-import com.managehotelapp_javafx.repository.imp.UserStatusRepositoryImp;
 import com.managehotelapp_javafx.services.UserRoleService;
 import com.managehotelapp_javafx.services.UserService;
 import com.managehotelapp_javafx.services.UserStatusService;
@@ -13,7 +12,6 @@ import javafx.beans.binding.Bindings;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
@@ -21,7 +19,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -31,8 +28,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class UserController implements Initializable {
@@ -160,8 +155,6 @@ public class UserController implements Initializable {
                 }
             }
         }
-
-
 
     }
 
@@ -314,8 +307,6 @@ public class UserController implements Initializable {
     }
 
     public void showUserTableView() {
-
-
 
         userObservableList = FXCollections.observableArrayList(userService.getUsers());
 
