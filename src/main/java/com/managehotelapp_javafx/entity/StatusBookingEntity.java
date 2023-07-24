@@ -18,7 +18,7 @@ public class StatusBookingEntity {
     private String description;
 
     @OneToMany(mappedBy = "statusBooking")
-    private Set<BookingEntity> bookingEntities;
+    private Set<BookingRoomEntity> bookingEntities;
 
     public int getId() {
         return id;
@@ -44,11 +44,11 @@ public class StatusBookingEntity {
         this.description = description;
     }
 
-    public Set<BookingEntity> getBookingEntities() {
+    public Set<BookingRoomEntity> getBookingEntities() {
         return bookingEntities;
     }
 
-    public void setBookingEntities(Set<BookingEntity> bookingEntities) {
+    public void setBookingEntities(Set<BookingRoomEntity> bookingEntities) {
         this.bookingEntities = bookingEntities;
     }
 }

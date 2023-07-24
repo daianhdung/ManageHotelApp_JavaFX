@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
@@ -14,31 +10,37 @@
     <Pane layoutX="-1.0" prefHeight="558.0" prefWidth="210.0">
         <fx:include fx:id="sidebar" source="../sidebar-view.fxml" />
     </Pane>
-    <Pane layoutX="201.0" layoutY="67.0" prefHeight="491.0" prefWidth="833.0">
-        <children>
-            <TableView fx:id="tableBookingView" layoutX="-1.0" layoutY="-5.0" prefHeight="496.0" prefWidth="833.0">
-                <columns>
-                    <TableColumn fx:id="roomNo" prefWidth="58.0" style="-fx-alignment: center" text="Room No" />
-                    <TableColumn fx:id="customerName" prefWidth="144.0" style="-fx-alignment: center" text="Customer Name" />
-                    <TableColumn fx:id="phoneNumber" prefWidth="127.0" style="-fx-alignment: center" text="Phone Number" />
-                    <TableColumn fx:id="bookingDate" prefWidth="168.0" style="-fx-alignment: center" text="Booking Date" />
-                    <TableColumn fx:id="checkinDate" prefWidth="139.0" style="-fx-alignment: center" text="Check-in Date" />
-                    <TableColumn fx:id="statusBooking" prefWidth="101.0" style="-fx-alignment: center" text="Status" />
-                    <TableColumn fx:id="action" prefWidth="95.0" style="-fx-alignment: center" text="Action" />
-                </columns>
-            </TableView>
-        </children>
-    </Pane>
-    <Pane layoutX="201.0" prefHeight="60.0" prefWidth="824.0">
-        <children>
-            <TextField fx:id="searchInput" layoutY="11.0" prefHeight="39.0" prefWidth="361.0" promptText="Search Customer Name or Room No ..." />
-            <Button layoutX="368.0" layoutY="11.0" mnemonicParsing="false" onAction="#onSearch" prefHeight="39.0" prefWidth="83.0" text="Search" />
-          <ImageView fitHeight="25.0" fitWidth="24.0" layoutX="777.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
-              <image>
-                  <Image url="@../../../asset/image/edit-new-icon-22.png" />
-              </image>
-          </ImageView>
-        </children>
-    </Pane>
+    <TabPane layoutX="220.0" prefHeight="558.0" prefWidth="818.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+            <Tab fx:id="currentTab" text="Current">
+                <content>
+<!--                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"-->
+<!--                                style="-fx-background-color: white;">-->
+<!--                        <children>-->
+<!--                            <Pane layoutX="-5.0" layoutY="10.0" prefHeight="60.0" prefWidth="824.0">-->
+<!--                                <children>-->
+<!--                                    <Button layoutX="394.0" layoutY="10.0" mnemonicParsing="false" onAction="#onSearch"-->
+<!--                                            prefHeight="33.0" prefWidth="77.0" text="Search"/>-->
+<!--                                    <ImageView fitHeight="25.0" fitWidth="24.0" layoutX="777.0" layoutY="17.0"-->
+<!--                                               pickOnBounds="true" preserveRatio="true">-->
+<!--                                        <image>-->
+<!--                                            <Image url="@../../../asset/image/edit-new-icon-22.png"/>-->
+<!--                                        </image>-->
+<!--                                    </ImageView>-->
+<!--                                    <TextField fx:id="searchInput" layoutX="14.0" layoutY="10.0" prefHeight="34.0"-->
+<!--                                               prefWidth="354.0" promptText="Search Customer Name or Room No ..."/>-->
+<!--                                </children>-->
+<!--                            </Pane>-->
+<!--                        </children>-->
+<!--                    </AnchorPane>-->
+                </content>
+            </Tab>
+            <Tab fx:id="historyTab" text="Booking History">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                </content>
+            </Tab>
+        </tabs>
+    </TabPane>
 
 </AnchorPane>

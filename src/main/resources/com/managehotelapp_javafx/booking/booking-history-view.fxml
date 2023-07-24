@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="813.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.booking.BookingHistoryController">
+    <Pane layoutX="-5.0" prefHeight="60.0" prefWidth="824.0">
+        <children>
+            <Button layoutX="394.0" layoutY="10.0" mnemonicParsing="false" onAction="#onSearch" prefHeight="33.0" prefWidth="77.0" text="Search" />
+            <ImageView fitHeight="25.0" fitWidth="24.0" layoutX="777.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../../../asset/image/edit-new-icon-22.png" />
+                </image>
+            </ImageView>
+            <TextField fx:id="searchInput" layoutX="14.0" layoutY="10.0" prefHeight="34.0" prefWidth="354.0" promptText="Search Customer Name or Room No ..." />
+        </children>
+    </Pane>
+
+    <Pane layoutX="201.0" layoutY="67.0" prefHeight="491.0" prefWidth="833.0">
+        <children>
+            <TableView fx:id="tableBookingView" layoutX="-201.0" layoutY="-19.0" prefHeight="496.0" prefWidth="813.0">
+                <columns>
+                    <TableColumn fx:id="roomNo" prefWidth="60.0" style="-fx-alignment: center" text="Room No" />
+                    <TableColumn fx:id="customerName" prefWidth="143.0" style="-fx-alignment: center" text="Customer Name" />
+                    <TableColumn fx:id="phoneNumber" prefWidth="127.0" style="-fx-alignment: center" text="Phone Number" />
+                    <TableColumn fx:id="bookingDate" prefWidth="156.0" style="-fx-alignment: center" text="Booking Date" />
+                    <TableColumn fx:id="checkinDate" prefWidth="141.0" style="-fx-alignment: center" text="Check-in Date" />
+                    <TableColumn fx:id="statusBooking" prefWidth="96.0" style="-fx-alignment: center" text="Status" />
+                    <TableColumn fx:id="action" prefWidth="89.0" style="-fx-alignment: center" text="Action" />
+                </columns>
+            </TableView>
+        </children>
+    </Pane>
+
+    <Pane fx:id="bookingDetail" layoutX="2.0" layoutY="-18.0">
+        <fx:include source="booking-detail-view.fxml" />
+    </Pane>
+</AnchorPane>

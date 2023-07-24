@@ -23,4 +23,18 @@ public class BookingRoomRepositoryImp extends AbstractRepository<BookingRoomEnti
         parameters.put("id", id);
         return query("FROM BookingRoomEntity WHERE id = :id", parameters).get(0);
     }
+
+    @Override
+    public List<BookingRoomEntity> findByStatusBookingIdIsIn(List<Integer> listId) {
+        Map<String, Object> parameters = new HashMap<>();
+        StringBuilder sb = new StringBuilder();
+        for(int i = 0; i < listId.size(); i++) {
+            parameters.put("id" + i, listId.get(i));
+            sb.append(":id").append(i);
+            if(i < listId.size() - 1){
+                sb.append(", ");
+            }
+        }
+        return query("FROM BookingRoomEntity WHERE status_booking_id IN (" + sb + ")", parameters);
+    }
 }

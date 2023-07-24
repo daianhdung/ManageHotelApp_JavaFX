@@ -6,6 +6,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class FXMLLoaderConstant {
 
@@ -53,7 +54,7 @@ public class FXMLLoaderConstant {
     }
 
     public static FXMLLoader getBookingDetailScene(){
-        return new FXMLLoader(HelloApplication.class.getResource("booking-detail-view.fxml"));
+        return new FXMLLoader(HelloApplication.class.getResource("booking/booking-detail-view.fxml"));
     }
     public static FXMLLoader getRoomScene(){
         return new FXMLLoader(HelloApplication.class.getResource("room-view.fxml"));
@@ -70,4 +71,17 @@ public class FXMLLoaderConstant {
     public static FXMLLoader getInvoiceScene(){
         return new FXMLLoader(HelloApplication.class.getResource("invoice-view.fxml"));
     }
+
+    public static FXMLLoader getBookingTabScene(Tab tab, String fxmlPath){
+        FXMLLoader loader = new FXMLLoader();
+
+        try {
+            AnchorPane anchorPane = FXMLLoader.load(HelloApplication.class.getResource(fxmlPath));
+            tab.setContent(anchorPane);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return loader;
+    }
+
 }

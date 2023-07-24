@@ -26,6 +26,10 @@ public class BookingRoomEntity {
     @JoinColumn(name = "room_id")
     private RoomEntity room;
 
+    @ManyToOne
+    @JoinColumn(name = "status_booking_id")
+    private StatusBookingEntity statusBooking;
+
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "bookingRoom")
     private Set<BookingServiceEntity> bookingServiceEntities;
 
@@ -35,6 +39,13 @@ public class BookingRoomEntity {
     @Column(name = "payment", columnDefinition = "integer default 0")
     private int payment;
 
+    public StatusBookingEntity getStatusBooking() {
+        return statusBooking;
+    }
+
+    public void setStatusBooking(StatusBookingEntity statusBooking) {
+        this.statusBooking = statusBooking;
+    }
     public int getId() {
         return id;
     }
