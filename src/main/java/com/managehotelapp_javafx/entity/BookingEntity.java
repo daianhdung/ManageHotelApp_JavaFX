@@ -192,4 +192,9 @@ public class BookingEntity {
     public void setBookingRoomEntities(Set<BookingRoomEntity> bookingRoomEntities) {
         this.bookingRoomEntities = bookingRoomEntities;
     }
+
+    public BookingDTO getDTO()
+    {
+        
+    }
 }
