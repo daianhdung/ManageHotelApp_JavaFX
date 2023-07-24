@@ -2,6 +2,7 @@ package com.managehotelapp_javafx.repository.imp;
 
 import com.managehotelapp_javafx.dto.BookingDTO;
 import com.managehotelapp_javafx.entity.BookingRoomEntity;
+import com.managehotelapp_javafx.entity.RoomEntity;
 import com.managehotelapp_javafx.repository.BookingRoomRepository;
 
 import java.util.ArrayList;
@@ -22,5 +23,19 @@ public class BookingRoomRepositoryImp extends AbstractRepository<BookingRoomEnti
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("id", id);
         return query("FROM BookingRoomEntity WHERE id = :id", parameters).get(0);
+    }
+
+    @Override
+    public BookingRoomEntity findByIdInvoice(int idInv) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("invoice_id", idInv);
+        return query("FROM BookingRoomEntity WHERE invoice_id = :invoice_id", parameters).get(0);
+    }
+
+    @Override
+    public List<BookingRoomEntity> findRoomByIdBooking(int idBooking) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("booking_id", idBooking);
+        return query("FROM BookingRoomEntity WHERE booking_id = :booking_id", parameters);
     }
 }

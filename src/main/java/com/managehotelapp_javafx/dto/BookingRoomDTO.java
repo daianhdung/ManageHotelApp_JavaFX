@@ -1,6 +1,8 @@
 package com.managehotelapp_javafx.dto;
 
-public class BookingRoomDTO{
+import java.util.List;
+
+public class BookingRoomDTO {
 
     private int id;
 
@@ -20,6 +22,36 @@ public class BookingRoomDTO{
 
     private String email;
     private String specialRequest;
+
+    private int roomId;
+    private int invoiceID;
+
+    public int getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
+    }
+
+    public int getInvoiceID() {
+        return invoiceID;
+    }
+
+    public void setInvoiceID(int invoiceID) {
+        this.invoiceID = invoiceID;
+    }
+
+    public int getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(int bookingId) {
+        this.bookingId = bookingId;
+    }
+
+    private int bookingId;
+
 
     public int getId() {
         return id;
@@ -116,4 +148,6 @@ public class BookingRoomDTO{
     public void setStatus(String status) {
         this.status = status;
     }
+
+
 }

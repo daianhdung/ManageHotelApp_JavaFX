@@ -2,10 +2,12 @@ package com.managehotelapp_javafx.services.imp;
 
 import com.managehotelapp_javafx.dto.BookingDTO;
 import com.managehotelapp_javafx.dto.BookingRoomDTO;
+import com.managehotelapp_javafx.dto.RoomDTO;
 import com.managehotelapp_javafx.entity.BookingRoomEntity;
 import com.managehotelapp_javafx.repository.BookingRoomRepository;
 import com.managehotelapp_javafx.repository.imp.BookingRoomRepositoryImp;
 import com.managehotelapp_javafx.services.BookingRoomService;
+import com.managehotelapp_javafx.services.RoomService;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ import java.util.List;
 public class BookingRoomServiceImp implements BookingRoomService {
 
     BookingRoomRepository bookingRoomRepository = new BookingRoomRepositoryImp();
+    RoomService roomService = new RoomServiceImp();
 
     @Override
     public List<BookingRoomDTO> getAllBookingsRoom() {
@@ -67,5 +70,23 @@ public class BookingRoomServiceImp implements BookingRoomService {
         return bookingRoomDTO;
     }
 
+    @Override
+    public BookingRoomEntity getBookingRoomByIdInvoice(int idInv) {
+
+        return bookingRoomRepository.findByIdInvoice(idInv);
+    }
+
+    @Override
+    public List<RoomDTO> getRoomByIdBooking(int idBooking) {
+        List<RoomDTO> roomDTOList = new ArrayList<>();
+       List<BookingRoomEntity> bookingRoomEntityList=  bookingRoomRepository.findRoomByIdBooking(idBooking);
+        bookingRoomEntityList.forEach(bookingRoomEntity -> {
+            RoomDTO roomDTO = roomService.getRoomById(bookingRoomEntity.getRoom().getId());
+
+            roomDTOList.add(roomDTO);
+        });
+
+        return roomDTOList;
+    }
 
 }

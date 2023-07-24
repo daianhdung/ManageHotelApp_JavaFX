@@ -300,8 +300,6 @@ public class CustomerController implements Initializable {
             customerTableScene.setVisible(false);
             customerDetailScene.setVisible(true);
             getCustomerDetailScene(cell.getTableRow().getItem());
-//            System.out.println(cell.getTableRow().getItem().toString());
-//            System.out.println(cell.getTableRow().getItem().getFullName());
         });
         return cell;
     }
