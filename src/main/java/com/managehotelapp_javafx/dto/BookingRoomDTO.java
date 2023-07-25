@@ -28,7 +28,6 @@ public class BookingRoomDTO {
 
     private int bookingId;
 
-
     public int getRoomId() {
         return roomId;
     }
@@ -52,7 +51,6 @@ public class BookingRoomDTO {
     public void setBookingId(int bookingId) {
         this.bookingId = bookingId;
     }
-
 
     public int getId() {
         return id;

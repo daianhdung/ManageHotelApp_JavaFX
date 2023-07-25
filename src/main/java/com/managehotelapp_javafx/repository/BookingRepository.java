@@ -13,6 +13,4 @@ public interface BookingRepository extends GenericRepository<BookingEntity> {
     BookingEntity findBookingById (int idBooking);
 
     boolean updateBooking(BookingEntity bookingEntity);
-
-
 }

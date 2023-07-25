@@ -28,6 +28,7 @@
         </font>
     </Button>
 
+
     <Button fx:id="btnInvoice" alignment="CENTER" layoutY="287.0" mnemonicParsing="false" onAction="#onInvoiceScene" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #00CCFF;" text="INVOICE" textFill="WHITE">
         <font>
             <Font name="System Bold" size="15.0" />

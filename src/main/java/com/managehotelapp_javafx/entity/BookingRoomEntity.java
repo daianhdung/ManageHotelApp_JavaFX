@@ -47,7 +47,6 @@ public class BookingRoomEntity {
     public void setStatusBooking(StatusBookingEntity statusBooking) {
         this.statusBooking = statusBooking;
     }
-
     public int getId() {
         return id;
     }

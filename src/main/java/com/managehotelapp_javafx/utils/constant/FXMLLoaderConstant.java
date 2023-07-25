@@ -66,10 +66,6 @@ public class FXMLLoaderConstant {
     }
 
     
-    public static FXMLLoader getGuestInfoScene(){
-        return new FXMLLoader(HelloApplication.class.getResource("guest-info-view.fxml"));
-    }
-    
     public static FXMLLoader getInvoiceScene(){
         return new FXMLLoader(HelloApplication.class.getResource("invoice-view.fxml"));
     }
