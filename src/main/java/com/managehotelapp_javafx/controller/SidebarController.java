@@ -6,10 +6,12 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,30 +21,28 @@ import java.util.ResourceBundle;
 public class SidebarController implements Initializable {
 
     @FXML
-    private Button btnHome;
-    @FXML
     private Button btnBooking;
-    @FXML
-    private Button btnLogout;
-
-    private Stage primaryStage;
-    private FXMLLoader fxmlLoader;
-    @FXML
-    private boolean isManager;
 
     @FXML
-    private Button btnRevenue;
+    private Button btnHome;
 
-    @FXML
-    private Button btnAddUser;
-    @FXML
-    private Button btn_room;
     @FXML
     private Button btnInvoice;
 
     @FXML
-    private Button btnData;
+    private Button btnLogout;
 
+    @FXML
+    private Button btnRevenue;
+    @FXML
+    private Button btnRoom;
+
+    private Stage primaryStage;
+    private FXMLLoader fxmlLoader = FXMLLoaderConstant.getRoomScene();
+    @FXML
+    private boolean isManager;
+    @FXML
+    private Button btnData;
 
     @FXML
     private void onBooking(Event event) {
@@ -72,8 +72,6 @@ public class SidebarController implements Initializable {
             }
         }
     }
-    
-    
 
     @FXML
     private void onHomeScene() {
@@ -96,16 +94,6 @@ public class SidebarController implements Initializable {
             throw new RuntimeException(e);
         }
     }
-    @FXML
-    private void onGuestInfoScene() {
-        primaryStage = (Stage) btnHome.getScene().getWindow();
-        fxmlLoader = FXMLLoaderConstant.getGuestInfoScene();
-        try {
-            primaryStage.setScene(new Scene(fxmlLoader.load()));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
     
     @FXML
     private void OnRoom() {
@@ -117,8 +105,6 @@ public class SidebarController implements Initializable {
              throw new RuntimeException(e);
          }
     }
-    
-    
 
     @FXML
     private void onDataScene() {
@@ -147,8 +133,17 @@ public class SidebarController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        isManager = SessionUser.getInstance().getRole().equals("Role Manager");
-//        btnRevenue.setVisible(isManager);
-//        btnUser.setVisible(isManager);
+        isManager = SessionUser.getInstance().getRole().equals("Role Manager");
+        btnRevenue.setVisible(true);
+
+//        String buttonHoverStyle = " ;-fx-background-color: #33B5E5; -fx-text-fill: white; -fx-border-color: white;";
+//        for (Node node : paneMaintbns.getChildren()) {
+//            if (node instanceof Button) {
+//                Button button = (Button) node;
+//                String currentStyle = button.getStyle();
+//                button.setOnMouseEntered(e -> button.setStyle(currentStyle+buttonHoverStyle));
+//                button.setOnMouseExited(e -> button.setStyle(currentStyle));
+//            }
+//        }
     }
 }

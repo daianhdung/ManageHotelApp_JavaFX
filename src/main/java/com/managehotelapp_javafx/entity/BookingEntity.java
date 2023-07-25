@@ -1,5 +1,6 @@
 package com.managehotelapp_javafx.entity;
 
+import com.managehotelapp_javafx.dto.BookingDTO;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -9,7 +10,6 @@ import java.util.Set;
 @Entity
 @Table(name = "booking")
 public class BookingEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -53,15 +53,13 @@ public class BookingEntity {
     @Column(name = "special_request", length = 1000)
     private String specialRequest;
 
-
-
-
     @OneToMany(mappedBy = "booking", fetch = FetchType.EAGER)
     private Set<BookingRoomEntity> bookingRoomEntities;
 
     @CreationTimestamp
     @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT now()")
     private Timestamp createdAt;
+
 
     public int getId() {
         return id;
@@ -167,8 +165,6 @@ public class BookingEntity {
         this.specialRequest = specialRequest;
     }
 
-
-
     public Timestamp getCreatedAt() {
         return createdAt;
     }
@@ -184,4 +180,6 @@ public class BookingEntity {
     public void setBookingRoomEntities(Set<BookingRoomEntity> bookingRoomEntities) {
         this.bookingRoomEntities = bookingRoomEntities;
     }
+
+
 }

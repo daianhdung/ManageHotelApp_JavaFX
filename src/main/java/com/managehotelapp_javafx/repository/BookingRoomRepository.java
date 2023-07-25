@@ -11,8 +11,8 @@ public interface BookingRoomRepository extends GenericRepository<BookingRoomEnti
     BookingRoomEntity findById(int id);
 
     List<BookingRoomEntity> findByStatusBookingIdIsIn(List<Integer> listId);
-  
+
     BookingRoomEntity findByIdInvoice(int idInv);
-  
+
     List<BookingRoomEntity> findRoomByIdBooking (int idBooking);
 }

@@ -20,7 +20,7 @@ public class ConnectDB {
 
                 Properties settings = new Properties();
                 settings.put(Environment.DRIVER, "org.postgresql.Driver");
-           
+
                 settings.put(Environment.URL, "jdbc:postgresql://dpg-cimjn7l9aq07op9n1if0-a.singapore-postgres.render.com/manager_hotel_javafx");
                 settings.put(Environment.USER, "daidung");
                 settings.put(Environment.PASS,"h7nF4ML0dMuzu2tWrlrWBm8OpCKsXnI3");

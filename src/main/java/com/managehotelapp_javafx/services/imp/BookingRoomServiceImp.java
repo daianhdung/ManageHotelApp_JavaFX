@@ -85,8 +85,8 @@ public class BookingRoomServiceImp implements BookingRoomService {
         return bookingRoomRepository.findByIdInvoice(idInv);
     }
 
-
     @Override
+
     public List<RoomDTO> getRoomByIdBooking(int idBooking) {
         List<RoomDTO> roomDTOList = new ArrayList<>();
        List<BookingRoomEntity> bookingRoomEntityList=  bookingRoomRepository.findRoomByIdBooking(idBooking);
