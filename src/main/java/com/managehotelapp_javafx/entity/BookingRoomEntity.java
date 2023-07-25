@@ -1,5 +1,6 @@
 package com.managehotelapp_javafx.entity;
 
+import com.managehotelapp_javafx.dto.BookingRoomDTO;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -46,6 +47,7 @@ public class BookingRoomEntity {
     public void setStatusBooking(StatusBookingEntity statusBooking) {
         this.statusBooking = statusBooking;
     }
+
     public int getId() {
         return id;
     }
@@ -101,4 +103,5 @@ public class BookingRoomEntity {
     public void setPayment(int payment) {
         this.payment = payment;
     }
+
 }

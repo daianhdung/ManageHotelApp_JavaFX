@@ -1,4 +1,6 @@
 package com.managehotelapp_javafx.services;
+import com.managehotelapp_javafx.dto.*;
+import com.managehotelapp_javafx.entity.BookingEntity;
 
 import com.managehotelapp_javafx.dto.BookingDTO;
 import com.managehotelapp_javafx.dto.BookingRoomDTO;

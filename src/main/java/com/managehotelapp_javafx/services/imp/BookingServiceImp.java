@@ -3,9 +3,6 @@ package com.managehotelapp_javafx.services.imp;
 import com.managehotelapp_javafx.dto.BookingDTO;
 import com.managehotelapp_javafx.dto.BookingServiceDTO;
 import com.managehotelapp_javafx.entity.BookingEntity;
-import com.managehotelapp_javafx.entity.BookingRoomEntity;
-import com.managehotelapp_javafx.entity.BookingServiceEntity;
-import com.managehotelapp_javafx.entity.ServiceEntity;
 import com.managehotelapp_javafx.repository.BookingRepository;
 import com.managehotelapp_javafx.repository.BookingServiceRepository;
 import com.managehotelapp_javafx.repository.imp.BookingRepositoryImp;
@@ -42,6 +39,4 @@ public class BookingServiceImp implements BookingService {
 
         return list;
     }
-
-
 }

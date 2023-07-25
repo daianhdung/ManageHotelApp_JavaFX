@@ -44,6 +44,14 @@ public class FXMLLoaderConstant {
         return new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
     }
 
+    public static FXMLLoader getRoomScene() {
+        return new FXMLLoader(HelloApplication.class.getResource("room-view.fxml"));
+    }
+
+    public static FXMLLoader getRoomDetailScene() {
+        return new FXMLLoader(HelloApplication.class.getResource("roomdetail-view.fxml"));
+    }
+
     public static FXMLLoader getUserScene(){
         return new FXMLLoader(HelloApplication.class.getResource("user-table-view.fxml"));
     }
@@ -56,13 +64,7 @@ public class FXMLLoaderConstant {
     public static FXMLLoader getBookingDetailScene(){
         return new FXMLLoader(HelloApplication.class.getResource("booking/booking-detail-view.fxml"));
     }
-    public static FXMLLoader getRoomScene(){
-        return new FXMLLoader(HelloApplication.class.getResource("room-view.fxml"));
-    }
-    
-    public static FXMLLoader getRoomDetailScene(){
-        return new FXMLLoader(HelloApplication.class.getResource("room-detail-view.fxml"));
-    }
+
     
     public static FXMLLoader getGuestInfoScene(){
         return new FXMLLoader(HelloApplication.class.getResource("guest-info-view.fxml"));

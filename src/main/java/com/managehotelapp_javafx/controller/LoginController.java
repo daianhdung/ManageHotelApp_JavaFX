@@ -45,13 +45,14 @@ public class LoginController {
     void onLogin(ActionEvent event) {
         String username = usernameTxt.getText();
         String password = passwordTxt.getText();
-
         if(checkAllTextField()){
             try{
                 boolean checkLogin = userService.checkLogin(username,password);
                 if (checkLogin){
                     Stage primaryStage = (Stage) btnLogin.getScene().getWindow();
                     try {
+                        primaryStage.setX(150); // Set X coordinate
+                        primaryStage.setY(50); // Set Y coordinate
                         primaryStage.setScene(new Scene(FXMLLoaderConstant.getHomeScene().load()));
                     } catch (IOException e) {
                         throw new RuntimeException(e);

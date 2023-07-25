@@ -1,6 +1,23 @@
 package com.managehotelapp_javafx.dto;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 public class RoomDTO {
+
+    public Set<String> getRoomList() {
+        return roomList;
+    }
+
+    public void setRoomList(Set<String> roomList) {
+        this.roomList = roomList;
+    }
+    private final static RoomDTO INSTANCE = new RoomDTO();
+    public static RoomDTO getInstance() {
+        return INSTANCE;
+    }
+    private Set<String> roomList = new HashSet<>();
 
     private int id;
     private String roomNo;
