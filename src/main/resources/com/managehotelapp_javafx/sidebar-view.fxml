@@ -1,48 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-<Pane prefHeight="483.0" prefWidth="210.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.SidebarController">
+<Pane prefHeight="700" prefWidth="210.0" styleClass="sidebar-color" stylesheets="@booking/global-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.SidebarController">
+   <children>
+      <Pane layoutX="-5.0" layoutY="-2.0" prefHeight="270.0" prefWidth="221.0">
+         <children>
+            <Button fx:id="btnHome" layoutX="26.0" layoutY="24.0" mnemonicParsing="false" onAction="#onHomeScene" prefHeight="38.0" prefWidth="156.0" styleClass="nav-sidebar" text=" Home" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnInvoice" layoutX="32.0" layoutY="176.0" mnemonicParsing="false" onAction="#onInvoiceScene" prefHeight="38.0" prefWidth="150.0" styleClass="nav-sidebar" text="   Invoice" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnData" layoutX="32.0" layoutY="138.0" mnemonicParsing="false" onAction="#onDataScene" prefHeight="38.0" prefWidth="150.0" styleClass="nav-sidebar" text="       User Data" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnBooking" layoutX="32.0" layoutY="100.0" mnemonicParsing="false" onAction="#onBooking" prefHeight="38.0" prefWidth="150.0" styleClass="nav-sidebar" text="    Booking" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnRoom" layoutX="32.0" layoutY="62.0" mnemonicParsing="false" onAction="#OnRoom" prefHeight="38.0" prefWidth="150.0" styleClass="nav-sidebar" text="Room" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <Button fx:id="btnRevenue" layoutX="32.0" layoutY="214.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="150.0" styleClass="nav-sidebar" text="     Revenue" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+            <ImageView fitHeight="24" fitWidth="24" layoutX="31.0" layoutY="69.0">
+               <Image url="@../../asset/image/bedroom_sleeping_4602.png" />
+            </ImageView>
+            <ImageView fitHeight="32" fitWidth="32" layoutX="27.0" layoutY="27.0">
+               <Image url="@../../asset/image/7133312.png" />
+            </ImageView>
+            <ImageView fitHeight="28" fitWidth="28" layoutX="29.0" layoutY="105.0">
+               <image>
+                  <Image url="@../../asset/image/edit-new-icon-22.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="28" fitWidth="28" layoutX="29.0" layoutY="143.0">
+               <image>
+                  <Image url="@../../asset/image/users-icon2.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="33.0" layoutY="185.0">
+               <image>
+                  <Image url="@../../asset/image/check-list.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="31.0" layoutY="221.0">
+               <image>
+                  <Image url="@../../asset/image/free-revenue-11-827059.png" />
+               </image>
+            </ImageView>
+<!--            <FontAwesomeIconView fill="WHITE" glyphName="HOME" layoutX="47.0" layoutY="52.0" size="2em" wrappingWidth="12.0" />-->
+<!--            <FontAwesomeIconView fill="WHITE" glyphName="USERS" layoutX="52.0" layoutY="165.0" size="1.5em" wrappingWidth="1.0" />-->
+         </children>
+      </Pane>
+      <Pane layoutX="-6.0" layoutY="265.0" prefHeight="439.0" prefWidth="221.0">
+         <children>
+            <Line endX="65.40000915527344" layoutX="128.0" layoutY="14.0" startX="-100.0" />
+            <Button fx:id="btnLogout" layoutX="39.0" layoutY="380.0" mnemonicParsing="false" onAction="#setBtnLogout" prefHeight="38.0" prefWidth="143.0" styleClass="nav-sidebar" text="Sign out" textFill="WHITE">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Button>
+<!--            <FontAwesomeIconView fill="WHITE" glyphName="SIGN_OUT" layoutX="55.0" layoutY="191.0" size="2em" wrappingWidth="1.0" />-->
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="67.0" layoutY="158.0" prefHeight="31.0" prefWidth="87.0" text="Welcome" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="roleLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="46.0" layoutY="189.0" prefHeight="31.0" prefWidth="131.0" text="Role" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="nameLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="16.0" layoutY="220.0" prefHeight="31.0" prefWidth="186.0" text="Full Name" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="46.0" layoutY="387.0">
+               <image>
+                  <Image url="@../../asset/image/sign_out_icon_172901.png" />
+               </image>
+            </ImageView>
 
-    <Button fx:id="btnHome" alignment="CENTER" layoutY="67.0" mnemonicParsing="false" onAction="#onHomeScene" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #00CCFF;" text="HOME" textFill="WHITE">
-        <font>
-            <Font name="System Bold" size="15.0" />
-        </font>
-    </Button>
 
-    <Button fx:id="btn_room" alignment="CENTER" layoutY="122.0" mnemonicParsing="false" onAction="#OnRoom" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #00CCFF;" text="ROOM" textFill="WHITE">
-        <font>
-            <Font name="System Bold" size="15.0" />
-        </font>
-    </Button>
-    <Button fx:id="btnBooking" alignment="CENTER" layoutY="177.0" mnemonicParsing="false" onAction="#onBooking" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #00CCFF;" text="BOOKING" textFill="WHITE">
-        <font>
-            <Font name="System Bold" size="15.0" />
-        </font>
-    </Button>
-    <Button fx:id="btnData" alignment="CENTER" layoutY="232.0" mnemonicParsing="false" onAction="#onDataScene" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #00CCFF;" text="USER DATA" textFill="WHITE">
-        <font>
-            <Font name="System Bold" size="15.0" />
-        </font>
-    </Button>
-
-
-    <Button fx:id="btnInvoice" alignment="CENTER" layoutY="287.0" mnemonicParsing="false" onAction="#onInvoiceScene" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #00CCFF;" text="INVOICE" textFill="WHITE">
-        <font>
-            <Font name="System Bold" size="15.0" />
-        </font>
-    </Button>
-    <Button fx:id="btnRevenue" alignment="CENTER" layoutY="342.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="210.0" style="-fx-background-color: #00CCFF;" text="REVENUE" textFill="WHITE">
-        <font>
-            <Font name="System Bold" size="15.0" />
-        </font>
-    </Button>
-
-    <Button fx:id="btnLogout" layoutY="432.0" mnemonicParsing="false" onAction="#setBtnLogout" prefHeight="25.0" prefWidth="65.0" style="-fx-background-color: #00CCFF;" text="Log Out" textFill="WHITE">
-        <font>
-            <Font name="System Bold Italic" size="12.0" />
-        </font>
-    </Button>
+         </children>
+      </Pane>
+   </children>
 </Pane>

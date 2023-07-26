@@ -15,8 +15,25 @@
     -fx-background-color: transparent;
 }
 
+.input-field-new {
+    -fx-background-color: transparent;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: #a2cdd8;
+    -fx-padding: 2;
+    -fx-font-size: 14;
+    -fx-font-weight: 600;
+    -fx-prompt-text-fill: #CCCCCC;
+    -fx-text-fill: #fff; /* Red color */
+}
+
+.input-field-new:focused  {
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #FF4081;
+    -fx-background-color: transparent;
+}
+
 .text-area-field {
--fx-background-color: transparent;
+    -fx-background-color: transparent;
     -fx-border-width: 1 1 1 1;
     -fx-border-color: #00CCFF;
     -fx-padding: 2;
@@ -24,10 +41,24 @@
     -fx-text-fill: black;
     -fx-font-weight: 700;
     -fx-prompt-text-fill: #CCCCCC;
+    -fx-text-fill: #FF0000; /* Red color */
 }
 
 .text-area-field:focused  {
     -fx-border-width: 1 1 1 1;
     -fx-border-color: #FF4081;
     -fx-background-color: transparent;
+}
+
+.form-login{
+    -fx-background-color: linear-gradient(to bottom, rgba(39, 99, 113, 0.8), rgba(63, 114, 125, 0.2));
+}
+
+.sidebar-color {
+    -fx-background-color: linear-gradient(from 30% 30% to 100% 100%, #3f6e88, #39a59e);
+}
+
+.nav-sidebar{
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
 }
