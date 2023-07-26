@@ -9,6 +9,7 @@ module com.managehotelapp_javafx {
     requires java.sql;
     requires java.naming;
     requires jbcrypt;
+    requires de.jensd.fx.glyphs.fontawesome;
 
     opens com.managehotelapp_javafx to javafx.fxml;
     exports com.managehotelapp_javafx;

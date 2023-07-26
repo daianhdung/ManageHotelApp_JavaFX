@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -21,21 +22,9 @@ import java.util.ResourceBundle;
 public class SidebarController implements Initializable {
 
     @FXML
-    private Button btnBooking;
-
+    private Button btnBooking ,btnHome ,btnInvoice ,btnLogout ,btnRevenue, btnRoom;
     @FXML
-    private Button btnHome;
-
-    @FXML
-    private Button btnInvoice;
-
-    @FXML
-    private Button btnLogout;
-
-    @FXML
-    private Button btnRevenue;
-    @FXML
-    private Button btnRoom;
+    private Label nameLabel, roleLabel;
 
     private Stage primaryStage;
     private FXMLLoader fxmlLoader = FXMLLoaderConstant.getRoomScene();
@@ -97,7 +86,7 @@ public class SidebarController implements Initializable {
     
     @FXML
     private void OnRoom() {
-    	 primaryStage = (Stage) btnHome.getScene().getWindow();
+    	 primaryStage = (Stage) btnRoom.getScene().getWindow();
          fxmlLoader = FXMLLoaderConstant.getRoomScene();
          try {
              primaryStage.setScene(new Scene(fxmlLoader.load()));
@@ -134,6 +123,8 @@ public class SidebarController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         isManager = SessionUser.getInstance().getRole().equals("Role Manager");
+        roleLabel.setText(isManager ? "Manager" : "Receptionist");
+        nameLabel.setText(SessionUser.getInstance().getFullName());
         btnRevenue.setVisible(true);
 
 //        String buttonHoverStyle = " ;-fx-background-color: #33B5E5; -fx-text-fill: white; -fx-border-color: white;";

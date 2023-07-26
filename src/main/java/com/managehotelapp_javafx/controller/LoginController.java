@@ -53,7 +53,7 @@ public class LoginController {
                     try {
                         primaryStage.setX(150); // Set X coordinate
                         primaryStage.setY(50); // Set Y coordinate
-                        primaryStage.setScene(new Scene(FXMLLoaderConstant.getHomeScene().load()));
+                        primaryStage.setScene(new Scene(FXMLLoaderConstant.getHomeScene(). load()));
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
