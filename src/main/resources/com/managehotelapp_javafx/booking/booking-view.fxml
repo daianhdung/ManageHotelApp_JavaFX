@@ -5,39 +5,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700" prefWidth="1200" style="-fx-background-color: #00CCFF;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.BookingController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700" prefWidth="1200" stylesheets="@global-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.BookingController">
 
     <Pane layoutX="-1.0" prefHeight="558.0" prefWidth="210.0">
         <fx:include fx:id="sidebar" source="../sidebar-view.fxml" />
     </Pane>
-    <TabPane layoutX="220.0" prefHeight="558.0" prefWidth="818.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <TabPane layoutX="209.0" prefHeight="700.0" prefWidth="991.0" stylesheets="@global-style.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="209.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
-            <Tab fx:id="currentTab" text="Current">
+            <Tab fx:id="currentTab" onSelectionChanged="#onCurrentBooking" text="Current">
                 <content>
-<!--                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"-->
-<!--                                style="-fx-background-color: white;">-->
-<!--                        <children>-->
-<!--                            <Pane layoutX="-5.0" layoutY="10.0" prefHeight="60.0" prefWidth="824.0">-->
-<!--                                <children>-->
-<!--                                    <Button layoutX="394.0" layoutY="10.0" mnemonicParsing="false" onAction="#onSearch"-->
-<!--                                            prefHeight="33.0" prefWidth="77.0" text="Search"/>-->
-<!--                                    <ImageView fitHeight="25.0" fitWidth="24.0" layoutX="777.0" layoutY="17.0"-->
-<!--                                               pickOnBounds="true" preserveRatio="true">-->
-<!--                                        <image>-->
-<!--                                            <Image url="@../../../asset/image/edit-new-icon-22.png"/>-->
-<!--                                        </image>-->
-<!--                                    </ImageView>-->
-<!--                                    <TextField fx:id="searchInput" layoutX="14.0" layoutY="10.0" prefHeight="34.0"-->
-<!--                                               prefWidth="354.0" promptText="Search Customer Name or Room No ..."/>-->
-<!--                                </children>-->
-<!--                            </Pane>-->
-<!--                        </children>-->
-<!--                    </AnchorPane>-->
                 </content>
             </Tab>
-            <Tab fx:id="historyTab" text="Booking History">
+            <Tab fx:id="historyTab" onSelectionChanged="#onBookingHistory" text="Booking History">
                 <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+<!--                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />-->
                 </content>
             </Tab>
         </tabs>

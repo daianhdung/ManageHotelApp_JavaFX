@@ -13,6 +13,9 @@ public class BookingRoomDTO {
     private String bookingDate;
     private String checkinDate;
 
+    private String identity;
+    private String bookingAgent;
+
     private int numAdult;
 
     private int numChildren;
@@ -27,6 +30,20 @@ public class BookingRoomDTO {
     private int invoiceID;
 
     private int bookingId;
+
+    private int totalExpenses;
+
+    private int lengthOfStay;
+
+    private int deposit;
+
+    public int getDeposit() {
+        return deposit;
+    }
+
+    public void setDeposit(int deposit) {
+        this.deposit = deposit;
+    }
 
     public int getRoomId() {
         return roomId;
@@ -148,5 +165,35 @@ public class BookingRoomDTO {
         this.status = status;
     }
 
+    public String getIdentity() {
+        return identity;
+    }
 
+    public void setIdentity(String identity) {
+        this.identity = identity;
+    }
+
+    public String getBookingAgent() {
+        return bookingAgent;
+    }
+
+    public void setBookingAgent(String bookingAgent) {
+        this.bookingAgent = bookingAgent;
+    }
+
+    public int getTotalExpenses() {
+        return totalExpenses;
+    }
+
+    public void setTotalExpenses(int totalExpenses) {
+        this.totalExpenses = totalExpenses;
+    }
+
+    public int getLengthOfStay() {
+        return lengthOfStay;
+    }
+
+    public void setLengthOfStay(int lengthOfStay) {
+        this.lengthOfStay = lengthOfStay;
+    }
 }

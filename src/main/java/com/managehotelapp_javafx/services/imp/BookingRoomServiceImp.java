@@ -2,11 +2,20 @@ package com.managehotelapp_javafx.services.imp;
 
 import com.managehotelapp_javafx.dto.BookingRoomDTO;
 import com.managehotelapp_javafx.dto.RoomDTO;
+import com.managehotelapp_javafx.entity.BookingEntity;
 import com.managehotelapp_javafx.entity.BookingRoomEntity;
+import com.managehotelapp_javafx.entity.CustomerEntity;
+import com.managehotelapp_javafx.repository.BookingRepository;
 import com.managehotelapp_javafx.repository.BookingRoomRepository;
+import com.managehotelapp_javafx.repository.CustomerRepository;
+import com.managehotelapp_javafx.repository.StatusBookingRepository;
+import com.managehotelapp_javafx.repository.imp.BookingRepositoryImp;
 import com.managehotelapp_javafx.repository.imp.BookingRoomRepositoryImp;
+import com.managehotelapp_javafx.repository.imp.CustomerRepositoryImp;
+import com.managehotelapp_javafx.repository.imp.StatusBookingRepositoryImp;
 import com.managehotelapp_javafx.services.BookingRoomService;
 import com.managehotelapp_javafx.services.RoomService;
+import com.managehotelapp_javafx.utils.enumpackage.BookingStatus;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -19,6 +28,10 @@ import static com.managehotelapp_javafx.utils.constant.StatusConstant.*;
 public class BookingRoomServiceImp implements BookingRoomService {
 
     BookingRoomRepository bookingRoomRepository = new BookingRoomRepositoryImp();
+    StatusBookingRepository statusBookingRepository = new StatusBookingRepositoryImp();
+    CustomerRepository customerRepository = new CustomerRepositoryImp();
+
+    BookingRepository bookingRepository = new BookingRepositoryImp();
     RoomService roomService = new RoomServiceImp();
 
     @Override
@@ -34,6 +47,7 @@ public class BookingRoomServiceImp implements BookingRoomService {
     public BookingRoomDTO getBookingRoomById(int id) {
         BookingRoomEntity bookingRoom = bookingRoomRepository.findById(id);
         BookingRoomDTO bookingRoomDTO = new BookingRoomDTO();
+        bookingRoomDTO.setId(bookingRoom.getId());
         bookingRoomDTO.setRoomNo(bookingRoom.getRoom().getRoomNumber());
         bookingRoomDTO.setCustomerName(bookingRoom.getBooking().getCustomer().getFullName());
 
@@ -56,6 +70,10 @@ public class BookingRoomServiceImp implements BookingRoomService {
         bookingRoomDTO.setEmail(bookingRoom.getBooking().getCustomer().getEmail());
         bookingRoomDTO.setPhoneNumber(bookingRoom.getBooking().getCustomer().getPhone());
         bookingRoomDTO.setSpecialRequest(bookingRoom.getBooking().getSpecialRequest());
+        bookingRoomDTO.setIdentity(bookingRoom.getBooking().getCustomer().getIdentity());
+        bookingRoomDTO.setBookingAgent(bookingRoom.getBooking().getUserEntity().getFullName());
+        bookingRoomDTO.setTotalExpenses(bookingRoom.getPayment());
+        bookingRoomDTO.setDeposit(bookingRoom.getBooking().getDeposit());
 
         return bookingRoomDTO;
     }
@@ -81,7 +99,6 @@ public class BookingRoomServiceImp implements BookingRoomService {
     }
 
     public BookingRoomEntity getBookingRoomByIdInvoice(int idInv) {
-
         return bookingRoomRepository.findByIdInvoice(idInv);
     }
 
@@ -92,10 +109,39 @@ public class BookingRoomServiceImp implements BookingRoomService {
        List<BookingRoomEntity> bookingRoomEntityList=  bookingRoomRepository.findRoomByIdBooking(idBooking);
         bookingRoomEntityList.forEach(bookingRoomEntity -> {
             RoomDTO roomDTO = roomService.getRoomById(bookingRoomEntity.getRoom().getId());
-
             roomDTOList.add(roomDTO);
         });
 
         return roomDTOList;
+    }
+
+    @Override
+    public boolean updateBookingRoom(BookingRoomDTO bookingRoomDTO) {
+        try{
+            BookingRoomEntity bookingRoomEntity = bookingRoomRepository.findById(bookingRoomDTO.getId());
+            if(bookingRoomDTO.getStatus().toUpperCase().equals(BookingStatus.CHECKED_IN.toString())){
+                bookingRoomEntity.setStatusBooking(statusBookingRepository.findByIdStatus(BOOKING_CHECKIN));
+            }
+            //Update customer info in booking Detail
+            CustomerEntity customerEntity = customerRepository.findCustomerById(bookingRoomEntity.getBooking().getCustomer().getId());
+            customerEntity.setFullName(bookingRoomDTO.getCustomerName());
+            customerEntity.setIdentity(bookingRoomDTO.getIdentity());
+            customerEntity.setPhone(bookingRoomDTO.getPhoneNumber());
+            customerEntity.setEmail(bookingRoomDTO.getEmail());
+            customerRepository.update(customerEntity);
+            //Update booking info in booking Detail
+            BookingEntity bookingEntity = bookingRepository.findBookingById(bookingRoomEntity.getBooking().getId());
+            bookingEntity.setNumAdult(bookingRoomDTO.getNumAdult());
+            bookingEntity.setNumChildren(bookingRoomDTO.getNumChildren());
+            bookingEntity.setDeposit(bookingRoomDTO.getDeposit());
+            bookingEntity.setSpecialRequest(bookingRoomDTO.getSpecialRequest());
+            bookingRepository.update(bookingEntity);
+
+            bookingRoomRepository.update(bookingRoomEntity);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+
     }
 }

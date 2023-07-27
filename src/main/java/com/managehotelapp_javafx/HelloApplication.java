@@ -1,6 +1,8 @@
 package com.managehotelapp_javafx;
 
 import com.managehotelapp_javafx.config.ConnectDB;
+import com.managehotelapp_javafx.repository.RoomFacilityRepository;
+import com.managehotelapp_javafx.repository.imp.RoomFacilityRepositoryImp;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -23,6 +25,9 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Image image = new Image(Objects.requireNonNull(getClass().getResource("/asset/image/logo_hotel_stage.png")).toExternalForm());
+
+        RoomFacilityRepository repository = new RoomFacilityRepositoryImp();
+        System.out.println(repository.findAll());
 
         stage.setTitle("Hotel Management System");
         stage.getIcons().add(image);

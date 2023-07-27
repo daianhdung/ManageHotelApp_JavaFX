@@ -22,6 +22,17 @@ public class RoomFacilityEntity {
     @JoinColumn(name = "room_id", insertable = false, updatable = false)
     private RoomEntity room;
 
+    @Override
+    public String toString() {
+        return "RoomFacilityEntity{" +
+                "roomId=" + roomId +
+                ", facilityId=" + facilityId +
+                ", number=" + number +
+                ", room=" + room +
+                ", facility=" + facility +
+                '}';
+    }
+
     @ManyToOne
     @JoinColumn(name = "facility_id", insertable = false, updatable = false)
     private FacilityEntity facility;
