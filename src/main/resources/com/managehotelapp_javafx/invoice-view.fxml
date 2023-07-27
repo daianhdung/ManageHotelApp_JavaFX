@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -14,29 +16,33 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700" prefWidth="1200" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.InvoiceController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700" prefWidth="1200" stylesheets="@booking/global-style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.InvoiceController">
 
    <children>
       <BorderPane fx:id="invoiceTableScene" layoutX="202.0" prefHeight="558.0" prefWidth="831.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="202.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <AnchorPane prefHeight="46.0" prefWidth="815.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="103.0" prefWidth="998.0" BorderPane.alignment="CENTER">
                <children>
-                  <TextField fx:id="searchInput" layoutX="30.0" layoutY="11.0" prefHeight="25.0" prefWidth="361.0" promptText="Search ID Invoice..." />
-                  <Button fx:id="searchBtn" layoutX="398.0" layoutY="11.0" mnemonicParsing="false" onAction="#onSearch" prefHeight="24.0" prefWidth="83.0" text="Search" />
+                  <TextField fx:id="searchInput" layoutX="30.0" layoutY="52.0" prefHeight="28.0" prefWidth="467.0" promptText="Search ID Invoice..." />
+                  <Button fx:id="searchBtn" layoutX="558.0" layoutY="50.0" mnemonicParsing="false" onAction="#onSearch" prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #488290; -fx-background-radius: 90;" text="Search" textFill="WHITE" />
+                  <TabPane layoutX="-19.0" layoutY="2.0" prefHeight="119.0" prefWidth="1014.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab />
+                    </tabs>
+                  </TabPane>
                </children>
             </AnchorPane>
          </top>
          <center>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="606.0" prefWidth="998.0" BorderPane.alignment="CENTER">
                <children>
-                  <TableView fx:id="invoiceTableView" prefHeight="510.0" prefWidth="827.0">
+                  <TableView fx:id="invoiceTableView" layoutY="-18.0" prefHeight="591.0" prefWidth="997.0">
                      <columns>
                         <TableColumn fx:id="idInvCol" prefWidth="113.0" text="ID Invoice" />
-                        <TableColumn fx:id="customerCol" prefWidth="172.0" text="Customer" />
-                        <TableColumn fx:id="amountCol" prefWidth="151.0" text="Amount" />
-                        <TableColumn fx:id="createdAtCol" prefWidth="215.0" text="Created At" />
-                        <TableColumn fx:id="actionCol" prefWidth="175.0" text="Action" />
+                        <TableColumn fx:id="customerCol" prefWidth="254.16241455078125" text="Customer" />
+                        <TableColumn fx:id="amountCol" prefWidth="209.83761596679688" text="Amount" />
+                        <TableColumn fx:id="createdAtCol" prefWidth="207.6920166015625" text="Created At" />
+                        <TableColumn fx:id="actionCol" prefWidth="206.27618408203125" text="Action" />
                      </columns>
                   </TableView>
                </children>
@@ -49,11 +55,11 @@
                <top>
                   <AnchorPane prefHeight="71.0" prefWidth="832.0" BorderPane.alignment="CENTER">
                      <children>
-                        <GridPane layoutX="34.0" layoutY="20.0" prefHeight="145.0" prefWidth="832.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <GridPane layoutX="34.0" layoutY="20.0" prefHeight="71.0" prefWidth="999.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <columnConstraints>
                             <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="203.07376098632812" minWidth="0.0" prefWidth="177.32080078125" />
-                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="367.41790771484375" minWidth="0.0" prefWidth="94.67919921875" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="413.22601318359375" minWidth="0.0" prefWidth="392.31781005859375" />
+                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="392.0167236328125" minWidth="0.0" prefWidth="392.0167236328125" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="413.22601318359375" minWidth="0.0" prefWidth="389.9832763671875" />
                           </columnConstraints>
                           <rowConstraints>
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -162,8 +168,8 @@
                               </AnchorPane>
                               <GridPane prefHeight="36.0" prefWidth="414.0" GridPane.columnIndex="2">
                                 <columnConstraints>
-                                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="224.28973388671875" minWidth="10.0" prefWidth="216.7254638671875" />
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="209.1612548828125" minWidth="10.0" prefWidth="197.2745361328125" />
+                                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="232.96051025390625" minWidth="10.0" prefWidth="232.96051025390625" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="209.1612548828125" minWidth="10.0" prefWidth="176.03948974609375" />
                                 </columnConstraints>
                                 <rowConstraints>
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -181,10 +187,10 @@
                                     </Label>
                                  </children>
                               </GridPane>
-                              <GridPane GridPane.columnIndex="2" GridPane.rowIndex="1">
+                              <GridPane prefHeight="34.0" prefWidth="409.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                 <columnConstraints>
-                                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="218.90435791015625" minWidth="10.0" prefWidth="217.64031982421875" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="198.94384765625" minWidth="10.0" prefWidth="191.35968017578125" />
                                 </columnConstraints>
                                 <rowConstraints>
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -225,17 +231,17 @@
                      <children>
                         <TableView fx:id="roomTableView" prefHeight="200.0" prefWidth="454.0" GridPane.rowIndex="1">
                           <columns>
-                            <TableColumn fx:id="roomNumberCol" prefWidth="199.54476928710938" text=" Room  No." />
-                            <TableColumn fx:id="roomTypeCol" prefWidth="432.4552307128906" text="Room Type" />
-                              <TableColumn fx:id="roomPriceCol" prefWidth="192.910400390625" text="Price" />
+                            <TableColumn fx:id="roomNumberCol" prefWidth="399.71771240234375" text=" Room  No." />
+                            <TableColumn fx:id="roomTypeCol" prefWidth="356.2867431640625" text="Room Type" />
+                              <TableColumn fx:id="roomPriceCol" prefWidth="243.71319580078125" text="Price" />
                           </columns>
                         </TableView>
                         <TableView fx:id="serviceTableView" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="3">
                           <columns>
-                            <TableColumn fx:id="serviceNameCol" prefWidth="304.5948486328125" text="Service Name" />
-                              <TableColumn fx:id="servicePriceCol" prefWidth="181.40509033203125" text="Price" />
-                              <TableColumn fx:id="serviceQtyCol" prefWidth="147.50311279296875" text="Q'ty" />
-                              <TableColumn fx:id="serviceAmountCol" prefWidth="191.0" text="Amount" />
+                            <TableColumn fx:id="serviceNameCol" prefWidth="441.5158996582031" text="Service Name" />
+                              <TableColumn fx:id="servicePriceCol" prefWidth="168.48410034179688" text="Price" />
+                              <TableColumn fx:id="serviceQtyCol" prefWidth="145.02276611328125" text="Q'ty" />
+                              <TableColumn fx:id="serviceAmountCol" prefWidth="243.97723388671875" text="Amount" />
                           </columns>
                         </TableView>
                         <Label prefHeight="17.0" prefWidth="65.0" text="* ROOM">
@@ -258,8 +264,8 @@
                           <columnConstraints>
                               <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="636.0" minWidth="10.0" prefWidth="169.0" />
                               <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="636.0" minWidth="10.0" prefWidth="206.0" />
-                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="636.0" minWidth="10.0" prefWidth="254.0" />
-                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="409.0" minWidth="10.0" prefWidth="235.0" />
+                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="636.0" minWidth="10.0" prefWidth="332.24127197265625" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="409.0" minWidth="10.0" prefWidth="223.75872802734375" />
                           </columnConstraints>
                           <rowConstraints>
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -281,7 +287,7 @@
                <bottom>
                   <AnchorPane prefHeight="51.0" prefWidth="832.0" BorderPane.alignment="CENTER">
                      <children>
-                        <GridPane layoutX="159.0" layoutY="-31.0" prefHeight="59.0" prefWidth="832.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <GridPane layoutX="-1.0" layoutY="-44.0" prefHeight="95.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-44.0">
                           <columnConstraints>
                               <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -291,7 +297,7 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Button fx:id="backBtn" maxWidth="150.0" mnemonicParsing="false" onAction="#onBack" text="Back" />
+                              <Button fx:id="backBtn" maxWidth="150.0" mnemonicParsing="false" onAction="#onBack" style="-fx-background-color: #488290; -fx-background-radius: 90;" text="Back" textFill="WHITE" />
 <!--                              <Button fx:id="deleteBtn" maxWidth="150.0" mnemonicParsing="false" text="Delete" visible="false" GridPane.columnIndex="1" />-->
 <!--                              <Button fx:id="printBtn" maxWidth="150.0" mnemonicParsing="false" text="Print" GridPane.columnIndex="2" />-->
                            </children>

@@ -22,6 +22,7 @@ public class SidebarController implements Initializable {
     private Button btnBooking ,btnHome ,btnInvoice ,btnLogout ,btnRevenue, btnRoom;
     @FXML
     private Label nameLabel, roleLabel;
+
     private Stage primaryStage;
     private FXMLLoader fxmlLoader = FXMLLoaderConstant.getRoomScene();
     @FXML
@@ -122,6 +123,7 @@ public class SidebarController implements Initializable {
         roleLabel.setText(isManager ? "Manager" : "Receptionist");
         nameLabel.setText(SessionUser.getInstance().getFullName());
         btnRevenue.setVisible(isManager);
+
 
 //        String buttonHoverStyle = " ;-fx-background-color: #33B5E5; -fx-text-fill: white; -fx-border-color: white;";
 //        for (Node node : paneMaintbns.getChildren()) {

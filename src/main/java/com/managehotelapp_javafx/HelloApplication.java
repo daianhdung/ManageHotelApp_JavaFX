@@ -5,7 +5,6 @@ import com.managehotelapp_javafx.repository.RoomFacilityRepository;
 import com.managehotelapp_javafx.repository.imp.RoomFacilityRepositoryImp;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;

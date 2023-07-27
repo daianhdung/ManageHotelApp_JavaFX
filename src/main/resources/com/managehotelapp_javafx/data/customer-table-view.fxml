@@ -17,38 +17,38 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="813.0" style="-fx-background-color: #00CCFF;" stylesheets="@../booking/global-style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.CustomerController">
-   <AnchorPane fx:id="customerTableScene" layoutX="-1.0" maxWidth="835.0" prefHeight="480.0" prefWidth="813.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<AnchorPane layoutX="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="991.0" style="-fx-background-color: DFE3E5;" stylesheets="@../booking/global-style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.CustomerController">
+   <AnchorPane fx:id="customerTableScene" maxWidth="835.0" prefHeight="480.0" prefWidth="813.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
-          <Pane prefHeight="46.0" prefWidth="815.0" style="-fx-background-color: white;">
+          <Pane prefHeight="73.0" prefWidth="1000.0" style="-fx-background-color: white;">
               <children>
-                  <TextField fx:id="searchInput" layoutX="30.0" layoutY="11.0" prefHeight="25.0" prefWidth="361.0" promptText="Search id, name, email..." />
-                  <Button fx:id="searchBtn" layoutX="398.0" layoutY="11.0" mnemonicParsing="false" onAction="#onSearch" prefHeight="24.0" prefWidth="83.0" text="Search" />
+                  <TextField fx:id="searchInput" layoutX="30.0" layoutY="22.0" prefHeight="28.0" prefWidth="467.0" promptText="Search id, name, email..." />
+                  <Button fx:id="searchBtn" layoutX="558.0" layoutY="20.0" mnemonicParsing="false" onAction="#onSearch" prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #488290; -fx-background-radius: 90;" text="Search" textFill="WHITE" />
               </children>
           </Pane>
-            <TableView fx:id="customerTableView" layoutY="40.0" prefHeight="489.0" prefWidth="819.0">
+            <TableView fx:id="customerTableView" layoutX="-6.0" layoutY="70.0" prefHeight="628.0" prefWidth="1005.0">
                 <columns>
                     <TableColumn fx:id="indexCol" prefWidth="37.0" style="-fx-alignment: center" text="#" />
-                    <TableColumn fx:id="fullnameCol" prefWidth="96.11744689941406" style="-fx-alignment: center" text="Fullname" />
-               <TableColumn fx:id="mobileCol" prefWidth="95.97123718261719" style="-fx-alignment: center" text="Mobile" />
-               <TableColumn fx:id="identityCol" prefWidth="96.93380737304688" style="-fx-alignment: center" text="Identity" />
-               <TableColumn fx:id="passportCol" prefWidth="116.92510986328125" style="-fx-alignment: center" text="Passport Number" />
-                    <TableColumn fx:id="typeCol" prefWidth="75.84161376953125" style="-fx-alignment: center" text="Type" />
-               <TableColumn fx:id="emailCol" prefWidth="137.15838623046875" style="-fx-alignment: center" text="Email" />
-                    <TableColumn fx:id="countryCol" prefWidth="74.593994140625" style="-fx-alignment: center" text="Country" />
-                    <TableColumn fx:id="actionCol" prefWidth="84.93817138671875" style="-fx-alignment: center" text="Action" />
+                    <TableColumn fx:id="fullnameCol" prefWidth="157.31732559204102" style="-fx-alignment: center" text="Fullname" />
+               <TableColumn fx:id="mobileCol" prefWidth="89.04804992675781" style="-fx-alignment: center" text="Mobile" />
+               <TableColumn fx:id="identityCol" prefWidth="83.00689697265625" style="-fx-alignment: center" text="Identity" />
+               <TableColumn fx:id="passportCol" prefWidth="110.99313354492188" style="-fx-alignment: center" text="Passport Number" />
+                    <TableColumn fx:id="typeCol" prefWidth="90.10574340820312" style="-fx-alignment: center" text="Type" />
+               <TableColumn fx:id="emailCol" prefWidth="149.8653564453125" style="-fx-alignment: center" text="Email" />
+                    <TableColumn fx:id="countryCol" prefWidth="137.0960693359375" style="-fx-alignment: center" text="Country" />
+                    <TableColumn fx:id="actionCol" prefWidth="123.09100341796875" style="-fx-alignment: center" text="Action" />
                 </columns>
             </TableView>
       </children>
    </AnchorPane>
-   <AnchorPane fx:id="customerDetailScene" layoutX="-3.0" prefHeight="527.0" prefWidth="819.0" style="-fx-background-color: white;" visible="false">
+   <AnchorPane fx:id="customerDetailScene" prefHeight="700.0" prefWidth="991.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
-         <BorderPane layoutX="239.0" layoutY="139.0" prefHeight="558.0" prefWidth="835.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <BorderPane layoutX="239.0" layoutY="139.0" prefHeight="702.0" prefWidth="1012.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
-               <GridPane prefHeight="48.0" prefWidth="835.0" BorderPane.alignment="CENTER">
+               <GridPane prefHeight="48.0" prefWidth="997.0" BorderPane.alignment="CENTER">
                  <columnConstraints>
-                   <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="552.3947143554688" minWidth="10.0" prefWidth="543.9274291992188" />
-                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="412.92742919921875" minWidth="10.0" prefWidth="291.07257080078125" />
+                   <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="630.0961303710938" minWidth="10.0" prefWidth="606.374267578125" />
+                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="412.92742919921875" minWidth="10.0" prefWidth="359.625732421875" />
                  </columnConstraints>
                  <rowConstraints>
                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -59,14 +59,14 @@
                            <Font size="26.0" />
                         </font>
                      </Label>
-                     <GridPane GridPane.columnIndex="1">
+                     <GridPane prefHeight="48.0" prefWidth="443.0" GridPane.columnIndex="1">
                        <columnConstraints>
                          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="261.0177001953125" minWidth="10.0" prefWidth="259.8868408203125" />
                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="202.34588623046875" minWidth="10.0" prefWidth="157.1131591796875" />
                        </columnConstraints>
                        <rowConstraints>
-                         <RowConstraints maxHeight="25.13081932067871" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
-                         <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+                         <RowConstraints maxHeight="29.97011375427246" minHeight="10.0" prefHeight="29.97011375427246" vgrow="SOMETIMES" />
+                         <RowConstraints maxHeight="24.0" minHeight="10.0" prefHeight="18.02988624572754" vgrow="SOMETIMES" />
                        </rowConstraints>
                         <children>
                            <Label prefHeight="20.0" prefWidth="25.0" text="Id  :" textFill="#00ccff">
@@ -101,13 +101,13 @@
                </GridPane>
             </top>
             <center>
-               <GridPane prefHeight="457.0" prefWidth="831.0" styleClass="ds" BorderPane.alignment="CENTER">
+               <GridPane prefHeight="560.0" prefWidth="994.0" styleClass="ds" BorderPane.alignment="CENTER">
                   <columnConstraints>
                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="330.0" minWidth="10.0" prefWidth="44.601104736328125" />
-                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="410.52703857421875" minWidth="10.0" prefWidth="265.3988952636719" />
-                     <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="389.0" minWidth="10.0" prefWidth="243.0362548828125" />
-                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.561767578125" minWidth="10.0" prefWidth="236.3626708984375" />
-                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="330.0" minWidth="10.0" prefWidth="45.6373291015625" />
+                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="410.52703857421875" minWidth="10.0" prefWidth="266.6216735839844" />
+                     <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="389.0" minWidth="10.0" prefWidth="325.3783264160156" />
+                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="494.561767578125" minWidth="10.0" prefWidth="281.4866943359375" />
+                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="330.0" minWidth="10.0" prefWidth="38.93450927734375" />
                   </columnConstraints>
                   <rowConstraints>
                      <RowConstraints maxHeight="132.8345184326172" minHeight="10.0" prefHeight="115.72787475585938" vgrow="SOMETIMES" />
@@ -120,7 +120,7 @@
                         <GridPane.margin>
                            <Insets right="30.0" />
                         </GridPane.margin></TextField>
-                     <TextField fx:id="bookingCountTxt" editable="false" maxWidth="235.0" styleClass="input-field" GridPane.columnIndex="3" />
+                     <TextField fx:id="bookingCountTxt" editable="false" maxWidth="258.0" styleClass="input-field" GridPane.columnIndex="3" />
                      <Label prefHeight="22.0" prefWidth="95.0" text="Booking count:" textFill="#00ccff" GridPane.columnIndex="3">
                         <GridPane.margin>
                            <Insets bottom="50.0" />
@@ -266,7 +266,7 @@
                            <Insets bottom="50.0" />
                         </GridPane.margin>
                      </Label>
-                     <GridPane fx:id="groupGenderBtn1" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane fx:id="groupGenderBtn1" prefHeight="59.0" prefWidth="274.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                         <columnConstraints>
                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -281,7 +281,7 @@
                            <RadioButton fx:id="gender3" mnemonicParsing="false" onAction="#getGender" text="Other" GridPane.columnIndex="2" />
                         </children>
                         <GridPane.margin>
-                           <Insets top="50.0" />
+                           <Insets top="70.0" />
                         </GridPane.margin>
                      </GridPane>
                      <TextField fx:id="phoneTxt" styleClass="input-field" GridPane.columnIndex="2" GridPane.rowIndex="1">
@@ -323,28 +323,28 @@
                </GridPane>
             </center>
             <bottom>
-               <GridPane prefHeight="53.0" prefWidth="835.0" BorderPane.alignment="CENTER">
+               <GridPane prefHeight="94.0" prefWidth="991.0" BorderPane.alignment="CENTER">
                  <columnConstraints>
                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                    <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                  </columnConstraints>
                  <rowConstraints>
-                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                   <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
                  </rowConstraints>
                   <children>
-                     <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#onDelete" prefHeight="25.0" prefWidth="121.0" text="Delete" GridPane.columnIndex="2">
+                     <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#onDelete" prefHeight="25.0" prefWidth="121.0" style="-fx-background-color: #488290; -fx-background-radius: 90;" text="Delete" textFill="WHITE" GridPane.columnIndex="2">
                         <GridPane.margin>
-                           <Insets right="20.0" />
+                           <Insets right="40.0" />
                         </GridPane.margin>
                      </Button>
-                     <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#onSave" prefHeight="25.0" prefWidth="121.0" text="Save" GridPane.columnIndex="1" />
-                     <Button fx:id="backBtn" mnemonicParsing="false" onAction="#onBack" prefHeight="25.0" prefWidth="121.0" text="Back">
+                     <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#onSave" prefHeight="25.0" prefWidth="121.0" style="-fx-background-color: #488290; -fx-background-radius: 90;" text="Save" textFill="WHITE" GridPane.columnIndex="1" />
+                     <Button fx:id="backBtn" mnemonicParsing="false" onAction="#onBack" prefHeight="25.0" prefWidth="121.0" style="-fx-background-color: #488290; -fx-background-radius: 90;" text="Back" textFill="WHITE">
                         <opaqueInsets>
                            <Insets />
                         </opaqueInsets>
                         <GridPane.margin>
-                           <Insets left="20.0" />
+                           <Insets left="40.0" />
                         </GridPane.margin>
                      </Button>
                   </children>

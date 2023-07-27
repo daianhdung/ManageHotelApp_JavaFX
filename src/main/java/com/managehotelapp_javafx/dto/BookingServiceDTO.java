@@ -6,10 +6,9 @@ public class BookingServiceDTO {
 
     private int bookingRoomId;
     private int serviceId;
+    private int quantity;
 
     private String serviceName;
-
-    private int quantity;
 
     private double price;
 

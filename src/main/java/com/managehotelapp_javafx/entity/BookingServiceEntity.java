@@ -24,9 +24,6 @@ public class BookingServiceEntity {
     @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT now()")
     private Timestamp createdAt;
 
-    @Column(name = "quantity")
-    private Integer quantity;
-
     @ManyToOne
     @JoinColumn(name = "booking_room_id", insertable = false, updatable = false)
     private BookingRoomEntity bookingRoom;
@@ -34,6 +31,18 @@ public class BookingServiceEntity {
     @ManyToOne
     @JoinColumn(name = "service_id", insertable = false, updatable = false)
     private ServiceEntity service;
+
+    @Column(name = "quantity")
+    private int quantity;
+
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public int getBookingRoomId() {
         return bookingRoomId;
@@ -83,11 +92,4 @@ public class BookingServiceEntity {
         this.service = service;
     }
 
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
 }

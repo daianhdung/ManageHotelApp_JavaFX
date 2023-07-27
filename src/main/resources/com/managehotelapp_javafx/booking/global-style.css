@@ -82,3 +82,6 @@
     -fx-background-radius: 30;
     -fx-background-color: #6899B6;
 }
+.table-column {
+  -fx-alignment: CENTER;
+}
