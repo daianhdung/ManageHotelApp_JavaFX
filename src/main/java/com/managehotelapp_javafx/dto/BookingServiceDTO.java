@@ -4,6 +4,15 @@ public class BookingServiceDTO {
 
     private int bookingRoomId;
     private int serviceId;
+    private int quantity;
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public int getBookingRoomId() {
         return bookingRoomId;

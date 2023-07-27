@@ -138,6 +138,8 @@ public class InvoiceController implements Initializable {
     ServicesService service = new ServicesServiceImp();
 
 
+
+
     @FXML
     void onSearch() {
         FilteredList<InvoiceDTO> filteredList = new FilteredList<>(invoiceObservableList, p -> true);
@@ -191,7 +193,8 @@ public class InvoiceController implements Initializable {
         int serviceCharge = 0;
         for (BookingServiceDTO bookingServiceDTO: bookingServiceDTOList){
             serviceCharge += (service.findServicesById(bookingServiceDTO.getServiceId()).getPrice()
-                                * service.findServicesById(bookingServiceDTO.getServiceId()).getQuantity());
+                                * bookingServiceDTO.getQuantity());
+
         }
 
         return roomCharge + serviceCharge;
@@ -277,14 +280,14 @@ public class InvoiceController implements Initializable {
         servicePriceCol.setCellValueFactory(cell -> {
             return new SimpleStringProperty(service.findServicesById(cell.getValue().getServiceId()).getPrice() + "");
         });
-//
+
         serviceQtyCol.setCellValueFactory(cell -> {
-            return new SimpleStringProperty(service.findServicesById(cell.getValue().getServiceId()).getQuantity() + "");
+            return new SimpleStringProperty(cell.getValue().getQuantity()+"");
         });
-//
+
         serviceAmountCol.setCellValueFactory(cell -> {
             return new SimpleStringProperty(service.findServicesById(cell.getValue().getServiceId()).getPrice() *
-                    service.findServicesById(cell.getValue().getServiceId()).getQuantity() +"");
+                    cell.getValue().getQuantity() +"");
         });
         serviceTableView.setItems(serviceList);
 

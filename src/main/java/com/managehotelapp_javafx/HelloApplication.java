@@ -3,7 +3,6 @@ package com.managehotelapp_javafx;
 import com.managehotelapp_javafx.config.ConnectDB;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -47,6 +46,9 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+//        launch();
+
+        FacilityRepositoryImp facilityRepositoryImp = new FacilityRepositoryImp();
+        System.out.println(facilityRepositoryImp.getFacilityList().size());
     }
 }
