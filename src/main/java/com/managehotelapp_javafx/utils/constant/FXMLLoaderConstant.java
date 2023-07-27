@@ -82,4 +82,7 @@ public class FXMLLoaderConstant {
         return loader;
     }
 
+    public static FXMLLoader getServiceScene(){
+        return new FXMLLoader(HelloApplication.class.getResource("service-view.fxml"));
+    }
 }

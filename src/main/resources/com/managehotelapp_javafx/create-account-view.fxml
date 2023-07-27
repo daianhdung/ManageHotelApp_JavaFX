@@ -1,135 +1,200 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.RegisterController">
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="991.0" stylesheets="@booking/global-style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.RegisterController">
    <children>
-      <BorderPane prefHeight="648.0" prefWidth="234.0" style="-fx-background-color: #00CCFF;">
+      <BorderPane fx:id="invoiceTableScene" layoutX="2.0" layoutY="10.0" prefHeight="620.0" prefWidth="991.0" style="-fx-background-color: E5E5E5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <AnchorPane prefHeight="103.0" prefWidth="998.0" style="-fx-background-color: E5E5E5;" BorderPane.alignment="CENTER">
+               <children>
+                  <TabPane layoutX="-19.0" layoutY="2.0" prefHeight="119.0" prefWidth="1008.0" style="-fx-background-radius: 90;" tabClosingPolicy="UNAVAILABLE">
+                     <tabs>
+                        <Tab />
+                     </tabs>
+                  </TabPane>
+                  <Label alignment="TOP_CENTER" layoutX="2.0" layoutY="35.0" prefHeight="78.0" prefWidth="983.0" style="-fx-background-color: white; -fx-background-radius: 90;" text="Register" textAlignment="CENTER" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="35.0">
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
+                     <font>
+                        <Font size="42.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </top>
          <center>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-               <image>
-                  <Image url="@../../asset/image/hotel (2) 1.png" />
-               </image>
-            </ImageView>
+            <AnchorPane prefHeight="508.0" prefWidth="995.0" style="-fx-background-color: white; -fx-background-radius: 40;" BorderPane.alignment="CENTER">
+               <children>
+                  <GridPane layoutX="240.0" layoutY="-2.0" prefHeight="501.0" prefWidth="992.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="-2.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="134.10345458984375" minWidth="10.0" prefWidth="67.77237701416016" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="392.0" minWidth="10.0" prefWidth="358.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="302.0069274902344" minWidth="10.0" prefWidth="153.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="328.3724365234375" minWidth="10.0" prefWidth="328.3724365234375" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="191.10345458984375" minWidth="10.0" prefWidth="78.97235107421875" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="113.0" minHeight="10.0" prefHeight="111.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="145.35791015625" minHeight="10.0" prefHeight="114.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="106.77127075195312" minHeight="10.0" prefHeight="83.64208984375" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="90.742919921875" minHeight="10.0" prefHeight="84.22872924804688" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label fx:id="usernameLabel" alignment="TOP_LEFT" maxWidth="-Infinity" prefHeight="36.0" prefWidth="341.0" textFill="#da0d0d" wrapText="true" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets top="70.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <TextField fx:id="usernameTxt" styleClass="input-field" GridPane.columnIndex="1" />
+                        <Label prefHeight="20.0" prefWidth="133.0" text="Password" textFill="#00ccff" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets bottom="70.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label prefHeight="20.0" prefWidth="133.0" text="Fullname" textFill="#00ccff" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets bottom="70.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label prefHeight="20.0" prefWidth="133.0" text="Identity" textFill="#00ccff" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets bottom="70.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label layoutX="75.0" layoutY="13.0" prefHeight="20.0" prefWidth="133.0" text="Email" textFill="#00ccff" GridPane.columnIndex="3">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets bottom="50.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label prefHeight="20.0" prefWidth="133.0" text="Re-enter Password" textFill="#00ccff" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets bottom="70.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label prefHeight="20.0" prefWidth="133.0" text="Gender" textFill="#00ccff" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets bottom="70.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="password1Label" alignment="TOP_LEFT" maxWidth="-Infinity" prefHeight="56.0" prefWidth="355.0" textFill="#da0d0d" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                           </font>
+                           <GridPane.margin>
+                              <Insets top="80.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <TextField fx:id="fullnameTxt" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="identityTxt" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="emailTxt" styleClass="input-field" GridPane.columnIndex="3" />
+                        <Label fx:id="fullnameLabel" alignment="TOP_LEFT" maxWidth="-Infinity" prefHeight="43.0" prefWidth="341.0" textFill="#da0d0d" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets top="70.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="identityLabel" alignment="TOP_LEFT" maxWidth="-Infinity" prefHeight="36.0" prefWidth="341.0" textFill="#da0d0d" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets top="60.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="emailLabel" alignment="TOP_LEFT" maxWidth="-Infinity" prefHeight="43.0" prefWidth="341.0" textFill="#da0d0d" wrapText="true" GridPane.columnIndex="3">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets top="70.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <Label fx:id="password2Label" alignment="TOP_LEFT" maxWidth="-Infinity" prefHeight="43.0" prefWidth="341.0" textFill="#da0d0d" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets top="70.0" />
+                           </GridPane.margin>
+                        </Label>
+                        <GridPane fx:id="groupGenderBtn" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <RadioButton fx:id="gender1" mnemonicParsing="false" onAction="#getGender" text="Male" />
+                              <RadioButton fx:id="gender2" mnemonicParsing="false" onAction="#getGender" text="Female" GridPane.columnIndex="1" />
+                              <RadioButton fx:id="gender3" mnemonicParsing="false" onAction="#getGender" text="Other" GridPane.columnIndex="2" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets top="50.0" />
+                           </GridPane.margin>
+                        </GridPane>
+                        <Button fx:id="btnBack" mnemonicParsing="false" onAction="#onBackHome" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: #488290; -fx-background-radius: 90;" text="Back" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets left="70.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <Button fx:id="signUpBtn" mnemonicParsing="false" onAction="#onSignUp" prefHeight="25.0" prefWidth="159.0" style="-fx-background-color: #488290; -fx-background-radius: 90;" text="Sign up" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                           <GridPane.margin>
+                              <Insets left="70.0" />
+                           </GridPane.margin>
+                        </Button>
+                        <PasswordField fx:id="password1Txt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <PasswordField fx:id="password2Txt" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                     </children>
+                  </GridPane>
+                  <Label layoutX="75.0" layoutY="13.0" prefHeight="20.0" prefWidth="133.0" text="Username" textFill="#00ccff">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
          </center>
       </BorderPane>
-
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="234.0" layoutY="1.0" prefHeight="44.0" prefWidth="365.0" text="Create account" textFill="#00ccff" underline="true">
-
-         <font>
-            <Font size="36.0" />
-         </font>
-      </Label>
-
-      <Label layoutX="300.0" layoutY="53.0" text="Username" textFill="#00ccff" />
-      <TextField fx:id="usernameTxt" layoutX="300.0" layoutY="72.0" prefHeight="26.0" prefWidth="260.0" style="-fx-border-color: #00CCFF;" />
-      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="252.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
-
-         <image>
-            <Image url="@../../asset/image/user 1.png" />
-         </image>
-      </ImageView>
-
-      <Label layoutX="300.0" layoutY="133.0" text="Email" textFill="#00ccff" />
-      <TextField fx:id="emailTxt" layoutX="300.0" layoutY="152.0" prefHeight="26.0" prefWidth="260.0" />
-      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="252.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
-
-         <image>
-            <Image url="@../../asset/image/mail 1.png" />
-         </image>
-      </ImageView>
-
-      <Label layoutX="300.0" layoutY="212.0" text="Password" textFill="#00ccff" />
-      <ImageView fx:id="password1_txt" fitHeight="32.0" fitWidth="32.0" layoutX="252.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true">
-
-         <image>
-            <Image url="@../../asset/image/padlock 1.png" />
-         </image>
-      </ImageView>
-
-      <Label layoutX="300.0" layoutY="297.0" text="Enter the password" textFill="#00ccff" />
-      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="252.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true">
-
-         <image>
-            <Image url="@../../asset/image/padlock (1) 1.png" />
-         </image>
-      </ImageView>
-
-      <Label layoutX="300.0" layoutY="380.0" text="Full Name" textFill="#00ccff" />
-      <TextField fx:id="fullnameTxt" layoutX="300.0" layoutY="399.0" prefHeight="26.0" prefWidth="260.0" />
-      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="252.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true">
-
-         <image>
-            <Image url="@../../asset/image/id-card.png" />
-         </image>
-      </ImageView>
-
-      <Label layoutX="300.0" layoutY="459.0" text="Gender" textFill="#00ccff" />
-      <RadioButton fx:id="gender1" layoutX="316.0" layoutY="485.0" mnemonicParsing="false" onAction="#getGender" text="Male" />
-      <RadioButton fx:id="gender2" layoutX="391.0" layoutY="485.0" mnemonicParsing="false" onAction="#getGender" text="Female" />
-      <RadioButton fx:id="gender3" layoutX="484.0" layoutY="485.0" mnemonicParsing="false" onAction="#getGender" text="Other" />
-      <Label layoutX="300.0" layoutY="532.0" text="Identity" textFill="#00ccff" />
-      <TextField fx:id="identityTxt" layoutX="300.0" layoutY="551.0" prefHeight="26.0" prefWidth="260.0" />
-      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="252.0" layoutY="548.0" pickOnBounds="true" preserveRatio="true">
-
-         <image>
-            <Image url="@../../asset/image/id-card.png" />
-         </image>
-      </ImageView>
-
-      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="252.0" layoutY="478.0" pickOnBounds="true" preserveRatio="true">
-
-         <image>
-            <Image url="@../../asset/image/mars.png" />
-         </image>
-      </ImageView>
-
-      <Button fx:id="signUpBtn" layoutX="448.0" layoutY="597.0" mnemonicParsing="false" onAction="#onSignUp" prefHeight="32.0" prefWidth="94.0" style="-fx-background-color: #00CCFF;" text="Sign up" textFill="WHITE" />
-      <PasswordField fx:id="password1Txt" layoutX="301.0" layoutY="231.0" prefHeight="26.0" prefWidth="260.0" />
-      <PasswordField fx:id="password2Txt" layoutX="300.0" layoutY="316.0" prefHeight="26.0" prefWidth="260.0" />
-      <Label fx:id="usernameLabel" alignment="TOP_LEFT" contentDisplay="TOP" ellipsisString="" layoutX="300.0" layoutY="99.0" prefHeight="34.0" prefWidth="260.0" textFill="#e3320e" visible="false" wrapText="true">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Label>
-      <Label fx:id="emailLabel" alignment="TOP_LEFT" layoutX="300.0" layoutY="179.0" prefHeight="14.0" prefWidth="260.0" textFill="#e3320e" visible="false" wrapText="true">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Label>
-      <Label fx:id="password1Label" alignment="TOP_LEFT" layoutX="301.0" layoutY="258.0" prefHeight="53.0" prefWidth="260.0" textFill="#e3320e" wrapText="true">
-         <font>
-            <Font size="9.0" />
-         </font>
-      </Label>
-      <Label fx:id="password2Label" alignment="TOP_LEFT" layoutX="303.0" layoutY="342.0" prefHeight="14.0" prefWidth="260.0" textFill="#e3320e" visible="false" wrapText="true">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Label>
-      <Label fx:id="fullnameLabel" alignment="TOP_LEFT" layoutX="301.0" layoutY="426.0" prefHeight="14.0" prefWidth="260.0" textFill="#e3320e" visible="false" wrapText="true">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Label>
-      <Label fx:id="identityLabel" alignment="TOP_LEFT" layoutX="300.0" layoutY="578.0" prefHeight="14.0" prefWidth="260.0" textFill="#e3320e" visible="false" wrapText="true">
-         <font>
-            <Font size="10.0" />
-         </font>
-      </Label>
-      <Button fx:id="btnBack" layoutX="293.0" layoutY="597.0" mnemonicParsing="false" onAction="#onBackHome" prefHeight="32.0" prefWidth="94.0" text="Back" textFill="#401e1e" />
-
    </children>
 </AnchorPane>

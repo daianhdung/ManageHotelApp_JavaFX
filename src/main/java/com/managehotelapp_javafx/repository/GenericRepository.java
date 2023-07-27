@@ -14,4 +14,8 @@ public interface GenericRepository<T> {
     boolean update(String hql, Map<String, Object> parameters);
 
     boolean delete(String hql, Map<String, Object> parameters);
+
+    T findByIdEntity(Class<T> entityClass,int id);
+
+    boolean update(T t);
 }

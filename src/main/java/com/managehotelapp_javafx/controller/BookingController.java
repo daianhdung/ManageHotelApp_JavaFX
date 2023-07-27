@@ -10,6 +10,7 @@ import com.managehotelapp_javafx.utils.constant.FXMLLoaderConstant;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,21 +26,16 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
-public class BookingController implements Initializable {
+public class BookingController {
 
     private Stage primaryStage;
     private FXMLLoader fxmlLoader;
-
     @FXML
-    private Tab currentTab;
-    @FXML
-    private Tab historyTab;
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        fxmlLoader = FXMLLoaderConstant.getBookingTabScene(historyTab, "booking/booking-history-view.fxml");
+    private Tab currentTab, historyTab;
+    public void onCurrentBooking(Event e){
         fxmlLoader = FXMLLoaderConstant.getBookingTabScene(currentTab, "booking/current-booking-view.fxml");
     }
-
-
+    public void onBookingHistory(Event e){
+        fxmlLoader = FXMLLoaderConstant.getBookingTabScene(historyTab, "booking/booking-history-view.fxml");
+    }
 }

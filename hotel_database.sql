@@ -84,5 +84,9 @@ VALUES(2, 1);
 INSERT INTO booking_room(booking_id, room_id)
 VALUES(2, 2);
 
+INSERT INTO status_service(description, title)
+VALUES('', 'Available');
 
+INSERT INTO status_service(description, title)
+VALUES('', 'Out of Stock');
 

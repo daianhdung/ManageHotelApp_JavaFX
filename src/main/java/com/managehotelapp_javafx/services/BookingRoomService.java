@@ -19,4 +19,6 @@ public interface BookingRoomService {
     BookingRoomEntity getBookingRoomByIdInvoice(int id);
 
     List<RoomDTO> getRoomByIdBooking (int idBooking);
+
+    boolean updateBookingRoom(BookingRoomDTO bookingRoomDTO);
 }

@@ -1,6 +1,7 @@
 package com.managehotelapp_javafx.mapper;
 
 import com.managehotelapp_javafx.dto.BookingRoomDTO;
+import com.managehotelapp_javafx.entity.BookingEntity;
 import com.managehotelapp_javafx.entity.BookingRoomEntity;
 
 import java.text.SimpleDateFormat;
@@ -20,5 +21,12 @@ public class BookingRoomMapper {
         bookingRoomDTO.setBookingDate(formattedDateTime);
         bookingRoomDTO.setStatus(item.getStatusBooking().getTitle());
         return bookingRoomDTO;
+    }
+
+    public static BookingRoomEntity toBookingRoomDTO(BookingRoomEntity entity, BookingRoomDTO bookingRoomDTO){
+        entity.setId(bookingRoomDTO.getId());
+        entity.setPayment(bookingRoomDTO.getTotalExpenses());
+//        entity.set
+        return entity;
     }
 }

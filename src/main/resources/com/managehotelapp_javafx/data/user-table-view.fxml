@@ -17,31 +17,31 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="813.0" style="-fx-background-color: #00CCFF;" stylesheets="@../booking/global-style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.UserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="991.0" stylesheets="@../booking/global-style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.UserController">
    <AnchorPane fx:id="userTableScene" maxWidth="835.0" prefHeight="540.0" prefWidth="813.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
-          <Pane prefHeight="46.0" prefWidth="815.0" style="-fx-background-color: white;">
+          <Pane prefHeight="73.0" prefWidth="994.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="622.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-3.0" AnchorPane.topAnchor="0.0">
               <children>
-                  <TextField fx:id="searchInput" layoutX="30.0" layoutY="11.0" prefHeight="25.0" prefWidth="361.0" promptText="Search id, name, email..." />
-                  <Button fx:id="searchBtn" layoutX="398.0" layoutY="11.0" mnemonicParsing="false" onAction="#onSearch" prefHeight="24.0" prefWidth="83.0" text="Search" />
-               <Button fx:id="addBtn" layoutX="716.0" layoutY="11.0" mnemonicParsing="false" onAction="#onAdd" prefHeight="24.0" prefWidth="83.0" text="Add User" />
+                  <TextField fx:id="searchInput" layoutX="30.0" layoutY="22.0" prefHeight="28.0" prefWidth="467.0" promptText="Search id, name, email..." />
+                  <Button fx:id="searchBtn" layoutX="558.0" layoutY="20.0" mnemonicParsing="false" onAction="#onSearch" prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #488290; -fx-background-radius: 90;" text="Search" textFill="WHITE" />
+               <Button fx:id="addBtn" layoutX="861.0" layoutY="20.0" mnemonicParsing="false" onAction="#onAdd" prefHeight="32.0" prefWidth="98.0" style="-fx-background-color: #488290; -fx-background-radius: 90;" text="Add User" textFill="WHITE" />
               </children>
           </Pane>
-            <TableView fx:id="userTableView" layoutY="40.0" prefHeight="489.0" prefWidth="813.0">
+            <TableView fx:id="userTableView" layoutY="70.0" prefHeight="620.0" prefWidth="991.0">
                 <columns>
                     <TableColumn fx:id="indexCol" prefWidth="37.0" style="-fx-alignment: center" text="#" />
                     <TableColumn fx:id="idCol" prefWidth="64.0" style="-fx-alignment: center" text="id" />
                     <TableColumn fx:id="usernameCol" prefWidth="114.63092041015625" style="-fx-alignment: center" text="Username" />
                     <TableColumn fx:id="fullnameCol" prefWidth="178.601806640625" style="-fx-alignment: center" text="Fullname" />
-               <TableColumn fx:id="emailCol" prefWidth="151.0" style="-fx-alignment: center" text="Email" />
-                    <TableColumn fx:id="roleCol" prefWidth="116.0" style="-fx-alignment: center" text="Role" />
-                    <TableColumn fx:id="statusCol" minWidth="0.0" prefWidth="66.0" style="-fx-alignment: center" text="Status" />
-                    <TableColumn fx:id="actionCol" prefWidth="83.41461181640625" style="-fx-alignment: center" text="Action" />
+               <TableColumn fx:id="emailCol" prefWidth="216.5445556640625" style="-fx-alignment: center" text="Email" />
+                    <TableColumn fx:id="roleCol" prefWidth="124.4554443359375" style="-fx-alignment: center" text="Role" />
+                    <TableColumn fx:id="statusCol" minWidth="0.0" prefWidth="134.7442626953125" style="-fx-alignment: center" text="Status" />
+                    <TableColumn fx:id="actionCol" prefWidth="117.3726806640625" style="-fx-alignment: center" text="Action" />
                 </columns>
             </TableView>
       </children>
    </AnchorPane>
-   <AnchorPane fx:id="userDetailScene" layoutX="-3.0" prefHeight="527.0" prefWidth="819.0" style="-fx-background-color: white;" visible="false">
+   <AnchorPane fx:id="userDetailScene" layoutX="-3.0" prefHeight="700.0" prefWidth="991.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
          <BorderPane layoutX="239.0" layoutY="139.0" prefHeight="558.0" prefWidth="835.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
@@ -234,28 +234,28 @@
                </GridPane>
             </center>
             <bottom>
-               <GridPane prefHeight="53.0" prefWidth="835.0" BorderPane.alignment="CENTER">
+               <GridPane prefHeight="81.0" prefWidth="994.0" BorderPane.alignment="CENTER">
                  <columnConstraints>
                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                    <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                  </columnConstraints>
                  <rowConstraints>
-                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                   <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
                  </rowConstraints>
                   <children>
-                     <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#onDelete" prefHeight="25.0" prefWidth="121.0" text="Delete" GridPane.columnIndex="2">
+                     <Button fx:id="deleteBtn" mnemonicParsing="false" onAction="#onDelete" prefHeight="25.0" prefWidth="121.0" style="-fx-background-color: #488290; -fx-background-radius: 90;" text="Delete" textFill="WHITE" GridPane.columnIndex="2">
                         <GridPane.margin>
-                           <Insets right="20.0" />
+                           <Insets left="40.0" right="60.0" />
                         </GridPane.margin>
                      </Button>
-                     <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#onSave" prefHeight="25.0" prefWidth="121.0" text="Save" GridPane.columnIndex="1" />
-                     <Button fx:id="backBtn" mnemonicParsing="false" onAction="#onBack" prefHeight="25.0" prefWidth="121.0" text="Back">
+                     <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#onSave" prefHeight="25.0" prefWidth="121.0" style="-fx-background-color: #488290; -fx-background-radius: 90;" text="Save" textFill="WHITE" GridPane.columnIndex="1" />
+                     <Button fx:id="backBtn" mnemonicParsing="false" onAction="#onBack" prefHeight="25.0" prefWidth="121.0" style="-fx-background-color: #488290; -fx-background-radius: 90;" text="Back" textFill="WHITE">
                         <opaqueInsets>
                            <Insets />
                         </opaqueInsets>
                         <GridPane.margin>
-                           <Insets left="20.0" />
+                           <Insets left="60.0" />
                         </GridPane.margin>
                      </Button>
                   </children>

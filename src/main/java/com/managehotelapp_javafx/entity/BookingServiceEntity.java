@@ -32,6 +32,18 @@ public class BookingServiceEntity {
     @JoinColumn(name = "service_id", insertable = false, updatable = false)
     private ServiceEntity service;
 
+    @Column(name = "quantity")
+    private int quantity;
+
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public int getBookingRoomId() {
         return bookingRoomId;
     }
@@ -79,4 +91,5 @@ public class BookingServiceEntity {
     public void setService(ServiceEntity service) {
         this.service = service;
     }
+
 }

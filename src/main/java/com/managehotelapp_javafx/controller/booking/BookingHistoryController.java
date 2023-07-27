@@ -17,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
@@ -32,7 +33,7 @@ public class BookingHistoryController  implements Initializable {
     @FXML
     private TableView<BookingRoomDTO> tableBookingView;
     @FXML
-    private TableColumn<BookingRoomDTO, String> roomNo, customerName, phoneNumber, statusBooking;
+    private TableColumn<BookingRoomDTO, String> roomNo, customerName, phoneNumber, statusBooking, idBookingRoom;
     @FXML
     private TableColumn<BookingRoomDTO, LocalDate> bookingDate, checkinDate;
     @FXML
@@ -50,6 +51,7 @@ public class BookingHistoryController  implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         bookingDetail.setVisible(false);
 
+        idBookingRoom.setCellValueFactory(new PropertyValueFactory<>("id"));
         roomNo.setCellValueFactory(new PropertyValueFactory<>("roomNo"));
         customerName.setCellValueFactory(new PropertyValueFactory<>("customerName"));
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
@@ -94,28 +96,16 @@ public class BookingHistoryController  implements Initializable {
     }
 
     public Button createButtonBack(){
-        Button btnBack = new Button();
-        btnBack.setLayoutX(12.0);
-        btnBack.setLayoutY(34.0);
-        btnBack.setMnemonicParsing(false);
-        btnBack.setPrefHeight(35.0);
-        btnBack.setPrefWidth(38.0);
-        btnBack.setStyle("-fx-background-color: orange;");
+        Button btnBack = new Button("Back");
+        btnBack.setLayoutX(437);
+        btnBack.setLayoutY(585);
+        btnBack.setPrefWidth(126);
+        btnBack.setPrefHeight(44);
+        btnBack.getStyleClass().add("button-normal");
         btnBack.setTextFill(javafx.scene.paint.Color.WHITE);
 
-        ImageView imageView = new ImageView();
-        imageView.setFitHeight(30.0);
-        imageView.setFitWidth(24.0);
-        imageView.setLayoutX(130.0);
-        imageView.setLayoutY(125.0);
-        imageView.setPickOnBounds(true);
-        imageView.setPreserveRatio(true);
-        imageView.setStyle("-fx-background-color: green; -fx-border-color: white;");
-
-        Image image = new Image(getClass().getResourceAsStream("/asset/image/angle_left.png"));
-        imageView.setImage(image);
-
-        btnBack.setGraphic(imageView);
+        Font font = Font.font("Bold", 17);
+        btnBack.setFont(font);
 
         btnBack.setOnAction(item -> {
             bookingDetail.setVisible(false);

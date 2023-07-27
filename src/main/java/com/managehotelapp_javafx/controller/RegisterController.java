@@ -117,8 +117,8 @@ public class RegisterController implements Initializable {
 
         password1Txt.focusedProperty().addListener(((observableValue, oldValue, newValue) -> {
             if (newValue) {
-                password1Label.setText("- Must be at least 8 characters\n" +
-                        "- Must contain at least 1 lowercase/uppercase letter, 1 digit, 1 special character from the set @$!%*?&# ");
+                password1Label.setText("- Must be at least 8 characters, 1 digit\n" +
+                        "- At least 1 lowercase/uppercase letter and 1 special character from the set @$!%*?&# ");
                 password1Label.setWrapText(true);
                 password1Label.visibleProperty().bind(password1Binding.not());
             }

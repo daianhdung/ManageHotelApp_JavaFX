@@ -115,4 +115,33 @@ public class AbstractRepository<T> implements GenericRepository<T> {
             session.close();
         }
     }
+
+    @Override
+    public T findByIdEntity(Class<T> entityClass, int id) {
+        Session session = ConnectDB.getSessionFactory().openSession();
+        try {
+            return session.get(entityClass, id);
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        } finally {
+            session.close();
+        }
+    }
+
+    @Override
+    public boolean update(T t) {
+        Session session = ConnectDB.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            session.update(t);
+            session.getTransaction().commit();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        } finally {
+            session.close();
+        }
+    }
 }
