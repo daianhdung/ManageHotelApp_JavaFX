@@ -105,16 +105,16 @@ public class SidebarController implements Initializable {
 
 
 
-    //    @FXML
-//    private void setBtnRevenue() {
-//        primaryStage = (Stage) btn_home.getScene().getWindow();
-//        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home-view.fxml"));
-//        try {
-//            primaryStage.setScene(new Scene(fxmlLoader.load()));
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+        @FXML
+    private void onRevenue() {
+        primaryStage = (Stage) btnRevenue.getScene().getWindow();
+        fxmlLoader = FXMLLoaderConstant.getRevenueScene();
+        try {
+            primaryStage.setScene(new Scene(fxmlLoader.load()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 
     @Override
