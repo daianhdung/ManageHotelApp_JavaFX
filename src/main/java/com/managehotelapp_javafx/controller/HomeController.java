@@ -1,76 +1,47 @@
 package com.managehotelapp_javafx.controller;
 
+import com.managehotelapp_javafx.services.BookingRoomService;
+import com.managehotelapp_javafx.services.BookingService;
+import com.managehotelapp_javafx.services.imp.BookingRoomServiceImp;
+import com.managehotelapp_javafx.services.imp.BookingServiceImp;
+import com.managehotelapp_javafx.utils.enumpackage.BookingStatus;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.PieChart;
-import javafx.scene.control.Button;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 
-public class HomeController {
+import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ResourceBundle;
 
-    @FXML
-    private Button btn_bookcount;
-
-    @FXML
-    private Button btn_dailyrev;
+public class HomeController implements Initializable {
 
     @FXML
-    private Button btn_guestinfo;
+    private Label reservationCountLabel;
 
     @FXML
-    private Button btn_invoice;
+    private Label checkInLabel;
 
     @FXML
-    private Button btn_room;
+    private Label dateLabel;
 
-    @FXML
-    private PieChart ch_revbysv;
+    BookingRoomService bookingRoomService = new BookingRoomServiceImp();
 
-    @FXML
-    private BarChart<?, ?> chart;
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        dateLabel.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")).toString());
 
-    @FXML
-    private Label lbl_book;
+        int checkInQty = (int) bookingRoomService.getCurrentBookingRoom()
+                .stream().filter(bookingRoomDTO -> bookingRoomDTO.getStatus().toUpperCase().equals(BookingStatus.CHECKED_IN.toString()))
+                .count();
 
-    @FXML
-    private Label lbl_rev;
+        checkInLabel.setText(String.valueOf(checkInQty));
 
-    private Stage primaryStage;
-    private FXMLLoader fxmlLoader;
+        int reservationQty = (int) bookingRoomService.getCurrentBookingRoom()
+                .stream().filter(bookingRoomDTO -> bookingRoomDTO.getStatus().toUpperCase().equals(BookingStatus.RESERVED.toString()))
+                .count();
+        reservationCountLabel.setText(String.valueOf(reservationQty));
 
-//
-//    @FXML
-//    private void setBtn_guestinfo() {
-//        primaryStage = (Stage) btn_home.getScene().getWindow();
-//        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home-view.fxml"));
-//        try {
-//            primaryStage.setScene(new Scene(fxmlLoader.load()));
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
-//    @FXML
-//    private void setBtn_invoice() {
-//        primaryStage = (Stage) btn_home.getScene().getWindow();
-//        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home-view.fxml"));
-//        try {
-//            primaryStage.setScene(new Scene(fxmlLoader.load()));
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
 
-//    @FXML
-//    private void setBtn_room() {
-//        primaryStage = (Stage) btn_home.getScene().getWindow();
-//        fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("home-view.fxml"));
-//        try {
-//            primaryStage.setScene(new Scene(fxmlLoader.load()));
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    }
 }
-
