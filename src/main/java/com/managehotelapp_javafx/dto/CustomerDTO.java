@@ -20,6 +20,16 @@ public class CustomerDTO {
     private String bookingCount;
     private String createdAt;
 
+    public CustomerDTO(){};
+    public CustomerDTO(String fullName, String phone, String email, String address, String passportNo, String identity) {
+        this.fullName = fullName;
+        this.phone = phone;
+        this.email = email;
+        this.address = address;
+        this.passportNo = passportNo;
+        this.identity = identity;
+    }
+
     public String getCreatedAt() {
         return createdAt;
     }

@@ -6,7 +6,8 @@ import com.managehotelapp_javafx.entity.CustomerEntity;
 import com.managehotelapp_javafx.entity.RoomEntity;
 
 import java.util.List;
+import java.util.Set;
 
 public interface RoomDetailService {
-    boolean checkIn(BookingDTO bookingDTO);
+    List<RoomEntity> getRoomListByNames(Set<String> names);
 }

@@ -85,4 +85,9 @@ public class FXMLLoaderConstant {
     public static FXMLLoader getServiceScene(){
         return new FXMLLoader(HelloApplication.class.getResource("service-view.fxml"));
     }
+
+    public static FXMLLoader getCheckInScene(){
+        return new FXMLLoader(HelloApplication.class.getResource("room-checkIn-view.fxml"));
+    }
+
 }
