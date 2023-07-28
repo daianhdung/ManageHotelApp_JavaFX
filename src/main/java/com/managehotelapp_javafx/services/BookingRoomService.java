@@ -20,5 +20,7 @@ public interface BookingRoomService {
 
     List<RoomDTO> getRoomByIdBooking (int idBooking);
 
+    List<BookingRoomDTO> getBookingRoomByIdBooking(int id);
+
     boolean updateBookingRoom(BookingRoomDTO bookingRoomDTO);
 }

@@ -85,4 +85,11 @@ public class FXMLLoaderConstant {
     public static FXMLLoader getServiceScene(){
         return new FXMLLoader(HelloApplication.class.getResource("service-view.fxml"));
     }
+
+    public static FXMLLoader getAllRoomCheckoutTable(){
+        return new FXMLLoader(HelloApplication.class.getResource("checkout/choose-room-table.fxml"));
+    }
+    public static FXMLLoader getCheckoutScene(){
+        return new FXMLLoader(HelloApplication.class.getResource("checkout/submit-checkout-view.fxml"));
+    }
 }

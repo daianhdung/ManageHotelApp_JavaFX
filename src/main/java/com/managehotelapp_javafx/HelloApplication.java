@@ -25,9 +25,6 @@ public class HelloApplication extends Application {
         Scene scene = new Scene(fxmlLoader.load());
         Image image = new Image(Objects.requireNonNull(getClass().getResource("/asset/image/logo_hotel_stage.png")).toExternalForm());
 
-        RoomFacilityRepository repository = new RoomFacilityRepositoryImp();
-        System.out.println(repository.findAll());
-
         stage.setTitle("Hotel Management System");
         stage.getIcons().add(image);
         stage.setScene(scene);

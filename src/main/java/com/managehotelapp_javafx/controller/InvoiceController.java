@@ -132,6 +132,7 @@ public class InvoiceController implements Initializable {
     InvoiceStatusService invoiceStatusService = new InvoiceStatusServiceImp();
     BookingRoomService bookingRoomService = new BookingRoomServiceImp();
     BookingService bookingService = new BookingServiceImp();
+    BookingServicesService bookingServicesService = new BookingServicesServiceImp();
     RoomService roomService = new RoomServiceImp();
     RoomTypeService roomTypeService = new RoomTypeServiceImp();
 
@@ -240,7 +241,7 @@ public class InvoiceController implements Initializable {
 
         // get booking_service
         BookingRoomEntity bookingRoom = bookingRoomService.getBookingRoomByIdInvoice(idInvoice);
-        List<BookingServiceDTO> bookingServiceDTO = bookingService.findBooingServicesByBookingRoomId(bookingRoom.getId());
+        List<BookingServiceDTO> bookingServiceDTO = bookingServicesService.findBooingServicesByBookingRoomId(bookingRoom.getId());
         getRoomServiceTableView(bookingServiceDTO);
 
         // total payment

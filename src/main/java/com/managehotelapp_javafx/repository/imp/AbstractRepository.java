@@ -144,4 +144,20 @@ public class AbstractRepository<T> implements GenericRepository<T> {
             session.close();
         }
     }
+
+    @Override
+    public boolean save(T t) {
+        Session session = ConnectDB.getSessionFactory().openSession();
+        try {
+            session.beginTransaction();
+            session.saveOrUpdate(t);
+            session.getTransaction().commit();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        } finally {
+            session.close();
+        }
+    }
 }

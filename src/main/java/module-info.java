@@ -28,5 +28,7 @@ module com.managehotelapp_javafx {
 
     exports com.managehotelapp_javafx.controller.booking;
     opens com.managehotelapp_javafx.controller.booking to javafx.fxml;
+    exports com.managehotelapp_javafx.controller.checkout;
+    opens com.managehotelapp_javafx.controller.checkout to javafx.fxml;
 
 }

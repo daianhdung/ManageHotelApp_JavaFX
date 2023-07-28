@@ -36,4 +36,12 @@ public class BookingServiceRepositoryImp extends AbstractRepository<BookingServi
     public BookingServiceEntity findBookingServiceByServiceId(String userStatus) {
         return null;
     }
+
+    @Override
+    public boolean deleteBookingService(BookingServiceEntity bookingServiceEntity) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("booking_room_id", bookingServiceEntity.getBookingRoomId());
+        parameters.put("service_id", bookingServiceEntity.getServiceId());
+        return delete("DELETE FROM BookingServiceEntity WHERE booking_room_id = :booking_room_id AND service_id = :service_id", parameters);
+    }
 }

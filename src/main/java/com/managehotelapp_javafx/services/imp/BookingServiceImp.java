@@ -28,19 +28,6 @@ public class BookingServiceImp implements BookingService {
         return bookingRepository.findBookingById(id) ;
     }
 
-    @Override
-    public List<BookingServiceDTO> findBooingServicesByBookingRoomId(int id) {
-        List<BookingServiceDTO> list = new ArrayList<>();
 
-        bookingServiceRepository.getBookingServiceListByBookingId(id).forEach(bookingServiceEntity -> {
-            BookingServiceDTO bookingServiceDTO = new BookingServiceDTO();
-            bookingServiceDTO.setServiceId(bookingServiceEntity.getServiceId());
-            bookingServiceDTO.setQuantity(bookingServiceEntity.getQuantity());
-
-            list.add(bookingServiceDTO);
-        });
-
-        return list;
-    }
 
 }

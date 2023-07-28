@@ -5,6 +5,7 @@ import com.managehotelapp_javafx.dto.RoomDTO;
 import com.managehotelapp_javafx.entity.BookingEntity;
 import com.managehotelapp_javafx.entity.BookingRoomEntity;
 import com.managehotelapp_javafx.entity.CustomerEntity;
+import com.managehotelapp_javafx.mapper.BookingRoomMapper;
 import com.managehotelapp_javafx.repository.BookingRepository;
 import com.managehotelapp_javafx.repository.BookingRoomRepository;
 import com.managehotelapp_javafx.repository.CustomerRepository;
@@ -15,12 +16,16 @@ import com.managehotelapp_javafx.repository.imp.CustomerRepositoryImp;
 import com.managehotelapp_javafx.repository.imp.StatusBookingRepositoryImp;
 import com.managehotelapp_javafx.services.BookingRoomService;
 import com.managehotelapp_javafx.services.RoomService;
+import com.managehotelapp_javafx.utils.constant.DateFormatConstant;
 import com.managehotelapp_javafx.utils.enumpackage.BookingStatus;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 import static com.managehotelapp_javafx.mapper.BookingRoomMapper.toBookingRoomDTO;
 import static com.managehotelapp_javafx.utils.constant.StatusConstant.*;
@@ -51,7 +56,7 @@ public class BookingRoomServiceImp implements BookingRoomService {
         bookingRoomDTO.setRoomNo(bookingRoom.getRoom().getRoomNumber());
         bookingRoomDTO.setCustomerName(bookingRoom.getBooking().getCustomer().getFullName());
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat(DateFormatConstant.DATETIME_FORMAT_PATTERN);
         String formattedDateTime = dateFormat.format(bookingRoom.getBooking().getBookingDate());
         bookingRoomDTO.setBookingDate(formattedDateTime);
 
@@ -64,6 +69,11 @@ public class BookingRoomServiceImp implements BookingRoomService {
             formattedDateTime = dateFormat.format(bookingRoom.getBooking().getActualDateOut());
             bookingRoomDTO.setCheckoutDate(formattedDateTime);
         }
+        //Get length of stay ( now date minus to check in date )
+        Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
+        int dayOfStay = (int) TimeUnit.MILLISECONDS.toDays(currentTimestamp.getTime() - bookingRoom.getBooking().getActualDateIn().getTime());
+        bookingRoomDTO.setLengthOfStay(dayOfStay);
+
         bookingRoomDTO.setStatus(bookingRoom.getStatusBooking().getTitle());
         bookingRoomDTO.setNumAdult(bookingRoom.getBooking().getNumAdult());
         bookingRoomDTO.setNumChildren(bookingRoom.getBooking().getNumChildren());
@@ -74,6 +84,9 @@ public class BookingRoomServiceImp implements BookingRoomService {
         bookingRoomDTO.setBookingAgent(bookingRoom.getBooking().getUserEntity().getFullName());
         bookingRoomDTO.setTotalExpenses(bookingRoom.getPayment());
         bookingRoomDTO.setDeposit(bookingRoom.getBooking().getDeposit());
+        bookingRoomDTO.setBookingId(bookingRoom.getBooking().getId());
+        bookingRoomDTO.setRoomType(bookingRoom.getRoom().getRoomType().getDescription());
+        bookingRoomDTO.setRoomPrice(bookingRoom.getRoom().getRoomType().getPrice());
 
         return bookingRoomDTO;
     }
@@ -103,7 +116,6 @@ public class BookingRoomServiceImp implements BookingRoomService {
     }
 
     @Override
-
     public List<RoomDTO> getRoomByIdBooking(int idBooking) {
         List<RoomDTO> roomDTOList = new ArrayList<>();
        List<BookingRoomEntity> bookingRoomEntityList=  bookingRoomRepository.findRoomByIdBooking(idBooking);
@@ -113,6 +125,13 @@ public class BookingRoomServiceImp implements BookingRoomService {
         });
 
         return roomDTOList;
+    }
+
+    public List<BookingRoomDTO> getBookingRoomByIdBooking(int idBooking) {
+        return bookingRoomRepository.findRoomByIdBooking(idBooking)
+                .stream()
+                .map(BookingRoomMapper::toBookingRoomDTO)
+                .collect(Collectors.toList());
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.managehotelapp_javafx.controller.booking;
 
 import com.managehotelapp_javafx.controller.ServiceController;
+import com.managehotelapp_javafx.controller.checkout.ConfirmCheckoutController;
 import com.managehotelapp_javafx.dto.BookingRoomDTO;
 import com.managehotelapp_javafx.services.BookingRoomService;
 import com.managehotelapp_javafx.services.StatusBookingService;
@@ -16,7 +17,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.stage.Window;
 
 import java.io.IOException;
@@ -61,6 +64,8 @@ public class BookingDetailController  implements Initializable{
         identityText.setText(bookingRoomDTO.getIdentity());
         bookingAgentText.setText(bookingRoomDTO.getBookingAgent());
         depositText.setText(String.valueOf(bookingRoomDTO.getDeposit()));
+        totalExpense.setText(String.valueOf(bookingRoomDTO.getTotalExpenses()));
+        lengthOfStay.setText(String.valueOf(bookingRoomDTO.getLengthOfStay()));
 
         String statusBooking = bookingRoomDTO.getStatus().toUpperCase();
         if(statusBooking.equals(BookingStatus.CHECKED_IN.toString())){
@@ -86,11 +91,23 @@ public class BookingDetailController  implements Initializable{
             btnCheckout.setDisable(true);
         }
         bookingDetail = bookingRoomDTO;
+
     }
 
     @FXML
     void onCheckout(ActionEvent event) {
-
+        primaryStage = new Stage();
+        try{
+            fxmlLoader = FXMLLoaderConstant.getAllRoomCheckoutTable();
+            primaryStage.setScene(new Scene(fxmlLoader.load()));
+            ConfirmCheckoutController controller = fxmlLoader.getController();
+            controller.displayData(bookingDetail.getBookingId());
+            primaryStage.initStyle(StageStyle.UNDECORATED);
+            primaryStage.initModality(Modality.APPLICATION_MODAL);
+            primaryStage.show();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
     @FXML

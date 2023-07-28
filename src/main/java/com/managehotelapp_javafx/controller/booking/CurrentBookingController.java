@@ -95,7 +95,7 @@ public class CurrentBookingController implements Initializable {
     }
 
     public void onSearch(ActionEvent event) {
-
+        System.out.println(123);
     }
 
     public Button createButtonBack(){
