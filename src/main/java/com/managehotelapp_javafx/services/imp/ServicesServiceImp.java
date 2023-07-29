@@ -29,8 +29,14 @@ public class ServicesServiceImp implements ServicesService {
     }
 
     @Override
-    public ServiceEntity findServicesById(int id) {
-        return servicesRepository.findServicesById(id);
+    public ServiceDTO findServicesById(int id) {
+        ServiceEntity serviceEntity = servicesRepository.findServicesById(id);
+        ServiceDTO serviceDTO = new ServiceDTO();
+        serviceDTO.setPrice(serviceEntity.getPrice());
+        serviceDTO.setDescription(serviceEntity.getDescription());
+
+
+        return serviceDTO;
     }
 
 
