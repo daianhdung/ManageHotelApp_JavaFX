@@ -2,6 +2,7 @@ package com.managehotelapp_javafx.services.imp;
 
 import com.managehotelapp_javafx.dto.BookingDTO;
 import com.managehotelapp_javafx.dto.BookingServiceDTO;
+import com.managehotelapp_javafx.dto.ServiceDTO;
 import com.managehotelapp_javafx.entity.BookingEntity;
 import com.managehotelapp_javafx.entity.BookingServiceEntity;
 import com.managehotelapp_javafx.repository.BookingRepository;
@@ -41,6 +42,18 @@ public class BookingServiceImp implements BookingService {
         });
 
         return list;
+    }
+
+    @Override
+    public ServiceDTO findBookingServicesBySerId(int id) {
+        ServiceDTO serviceDTO = new ServiceDTO();
+        int sum =0;
+        for (var bookingSer : bookingServiceRepository.findBookingServiceByServiceId(id)){
+            serviceDTO.setDescription(bookingSer.getService().getDescription());
+            serviceDTO.setQtyConsumed(sum+=bookingSer.getQuantity());
+        }
+
+        return serviceDTO;
     }
 
 }

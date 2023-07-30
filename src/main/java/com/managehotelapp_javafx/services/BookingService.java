@@ -22,4 +22,6 @@ public interface BookingService {
 
     List<BookingServiceDTO> findBooingServicesByBookingRoomId (int id);
 
+    ServiceDTO findBookingServicesBySerId(int id);
+
 }

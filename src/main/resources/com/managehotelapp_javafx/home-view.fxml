@@ -101,16 +101,22 @@
                                  <GridPane layoutX="50.0" layoutY="56.0" prefHeight="73.0" prefWidth="209.0">
                                     <columnConstraints>
                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                     </columnConstraints>
                                     <rowConstraints>
                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                     </rowConstraints>
                                     <children>
-                                       <ImageView fitHeight="49.0" fitWidth="81.0">
+                                       <ImageView fitHeight="35.0" fitWidth="32.0">
                                           <image>
-                                             <Image url="@../../asset/image/check-list.png" />
+                                             <Image url="@../../asset/image/dollar-sign.png" />
                                           </image>
                                        </ImageView>
+                                       <Label fx:id="incomesLabel" text="20" GridPane.columnIndex="1">
+                                          <font>
+                                             <Font size="41.0" />
+                                          </font>
+                                       </Label>
                                     </children>
                                  </GridPane>
                               </children>
@@ -119,16 +125,24 @@
                      </HBox>
                   </children>
                </AnchorPane>
-               <AnchorPane prefHeight="674.0" prefWidth="972.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+               <AnchorPane prefHeight="674.0" prefWidth="972.0" style="-fx-background-color: white;">
                   <VBox.margin>
                      <Insets top="10.0" />
                   </VBox.margin>
                   <children>
-                     <ImageView fitHeight="408.0" fitWidth="760.0" layoutX="114.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                     <ImageView fitHeight="359.0" fitWidth="575.0" layoutX="359.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                         <image>
                            <Image url="@../../asset/image/charts.png" />
                         </image>
                      </ImageView>
+                     <AnchorPane fx:id="storageScene" layoutX="26.0" prefHeight="393.0" prefWidth="297.0" style="-fx-border-color: black; -fx-background-radius: 60; -fx-border-radius: 60;" styleClass="anchor-home" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="26.0">
+                        <children>
+                           <Label alignment="CENTER" layoutX="11.0" layoutY="25.0" prefHeight="67.0" prefWidth="272.0" text="Storage">
+                              <font>
+                                 <Font name="Arial Bold" size="33.0" />
+                              </font>
+                           </Label>
+                        </children></AnchorPane>
                   </children></AnchorPane>
             </children>
             <padding>

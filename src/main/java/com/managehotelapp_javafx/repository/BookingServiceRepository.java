@@ -10,6 +10,6 @@ public interface BookingServiceRepository extends GenericRepository<BookingServi
     List<BookingServiceEntity> getBookingServiceListByBookingId( int id);
     BookingServiceEntity findBookingServiceByIdBookingRoom(int id);
 
-    BookingServiceEntity findBookingServiceByServiceId( String userStatus);
+    List<BookingServiceEntity> findBookingServiceByServiceId( int id);
     
 }

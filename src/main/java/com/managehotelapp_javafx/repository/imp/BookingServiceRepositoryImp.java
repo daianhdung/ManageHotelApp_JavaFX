@@ -33,7 +33,12 @@ public class BookingServiceRepositoryImp extends AbstractRepository<BookingServi
     }
 
     @Override
-    public BookingServiceEntity findBookingServiceByServiceId(String userStatus) {
-        return null;
+    public List<BookingServiceEntity> findBookingServiceByServiceId(int id) {
+
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("service_id", id);
+        List<BookingServiceEntity> result = query("FROM BookingServiceEntity WHERE service_id = :service_id",parameters);
+        return result.isEmpty() ? null : result;
+
     }
 }
