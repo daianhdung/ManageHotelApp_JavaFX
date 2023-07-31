@@ -3,9 +3,12 @@ package com.managehotelapp_javafx.controller;
 import com.managehotelapp_javafx.dto.BookingServiceDTO;
 import com.managehotelapp_javafx.dto.InvoiceDTO;
 import com.managehotelapp_javafx.dto.RoomDTO;
+import com.managehotelapp_javafx.dto.ServiceDTO;
 import com.managehotelapp_javafx.entity.BookingRoomEntity;
 import com.managehotelapp_javafx.services.*;
 import com.managehotelapp_javafx.services.imp.*;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,6 +23,7 @@ import javafx.scene.layout.BorderPane;
 
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -132,6 +136,7 @@ public class InvoiceController implements Initializable {
     InvoiceStatusService invoiceStatusService = new InvoiceStatusServiceImp();
     BookingRoomService bookingRoomService = new BookingRoomServiceImp();
     BookingService bookingService = new BookingServiceImp();
+    BookingServicesService bookingServicesService = new BookingServicesServiceImp();
     RoomService roomService = new RoomServiceImp();
     RoomTypeService roomTypeService = new RoomTypeServiceImp();
 
@@ -148,8 +153,8 @@ public class InvoiceController implements Initializable {
                 String searchKeyword = newValue.toLowerCase();
                 if (newValue.isEmpty() || newValue.isBlank() || newValue == null) return true;
 
-                if (invoiceDTO.getCustomer().toLowerCase().indexOf(searchKeyword) >-1)return true;
-                else if (String.valueOf(invoiceDTO.getId()).toLowerCase().indexOf(searchKeyword) >-1) return true;
+                if (invoiceDTO.getCustomer().toLowerCase().indexOf(searchKeyword) > -1) return true;
+                else if (String.valueOf(invoiceDTO.getId()).toLowerCase().indexOf(searchKeyword) > -1) return true;
                 else return false;
             });
         });
@@ -158,7 +163,6 @@ public class InvoiceController implements Initializable {
         invoiceTableView.setItems(sortedList);
 
     }
-
 
 
     public void showInvoiceTableView() {
@@ -178,23 +182,19 @@ public class InvoiceController implements Initializable {
 
     }
 
-    public int paymentAmount(List<RoomDTO> roomDTOList , List<BookingServiceDTO> bookingServiceDTOList){
+    public int paymentAmount(List<RoomDTO> roomDTOList, List<BookingServiceDTO> bookingServiceDTOList) {
 
         int roomCharge = 0;
 
-        for (RoomDTO roomDTO : roomDTOList){
-            int roomType = Integer.parseInt(roomDTO.getType());
-            roomTypeService.getRoomById(Integer.valueOf(roomType)).getPrice();
-            int roomPrice = roomTypeService.getRoomById(Integer.valueOf(roomType)).getPrice();
-            roomCharge += roomPrice;
+        for (RoomDTO roomDTO : roomDTOList) {
+            roomCharge += roomDTO.getPrice();
         }
 
-
         int serviceCharge = 0;
-        for (BookingServiceDTO bookingServiceDTO: bookingServiceDTOList){
-            serviceCharge += (service.findServicesById(bookingServiceDTO.getServiceId()).getPrice()
-                                * bookingServiceDTO.getQuantity());
 
+        for (BookingServiceDTO bookingServiceDTO : bookingServiceDTOList) {
+            serviceCharge += (bookingServiceDTO.getPrice()
+                    * bookingServiceDTO.getQuantity());
         }
 
         return roomCharge + serviceCharge;
@@ -222,29 +222,54 @@ public class InvoiceController implements Initializable {
 
     public void getInvoiceDetailScene(InvoiceDTO invoiceDTO) {
         int idInvoice = invoiceDTO.getId();
+
         int idBookingRoom = bookingRoomService.getBookingRoomByIdInvoice(idInvoice).getId();
-        String checkInDay = bookingService.getBookingById(idBookingRoom).getActualDateIn().toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-        String checkOunDay = bookingService.getBookingById(idBookingRoom).getActualDateOut().toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        var booking = bookingService.getBookingById(idBookingRoom);
+        String checkInDay = booking.getActualDateIn().toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        String checkOutDay = booking.getActualDateOut().toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+
 
         idBookingLabel.setText(String.valueOf(idBookingRoom));
         createdAtLabel.setText(invoiceDTO.getCreatedAt().toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
         checkInLabel.setText(checkInDay);
-        checkOutLabel.setText(checkOunDay);
+        checkOutLabel.setText(checkOutDay);
         idInvLabel.setText(String.valueOf(invoiceDTO.getId()));
         cusLabel.setText(invoiceDTO.getCustomer());
         totalLabel.setText(String.valueOf(invoiceDTO.getPaymentAmount()));
 
         //get booking_id to show room list
-        List<RoomDTO> roomDTOList = bookingRoomService.getRoomByIdBooking(idBookingRoom);
-        getRoomDetailTableView(roomDTOList);
+
+        List<RoomDTO> roomInvoiceList = new ArrayList<>();
+
+        bookingRoomService.getRoomByIdBooking(idBookingRoom).forEach(roomDTO -> {
+            RoomDTO room = new RoomDTO();
+            var roomTypeDetail = roomService.getRoomById(roomDTO.getId()).getType();
+            room.setRoomNo(roomDTO.getRoomNo());
+            room.setType(roomTypeDetail);
+            room.setPrice(roomTypeService.getRoomById(Integer.parseInt(roomTypeDetail)).getPrice());
+
+            roomInvoiceList.add(room);
+        });
+        getRoomDetailTableView(roomInvoiceList);
 
         // get booking_service
-        BookingRoomEntity bookingRoom = bookingRoomService.getBookingRoomByIdInvoice(idInvoice);
-        List<BookingServiceDTO> bookingServiceDTO = bookingService.findBooingServicesByBookingRoomId(bookingRoom.getId());
-        getRoomServiceTableView(bookingServiceDTO);
+
+        List<BookingServiceDTO> bookingServiceInvList = new ArrayList<>();
+        bookingServicesService.findBooingServicesByBookingRoomId(idBookingRoom).forEach(bookingServiceDTO -> {
+            var serviceDetails = service.findServicesById(bookingServiceDTO.getServiceId());
+
+            BookingServiceDTO bookingService = new BookingServiceDTO();
+            bookingService.setServiceName(serviceDetails.getDescription());
+            bookingService.setPrice(serviceDetails.getPrice());
+            bookingService.setQuantity(bookingServiceDTO.getQuantity());
+
+            bookingServiceInvList.add(bookingService);
+        });
+        getRoomServiceTableView(bookingServiceInvList);
+
 
         // total payment
-        int paymentAmount = paymentAmount(roomDTOList,bookingServiceDTO);
+        int paymentAmount = paymentAmount(roomInvoiceList, bookingServiceInvList);
         totalLabel.setText(String.valueOf(paymentAmount));
 
 
@@ -253,45 +278,30 @@ public class InvoiceController implements Initializable {
 
     }
 
-    public void getRoomDetailTableView(List<RoomDTO> list){
+
+
+    public void getRoomDetailTableView(List<RoomDTO> list) {
         ObservableList<RoomDTO> roomObservableList = FXCollections.observableList(list);
 
-        roomNumberCol.setCellValueFactory(cell -> {
+        roomNumberCol.setCellValueFactory(new PropertyValueFactory<>("roomNo"));
+        roomTypeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
+        roomPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-           return new SimpleStringProperty(cell.getValue().getRoomNo());
-        });
-        roomTypeCol.setCellValueFactory(cell ->{
-            int roomType = Integer.valueOf(roomService.getRoomById(cell.getValue().getId()).getType());
-
-            return new SimpleStringProperty(roomTypeService.getRoomById(roomType).getDescription());
-        });
-        roomPriceCol.setCellValueFactory(cell -> {
-            int roomType = Integer.valueOf(roomService.getRoomById(cell.getValue().getId()).getType());
-            return new SimpleStringProperty(String.valueOf(roomTypeService.getRoomById(roomType).getPrice()));
-        });
         roomTableView.setItems(roomObservableList);
-
     }
 
-    public void getRoomServiceTableView(List<BookingServiceDTO> list){
-        ObservableList<BookingServiceDTO> serviceList = FXCollections.observableArrayList(list);
-        serviceNameCol.setCellValueFactory(cell -> new SimpleStringProperty(service.findServicesById(cell.getValue().getServiceId()).getDescription()));
+    public void getRoomServiceTableView(List<BookingServiceDTO> list) {
+        ObservableList<BookingServiceDTO> serviceList = FXCollections.observableList(list);
 
-        servicePriceCol.setCellValueFactory(cell -> {
-            return new SimpleStringProperty(service.findServicesById(cell.getValue().getServiceId()).getPrice() + "");
-        });
-
-        serviceQtyCol.setCellValueFactory(cell -> {
-            return new SimpleStringProperty(cell.getValue().getQuantity()+"");
-        });
-
+        serviceNameCol.setCellValueFactory(new PropertyValueFactory<>("serviceName"));
+        servicePriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+        serviceQtyCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         serviceAmountCol.setCellValueFactory(cell -> {
-            return new SimpleStringProperty(service.findServicesById(cell.getValue().getServiceId()).getPrice() *
-                    cell.getValue().getQuantity() +"");
+            return new SimpleStringProperty(String.valueOf(cell.getValue().getPrice()
+                    * cell.getValue().getQuantity()));
         });
+
         serviceTableView.setItems(serviceList);
-
-
     }
 
     public void onBack() {

@@ -16,6 +16,16 @@ public class BookingServiceDTO {
 
     private int total;
 
+    private String roomNo;
+
+    public String getRoomNo() {
+        return roomNo;
+    }
+
+    public void setRoomNo(String roomNo) {
+        this.roomNo = roomNo;
+    }
+
     public int getTotal() {
         return total;
     }

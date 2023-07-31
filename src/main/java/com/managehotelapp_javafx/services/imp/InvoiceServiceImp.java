@@ -21,9 +21,8 @@ public class InvoiceServiceImp implements InvoiceService {
 
     InvoiceRepository invRepository = new InvoiceRepositoryImp();
     InvoiceStatusRepository invoiceStatusRepository = new InvoiceStatusRepositoryImp();
-
     CustomerRepository customerRepository = new CustomerRepositoryImp();
-    BookingRoomService bookingRoomService = new BookingRoomServiceImp();
+
     @Override
     public List<InvoiceDTO> getInvoiceDTOList() {
         List<InvoiceDTO> invoiceDTOList = new ArrayList<>();
@@ -60,19 +59,20 @@ public class InvoiceServiceImp implements InvoiceService {
     }
 
     @Override
-    public boolean insertInvoiceDTO(InvoiceDTO invoiceDTO) {
+    public int insertInvoiceDTO(InvoiceDTO invoiceDTO) {
 
         InvoiceEntity invoiceEntity = new InvoiceEntity();
-
-        invoiceEntity.setCustomer(customerRepository.findCustomerById(Integer.parseInt(invoiceDTO.getCustomer())));
+        invoiceEntity.setCustomer(customerRepository.findCustomerById(invoiceDTO.getIdCustomer()));
         invoiceEntity.setCheckoutLate(invoiceDTO.isCheckoutLate());
         invoiceEntity.setPaymentAmount(invoiceDTO.getPaymentAmount());
         invoiceEntity.setPaymentDate(invoiceDTO.getPaymentDate());
         invoiceEntity.setInvoiceStatus(invoiceStatusRepository.findInvStatusByTitle(invoiceDTO.getInvoiceStatus()));
         invoiceEntity.setCreatedAt(invoiceDTO.getCreatedAt());
-
         return invRepository.insertInvoice(invoiceEntity);
     }
+
+
+
 
     @Override
     public boolean deleteInvoiceDTO(int idInvDTO) {
@@ -93,5 +93,4 @@ public class InvoiceServiceImp implements InvoiceService {
 
         return invRepository.updateInvoice(invoiceEntity);
     }
-
 }

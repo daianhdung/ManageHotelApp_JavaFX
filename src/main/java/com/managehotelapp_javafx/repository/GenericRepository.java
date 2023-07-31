@@ -18,4 +18,8 @@ public interface GenericRepository<T> {
     T findByIdEntity(Class<T> entityClass,int id);
 
     boolean update(T t);
+
+    boolean save(T t);
+
+    int saveAndReturnId(T t);
 }

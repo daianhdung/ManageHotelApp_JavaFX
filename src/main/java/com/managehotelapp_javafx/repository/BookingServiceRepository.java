@@ -11,5 +11,9 @@ public interface BookingServiceRepository extends GenericRepository<BookingServi
     BookingServiceEntity findBookingServiceByIdBookingRoom(int id);
 
     BookingServiceEntity findBookingServiceByServiceId( String userStatus);
-    
+
+    boolean deleteBookingService(BookingServiceEntity bookingServiceEntity);
+
+    List<BookingServiceEntity> findBookingServiceByServiceId( int id);
+
 }

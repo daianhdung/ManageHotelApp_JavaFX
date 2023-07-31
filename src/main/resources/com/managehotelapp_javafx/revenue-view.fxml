@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700" prefWidth="1200" stylesheets="@./booking/global-style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.UserDataController">
+   <children>
+      <TabPane layoutX="220.0" prefHeight="558.0" prefWidth="813.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <tabs>
+          <Tab fx:id="cusTab" text="Customers">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;" />
+            </content>
+          </Tab>
+          <Tab fx:id="userTab" text="Users">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+
+    <Pane layoutX="-1.0" prefHeight="558.0" prefWidth="196.0">
+        <fx:include fx:id="sidebar" source="sidebar-view.fxml" />
+    </Pane>
+   <AnchorPane layoutX="208.0" layoutY="87.0" prefHeight="700.0" prefWidth="992.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+         <TabPane layoutX="87.0" layoutY="100.0" prefHeight="700.0" prefWidth="992.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+           <tabs>
+             <Tab text="Monthly">
+               <content>
+                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                           <ImageView fitHeight="540.0" fitWidth="932.0" layoutX="36.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+                              <image>
+                                 <Image url="@../../asset/image/charts.png" />
+                              </image>
+                           </ImageView>
+                        </children>
+                     </AnchorPane>
+               </content>
+             </Tab>
+             <Tab text="Weekly">
+               <content>
+                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+               </content>
+             </Tab>
+               <Tab text="Yearly" />
+               <Tab text="Custom">
+                  <content>
+                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: E5E5E5;">
+                        <children>
+                           <VBox layoutX="257.0" layoutY="147.0" prefHeight="669.0" prefWidth="992.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <children>
+                                 <AnchorPane prefHeight="91.0" prefWidth="972.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+                                    <VBox.margin>
+                                       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                    </VBox.margin>
+                                    <children>
+                                       <DatePicker layoutX="122.0" layoutY="21.0" prefHeight="36.0" prefWidth="249.0" />
+                                       <DatePicker layoutX="444.0" layoutY="20.0" prefHeight="36.0" prefWidth="249.0" />
+                                       <Label layoutX="43.0" layoutY="25.0" text="From">
+                                          <font>
+                                             <Font size="23.0" />
+                                          </font>
+                                       </Label>
+                                       <Label layoutX="394.0" layoutY="24.0" text="To">
+                                          <font>
+                                             <Font size="23.0" />
+                                          </font>
+                                       </Label>
+                                    </children>
+                                 </AnchorPane>
+                                 <AnchorPane prefHeight="556.0" prefWidth="992.0" style="-fx-background-color: white; -fx-background-radius: 50;">
+                                    <VBox.margin>
+                                       <Insets left="10.0" right="10.0" />
+                                    </VBox.margin>
+                                    <children>
+                                       <ImageView fitHeight="485.0" fitWidth="883.0" layoutX="49.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                                          <image>
+                                             <Image url="@../../asset/image/charts.png" />
+                                          </image>
+                                       </ImageView>
+                                    </children>
+                                 </AnchorPane>
+                              </children>
+                           </VBox>
+                        </children>
+                     </AnchorPane>
+                  </content>
+               </Tab>
+           </tabs>
+         </TabPane>
+      </children>
+   </AnchorPane>
+
+</AnchorPane>

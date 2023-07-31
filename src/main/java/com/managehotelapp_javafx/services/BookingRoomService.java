@@ -1,6 +1,7 @@
 package com.managehotelapp_javafx.services;
 
 import com.managehotelapp_javafx.dto.BookingRoomDTO;
+import com.managehotelapp_javafx.dto.InvoiceDTO;
 import com.managehotelapp_javafx.dto.RoomDTO;
 import com.managehotelapp_javafx.entity.BookingRoomEntity;
 
@@ -20,5 +21,10 @@ public interface BookingRoomService {
 
     List<RoomDTO> getRoomByIdBooking (int idBooking);
 
+    List<BookingRoomDTO> getBookingRoomByIdBooking(int id);
+
     boolean updateBookingRoom(BookingRoomDTO bookingRoomDTO);
+
+    boolean checkOutRoom(List<BookingRoomDTO> bookingRoomDTO, InvoiceDTO invoiceDTO);
+
 }

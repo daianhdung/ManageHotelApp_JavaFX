@@ -14,7 +14,7 @@ public class RoomEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToMany(mappedBy = "room")
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
     private Set<BookingRoomEntity> bookingRoomEntities;
 
     @ManyToOne

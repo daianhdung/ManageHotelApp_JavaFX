@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="444.0" prefWidth="361.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.managehotelapp_javafx.controller.checkout.ConfirmCheckoutController">
+    <children>
+        <TableView fx:id="tableView" prefHeight="400.0" prefWidth="370.0">
+            <columns>
+                <TableColumn fx:id="serialCol" prefWidth="46.0" style="-fx-alignment: center" text="#"/>
+                <TableColumn fx:id="roomCol" prefWidth="82.0" style="-fx-alignment: center" text="Room"/>
+                <TableColumn fx:id="customerNameCol" prefWidth="241.0" style="-fx-alignment: center" text="Customer Name"/>
+            </columns>
+        </TableView>
+        <Button fx:id="btnAll" layoutX="14.0" layoutY="405.0" mnemonicParsing="false" onAction="#onCheckoutAll"
+                prefHeight="25.0" prefWidth="90.0" text="Checkout All"/>
+        <Button fx:id="btnCheckout" layoutX="140.0" layoutY="405.0" mnemonicParsing="false" onAction="#onCheckoutOne"
+                prefHeight="25.0" prefWidth="90.0" text="Checkout"/>
+        <Button fx:id="btnCancel" layoutX="266.0" layoutY="405.0" mnemonicParsing="false" onAction="#onCancel"
+                prefHeight="25.0" prefWidth="90.0" text="Cancel"/>
+    </children>
+</AnchorPane>

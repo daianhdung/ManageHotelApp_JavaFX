@@ -14,6 +14,7 @@ public class BookingRoomMapper {
         bookingRoomDTO.setRoomNo(item.getRoom().getRoomNumber());
         bookingRoomDTO.setPhoneNumber(item.getBooking().getCustomer().getPhone());
         bookingRoomDTO.setCustomerName(item.getBooking().getCustomer().getFullName());
+        bookingRoomDTO.setBookingId(item.getBooking().getId());
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String formattedDateTime = dateFormat.format(item.getBooking().getBookingDate());
@@ -23,7 +24,7 @@ public class BookingRoomMapper {
         return bookingRoomDTO;
     }
 
-    public static BookingRoomEntity toBookingRoomDTO(BookingRoomEntity entity, BookingRoomDTO bookingRoomDTO){
+    public static BookingRoomEntity toBookingRoomEntity(BookingRoomEntity entity, BookingRoomDTO bookingRoomDTO){
         entity.setId(bookingRoomDTO.getId());
         entity.setPayment(bookingRoomDTO.getTotalExpenses());
 //        entity.set

@@ -7,7 +7,8 @@ public class BookingRoomDTO {
     private int id;
 
     private String roomNo;
-
+    private String roomType;
+    private int roomPrice;
     private String customerName;
     private String phoneNumber;
     private String bookingDate;
@@ -36,7 +37,44 @@ public class BookingRoomDTO {
     private int lengthOfStay;
 
     private int deposit;
+    private int totalRoomFee;
 
+    private int totalCheckOut;
+
+    //---------------------------------------------------------------- GETTER/SETTER
+
+
+    public int getTotalCheckOut() {
+        return totalCheckOut;
+    }
+
+    public void setTotalCheckOut(int totalCheckOut) {
+        this.totalCheckOut = totalCheckOut;
+    }
+
+    public int getTotalRoomFee() {
+        return totalRoomFee;
+    }
+
+    public void setTotalRoomFee(int totalRoomFee) {
+        this.totalRoomFee = totalRoomFee;
+    }
+
+    public String getRoomType() {
+        return roomType;
+    }
+
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
+    }
+
+    public int getRoomPrice() {
+        return roomPrice;
+    }
+
+    public void setRoomPrice(int roomPrice) {
+        this.roomPrice = roomPrice;
+    }
     public int getDeposit() {
         return deposit;
     }

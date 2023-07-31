@@ -38,20 +38,14 @@
                      <Font size="14.0" />
                   </font>
                </Label>
-               <Label layoutX="225.0" layoutY="20.0" prefHeight="20.0" prefWidth="104.0" text="Total Expenses:" textFill="#00ccff">
-                  <font>
-                     <Font size="14.0" />
-                  </font>
-               </Label>
                <Label fx:id="customerName" layoutX="168.0" layoutY="22.0" />
                <Label fx:id="roomNo" layoutX="168.0" layoutY="52.0" prefHeight="0.0" prefWidth="28.0" />
-               <Label fx:id="totalExpenses" layoutX="329.0" layoutY="22.0" />
-               <Label layoutX="225.0" layoutY="50.0" prefHeight="20.0" prefWidth="104.0" text="New order fee:" textFill="#00ccff">
+               <Label layoutX="225.0" layoutY="50.0" prefHeight="20.0" prefWidth="120.0" text="Total Fee Service" textFill="#00ccff">
                   <font>
                      <Font size="14.0" />
                   </font>
                </Label>
-               <Label fx:id="orderFee" layoutX="329.0" layoutY="52.0" />
+               <Label fx:id="orderFee" layoutX="344.0" layoutY="52.0" prefHeight="17.0" prefWidth="50.0" />
             </children></Pane>
          <Pane layoutX="651.0" layoutY="14.0" prefHeight="672.0" prefWidth="326.0" styleClass="white-radius-section">
             <children>
@@ -60,17 +54,12 @@
                      <Font size="17.0" />
                   </font>
                </Button>
-               <Button fx:id="btnBack" layoutX="174.0" layoutY="556.0" mnemonicParsing="false" onAction="#onBack" prefHeight="44.0" prefWidth="126.0" style="-fx-background-color: #f00;" styleClass="button-normal" text="Back" textFill="WHITE">
+               <Button fx:id="btnBack" layoutX="174.0" layoutY="239.0" mnemonicParsing="false" onAction="#onBack" prefHeight="44.0" prefWidth="126.0" style="-fx-background-color: #f00;" styleClass="button-normal" text="Back" textFill="WHITE">
                   <font>
                      <Font size="17.0" />
                   </font>
                </Button>
                <Button fx:id="btnOrder" layoutX="14.0" layoutY="137.0" mnemonicParsing="false" onAction="#onSave" prefHeight="44.0" prefWidth="126.0" styleClass="button-normal" text="Order" textFill="WHITE">
-                  <font>
-                     <Font size="17.0" />
-                  </font>
-               </Button>
-               <Button fx:id="btnDefault" layoutX="100.0" layoutY="214.0" mnemonicParsing="false" onAction="#onDefault" prefHeight="44.0" prefWidth="126.0" styleClass="button-normal" text="Default" textFill="WHITE">
                   <font>
                      <Font size="17.0" />
                   </font>
@@ -87,7 +76,8 @@
                      <Font size="14.0" />
                   </font>
                </Label>
-               <Button fx:id="btnSaveService" layoutX="14.0" layoutY="556.0" mnemonicParsing="false" onAction="#onSaveService" prefHeight="44.0" prefWidth="126.0" styleClass="button-normal" text="Save" textFill="WHITE">
+               <Button fx:id="btnSaveService" layoutX="14.0" layoutY="239.0" mnemonicParsing="false" onAction="#onSaveService" prefHeight="44.0" prefWidth="126.0" styleClass="button-normal" text="Save" textFill="WHITE">
+
                   <font>
                      <Font size="17.0" />
                   </font>

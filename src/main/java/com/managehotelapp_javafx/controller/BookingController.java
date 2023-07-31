@@ -38,4 +38,5 @@ public class BookingController {
     public void onBookingHistory(Event e){
         fxmlLoader = FXMLLoaderConstant.getBookingTabScene(historyTab, "booking/booking-history-view.fxml");
     }
+    //Test
 }

@@ -12,7 +12,7 @@ public interface InvoiceService {
 
     InvoiceDTO findInvoiceById(int idInv);
 
-    boolean insertInvoiceDTO(InvoiceDTO user);
+    int insertInvoiceDTO(InvoiceDTO user);
 
     boolean deleteInvoiceDTO(int idInvDTO);
     boolean updateInvoiceDTO(InvoiceDTO invoiceDTO);

@@ -11,7 +11,7 @@ public interface ServicesService {
 
     List<ServiceDTO> getServicesList();
 
-    ServiceEntity findServicesById(int id);
+    ServiceDTO findServicesById(int id);
 
 
 

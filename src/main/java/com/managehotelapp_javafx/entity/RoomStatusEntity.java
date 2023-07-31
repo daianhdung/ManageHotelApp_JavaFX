@@ -17,7 +17,7 @@ public class RoomStatusEntity {
     @Column(name = "description", length =30, nullable = false)
     private String description;
 
-    @OneToMany(mappedBy = "roomStatus")
+    @OneToMany(mappedBy = "roomStatus", cascade = CascadeType.ALL)
     private Set<RoomEntity> roomEntities;
 
     public int getId() {

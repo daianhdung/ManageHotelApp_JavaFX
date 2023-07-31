@@ -1,8 +1,6 @@
 package com.managehotelapp_javafx;
 
 import com.managehotelapp_javafx.config.ConnectDB;
-import com.managehotelapp_javafx.repository.RoomFacilityRepository;
-import com.managehotelapp_javafx.repository.imp.RoomFacilityRepositoryImp;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -17,6 +15,7 @@ import java.util.Objects;
 public class HelloApplication extends Application {
 
     public static Stage mainStage;
+
     @Override
     public void start(Stage stage) throws IOException {
         mainStage = stage;
@@ -24,9 +23,6 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Image image = new Image(Objects.requireNonNull(getClass().getResource("/asset/image/logo_hotel_stage.png")).toExternalForm());
-
-        RoomFacilityRepository repository = new RoomFacilityRepositoryImp();
-        System.out.println(repository.findAll());
 
         stage.setTitle("Hotel Management System");
         stage.getIcons().add(image);
@@ -40,12 +36,12 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
-    public void stopProgram(Stage stage){
+    public void stopProgram(Stage stage) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Xác nhận");
         alert.setHeaderText("Xác nhận thoát chương trình");
 
-        if(alert.showAndWait().get() == ButtonType.OK){
+        if (alert.showAndWait().get() == ButtonType.OK) {
             stage.close();
         }
     }

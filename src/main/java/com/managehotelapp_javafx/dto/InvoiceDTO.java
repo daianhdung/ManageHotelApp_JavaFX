@@ -20,14 +20,15 @@ public class InvoiceDTO {
 
     private Timestamp createdAt;
 
+    private int idCustomer;
 
-
-    public void setBookingRoomEntities (BookingRoomDTO bookingRoomEntities) {
-        this.bookingRoomEntities = bookingRoomEntities;
+    public int getIdCustomer() {
+        return idCustomer;
     }
 
-    private BookingRoomDTO bookingRoomEntities;
-
+    public void setIdCustomer(int idCustomer) {
+        this.idCustomer = idCustomer;
+    }
 
     public int getId() {
         return id;

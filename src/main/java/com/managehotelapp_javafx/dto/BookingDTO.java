@@ -1,5 +1,6 @@
 package com.managehotelapp_javafx.dto;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +38,9 @@ public class BookingDTO {
     private List<BookingRoomDTO> bookingRoomDTOList = new ArrayList<>();
     private List<BookingDTO> bookingDTOList;
 
+
+
+
     public List<BookingRoomDTO> getBookingRoomDTOList() {
         return bookingRoomDTOList;
     }
@@ -44,6 +48,8 @@ public class BookingDTO {
     public void setBookingRoomDTOList(List<BookingRoomDTO> bookingRoomDTOList) {
         this.bookingRoomDTOList = bookingRoomDTOList;
     }
+
+
 
     public String getRoomNo() {
         return roomNo;
