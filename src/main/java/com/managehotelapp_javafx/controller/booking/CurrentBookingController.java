@@ -11,6 +11,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
@@ -96,6 +97,16 @@ public class CurrentBookingController implements Initializable {
 
     public void onSearch(ActionEvent event) {
         System.out.println(123);
+    }
+
+    public void changeBookingScene(){
+        primaryStage = (Stage) searchInput.getScene().getWindow();
+        fxmlLoader = FXMLLoaderConstant.getBookingScene();
+        try {
+            primaryStage.setScene(new Scene(fxmlLoader.load()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public Button createButtonBack(){

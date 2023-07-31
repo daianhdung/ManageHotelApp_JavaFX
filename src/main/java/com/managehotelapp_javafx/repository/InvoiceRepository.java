@@ -9,7 +9,7 @@ public interface InvoiceRepository extends GenericRepository<InvoiceEntity>{
     List<InvoiceEntity> getInvoiceList();
     InvoiceEntity findInvById(int idInv);
     InvoiceEntity findInvByStatus (int invStatus);
-    boolean insertInvoice (InvoiceEntity invoiceEntity);
+    int insertInvoice (InvoiceEntity invoiceEntity);
     boolean updateInvoice (InvoiceEntity invoiceEntity);
     boolean deleteInvoice(int idInv);
 }

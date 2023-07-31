@@ -38,9 +38,28 @@ public class BookingRoomDTO {
 
     private int deposit;
 
+    private int totalRoomFee;
 
+    private int totalCheckOut;
 
     //---------------------------------------------------------------- GETTER/SETTER
+
+
+    public int getTotalCheckOut() {
+        return totalCheckOut;
+    }
+
+    public void setTotalCheckOut(int totalCheckOut) {
+        this.totalCheckOut = totalCheckOut;
+    }
+
+    public int getTotalRoomFee() {
+        return totalRoomFee;
+    }
+
+    public void setTotalRoomFee(int totalRoomFee) {
+        this.totalRoomFee = totalRoomFee;
+    }
 
     public String getRoomType() {
         return roomType;

@@ -31,8 +31,8 @@ public class InvoiceRepositoryImp extends AbstractRepository<InvoiceEntity> impl
     }
 
     @Override
-    public boolean insertInvoice(InvoiceEntity invoiceEntity) {
-        return insert(invoiceEntity);
+    public int insertInvoice(InvoiceEntity invoiceEntity) {
+        return saveAndReturnId(invoiceEntity);
     }
 
     @Override

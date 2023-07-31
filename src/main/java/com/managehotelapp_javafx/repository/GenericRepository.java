@@ -20,4 +20,6 @@ public interface GenericRepository<T> {
     boolean update(T t);
 
     boolean save(T t);
+
+    int saveAndReturnId(T t);
 }

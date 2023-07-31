@@ -26,6 +26,8 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ConfirmCheckoutController implements Initializable {
@@ -45,8 +47,12 @@ public class ConfirmCheckoutController implements Initializable {
         fxmlLoader = FXMLLoaderConstant.getCheckoutScene();
         try {
             Parent root = fxmlLoader.load();
+            primaryStage.setX(365); // Set X coordinate
+            primaryStage.setY(80); // Set Y coordinate
             SubmitCheckoutController submitCheckoutController = fxmlLoader.getController();
-            submitCheckoutController.displayCheckoutAll(bookingId);
+            List<Integer> listBookingRoomId = new ArrayList<>();
+//            listBookingRoomId.add(bookingRoomId);
+            submitCheckoutController.displayCheckoutBookingRoom(listBookingRoomId);
             primaryStage.setScene(new Scene(root));
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -58,9 +64,13 @@ public class ConfirmCheckoutController implements Initializable {
         fxmlLoader = FXMLLoaderConstant.getCheckoutScene();
         try {
             Parent root = fxmlLoader.load();
+            primaryStage.setX(365); // Set X coordinate
+            primaryStage.setY(80); // Set Y coordinate
             SubmitCheckoutController submitCheckoutController = fxmlLoader.getController();
             int bookingRoomId = tableView.getSelectionModel().getSelectedItem().getId();
-            submitCheckoutController.displayCheckoutOneBookingRoom(bookingRoomId);
+            List<Integer> listBookingRoomId = new ArrayList<>();
+            listBookingRoomId.add(bookingRoomId);
+            submitCheckoutController.displayCheckoutBookingRoom(listBookingRoomId);
             primaryStage.setScene(new Scene(root));
         } catch (IOException e) {
             throw new RuntimeException(e);

@@ -58,6 +58,7 @@ public class BookingServicesServiceImp implements BookingServicesService {
             bookingServiceDTO.setOrderDate(formattedDateTime);
             bookingServiceDTO.setServiceId(bookingServiceEntity.getServiceId());
             bookingServiceDTO.setBookingRoomId(bookingServiceEntity.getBookingRoomId());
+            bookingServiceDTO.setRoomNo(bookingServiceEntity.getBookingRoom().getRoom().getRoomNumber());
 
             list.add(bookingServiceDTO);
         });
