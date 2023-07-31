@@ -12,6 +12,7 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class CheckInServiceImp implements CheckInService {
     RoomRepositoryImp roomRepository = new RoomRepositoryImp();
@@ -44,7 +45,8 @@ public class CheckInServiceImp implements CheckInService {
     private BookingEntity bookingEntity = new BookingEntity();
     public  List<StatusBookingEntity> getListOfCheckInBookingStatus()
     {
-        return new StatusBookingRepositoryImp().findAll().stream().limit(2).toList();
+        return new StatusBookingRepositoryImp().findAll().stream().sorted(Comparator.comparingInt(StatusBookingEntity::getId))
+            .collect(Collectors.toList()).stream().limit(2).toList();
     }
     public void setBookingStatus(String status)
     {
@@ -122,9 +124,9 @@ public class CheckInServiceImp implements CheckInService {
             bookingEntity.setBookingRoomEntities(bookingRoomEntities);
 
             bookingRepository.insert(bookingEntity);
-            for (var b : bookingRoomEntities) {
-                bookingRoomRepositoryImp.insert(b);
-            }
+//            for (var b : bookingRoomEntities) {
+//                bookingRoomRepositoryImp.insert(b);
+//            }
 
             //customerRepository.updateCustomerStatus(customer);
         }
