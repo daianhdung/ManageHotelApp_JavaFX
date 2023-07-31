@@ -41,11 +41,11 @@
             </TableView>
       </children>
    </AnchorPane>
-<<<<<<< HEAD
-   <AnchorPane fx:id="userDetailScene" layoutX="-3.0" prefHeight="700.0" prefWidth="991.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-=======
+<!--<<<<<<< HEAD-->
+<!--   <AnchorPane fx:id="userDetailScene" layoutX="-3.0" prefHeight="700.0" prefWidth="991.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">-->
+<!--=======-->
    <AnchorPane fx:id="userDetailScene" layoutX="-3.0" prefHeight="700.0" prefWidth="991.0" style="-fx-background-color: white;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
->>>>>>> c4b96e3e07851f124b672c3c3bd3e69c9dc606ae
+<!--&gt;>>>>>> c4b96e3e07851f124b672c3c3bd3e69c9dc606ae-->
       <children>
          <BorderPane layoutX="239.0" layoutY="139.0" prefHeight="558.0" prefWidth="835.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <top>
