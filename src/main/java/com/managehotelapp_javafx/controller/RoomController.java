@@ -1,7 +1,9 @@
 package com.managehotelapp_javafx.controller;
 
 import com.managehotelapp_javafx.dto.RoomDTO;
+import com.managehotelapp_javafx.services.CheckInService;
 import com.managehotelapp_javafx.services.RoomService;
+import com.managehotelapp_javafx.services.imp.CheckInServiceImp;
 import com.managehotelapp_javafx.services.imp.RoomServiceImp;
 import com.managehotelapp_javafx.utils.constant.FXMLLoaderConstant;
 import javafx.event.Event;
@@ -87,12 +89,16 @@ public class RoomController implements Initializable {
         search();
     }
 
-    private final String[] suggestions = {"Available Rooms", "Unavailable Rooms"};
+    private final List<String> suggestions = new ArrayList<>();
     private boolean textFieldClicked = false;
 
     private void search() {
         // Create a context menu to display the suggestions.
         ContextMenu contextMenu = new ContextMenu();
+        CheckInServiceImp service = new CheckInServiceImp();
+        suggestions.addAll(service.getRoomType());
+        suggestions.add("Available Rooms");
+        suggestions.add("Unavailable Rooms");
         //        for (String suggestion : suggestions) {
         //            MenuItem item = new MenuItem(suggestion);
         //            item.setOnAction(event -> tfSearch.setText(suggestion));
@@ -111,9 +117,12 @@ public class RoomController implements Initializable {
                             gridPane2.getChildren().clear();
                             if (suggestion == "Available Rooms") {
                                 getRoomItem(availableRooms);
-                            } else {
+                            } else if (suggestion == "Unavailable Rooms"){
                                 getRoomItem(unavailableRooms);
+                            } else {
+                                getRoomItem(service.getRoomsByType(roomDTOList,suggestion));
                             }
+
                         }
                 );
                 contextMenu.getItems().add(item);
@@ -171,7 +180,7 @@ public class RoomController implements Initializable {
     private void getRoomItem(List<RoomDTO> rooms) {
         int n = rooms.size();
         int maxCol = 4;
-        int rows = Math.round((float) n / maxCol);
+        int rows = Math.round((float) n / maxCol) + (n % maxCol);
         int i = 0;
         for (int row = 0; row < rows; row++) {
             for(int col = 0; col < maxCol ;col++) {
@@ -181,8 +190,8 @@ public class RoomController implements Initializable {
                 String roomStatus = r.getStatus();
                 GridPane root = new GridPane();
                 root.setPrefHeight(131.0);
-                root.setPrefWidth(222.0);
-                Insets rootMargin = new Insets(20);
+                root.setPrefWidth(200.0);
+                Insets rootMargin = new Insets(15);
                 GridPane.setMargin(root, rootMargin);
                 root.setId(roomName);
                 Glow glow = new Glow(0.5);

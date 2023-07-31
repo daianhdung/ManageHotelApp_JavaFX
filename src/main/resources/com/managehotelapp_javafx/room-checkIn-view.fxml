@@ -264,14 +264,32 @@
                   </Label>
                </children>
             </GridPane>
-            <ScrollPane fx:id="sscrp" prefHeight="103.0" prefWidth="294.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <padding>
-                  <Insets left="5.0" top="5.0" />
-               </padding>
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin>
-            </ScrollPane>
+            <GridPane prefHeight="67.0" prefWidth="260.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="241.0" minWidth="10.0" prefWidth="64.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="314.0" minWidth="10.0" prefWidth="288.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints maxHeight="46.0" minHeight="10.0" prefHeight="29.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label prefHeight="30.0" prefWidth="105.0" text="Status" textFill="#00ccff" translateX="11.0" GridPane.columnSpan="2">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <ComboBox fx:id="cbxCType" prefHeight="44.0" prefWidth="294.0" style="-fx-background-color: #00CCFF , white , white, white; -fx-background-insets: 0 -1 -1 -1, 0 0 0 0, 0 -1 0 -1;" translateY="-2.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                     <image>
+                        <Image url="@../../asset/image/user 1.png" />
+                     </image>
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </ImageView>
+               </children>
+            </GridPane>
          </children>
       </GridPane>
       <Button fx:id="btnCheckIn" layoutX="1015.0" layoutY="630.0" mnemonicParsing="false" prefHeight="21.0" prefWidth="167.0" styleClass="room-main-theme" stylesheets="@Style/room-style.css" text="Check In">
@@ -279,7 +297,7 @@
             <Font size="23.0" />
          </font>
       </Button>
-      <GridPane layoutX="898.0" layoutY="174.0" prefHeight="67.0" prefWidth="260.0">
+      <GridPane layoutX="898.0" layoutY="145.0" prefHeight="67.0" prefWidth="260.0">
          <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="241.0" minWidth="10.0" prefWidth="59.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="294.0" minWidth="10.0" prefWidth="201.0" />
@@ -302,7 +320,7 @@
             </ImageView>
          </children>
       </GridPane>
-      <ScrollPane fx:id="scrlPnRoomList" layoutX="898.0" layoutY="243.0" prefHeight="293.0" prefWidth="284.0">
+      <ScrollPane fx:id="scrlPnRoomList" layoutX="898.0" layoutY="226.0" prefHeight="293.0" prefWidth="284.0">
          <content>
             
          </content>

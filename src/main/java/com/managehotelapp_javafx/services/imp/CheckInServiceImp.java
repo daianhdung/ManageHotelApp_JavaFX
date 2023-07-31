@@ -2,6 +2,7 @@ package com.managehotelapp_javafx.services.imp;
 
 import com.managehotelapp_javafx.dto.*;
 import com.managehotelapp_javafx.entity.*;
+import com.managehotelapp_javafx.repository.CustomerTypeRepository;
 import com.managehotelapp_javafx.repository.RoomTypeRepository;
 import com.managehotelapp_javafx.repository.ServicesRepository;
 import com.managehotelapp_javafx.repository.imp.*;
@@ -26,6 +27,10 @@ public class CheckInServiceImp implements CheckInService {
     public CustomerEntity setCustomerByIDN(String idn)
     {
         return customer = customerRepository.getCustomerByPID(idn);
+    }
+    public void setCustomerType(String type)
+    {
+         customer.setCustomerType(new CustomerTypeRepositoryImp().findCustomerTypeByTitle(type));
     }
 //    public BookingEntity getBookingByCustomerId(CustomerEntity customerEntity)
 //    {
@@ -116,7 +121,7 @@ public class CheckInServiceImp implements CheckInService {
                 BookingRoomEntity bookingRoomEntity = new BookingRoomEntity();
                 bookingRoomEntity.setRoom(r);
                 bookingRoomEntity.setBooking(bookingEntity);
-                bookingRoomEntity.setStatusBooking(statusBookingRepository.findByIdStatus(2));
+                //bookingRoomEntity.setStatusBooking(statusBookingRepository.findByIdStatus(2));
                 roomRepository.updateCheckInRoom(r);
                 bookingRoomEntities.add(bookingRoomEntity);
             }
@@ -153,9 +158,9 @@ public class CheckInServiceImp implements CheckInService {
                 .map(RoomTypeEntity::getDescription).toList();
     }
 
-    public List<RoomDTO> getRoomsByType(List<RoomDTO> listAvailableRooms, String roomType)
+    public List<RoomDTO> getRoomsByType(List<RoomDTO> listOfRooms, String roomType)
     {
-        return listAvailableRooms.stream()
+        return listOfRooms.stream()
                 .filter(item -> Objects.equals(item.getType(), roomType)).toList();
     }
 

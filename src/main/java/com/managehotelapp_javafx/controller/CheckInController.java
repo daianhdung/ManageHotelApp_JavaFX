@@ -91,6 +91,8 @@ public class CheckInController implements Initializable {
 
     @FXML Label lblG;
 
+    @FXML ComboBox cbxCType;
+
     private GridPane gridPane = new GridPane();
 
     private CheckInServiceImp service = new CheckInServiceImp();
@@ -117,11 +119,12 @@ public class CheckInController implements Initializable {
         bookingDTO.setCheckOutDate(dtpkCheckOut.getValue().toString());
         bookingDTO.setStatus(cbxStatus.getSelectionModel().getSelectedItem().toString());
         bookingDTO.setCustomerRequest(specialRequest);
-        bookingDTO.setAdultCount(Integer.parseInt(tfAdult.getText()));
-        bookingDTO.setChildrenCount(Integer.parseInt(tfChildren.getText()));
+        bookingDTO.setAdultCount(tfAdult.getText().isEmpty()? 0 : Integer.parseInt(tfAdult.getText()));
+        bookingDTO.setChildrenCount(tfChildren.getText().isEmpty()? 0 :Integer.parseInt(tfChildren.getText()));
         confirmBoxController = new ConfirmBoxController(roomsList, bookingDTO);
 
         service.setCustomerByIDN(tfNationalID.getText());
+        service.setCustomerType(cbxCType.getSelectionModel().getSelectedItem().toString());
         service.setRoomListByNames(roomsList);
         service.setBookingServices(selectedServices);
         service.setBookingStatus(cbxStatus.getSelectionModel().getSelectedItem().toString());
