@@ -87,6 +87,15 @@ public class RoomDetailController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lblRoom.setText(lblRoom.getText()+roomName);
         tblFcl.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        btnBack.setOnAction(actionEvent -> {
+            ;
+            try {
+                Stage pstg = (Stage)btnBack.getScene().getWindow();
+                pstg.setScene(new Scene(FXMLLoaderConstant.getHomeScene().load()));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
         setTableItem();
     }
 }

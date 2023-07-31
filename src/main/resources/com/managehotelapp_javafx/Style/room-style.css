@@ -47,6 +47,38 @@
        -fx-background-insets: 0 11px 0 0;
        -fx-padding: 0 0 5px 0;
  }
+
+ .label.confirm-box{
+    -fx-text-fill: #014D01;
+    -fx-font-weight: 600;
+    -fx-font-style: oblique ;
+ }
+ .button.confirm-box{
+     -fx-background-radius: 25 25 25 25;
+     -fx-background-color: #51cf51;
+     -fx-text-fill: white;
+     -fx-font-weight: bold;
+ }
+ .vbox{
+     -fx-background-color: transparent;
+    -fx-background-radius: 25 25 25 25;
+    -fx-border-radius: 25 25 25 25;
+      -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 5, 0.5, 0, 2);
+ }
+ .pane  {
+     -fx-background-color: transparent;
+     -fx-background-radius: 25 25 25 25;
+     -fx-border-radius: 25 25 25 25;
+  }
+.gridpane {
+       -fx-background-color: transparent;
+       -fx-background-color:  #DFF2BF;
+       -fx-background-radius: 25 25 25 25;
+       -fx-border-radius: 25 25 25 25;
+    }
+ .vbox.pane.pane.request-box{
+    -fx-background-color: #389ab5;
+ }
  /*.table-view .table-cell{
      -fx-border-color: transparent;
      -fx-padding: 2 0 2 10px;

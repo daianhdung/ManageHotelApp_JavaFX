@@ -3,6 +3,7 @@ package com.managehotelapp_javafx.dto;
 import com.managehotelapp_javafx.entity.CustomerTypeEntity;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class CustomerDTO {
     private int id;
@@ -28,6 +29,14 @@ public class CustomerDTO {
         this.address = address;
         this.passportNo = passportNo;
         this.identity = identity;
+    }
+
+    public CustomerDTO(String fullName, String identity, String phone, LocalDate dob, String gender) {
+        this.fullName = fullName;
+        this.phone = phone;
+        this.dob = Date.valueOf(dob);
+        this.identity = identity;
+        this.gender = gender;
     }
 
     public String getCreatedAt() {

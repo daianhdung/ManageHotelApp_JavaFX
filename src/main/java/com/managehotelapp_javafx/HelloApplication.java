@@ -2,6 +2,7 @@ package com.managehotelapp_javafx;
 
 import com.managehotelapp_javafx.config.ConnectDB;
 
+import com.managehotelapp_javafx.controller.CheckInController;
 import com.managehotelapp_javafx.repository.RoomFacilityRepository;
 
 import com.managehotelapp_javafx.dto.RoomFacilitiesDTO;
@@ -18,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -59,7 +61,7 @@ public class HelloApplication extends Application {
         }
     }
 
-    public static void main(String[] args) {
-         launch();
+    public static void main(String[] args) throws IOException {
+        launch();
     }
 }

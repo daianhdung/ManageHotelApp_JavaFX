@@ -22,7 +22,7 @@ public class BookingRepositoryImp extends AbstractRepository<BookingEntity> impl
     @Override
     public boolean updateBooking(BookingEntity bookingEntity) {
         Map<String, Object> parameters = new HashMap<>();
-        parameters.put("user_id", bookingEntity.getUserEntity());
+        parameters.put("user_id", bookingEntity.getUserEntity().getId());
         parameters.put("customer_id", bookingEntity.getCustomer());
         parameters.put("booking_type", bookingEntity.getBookingType());
         parameters.put("estimate_date_in", bookingEntity.getEstimateDateIn());
