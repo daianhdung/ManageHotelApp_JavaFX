@@ -20,7 +20,12 @@ public class UserDataController implements Initializable {
     @FXML
     Tab userTab;
 
-
+    public void onCustomerScene(){
+        fxmlLoader = FXMLLoaderConstant.getCusScene(cusTab);
+    }
+    public void onUserScene(){
+        fxmlLoader = FXMLLoaderConstant.getUserScene(userTab);
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

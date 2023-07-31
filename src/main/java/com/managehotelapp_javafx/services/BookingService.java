@@ -20,4 +20,5 @@ public interface BookingService {
 
     BookingEntity getBookingById(int id);
 
+    ServiceDTO findBookingServicesBySerId(int id);
 }

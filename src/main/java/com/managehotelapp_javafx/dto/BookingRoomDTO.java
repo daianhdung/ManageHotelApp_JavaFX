@@ -37,7 +37,6 @@ public class BookingRoomDTO {
     private int lengthOfStay;
 
     private int deposit;
-
     private int totalRoomFee;
 
     private int totalCheckOut;
@@ -76,7 +75,6 @@ public class BookingRoomDTO {
     public void setRoomPrice(int roomPrice) {
         this.roomPrice = roomPrice;
     }
-
     public int getDeposit() {
         return deposit;
     }

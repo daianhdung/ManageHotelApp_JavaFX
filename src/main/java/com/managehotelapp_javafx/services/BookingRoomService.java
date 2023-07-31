@@ -26,4 +26,5 @@ public interface BookingRoomService {
     boolean updateBookingRoom(BookingRoomDTO bookingRoomDTO);
 
     boolean checkOutRoom(List<BookingRoomDTO> bookingRoomDTO, InvoiceDTO invoiceDTO);
+
 }

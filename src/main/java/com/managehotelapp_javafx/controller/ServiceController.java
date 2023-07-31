@@ -1,6 +1,6 @@
 package com.managehotelapp_javafx.controller;
 
-import com.managehotelapp_javafx.controller.booking.CurrentBookingController;
+
 import com.managehotelapp_javafx.dto.BookingRoomDTO;
 import com.managehotelapp_javafx.dto.BookingServiceDTO;
 import com.managehotelapp_javafx.dto.ServiceDTO;
@@ -11,6 +11,7 @@ import com.managehotelapp_javafx.services.imp.ServicesServiceImp;
 import com.managehotelapp_javafx.utils.alert.AlertUtils;
 import com.managehotelapp_javafx.utils.constant.FXMLLoaderConstant;
 import com.managehotelapp_javafx.utils.enumpackage.BookingStatus;
+
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -54,6 +55,7 @@ public class ServiceController implements Initializable {
     private Label customerName, roomNo, orderFee;
     @FXML
     private Button btnDelete, btnBack, btnOrder,btnSaveService;
+
     @FXML
     private ComboBox<String> serviceCombo;
     @FXML
@@ -61,11 +63,11 @@ public class ServiceController implements Initializable {
 
     ObservableList<String> nameService = FXCollections.observableArrayList();
     List<ServiceDTO> serviceDTOList =  servicesService.getServicesList();
+
     ObservableList<BookingServiceDTO> listService = FXCollections.observableArrayList();
     List<BookingServiceDTO> listServiceDelete = new ArrayList<>();
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         serviceDTOList.forEach(item -> {
             nameService.add(item.getDescription());
         });
@@ -149,6 +151,7 @@ public class ServiceController implements Initializable {
         BookingServiceDTO bookingServiceDTO = new BookingServiceDTO();
         bookingServiceDTO.setServiceId(serviceDTO.getId());
         bookingServiceDTO.setBookingRoomId(bookingRoomDTO.getId());
+
         bookingServiceDTO.setServiceName(serviceDTO.getDescription());
         bookingServiceDTO.setPrice(serviceDTO.getPrice());
         bookingServiceDTO.setQuantity(Integer.parseInt(stockText.getText()));

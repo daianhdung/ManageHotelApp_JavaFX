@@ -89,7 +89,10 @@ public class FXMLLoaderConstant {
     public static FXMLLoader getAllRoomCheckoutTable(){
         return new FXMLLoader(HelloApplication.class.getResource("checkout/choose-room-table.fxml"));
     }
-    public static FXMLLoader getCheckoutScene(){
+    public static FXMLLoader getCheckoutScene() {
         return new FXMLLoader(HelloApplication.class.getResource("checkout/submit-checkout-view.fxml"));
+    }
+    public static FXMLLoader getRevenueScene(){
+        return new FXMLLoader(HelloApplication.class.getResource("revenue-view.fxml"));
     }
 }

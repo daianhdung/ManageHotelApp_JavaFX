@@ -34,7 +34,6 @@ public class BookingServiceEntity {
 
     @Column(name = "quantity")
     private int quantity;
-
     @Column(name = "total")
     private int total;
 

@@ -38,6 +38,16 @@ public class BookingServiceRepositoryImp extends AbstractRepository<BookingServi
     }
 
     @Override
+    public List<BookingServiceEntity> findBookingServiceByServiceId(int id) {
+
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("service_id", id);
+        List<BookingServiceEntity> result = query("FROM BookingServiceEntity WHERE service_id = :service_id",parameters);
+        return result.isEmpty() ? null : result;
+
+    }
+
+    @Override
     public boolean deleteBookingService(BookingServiceEntity bookingServiceEntity) {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("booking_room_id", bookingServiceEntity.getBookingRoomId());

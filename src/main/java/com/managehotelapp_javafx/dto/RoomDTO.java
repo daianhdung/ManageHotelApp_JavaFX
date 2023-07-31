@@ -24,6 +24,18 @@ public class RoomDTO {
     private String title;
     private String status;
     private String type;
+//    ---------------------------------
+    private int price;
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    //    ---------------------------------
 
     public int getId() {
         return id;

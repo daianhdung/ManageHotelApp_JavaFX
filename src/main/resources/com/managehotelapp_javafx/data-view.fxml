@@ -3,28 +3,29 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.AnchorPane?>
-
 <?import javafx.scene.layout.Pane?>
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700" prefWidth="1200"  stylesheets="@./booking/global-style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.UserDataController">
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700" prefWidth="1200" stylesheets="@./booking/global-style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.UserDataController">
    <children>
-      <TabPane layoutX="220.0" prefHeight="558.0" prefWidth="813.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="220.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <tabs>
-          <Tab fx:id="cusTab" text="Customers">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: white;" />
-            </content>
-          </Tab>
-          <Tab fx:id="userTab" text="Users">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
-        </tabs>
-      </TabPane>
+
    </children>
 
     <Pane layoutX="-1.0" prefHeight="558.0" prefWidth="196.0">
         <fx:include fx:id="sidebar" source="sidebar-view.fxml" />
     </Pane>
+   <TabPane layoutX="209.0" prefHeight="700.0" prefWidth="991.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="209.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+     <tabs>
+       <Tab fx:id="cusTab" onSelectionChanged="#onCustomerScene" text="Customers">
+         <content>
+           <AnchorPane fx:id="cusScene" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+         </content>
+       </Tab>
+       <Tab fx:id="userTab" onSelectionChanged="#onUserScene" text="Users">
+         <content>
+           <AnchorPane fx:id="userScene" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+         </content>
+       </Tab>
+     </tabs>
+   </TabPane>
 
 </AnchorPane>

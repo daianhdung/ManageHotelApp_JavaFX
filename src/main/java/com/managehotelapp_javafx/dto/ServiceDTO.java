@@ -12,6 +12,15 @@ public class ServiceDTO {
     private int quantity;
 
     private double price;
+    private int qtyConsumed;
+
+    public int getQtyConsumed() {
+        return qtyConsumed;
+    }
+
+    public void setQtyConsumed(int qtyConsumed) {
+        this.qtyConsumed = qtyConsumed;
+    }
 
     private String description;
 

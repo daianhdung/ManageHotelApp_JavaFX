@@ -19,14 +19,9 @@
    <children>
       <BorderPane fx:id="invoiceTableScene" layoutX="2.0" layoutY="10.0" prefHeight="620.0" prefWidth="991.0" style="-fx-background-color: E5E5E5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
-            <AnchorPane prefHeight="103.0" prefWidth="998.0" style="-fx-background-color: E5E5E5;" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="73.0" prefWidth="991.0" style="-fx-background-color: white; -fx-background-radius: 20;" BorderPane.alignment="CENTER">
                <children>
-                  <TabPane layoutX="-19.0" layoutY="2.0" prefHeight="119.0" prefWidth="1008.0" style="-fx-background-radius: 90;" tabClosingPolicy="UNAVAILABLE">
-                     <tabs>
-                        <Tab />
-                     </tabs>
-                  </TabPane>
-                  <Label alignment="TOP_CENTER" layoutX="2.0" layoutY="35.0" prefHeight="78.0" prefWidth="983.0" style="-fx-background-color: white; -fx-background-radius: 90;" text="Register" textAlignment="CENTER" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="35.0">
+                  <Label alignment="CENTER" layoutX="4.0" prefHeight="73.0" prefWidth="983.0" style="-fx-background-radius: 20;" text="Register" textAlignment="CENTER" AnchorPane.bottomAnchor="33.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="0.0">
                      <padding>
                         <Insets top="20.0" />
                      </padding>
@@ -35,10 +30,13 @@
                      </font>
                   </Label>
                </children>
+               <BorderPane.margin>
+                  <Insets left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
             </AnchorPane>
          </top>
          <center>
-            <AnchorPane prefHeight="508.0" prefWidth="995.0" style="-fx-background-color: white; -fx-background-radius: 40;" BorderPane.alignment="CENTER">
+            <AnchorPane prefHeight="508.0" prefWidth="995.0" style="-fx-background-color: white; -fx-background-radius: 20;" BorderPane.alignment="CENTER">
                <children>
                   <GridPane layoutX="240.0" layoutY="-2.0" prefHeight="501.0" prefWidth="992.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="-2.0">
                     <columnConstraints>
@@ -64,10 +62,13 @@
                               <Insets top="70.0" />
                            </GridPane.margin>
                         </Label>
-                        <TextField fx:id="usernameTxt" styleClass="input-field" GridPane.columnIndex="1" />
+                        <TextField fx:id="usernameTxt" styleClass="input-field" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="16.0" />
+                           </font></TextField>
                         <Label prefHeight="20.0" prefWidth="133.0" text="Password" textFill="#00ccff" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="16.0" />
                            </font>
                            <GridPane.margin>
                               <Insets bottom="70.0" />
@@ -75,7 +76,7 @@
                         </Label>
                         <Label prefHeight="20.0" prefWidth="133.0" text="Fullname" textFill="#00ccff" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="16.0" />
                            </font>
                            <GridPane.margin>
                               <Insets bottom="70.0" />
@@ -83,7 +84,7 @@
                         </Label>
                         <Label prefHeight="20.0" prefWidth="133.0" text="Identity" textFill="#00ccff" GridPane.columnIndex="1" GridPane.rowIndex="3">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="16.0" />
                            </font>
                            <GridPane.margin>
                               <Insets bottom="70.0" />
@@ -91,15 +92,15 @@
                         </Label>
                         <Label layoutX="75.0" layoutY="13.0" prefHeight="20.0" prefWidth="133.0" text="Email" textFill="#00ccff" GridPane.columnIndex="3">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="16.0" />
                            </font>
                            <GridPane.margin>
-                              <Insets bottom="50.0" />
+                              <Insets bottom="70.0" />
                            </GridPane.margin>
                         </Label>
                         <Label prefHeight="20.0" prefWidth="133.0" text="Re-enter Password" textFill="#00ccff" GridPane.columnIndex="3" GridPane.rowIndex="1">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="16.0" />
                            </font>
                            <GridPane.margin>
                               <Insets bottom="70.0" />
@@ -107,7 +108,7 @@
                         </Label>
                         <Label prefHeight="20.0" prefWidth="133.0" text="Gender" textFill="#00ccff" GridPane.columnIndex="3" GridPane.rowIndex="2">
                            <font>
-                              <Font size="14.0" />
+                              <Font size="16.0" />
                            </font>
                            <GridPane.margin>
                               <Insets bottom="70.0" />
@@ -120,9 +121,18 @@
                               <Insets top="80.0" />
                            </GridPane.margin>
                         </Label>
-                        <TextField fx:id="fullnameTxt" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="identityTxt" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <TextField fx:id="emailTxt" styleClass="input-field" GridPane.columnIndex="3" />
+                        <TextField fx:id="fullnameTxt" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="16.0" />
+                           </font></TextField>
+                        <TextField fx:id="identityTxt" styleClass="input-field" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="16.0" />
+                           </font></TextField>
+                        <TextField fx:id="emailTxt" styleClass="input-field" GridPane.columnIndex="3">
+                           <font>
+                              <Font size="16.0" />
+                           </font></TextField>
                         <Label fx:id="fullnameLabel" alignment="TOP_LEFT" maxWidth="-Infinity" prefHeight="43.0" prefWidth="341.0" textFill="#da0d0d" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font size="11.0" />
@@ -165,9 +175,18 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <RadioButton fx:id="gender1" mnemonicParsing="false" onAction="#getGender" text="Male" />
-                              <RadioButton fx:id="gender2" mnemonicParsing="false" onAction="#getGender" text="Female" GridPane.columnIndex="1" />
-                              <RadioButton fx:id="gender3" mnemonicParsing="false" onAction="#getGender" text="Other" GridPane.columnIndex="2" />
+                              <RadioButton fx:id="gender1" mnemonicParsing="false" onAction="#getGender" text="Male">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font></RadioButton>
+                              <RadioButton fx:id="gender2" mnemonicParsing="false" onAction="#getGender" text="Female" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font></RadioButton>
+                              <RadioButton fx:id="gender3" mnemonicParsing="false" onAction="#getGender" text="Other" GridPane.columnIndex="2">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font></RadioButton>
                            </children>
                            <GridPane.margin>
                               <Insets top="50.0" />
@@ -183,16 +202,25 @@
                               <Insets left="70.0" />
                            </GridPane.margin>
                         </Button>
-                        <PasswordField fx:id="password1Txt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <PasswordField fx:id="password2Txt" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                        <PasswordField fx:id="password1Txt" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="16.0" />
+                           </font></PasswordField>
+                        <PasswordField fx:id="password2Txt" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="16.0" />
+                           </font></PasswordField>
                      </children>
                   </GridPane>
-                  <Label layoutX="75.0" layoutY="13.0" prefHeight="20.0" prefWidth="133.0" text="Username" textFill="#00ccff">
+                  <Label layoutX="65.0" layoutY="13.0" prefHeight="20.0" prefWidth="133.0" text="Username" textFill="#00ccff">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
                </children>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </BorderPane.margin>
             </AnchorPane>
          </center>
       </BorderPane>
