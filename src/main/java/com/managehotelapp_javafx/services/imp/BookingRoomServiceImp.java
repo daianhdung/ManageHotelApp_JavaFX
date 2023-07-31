@@ -84,9 +84,11 @@ public class BookingRoomServiceImp implements BookingRoomService {
             bookingRoomDTO.setCheckoutDate(formattedDateTime);
         }
         //Get length of stay ( now date minus to check in date )
-        Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
-        int dayOfStay = (int) TimeUnit.MILLISECONDS.toDays(currentTimestamp.getTime() - bookingRoom.getBooking().getActualDateIn().getTime());
-        bookingRoomDTO.setLengthOfStay(dayOfStay);
+        if(bookingRoomDTO.getCheckinDate() != null){
+            Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
+            int dayOfStay = (int) TimeUnit.MILLISECONDS.toDays(currentTimestamp.getTime() - bookingRoom.getBooking().getActualDateIn().getTime());
+            bookingRoomDTO.setLengthOfStay(dayOfStay);
+        }
 
         bookingRoomDTO.setStatus(bookingRoom.getStatusBooking().getTitle());
         bookingRoomDTO.setNumAdult(bookingRoom.getBooking().getNumAdult());

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="_vb" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="344.0" prefWidth="508.0" styleClass="vbox" stylesheets="@../Style/room-style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane fx:id="_pane" prefHeight="340.0" prefWidth="371.0" styleClass="pane" stylesheets="@../Style/room-style.css">
+         <children>
+            <Pane fx:id="_rpane" prefHeight="340.0" prefWidth="512.0" styleClass="gridpane">
+               <children>
+                  <Button fx:id="btnOK" layoutX="211.0" layoutY="296.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="90.0" styleClass="confirm-box" stylesheets="@../Style/room-style.css" text="OK" />
+                  <Label fx:id="lblResult" contentDisplay="CENTER" layoutX="26.0" layoutY="14.0" prefHeight="30.0" prefWidth="83.0" text="Request:" textAlignment="CENTER">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="txtAr" layoutX="26.0" layoutY="58.0" prefHeight="216.0" prefWidth="460.0" />
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</VBox>

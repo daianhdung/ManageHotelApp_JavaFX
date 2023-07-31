@@ -17,7 +17,7 @@ public class StatusBookingEntity {
     @Column(name = "description", length =30, nullable = false)
     private String description;
 
-    @OneToMany(mappedBy = "statusBooking")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "statusBooking")
     private Set<BookingRoomEntity> bookingEntities;
 
     public int getId() {

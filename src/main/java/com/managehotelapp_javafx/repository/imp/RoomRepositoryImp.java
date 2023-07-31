@@ -11,7 +11,6 @@ import java.util.Map;
 
 public class RoomRepositoryImp extends AbstractRepository<RoomEntity> implements RoomRepository {
 
-
     public boolean updateCheckInRoom(RoomEntity roomEntity)
     {
         if(roomEntity.getRoomStatus().getId()==2) {

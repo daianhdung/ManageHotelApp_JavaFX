@@ -95,4 +95,7 @@ public class FXMLLoaderConstant {
     public static FXMLLoader getRevenueScene(){
         return new FXMLLoader(HelloApplication.class.getResource("revenue-view.fxml"));
     }
+    public static FXMLLoader getCheckInScene(){
+        return new FXMLLoader(HelloApplication.class.getResource("room-checkIn-view.fxml"));
+    }
 }

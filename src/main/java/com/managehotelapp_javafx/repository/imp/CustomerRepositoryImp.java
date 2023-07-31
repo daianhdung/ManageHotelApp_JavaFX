@@ -37,6 +37,7 @@ public class CustomerRepositoryImp extends AbstractRepository<CustomerEntity> im
         return query("FROM CustomerEntity", null);
     }
 
+
     @Override
     public CustomerEntity getCustomerById(int id) {
         Map<String, Object> parameters = new HashMap<>();
@@ -61,7 +62,6 @@ public class CustomerRepositoryImp extends AbstractRepository<CustomerEntity> im
     }
 
     @Override
-
     public CustomerEntity getCustomerByName(String name) {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("name", name);
@@ -104,7 +104,7 @@ public class CustomerRepositoryImp extends AbstractRepository<CustomerEntity> im
                  return update(query.toString(),parameters);
     }
 
-    public boolean insertCustomer(CustomerEntity customerEntity) {
+    public boolean insertCustomerCheckIn(CustomerEntity customerEntity) {
         if(getCustomerByPID(customerEntity.getIdentity())==null)
         {
             return insert(customerEntity);
@@ -148,7 +148,6 @@ public class CustomerRepositoryImp extends AbstractRepository<CustomerEntity> im
 
         return update(query.toString(),parameters);
     }
-
 
     @Override
     public boolean deleteCustomer(int idCus) {

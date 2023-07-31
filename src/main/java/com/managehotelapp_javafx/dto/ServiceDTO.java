@@ -24,6 +24,16 @@ public class ServiceDTO {
 
     private String description;
 
+    public ServiceDTO() {
+    }
+
+    public ServiceDTO(int id, int quantity, double price, String description) {
+        this.id = id;
+        this.quantity = quantity;
+        this.price = price;
+        this.description = description;
+    }
+
     public int getId() {
         return id;
     }

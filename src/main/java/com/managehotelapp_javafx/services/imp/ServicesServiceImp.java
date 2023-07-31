@@ -28,7 +28,7 @@ public class ServicesServiceImp implements ServicesService {
     @Override
     public List<ServiceDTO> getServicesList() {
         return servicesRepository.getServicesList().stream().map(item -> {
-            ServiceDTO serviceDTO = new ServiceDTO();
+            ServiceDTO serviceDTO = new ServiceDTO(item.getId(),item.getQuantity(),item.getPrice(), item.getDescription());
             return toServiceDTO(item, serviceDTO);
         }).collect(Collectors.toList());
     }
