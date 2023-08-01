@@ -175,6 +175,7 @@ public class CheckInController implements Initializable {
         dtpkBookingdate.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null && dtpkCheckIn.getValue() != null && newValue.isAfter(dtpkCheckIn.getValue())) {
                 showErrorMessage("Invalid Date Selection", "Booking date cannot be after Check-In date.");
+                dtpkBookingdate.setValue(LocalDate.now());
             }
         });
         dtpkCheckIn.valueProperty().addListener((observable, oldValue, newValue) -> {
@@ -186,6 +187,7 @@ public class CheckInController implements Initializable {
         dtpkCheckOut.valueProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null && dtpkCheckIn.getValue() != null && newValue.isBefore(dtpkCheckIn.getValue())) {
                 showErrorMessage("Invalid Date Selection", "Check-Out date cannot be before Check-In date.");
+                dtpkCheckOut.setValue(dtpkCheckIn.getValue());
             }
         });
 
@@ -241,7 +243,6 @@ public class CheckInController implements Initializable {
         });
 
         btnBack.setOnAction(actionEvent -> {
-            ;
             try {
                 Stage pstg = (Stage) btnBack.getScene().getWindow();
                 pstg.setScene(new Scene(FXMLLoaderConstant.getHomeScene().load()));
@@ -489,9 +490,16 @@ public class CheckInController implements Initializable {
         messageBoxStage.initModality(Modality.APPLICATION_MODAL);
         messageBoxStage.setTitle("Confirm Booking");
         messageBoxStage.setScene(scene);
-        messageBoxStage.showAndWait();
 
-        return controller.result;
+        messageBoxStage.showAndWait();
+        if(controller.result)
+        try {
+            Stage stage = (Stage)btnBack.getScene().getWindow();
+            stage.setScene(new Scene(FXMLLoaderConstant.getRoomScene().load()));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return  controller.result;
     }
 
     private void getServices() {
@@ -748,7 +756,9 @@ public class CheckInController implements Initializable {
 
         private void close() {
             Stage stage = (Stage) btnOK.getScene().getWindow();
+
             stage.close();
+
         }
 
 

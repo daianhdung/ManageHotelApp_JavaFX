@@ -85,6 +85,9 @@ public class BookingDetailController  implements Initializable{
             identityText.setDisable(true);
             status.setDisable(true);
             depositText.setDisable(true);
+
+            btnSave.setVisible(false);
+            btnCheckout.setVisible(false);
         } else if (statusBooking.equals(BookingStatus.RESERVED.toString())) {
             btnCheckout.setDisable(true);
         }

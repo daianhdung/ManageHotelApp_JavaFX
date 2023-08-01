@@ -310,7 +310,7 @@
             <Insets left="5.0" right="5.0" top="5.0" />
          </padding>
       </ScrollPane>
-      <Label layoutX="624.0" layoutY="43.0" text="BOOKING">
+      <Label layoutX="624.0" layoutY="43.0" text="CHECK IN">
          <font>
             <Font size="33.0" />
          </font>

@@ -40,6 +40,8 @@ INSERT INTO room(room_number, room_status_id , room_type_id)
 VALUES('104', 2, 1);
 INSERT INTO room(room_number, room_status_id, room_type_id)
 VALUES('105', 2, 1);
+INSERT INTO room(room_number, room_status_id, room_type_id)
+VALUES('203', 2, 2);
 
 INSERT INTO customer_type(title, description)
 VALUES('Family', 'Small');

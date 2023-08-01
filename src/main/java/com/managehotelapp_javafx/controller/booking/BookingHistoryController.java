@@ -97,7 +97,7 @@ public class BookingHistoryController  implements Initializable {
 
     public Button createButtonBack(){
         Button btnBack = new Button("Back");
-        btnBack.setLayoutX(437);
+        btnBack.setLayoutX(837);
         btnBack.setLayoutY(585);
         btnBack.setPrefWidth(126);
         btnBack.setPrefHeight(44);

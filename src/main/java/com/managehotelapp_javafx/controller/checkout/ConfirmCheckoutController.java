@@ -29,6 +29,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class ConfirmCheckoutController implements Initializable {
     BookingRoomService bookingRoomService = new BookingRoomServiceImp();
@@ -50,8 +51,8 @@ public class ConfirmCheckoutController implements Initializable {
             primaryStage.setX(365); // Set X coordinate
             primaryStage.setY(80); // Set Y coordinate
             SubmitCheckoutController submitCheckoutController = fxmlLoader.getController();
-            List<Integer> listBookingRoomId = new ArrayList<>();
-//            listBookingRoomId.add(bookingRoomId);
+            List<Integer> listBookingRoomId = bookingRoomDTOS.stream().map(BookingRoomDTO::getId).collect(Collectors.toList());
+            System.out.println(listBookingRoomId.get(0));
             submitCheckoutController.displayCheckoutBookingRoom(listBookingRoomId);
             primaryStage.setScene(new Scene(root));
         } catch (IOException e) {
