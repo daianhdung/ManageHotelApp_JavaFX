@@ -7,11 +7,12 @@ public class SessionUser {
     private static UserDTO userDTO = null;
 
 
-    public static void putValue(String username, String fullName, String role){
+    public static void putValue(int id, String username, String fullName, String role){
         userDTO = new UserDTO();
         userDTO.setUsername(username);
         userDTO.setFullName(fullName);
         userDTO.setRole(role);
+        userDTO.setId(id);
     }
     public static UserDTO getInstance(){
         return userDTO;
