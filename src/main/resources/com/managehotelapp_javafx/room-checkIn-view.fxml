@@ -274,7 +274,7 @@
                   <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label prefHeight="30.0" prefWidth="105.0" text="Status" textFill="#00ccff" translateX="11.0" GridPane.columnSpan="2">
+                  <Label prefHeight="30.0" prefWidth="105.0" text="Customer Type" textFill="#00ccff" translateX="11.0" GridPane.columnSpan="2">
                      <font>
                         <Font size="20.0" />
                      </font>

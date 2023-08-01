@@ -6,6 +6,7 @@ import com.managehotelapp_javafx.dto.CustomerDTO;
 import com.managehotelapp_javafx.dto.RoomDTO;
 import com.managehotelapp_javafx.dto.ServiceDTO;
 import com.managehotelapp_javafx.services.imp.CheckInServiceImp;
+import com.managehotelapp_javafx.services.imp.CustomerTypeServiceImp;
 import com.managehotelapp_javafx.services.imp.RoomServiceImp;
 import com.managehotelapp_javafx.utils.constant.FXMLLoaderConstant;
 import com.managehotelapp_javafx.utils.session.SessionUser;
@@ -200,7 +201,12 @@ public class CheckInController implements Initializable {
             cbxStatus.getItems().add(stt.getTitle());
             cbxStatus.setValue(stt.getTitle());
         }
-
+        var customerTypeService =  new CustomerTypeServiceImp();
+        for (var t :customerTypeService.customerTypeDTOList()
+                ) {
+            cbxCType.getItems().add(t.getTitle());
+            cbxCType.setValue(t.getTitle());
+        }
 
         btnCheckIn.setOnAction(event -> {
             if(validate()) {
@@ -250,6 +256,8 @@ public class CheckInController implements Initializable {
             }
         });
 
+
+
         ColumnConstraints col1 = new ColumnConstraints(94);
         ColumnConstraints col2 = new ColumnConstraints(94);
         ColumnConstraints col3 = new ColumnConstraints(94);
@@ -258,7 +266,7 @@ public class CheckInController implements Initializable {
         customerDTOList = service.getListCustomer();
         searchCustomer();
         searchRoomByType();
-        getServices();
+        //getServices();
 
 
     }
