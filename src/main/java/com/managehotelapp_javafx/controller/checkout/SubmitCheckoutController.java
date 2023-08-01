@@ -46,9 +46,9 @@ public class SubmitCheckoutController implements Initializable {
     @FXML
     private TableView<BookingServiceDTO> serviceTableView;
     @FXML
-    private TableColumn<BookingRoomDTO, String> serialRoomCol,roomNoCol, roomTypeCol, roomPriceCol, dayOfStayCol, totalCostRoomCol;
+    private TableColumn<BookingRoomDTO, String> serialRoomCol, roomNoCol, roomTypeCol, roomPriceCol, dayOfStayCol, totalCostRoomCol;
     @FXML
-    private TableColumn<BookingServiceDTO, String> serialServiceCol,serviceNameCol, servicePriceCol, quantityServiceCol, totalCostServiceCol, roomNoServiceCol;
+    private TableColumn<BookingServiceDTO, String> serialServiceCol, serviceNameCol, servicePriceCol, quantityServiceCol, totalCostServiceCol, roomNoServiceCol;
 
     private Stage primaryStage;
     private FXMLLoader fxmlLoader;
@@ -56,11 +56,12 @@ public class SubmitCheckoutController implements Initializable {
     ObservableList<BookingServiceDTO> bookingServiceDTOObservableList = FXCollections.observableArrayList();
 
     private List<BookingRoomDTO> bookingRoomDTOList = new ArrayList<>();
-    public void displayCheckoutBookingRoom(List<Integer> bookingRoomIdList){
+
+    public void displayCheckoutBookingRoom(List<Integer> bookingRoomIdList) {
         checkOutLabel.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern(DATETIME_FORMAT_PATTERN)));
 
         int totalCheckout = 0;
-        for(var item : bookingRoomIdList){
+        for (var item : bookingRoomIdList) {
             BookingRoomDTO bookingRoomDTO = bookingRoomService.getBookingRoomById(item);
             bookingRoomDTO.setCheckoutDate(checkOutLabel.getText());
 
@@ -109,21 +110,15 @@ public class SubmitCheckoutController implements Initializable {
         InvoiceDTO invoiceDTO = new InvoiceDTO();
         invoiceDTO.setPaymentAmount(Integer.parseInt(totalLabel.getText()));
         boolean isSuccess = bookingRoomService.checkOutRoom(bookingRoomDTOList, invoiceDTO);
-        if(isSuccess){
+        if (isSuccess) {
             AlertUtils alertUtils = new AlertUtils();
             alertUtils.alert(Alert.AlertType.INFORMATION, "Checkout", "Checkout successfully");
             primaryStage = (Stage) btnCheckout.getScene().getWindow();
             primaryStage.close();
-            FXMLLoader fxmlLoader = FXMLLoaderConstant.getBookingScene();
-            try{
-                fxmlLoader.load();
-                CurrentBookingController controller = fxmlLoader.getController();
-                controller.changeBookingScene();
-            }catch (Exception e){
-                e.printStackTrace();
-            }
+
         }
     }
+
     @FXML
     void onBack(ActionEvent event) {
         primaryStage = (Stage) btnBack.getScene().getWindow();

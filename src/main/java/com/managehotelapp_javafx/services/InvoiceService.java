@@ -17,4 +17,6 @@ public interface InvoiceService {
     boolean deleteInvoiceDTO(int idInvDTO);
     boolean updateInvoiceDTO(InvoiceDTO invoiceDTO);
 
+    String getRevenueToday();
+
 }

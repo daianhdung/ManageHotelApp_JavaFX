@@ -4,7 +4,12 @@ import com.managehotelapp_javafx.entity.RoomFacilityEntity;
 
 import java.util.List;
 
-public interface RoomFacilityRepository extends GenericRepository<RoomFacilityEntity> {
+
+
+public interface RoomFacilityRepository extends  GenericRepository<RoomFacilityEntity> {
 
     List<RoomFacilityEntity> findAll();
+
+    RoomFacilityEntity findById(int id);
+
 }

@@ -13,6 +13,8 @@ import java.util.Map;
 public class BookingRoomRepositoryImp extends AbstractRepository<BookingRoomEntity> implements BookingRoomRepository {
 
 
+
+
     @Override
     public List<BookingRoomEntity> findAll() {
         return query("FROM BookingRoomEntity", null);

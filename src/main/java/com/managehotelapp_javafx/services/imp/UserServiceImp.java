@@ -31,7 +31,7 @@ public class UserServiceImp implements UserService {
         if (user != null) {
             if(BCrypt.checkpw(password, user.getPassword())){
 
-                SessionUser.putValue(user.getUsername(), user.getFullName(), user.getUserRole().getDescription());
+                SessionUser.putValue(user.getId(), user.getUsername(), user.getFullName(), user.getUserRole().getDescription());
                 return true;
             }else {
                 throw new BadCredentialsException("Username or password is incorrect");

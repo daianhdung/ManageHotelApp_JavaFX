@@ -2,6 +2,10 @@ package com.managehotelapp_javafx.controller;
 
 import com.managehotelapp_javafx.dto.InvoiceDTO;
 import com.managehotelapp_javafx.dto.ServiceDTO;
+import com.managehotelapp_javafx.multithread.QueryCheckin;
+import com.managehotelapp_javafx.multithread.QueryReservation;
+import com.managehotelapp_javafx.multithread.QueryRevenue;
+import com.managehotelapp_javafx.multithread.QueryStorage;
 import com.managehotelapp_javafx.services.BookingRoomService;
 import com.managehotelapp_javafx.services.BookingService;
 import com.managehotelapp_javafx.services.InvoiceService;
@@ -52,72 +56,84 @@ public class HomeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
-        // -------set check-in label
-        int checkInQty = (int) bookingRoomService.getCurrentBookingRoom()
-                .stream().filter(bookingRoomDTO -> bookingRoomDTO.getStatus().toUpperCase().equals(BookingStatus.CHECKED_IN.toString()))
-                .count();
-
-        checkInLabel.setText(String.valueOf(checkInQty));
-
-        // -------set reservation label
-        int reservationQty = (int) bookingRoomService.getCurrentBookingRoom()
-                .stream().filter(bookingRoomDTO -> bookingRoomDTO.getStatus().toUpperCase().equals(BookingStatus.RESERVED.toString()))
-                .count();
-        reservationCountLabel.setText(String.valueOf(reservationQty));
-
-
-        // -------set storage
-        gridPane = new GridPane();
-        gridPane.setGridLinesVisible(true);
-        gridPane.setAlignment(Pos.CENTER);
-        gridPane.setLayoutY(90);
-        gridPane.setStyle("-fx-background-color: white");
-
-        List<ServiceDTO> list = services.getServicesList();
-        int maxRow = list.size();
-
-        Node[][] contentArray = new Node[2][maxRow];
-
-        int col = 0;
-        int i = 0;
-        for (int row = 0; row < maxRow; row++) {
-            var service = list.get(i);
-
-            Label label = new Label(service.getDescription());
-            label.setPadding(new Insets(40));
-            label.setFont(new Font("Arial", 25));
-            contentArray[col][row] = label;
-            gridPane.add(label, col, row);
+        QueryReservation queryReservation = new QueryReservation();
+        QueryCheckin queryCheckin = new QueryCheckin();
+        QueryRevenue queryRevenue = new QueryRevenue();
+        QueryStorage queryStorage = new QueryStorage();
+        queryReservation.setOnSucceeded( e -> reservationCountLabel.setText(queryReservation.getValue()));
+        queryCheckin.setOnSucceeded( e -> checkInLabel.setText(queryCheckin.getValue()));
+        queryRevenue.setOnSucceeded(e -> incomesLabel.setText(queryRevenue.getValue()));
+        queryStorage.setOnSucceeded(e -> storageScene.getChildren().add(queryStorage.getValue()));
+        queryStorage.start();
+        queryCheckin.start();
+        queryReservation.start();
+        queryRevenue.start();
 
 
-            int qtyConsumed = services.findServicesById(service.getId()).getQtyConsumed();
-            int inStock = service.getQuantity();
-            Label label2 = new Label(String.valueOf(inStock - qtyConsumed + "/" + inStock));
-            label2.setPadding(new Insets(40));
-            label2.setFont(new Font("Arial", 25));
-            contentArray[col + 1][row] = label2;
-
-            gridPane.add(label2, col + 1, row);
-            i++;
-        }
-        storageScene.getChildren().add(gridPane);
-
-
-        // -------set revenue
-
-        List<InvoiceDTO> Invlist = invoiceService.getInvoiceDTOList().stream().filter(invoiceDTO -> {
-            Timestamp timestamp = invoiceDTO.getCreatedAt();
-            LocalDate localDate = timestamp.toLocalDateTime().toLocalDate();
-            return localDate.equals(LocalDate.now());
-        }).collect(Collectors.toList());
-
-        int sum = 0;
-        for (var invAmount : Invlist) {
-            sum += invAmount.getPaymentAmount();
-        }
-        incomesLabel.setText(String.valueOf(sum));
-
+//        // -------set check-in label
+//        int checkInQty = (int) bookingRoomService.getCurrentBookingRoom()
+//                .stream().filter(bookingRoomDTO -> bookingRoomDTO.getStatus().toUpperCase().equals(BookingStatus.CHECKED_IN.toString()))
+//                .count();
+//
+//        checkInLabel.setText(String.valueOf(checkInQty));
+//
+//        // -------set reservation label
+//        int reservationQty = (int) bookingRoomService.getCurrentBookingRoom()
+//                .stream().filter(bookingRoomDTO -> bookingRoomDTO.getStatus().toUpperCase().equals(BookingStatus.RESERVED.toString()))
+//                .count();
+//        reservationCountLabel.setText(String.valueOf(reservationQty));
+//
+//
+////         -------set storage
+//        gridPane = new GridPane();
+//        gridPane.setGridLinesVisible(true);
+//        gridPane.setAlignment(Pos.CENTER);
+//        gridPane.setLayoutY(90);
+//        gridPane.setStyle("-fx-background-color: white");
+//
+//        List<ServiceDTO> list = services.getServicesList();
+//        int maxRow = list.size();
+//
+//        Node[][] contentArray = new Node[2][maxRow];
+//
+//        int col = 0;
+//        int i = 0;
+//        for (int row = 0; row < maxRow; row++) {
+//            var service = list.get(i);
+//
+//            Label label = new Label(service.getDescription());
+//            label.setPadding(new Insets(40));
+//            label.setFont(new Font("Arial", 25));
+//            contentArray[col][row] = label;
+//            gridPane.add(label, col, row);
+//
+//
+//            int qtyConsumed = services.findServicesById(service.getId()).getQtyConsumed();
+//            int inStock = service.getQuantity();
+//            Label label2 = new Label(String.valueOf(inStock - qtyConsumed + "/" + inStock));
+//            label2.setPadding(new Insets(40));
+//            label2.setFont(new Font("Arial", 25));
+//            contentArray[col + 1][row] = label2;
+//
+//            gridPane.add(label2, col + 1, row);
+//            i++;
+//        }
+//        storageScene.getChildren().add(gridPane);
+//
+//
+//        // -------set revenue
+//
+//        List<InvoiceDTO> Invlist = invoiceService.getInvoiceDTOList().stream().filter(invoiceDTO -> {
+//            Timestamp timestamp = invoiceDTO.getCreatedAt();
+//            LocalDate localDate = timestamp.toLocalDateTime().toLocalDate();
+//            return localDate.equals(LocalDate.now());
+//        }).collect(Collectors.toList());
+//
+//        int sum = 0;
+//        for (var invAmount : Invlist) {
+//            sum += invAmount.getPaymentAmount();
+//        }
+//        incomesLabel.setText(String.valueOf(sum));
     }
 
 

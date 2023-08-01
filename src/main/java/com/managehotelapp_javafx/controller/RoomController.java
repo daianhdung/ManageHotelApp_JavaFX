@@ -1,28 +1,27 @@
 package com.managehotelapp_javafx.controller;
 
-import com.managehotelapp_javafx.HelloApplication;
-import com.managehotelapp_javafx.dto.BookingDTO;
 import com.managehotelapp_javafx.dto.RoomDTO;
-import com.managehotelapp_javafx.entity.RoomEntity;
-import com.managehotelapp_javafx.repository.imp.RoomRepositoryImp;
+import com.managehotelapp_javafx.services.CheckInService;
 import com.managehotelapp_javafx.services.RoomService;
+import com.managehotelapp_javafx.services.imp.CheckInServiceImp;
 import com.managehotelapp_javafx.services.imp.RoomServiceImp;
 import com.managehotelapp_javafx.utils.constant.FXMLLoaderConstant;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Side;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.effect.Glow;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -75,14 +74,14 @@ public class RoomController implements Initializable {
     private List<RoomDTO> availableRooms = roomService.getAvailableRoom();
     private List<RoomDTO> unavailableRooms = roomService.getUnavailableRoom();
     private List<RoomDTO> roomDTOList = roomService.getAllRoom();
+    CheckInController checkInController = new CheckInController();
     RoomDetailController roomDetailController = new RoomDetailController();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         lblAvRooms.setText(String.valueOf(availableRooms.size()) + "/" + String.valueOf(roomDTOList.size()));
 
-        roomDetailController.roomController = this;
+        checkInController.roomController = this;
         getRoomItem(roomDTOList);
 
 
@@ -90,12 +89,16 @@ public class RoomController implements Initializable {
         search();
     }
 
-    private final String[] suggestions = {"Available Rooms", "Unavailable Rooms"};
+    private final List<String> suggestions = new ArrayList<>();
     private boolean textFieldClicked = false;
 
     private void search() {
         // Create a context menu to display the suggestions.
         ContextMenu contextMenu = new ContextMenu();
+        CheckInServiceImp service = new CheckInServiceImp();
+        suggestions.addAll(service.getRoomType());
+        suggestions.add("Available Rooms");
+        suggestions.add("Unavailable Rooms");
         //        for (String suggestion : suggestions) {
         //            MenuItem item = new MenuItem(suggestion);
         //            item.setOnAction(event -> tfSearch.setText(suggestion));
@@ -114,9 +117,12 @@ public class RoomController implements Initializable {
                             gridPane2.getChildren().clear();
                             if (suggestion == "Available Rooms") {
                                 getRoomItem(availableRooms);
-                            } else {
+                            } else if (suggestion == "Unavailable Rooms"){
                                 getRoomItem(unavailableRooms);
+                            } else {
+                                getRoomItem(service.getRoomsByType(roomDTOList,suggestion));
                             }
+
                         }
                 );
                 contextMenu.getItems().add(item);
@@ -164,11 +170,9 @@ public class RoomController implements Initializable {
     }
 
     public void setBtnCheckin(Event event) throws IOException {
-
         primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        fxmlLoader = FXMLLoaderConstant.getRoomDetailScene();
-        roomDetailController.setRooms(seletedRooms);
-        fxmlLoader.setController(roomDetailController);
+        fxmlLoader = FXMLLoaderConstant.getCheckInScene();
+        fxmlLoader.setController(checkInController);
         primaryStage.setScene(new Scene(fxmlLoader.load()));
         primaryStage.show();
     }
@@ -176,122 +180,81 @@ public class RoomController implements Initializable {
     private void getRoomItem(List<RoomDTO> rooms) {
         int n = rooms.size();
         int maxCol = 4;
-        int rows = Math.round((float) n / maxCol);
+        int rows = Math.round((float) n / maxCol) + (n % maxCol);
         int i = 0;
         for (int row = 0; row < rows; row++) {
             for(int col = 0; col < maxCol ;col++) {
-                GridPane gridPane = new GridPane();
-                gridPane.setPrefHeight(195.0);
-                gridPane.setPrefWidth(200.0);
-                // Create ColumnConstraints
-                ColumnConstraints column1 = new ColumnConstraints();
-                column1.setHalignment(javafx.geometry.HPos.CENTER);
-                column1.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
-                column1.setMaxWidth(153.0);
-                column1.setMinWidth(10.0);
-                column1.setPrefWidth(153.0);
-
-                ColumnConstraints column2 = new ColumnConstraints();
-                column2.setHalignment(javafx.geometry.HPos.CENTER);
-                column2.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
-                column2.setMaxWidth(94.0);
-                column2.setMinWidth(10.0);
-                column2.setPrefWidth(47.0);
-
-                // Add ColumnConstraints to GridPane
-                gridPane.getColumnConstraints().addAll(column1, column2);
-
-                // Create RowConstraints
-                RowConstraints row1 = new RowConstraints();
-                row1.setMaxHeight(38.0);
-                row1.setMinHeight(10.0);
-                row1.setPrefHeight(27.0);
-                row1.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
-
-                RowConstraints row2 = new RowConstraints();
-                row2.setMaxHeight(113.0);
-                row2.setMinHeight(10.0);
-                row2.setPrefHeight(113.0);
-                row2.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
-
-                RowConstraints row3 = new RowConstraints();
-                row3.setMaxHeight(77.0);
-                row3.setMinHeight(0.0);
-                row3.setPrefHeight(17.0);
-                row3.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
-
-                RowConstraints row4 = new RowConstraints();
-                row4.setMaxHeight(64.0);
-                row4.setMinHeight(10.0);
-                row4.setPrefHeight(17.0);
-                row4.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
-                // Add RowConstraints to GridPane
-                gridPane.getRowConstraints().addAll(row1, row2, row3, row4);
-
                 var r = rooms.get(i);
-                String RoomName = r.getRoomNo();
-                String RoomType = r.getType();
-                String RoomStatus = r.getStatus();
-                // Create Labels
-                Label lblRoomName = new Label();
-                Label lblRoomType = new Label();
-                Label lblRoomStatus = new Label();
+                String roomName = r.getRoomNo();
+                String roomType = r.getType();
+                String roomStatus = r.getStatus();
+                GridPane root = new GridPane();
+                root.setPrefHeight(131.0);
+                root.setPrefWidth(200.0);
+                Insets rootMargin = new Insets(15);
+                GridPane.setMargin(root, rootMargin);
+                root.setId(roomName);
+                Glow glow = new Glow(0.5);
+                root.setOnMouseEntered(event -> root.setEffect(glow));
+                root.setOnMouseExited(event -> root.setEffect(null));
 
-                // Set fx:id for Labels
-                lblRoomName.setId("lblRoomName_" + RoomName);
-                lblRoomType.setId("lblRoomType_" + RoomName);
-                lblRoomStatus.setId("lblRoomStatus_" + RoomName);
-                // Set fx:id for Labels
-                lblRoomName.setText(RoomName);
-                lblRoomType.setText(RoomType);
-                lblRoomStatus.setText(RoomStatus);
-                String rsStyle = Objects.equals(RoomStatus, "Available") ? "-fx-text-fill: green;" : "-fx-text-fill: red;";
-                lblRoomStatus.setStyle(rsStyle);
+                ColumnConstraints columnConstraints = new ColumnConstraints();
+                columnConstraints.setHalignment(javafx.geometry.HPos.CENTER);
+                columnConstraints.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+                columnConstraints.setMinWidth(10.0);
+                columnConstraints.setPrefWidth(100.0);
+                root.getColumnConstraints().add(columnConstraints);
 
-                // Add Labels to GridPane
-                gridPane.add(lblRoomName, 0, 0);
-                gridPane.add(lblRoomType, 0, 2);
-                gridPane.add(lblRoomStatus, 0, 3);
+                RowConstraints rowConstraints1 = new RowConstraints();
+                rowConstraints1.setMaxHeight(93.33332824707031);
+                rowConstraints1.setMinHeight(10.0);
+                rowConstraints1.setPrefHeight(90.0);
+                rowConstraints1.setValignment(javafx.geometry.VPos.CENTER);
+                rowConstraints1.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
+                root.getRowConstraints().add(rowConstraints1);
 
-                // Create CheckBox
-                CheckBox cbSelected = new CheckBox();
-                cbSelected.setId("cbSelected");
-                cbSelected.setMnemonicParsing(false);
-                cbSelected.setDisable(!Objects.equals(RoomStatus, "Available"));
-                cbSelected.setOnAction(event -> {                   
-                        var selectedItem = (Node) event.getSource();
-                        Label lr = (Label) selectedItem.getScene().lookup("#lblRoomName_" + RoomName);
-                    if (Objects.equals(RoomStatus, "Available")) {
-                        if (cbSelected.isSelected()) {
-                            seletedRooms.add(lr.getText());
-                        } else {
-                            seletedRooms.removeIf(s -> s.equals(lr.getText()));
-                        }
-                    }
-                });
+                RowConstraints rowConstraints2 = new RowConstraints();
+                rowConstraints2.setMaxHeight(54.33331298828125);
+                rowConstraints2.setMinHeight(10.0);
+                rowConstraints2.setPrefHeight(41.0);
+                rowConstraints2.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
+                root.getRowConstraints().add(rowConstraints2);
 
-                // Add CheckBox to GridPane
-                gridPane.add(cbSelected, 1, 0);
+                GridPane gridPane = new GridPane();
+                gridPane.setId("_"+roomName);
+                gridPane.setAlignment(javafx.geometry.Pos.CENTER);
+                gridPane.setNodeOrientation(javafx.geometry.NodeOrientation.LEFT_TO_RIGHT);
+                gridPane.setStyle("-fx-background-color: " + (roomStatus.equals("Available") ? "#9EE20C;" : "#FF0000;"));
+                GridPane.setHalignment(gridPane, javafx.geometry.HPos.LEFT);
 
-                // Create ImageView
-                ImageView imageView = new ImageView();
-                imageView.setFitHeight(103.0);
-                imageView.setFitWidth(123.0);
-                imageView.setPickOnBounds(true);
-                imageView.setPreserveRatio(true);
+                ColumnConstraints innerColumnConstraints = new ColumnConstraints();
+                innerColumnConstraints.setHalignment(javafx.geometry.HPos.CENTER);
+                innerColumnConstraints.setHgrow(javafx.scene.layout.Priority.SOMETIMES);
+                innerColumnConstraints.setMinWidth(10.0);
+                gridPane.getColumnConstraints().add(innerColumnConstraints);
 
-                // Set image for ImageView
-                imageView.setImage(new Image(getClass().getResourceAsStream("/asset/image/bed.png")));
-                // Add ImageView to GridPane
-                gridPane.add(imageView, 0, 1);
-                gridPane.setOnMouseClicked(event -> {
+                RowConstraints innerRowConstraints = new RowConstraints();
+                innerRowConstraints.setMinHeight(10.0);
+                innerRowConstraints.setVgrow(javafx.scene.layout.Priority.SOMETIMES);
+                gridPane.getRowConstraints().add(innerRowConstraints);
+
+                Label innerLabel = new Label(roomName);
+                innerLabel.setAlignment(javafx.geometry.Pos.TOP_LEFT);
+                innerLabel.setTextFill(Color.WHITE);
+                innerLabel.setFont(new Font(55.0));
+                gridPane.getChildren().add(innerLabel);
+
+                Label outerLabel = new Label(roomType);
+                outerLabel.setPrefHeight(35.0);
+                outerLabel.setPrefWidth(217.0);
+                outerLabel.setTextFill(Color.WHITE);
+                outerLabel.setFont(new Font(20.0));
+                GridPane.setRowIndex(outerLabel, 1);
+                root.setOnMouseClicked(event -> {
+                    var selectedItem = (Node) event.getSource();
+                    GridPane gp = (GridPane) selectedItem.lookup("#_" + roomName);
                     if (event.getClickCount() == 2) {
-                        seletedRooms = new HashSet<>();
-                        var selectedItem = (Node) event.getSource();
-                        Label lr = (Label) selectedItem.lookup("#lblRoomName_" + RoomName);
-
-                        seletedRooms.add(lr.getText());
-                        roomDetailController.setRooms(seletedRooms);
+                        roomDetailController.setRoomName(roomName);
                         fxmlLoader = FXMLLoaderConstant.getRoomDetailScene();
                         fxmlLoader.setController(roomDetailController);
                         primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -300,10 +263,10 @@ public class RoomController implements Initializable {
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
-
                     }
                 });
-                gridPane2.add(gridPane, col, row);
+                root.getChildren().addAll(gridPane, outerLabel);
+                gridPane2.add(root, col, row);
                 i++;
                 if(i==n){
                     return;

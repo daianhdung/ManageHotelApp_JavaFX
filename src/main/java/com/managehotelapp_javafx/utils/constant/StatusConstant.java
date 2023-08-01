@@ -12,4 +12,8 @@ public class StatusConstant {
     public static final int ROOM_AVAILABLE = 2;
 
     public static final int ROOM_OCCUPIED = 3;
+
+    public static final int INVOICE_PAID = 1;
+
+    public static final String INVOICE_PAID_TITLE = "Paid";
 }

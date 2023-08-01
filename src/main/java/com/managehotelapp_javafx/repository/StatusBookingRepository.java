@@ -8,4 +8,6 @@ public interface StatusBookingRepository extends GenericRepository<StatusBooking
 
     List<StatusBookingEntity> findAll();
     StatusBookingEntity findByIdStatus(int id);
+
+    StatusBookingEntity findByStatusByTitle(String name);
 }

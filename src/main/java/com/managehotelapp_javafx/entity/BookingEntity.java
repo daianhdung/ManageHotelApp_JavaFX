@@ -53,7 +53,7 @@ public class BookingEntity {
     @Column(name = "special_request", length = 1000)
     private String specialRequest;
 
-    @OneToMany(mappedBy = "booking", fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "booking", fetch = FetchType.EAGER)
     private Set<BookingRoomEntity> bookingRoomEntities;
 
     @CreationTimestamp

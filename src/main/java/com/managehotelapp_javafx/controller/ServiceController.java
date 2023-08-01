@@ -11,8 +11,6 @@ import com.managehotelapp_javafx.services.imp.ServicesServiceImp;
 import com.managehotelapp_javafx.utils.alert.AlertUtils;
 import com.managehotelapp_javafx.utils.constant.FXMLLoaderConstant;
 import com.managehotelapp_javafx.utils.enumpackage.BookingStatus;
-
-import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
@@ -32,10 +30,8 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 import static com.managehotelapp_javafx.utils.constant.DateFormatConstant.DATETIME_FORMAT_PATTERN;
 

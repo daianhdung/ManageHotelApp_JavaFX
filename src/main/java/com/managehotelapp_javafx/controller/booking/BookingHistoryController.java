@@ -35,7 +35,7 @@ public class BookingHistoryController  implements Initializable {
     @FXML
     private TableColumn<BookingRoomDTO, String> roomNo, customerName, phoneNumber, statusBooking, idBookingRoom;
     @FXML
-    private TableColumn<BookingRoomDTO, LocalDate> bookingDate, checkinDate;
+    private TableColumn<BookingRoomDTO, LocalDate> bookingDate, checkinDate, checkoutDate;
     @FXML
     private TableColumn<BookingRoomDTO, Void> action;
 
@@ -56,6 +56,8 @@ public class BookingHistoryController  implements Initializable {
         customerName.setCellValueFactory(new PropertyValueFactory<>("customerName"));
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         bookingDate.setCellValueFactory(new PropertyValueFactory<>("bookingDate"));
+        checkinDate.setCellValueFactory(new PropertyValueFactory<>("checkinDate"));
+        checkoutDate.setCellValueFactory(new PropertyValueFactory<>("checkoutDate"));
         statusBooking.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         action.setCellFactory(new Callback<>() {
@@ -97,7 +99,7 @@ public class BookingHistoryController  implements Initializable {
 
     public Button createButtonBack(){
         Button btnBack = new Button("Back");
-        btnBack.setLayoutX(437);
+        btnBack.setLayoutX(837);
         btnBack.setLayoutY(585);
         btnBack.setPrefWidth(126);
         btnBack.setPrefHeight(44);

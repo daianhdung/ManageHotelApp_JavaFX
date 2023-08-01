@@ -1,16 +1,64 @@
 package com.managehotelapp_javafx.dto;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BookingDTO {
 
     private int id;
-
     private String roomNo;
-    private String customerName;
 
+    public int getUserid() {
+        return userid;
+    }
+
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
+
+    public String getCheckInDate() {
+        return checkInDate;
+    }
+
+    private String customerName;
+    private int userid;
+    private String customerIDN;
+    private String phoneNumber;
+    private String bookingDate;
+    private String checkInDate;
+    private String checkOutDate;
+    private String status;
+    private List<BookingRoomDTO> bookingRoomDTOList = new ArrayList<>();
+    private List<BookingDTO> bookingDTOList;
+
+    public int getAdultCount() {
+        return AdultCount;
+    }
+
+    public void setAdultCount(int adultCount) {
+        AdultCount = adultCount;
+    }
+
+    public int getChildrenCount() {
+        return ChildrenCount;
+    }
+
+    public void setChildrenCount(int childrenCount) {
+        ChildrenCount = childrenCount;
+    }
+
+    private int AdultCount;
+    private int ChildrenCount;
+    private String customerRequest;
+
+
+
+    public String getCustomerRequest() {
+        return customerRequest;
+    }
+
+    public void setCustomerRequest(String customerRequest) {
+        this.customerRequest = customerRequest;
+    }
 
     public String getCustomerIDN() {
         return customerIDN;
@@ -20,10 +68,7 @@ public class BookingDTO {
         this.customerIDN = customerIDN;
     }
 
-    private String customerIDN;
-    private String phoneNumber;
-    private String bookingDate;
-    private String checkInDate;
+
 
     public String getCheckOutDate() {
         return checkOutDate;
@@ -33,10 +78,7 @@ public class BookingDTO {
         this.checkOutDate = checkOutDate;
     }
 
-    private String checkOutDate;
-    private String status;
-    private List<BookingRoomDTO> bookingRoomDTOList = new ArrayList<>();
-    private List<BookingDTO> bookingDTOList;
+
 
 
 
@@ -113,5 +155,14 @@ public class BookingDTO {
 
     public void setBookingDTOList(List<BookingDTO> bookingDTOList) {
         this.bookingDTOList = bookingDTOList;
+    }
+
+
+    public void setUserId(int userid) {
+        this.userid = userid;
+    }
+
+    public int getUserId() {
+        return userid;
     }
 }
