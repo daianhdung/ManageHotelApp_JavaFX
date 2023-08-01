@@ -14,6 +14,9 @@ import com.managehotelapp_javafx.services.CustomerService;
 import com.managehotelapp_javafx.services.InvoiceService;
 import com.managehotelapp_javafx.services.InvoiceStatusService;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,5 +95,13 @@ public class InvoiceServiceImp implements InvoiceService {
         invoiceEntity.setCreatedAt(invoiceDTO.getCreatedAt());
 
         return invRepository.updateInvoice(invoiceEntity);
+    }
+
+    @Override
+    public String getRevenueToday() {
+        LocalDate todayDate = LocalDate.now();
+        LocalDateTime startOfDay = todayDate.atStartOfDay();
+        Timestamp timestampToday = Timestamp.valueOf(startOfDay);
+        return String.valueOf(invRepository.findByDay(timestampToday).stream().mapToInt(InvoiceEntity::getPaymentAmount).sum());
     }
 }

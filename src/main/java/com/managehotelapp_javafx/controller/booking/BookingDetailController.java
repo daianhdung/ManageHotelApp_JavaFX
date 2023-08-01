@@ -104,6 +104,16 @@ public class BookingDetailController  implements Initializable{
             controller.displayData(bookingDetail.getBookingId());
             primaryStage.initStyle(StageStyle.UNDECORATED);
             primaryStage.initModality(Modality.APPLICATION_MODAL);
+
+            primaryStage.setOnHiding(event2 -> {
+                primaryStage = (Stage) btnCheckout.getScene().getWindow();
+                fxmlLoader = FXMLLoaderConstant.getBookingScene();
+                try {
+                    primaryStage.setScene(new Scene(fxmlLoader.load()));
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            });
             primaryStage.show();
         }catch (Exception e){
             e.printStackTrace();

@@ -38,7 +38,7 @@ public class CurrentBookingController implements Initializable {
     @FXML
     private TableColumn<BookingRoomDTO, String> roomNo, customerName, phoneNumber, statusBooking, idBookingRoom;
     @FXML
-    private TableColumn<BookingRoomDTO, LocalDate> bookingDate, checkinDate;
+    private TableColumn<BookingRoomDTO, LocalDate> bookingDate, checkinDate, checkoutDate;
     @FXML
     private TableColumn<BookingRoomDTO, Void> action;
     ObservableList<BookingRoomDTO> listBookingRoom = FXCollections.observableArrayList();
@@ -56,6 +56,8 @@ public class CurrentBookingController implements Initializable {
         customerName.setCellValueFactory(new PropertyValueFactory<>("customerName"));
         phoneNumber.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         bookingDate.setCellValueFactory(new PropertyValueFactory<>("bookingDate"));
+        checkinDate.setCellValueFactory(new PropertyValueFactory<>("checkinDate"));
+        checkoutDate.setCellValueFactory(new PropertyValueFactory<>("checkoutDate"));
         statusBooking.setCellValueFactory(new PropertyValueFactory<>("status"));
 
         action.setCellFactory(new Callback<>() {

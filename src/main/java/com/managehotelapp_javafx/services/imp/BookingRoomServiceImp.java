@@ -6,25 +6,13 @@ import com.managehotelapp_javafx.dto.RoomDTO;
 import com.managehotelapp_javafx.entity.BookingEntity;
 import com.managehotelapp_javafx.entity.BookingRoomEntity;
 import com.managehotelapp_javafx.entity.CustomerEntity;
-import com.managehotelapp_javafx.entity.RoomEntity;
 import com.managehotelapp_javafx.mapper.BookingRoomMapper;
 import com.managehotelapp_javafx.repository.*;
 import com.managehotelapp_javafx.repository.imp.*;
-import com.managehotelapp_javafx.repository.BookingRepository;
-import com.managehotelapp_javafx.repository.BookingRoomRepository;
-import com.managehotelapp_javafx.repository.CustomerRepository;
-import com.managehotelapp_javafx.repository.StatusBookingRepository;
-import com.managehotelapp_javafx.repository.imp.BookingRepositoryImp;
-import com.managehotelapp_javafx.repository.imp.BookingRoomRepositoryImp;
-import com.managehotelapp_javafx.repository.imp.CustomerRepositoryImp;
-import com.managehotelapp_javafx.repository.imp.StatusBookingRepositoryImp;
-
 import com.managehotelapp_javafx.services.BookingRoomService;
 import com.managehotelapp_javafx.services.InvoiceService;
 import com.managehotelapp_javafx.services.RoomService;
-
 import com.managehotelapp_javafx.utils.constant.DateFormatConstant;
-
 import com.managehotelapp_javafx.utils.enumpackage.BookingStatus;
 
 import java.sql.Timestamp;
@@ -74,19 +62,19 @@ public class BookingRoomServiceImp implements BookingRoomService {
         String formattedDateTime = dateFormat.format(bookingRoom.getBooking().getBookingDate());
         bookingRoomDTO.setBookingDate(formattedDateTime);
 
-        if (bookingRoom.getBooking().getActualDateIn() != null) {
-            formattedDateTime = dateFormat.format(bookingRoom.getBooking().getActualDateIn());
+        if (bookingRoom.getBooking().getEstimateDateIn() != null) {
+            formattedDateTime = dateFormat.format(bookingRoom.getBooking().getEstimateDateIn());
             bookingRoomDTO.setCheckinDate(formattedDateTime);
         }
 
-        if (bookingRoom.getBooking().getActualDateOut() != null) {
-            formattedDateTime = dateFormat.format(bookingRoom.getBooking().getActualDateOut());
+        if (bookingRoom.getBooking().getEstimateDateOut() != null) {
+            formattedDateTime = dateFormat.format(bookingRoom.getBooking().getEstimateDateOut());
             bookingRoomDTO.setCheckoutDate(formattedDateTime);
         }
         //Get length of stay ( now date minus to check in date )
         if(bookingRoomDTO.getCheckinDate() != null){
             Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
-            int dayOfStay = (int) TimeUnit.MILLISECONDS.toDays(currentTimestamp.getTime() - bookingRoom.getBooking().getActualDateIn().getTime());
+            int dayOfStay = (int) TimeUnit.MILLISECONDS.toDays(currentTimestamp.getTime() - bookingRoom.getBooking().getEstimateDateIn().getTime());
             bookingRoomDTO.setLengthOfStay(dayOfStay);
         }
 
@@ -186,6 +174,7 @@ public class BookingRoomServiceImp implements BookingRoomService {
         try {
             BookingRoomEntity bookingRoomEntityForGetCustomerId = bookingRoomRepository.findById(bookingRoomDTOList.get(0).getId());
             invoiceDTO.setIdCustomer(bookingRoomEntityForGetCustomerId.getBooking().getCustomer().getId());
+            invoiceDTO.setInvoiceStatus(INVOICE_PAID_TITLE);
             int idInvoice = invoiceService.insertInvoiceDTO(invoiceDTO);
             bookingRoomDTOList.forEach(bookingRoomDTO -> {
                 BookingRoomEntity bookingRoomEntity = bookingRoomRepository.findById(bookingRoomDTO.getId());
@@ -206,7 +195,8 @@ public class BookingRoomServiceImp implements BookingRoomService {
                 bookingRoomEntity.setStatusBooking(statusBookingRepository.findByIdStatus(BOOKING_CHECKOUT));
                 var roomEntity = roomRepository.findById(bookingRoomEntity.getRoom().getId());
                 roomEntity.setRoomStatus(roomStatusRepository.findById(ROOM_AVAILABLE));
-                bookingRoomEntity.setRoom(roomEntity);
+                roomRepository.save(roomEntity);
+
                 bookingRoomRepository.save(bookingRoomEntity);
             });
         } catch (Exception e) {

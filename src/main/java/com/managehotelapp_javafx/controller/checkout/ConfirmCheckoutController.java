@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -42,6 +43,7 @@ public class ConfirmCheckoutController implements Initializable {
     private TableColumn<BookingRoomDTO, String> customerNameCol, roomCol, serialCol;
     @FXML
     private TableView<BookingRoomDTO> tableView;
+
     @FXML
     void onCheckoutAll(ActionEvent event) {
         primaryStage = (Stage) btnAll.getScene().getWindow();
@@ -52,13 +54,13 @@ public class ConfirmCheckoutController implements Initializable {
             primaryStage.setY(80); // Set Y coordinate
             SubmitCheckoutController submitCheckoutController = fxmlLoader.getController();
             List<Integer> listBookingRoomId = bookingRoomDTOS.stream().map(BookingRoomDTO::getId).collect(Collectors.toList());
-            System.out.println(listBookingRoomId.get(0));
             submitCheckoutController.displayCheckoutBookingRoom(listBookingRoomId);
             primaryStage.setScene(new Scene(root));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
     @FXML
     void onCheckoutOne(ActionEvent event) {
         primaryStage = (Stage) btnCheckout.getScene().getWindow();
@@ -68,15 +70,17 @@ public class ConfirmCheckoutController implements Initializable {
             primaryStage.setX(365); // Set X coordinate
             primaryStage.setY(80); // Set Y coordinate
             SubmitCheckoutController submitCheckoutController = fxmlLoader.getController();
-            int bookingRoomId = tableView.getSelectionModel().getSelectedItem().getId();
             List<Integer> listBookingRoomId = new ArrayList<>();
-            listBookingRoomId.add(bookingRoomId);
+            tableView.getSelectionModel().getSelectedItems().stream().map(item ->
+                    listBookingRoomId.add(item.getId())
+            ).collect(Collectors.toList());
             submitCheckoutController.displayCheckoutBookingRoom(listBookingRoomId);
             primaryStage.setScene(new Scene(root));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
     @FXML
     void onCancel(ActionEvent event) {
         primaryStage = (Stage) btnCancel.getScene().getWindow();
@@ -91,10 +95,13 @@ public class ConfirmCheckoutController implements Initializable {
         });
         roomCol.setCellValueFactory(new PropertyValueFactory<>("roomNo"));
         customerNameCol.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+
+        tableView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
     }
 
     ObservableList<BookingRoomDTO> bookingRoomDTOS = FXCollections.observableArrayList();
     int bookingId;
+
     public void displayData(int id) {
         bookingRoomDTOS.addAll(bookingRoomService.getBookingRoomByIdBooking(id));
         tableView.setItems(bookingRoomDTOS);

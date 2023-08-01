@@ -4,6 +4,7 @@ import com.managehotelapp_javafx.entity.InvoiceEntity;
 import com.managehotelapp_javafx.entity.UserEntity;
 import com.managehotelapp_javafx.repository.InvoiceRepository;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,14 @@ public class InvoiceRepositoryImp extends AbstractRepository<InvoiceEntity> impl
         parameters.put("id", idInv);
         List<InvoiceEntity> result = query("FROM InvoiceEntity WHERE id = :id", parameters);
         return result.isEmpty() ? null : result.get(0);
+    }
+
+    @Override
+    public List<InvoiceEntity> findByDay(Timestamp timestamp) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("day", timestamp);
+        List<InvoiceEntity> result = query("FROM InvoiceEntity WHERE DATE(created_at) = :day", parameters);
+        return result.isEmpty() ? null : result;
     }
 
     @Override

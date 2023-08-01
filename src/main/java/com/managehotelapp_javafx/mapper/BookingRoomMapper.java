@@ -3,6 +3,7 @@ package com.managehotelapp_javafx.mapper;
 import com.managehotelapp_javafx.dto.BookingRoomDTO;
 import com.managehotelapp_javafx.entity.BookingEntity;
 import com.managehotelapp_javafx.entity.BookingRoomEntity;
+import com.managehotelapp_javafx.utils.constant.DateFormatConstant;
 
 import java.text.SimpleDateFormat;
 
@@ -16,8 +17,18 @@ public class BookingRoomMapper {
         bookingRoomDTO.setCustomerName(item.getBooking().getCustomer().getFullName());
         bookingRoomDTO.setBookingId(item.getBooking().getId());
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat(DateFormatConstant.DATETIME_FORMAT_PATTERN);
         String formattedDateTime = dateFormat.format(item.getBooking().getBookingDate());
+
+        if (item.getBooking().getEstimateDateIn() != null) {
+            formattedDateTime = dateFormat.format(item.getBooking().getEstimateDateIn());
+            bookingRoomDTO.setCheckinDate(formattedDateTime);
+        }
+
+        if (item.getBooking().getEstimateDateOut() != null) {
+            formattedDateTime = dateFormat.format(item.getBooking().getEstimateDateOut());
+            bookingRoomDTO.setCheckoutDate(formattedDateTime);
+        }
 
         bookingRoomDTO.setBookingDate(formattedDateTime);
         bookingRoomDTO.setStatus(item.getStatusBooking().getTitle());

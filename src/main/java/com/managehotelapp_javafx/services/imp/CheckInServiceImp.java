@@ -121,7 +121,7 @@ public class CheckInServiceImp implements CheckInService {
                 BookingRoomEntity bookingRoomEntity = new BookingRoomEntity();
                 bookingRoomEntity.setRoom(r);
                 bookingRoomEntity.setBooking(bookingEntity);
-                //bookingRoomEntity.setStatusBooking(statusBookingRepository.findByIdStatus(2));
+                bookingRoomEntity.setStatusBooking(statusBookingRepository.findByStatusByTitle(bookingDTO.getStatus()));
                 roomRepository.updateCheckInRoom(r);
                 bookingRoomEntities.add(bookingRoomEntity);
             }

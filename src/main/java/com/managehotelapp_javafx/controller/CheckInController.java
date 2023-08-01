@@ -125,6 +125,7 @@ public class CheckInController implements Initializable {
         bookingDTO.setChildrenCount(tfChildren.getText().isEmpty()? 0 :Integer.parseInt(tfChildren.getText()));
         confirmBoxController = new ConfirmBoxController(roomsList, bookingDTO);
 
+
         service.setCustomerByIDN(tfNationalID.getText());
         service.setCustomerType(cbxCType.getSelectionModel().getSelectedItem().toString());
         service.setRoomListByNames(roomsList);
