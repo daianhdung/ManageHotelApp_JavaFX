@@ -255,7 +255,7 @@ public class CheckInController implements Initializable {
         btnBack.setOnAction(actionEvent -> {
             try {
                 Stage pstg = (Stage) btnBack.getScene().getWindow();
-                pstg.setScene(new Scene(FXMLLoaderConstant.getHomeScene().load()));
+                pstg.setScene(new Scene(FXMLLoaderConstant.getRoomScene().load()));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
