@@ -5,9 +5,8 @@ import com.managehotelapp_javafx.entity.UserEntity;
 import com.managehotelapp_javafx.repository.InvoiceRepository;
 
 import java.sql.Timestamp;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDate;
+import java.util.*;
 
 public class InvoiceRepositoryImp extends AbstractRepository<InvoiceEntity> implements InvoiceRepository {
     @Override
@@ -73,5 +72,20 @@ public class InvoiceRepositoryImp extends AbstractRepository<InvoiceEntity> impl
         parameters.put("id", idInv);
 
         return delete("DELETE FROM InvoiceEntity WHERE id = :id",parameters);
+    }
+
+    public List<InvoiceEntity> findBetweenDates(Timestamp fromDate, Timestamp toDate) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("fromDate", fromDate);
+        parameters.put("toDate", toDate);
+        return query("FROM InvoiceEntity WHERE DATE(created_at) BETWEEN :fromDate and :toDate",parameters)
+                .stream().toList();
+    }
+
+    public List<InvoiceEntity> findByMonth(LocalDate date) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("date", date.getMonthValue());
+        return query("FROM InvoiceEntity WHERE MONTH(created_at) = :date",parameters)
+                .stream().toList();
     }
 }
