@@ -17,7 +17,8 @@
    <fx:include source="main-layout.fxml" />
    <GridPane layoutX="229.0" layoutY="29.0" prefHeight="84.0" prefWidth="959.0">
      <columnConstraints>
-       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+       <ColumnConstraints hgrow="SOMETIMES" maxWidth="878.0" minWidth="10.0" prefWidth="759.0" />
+         <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="467.0" minWidth="10.0" prefWidth="190.0" />
      </columnConstraints>
      <rowConstraints>
        <RowConstraints maxHeight="56.666664123535156" minHeight="10.0" prefHeight="56.666664123535156" vgrow="SOMETIMES" />
@@ -32,6 +33,11 @@
          <Label fx:id="lblRoomType" text="Type" GridPane.rowIndex="1">
             <font>
                <Font size="20.0" />
+            </font>
+         </Label>
+         <Label fx:id="lblStatus" text="Status" textFill="#2375c2" GridPane.columnIndex="1">
+            <font>
+               <Font name="System Italic" size="31.0" />
             </font>
          </Label>
       </children>

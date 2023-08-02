@@ -1,6 +1,7 @@
 package com.managehotelapp_javafx.controller;
 import com.managehotelapp_javafx.dto.RoomFacilitiesDTO;
 import com.managehotelapp_javafx.services.imp.RoomDetailServiceImp;
+import com.managehotelapp_javafx.services.imp.RoomServiceImp;
 import com.managehotelapp_javafx.utils.constant.FXMLLoaderConstant;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -29,6 +30,9 @@ public class RoomDetailController implements Initializable {
     private Label lblRoomType;
 
     @FXML
+    private Label lblRoomStatus;
+
+    @FXML
     private TableColumn<RoomFacilitiesDTO,Integer> tblColNo;
     @FXML
     private TableColumn<RoomFacilitiesDTO,String> tblColCat;
@@ -55,6 +59,7 @@ public class RoomDetailController implements Initializable {
     {
         if(roomName!=null) {
             service.getRoomByName(roomName);
+
             var list = service.getFacilities();
             ObservableList<RoomFacilitiesDTO> data = FXCollections.observableArrayList();
 
@@ -86,6 +91,10 @@ public class RoomDetailController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lblRoom.setText(lblRoom.getText()+roomName);
+        var roomService = new RoomServiceImp();
+        var room = service.getRoomByName(roomName);
+        lblRoomStatus.setText(room.getRoomStatus().getTitle());
+
         tblFcl.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         btnBack.setOnAction(actionEvent -> {
             ;

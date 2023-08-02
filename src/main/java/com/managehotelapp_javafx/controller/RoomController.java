@@ -68,7 +68,7 @@ public class RoomController implements Initializable {
     }
 
     private Set<String> seletedRooms = new HashSet<>();
-    RoomService roomService = new RoomServiceImp();
+    RoomServiceImp roomService = new RoomServiceImp();
     private Stage primaryStage;
     private FXMLLoader fxmlLoader;
     private List<RoomDTO> availableRooms = roomService.getAvailableRoom();
@@ -80,16 +80,16 @@ public class RoomController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lblAvRooms.setText(String.valueOf(availableRooms.size()) + "/" + String.valueOf(roomDTOList.size()));
-
         checkInController.roomController = this;
         getRoomItem(roomDTOList);
-
-
         scrlpnRoomsList.setContent(gridPane2);
+
         search();
     }
 
     private final List<String> suggestions = new ArrayList<>();
+
+    private final List<String> suggestions2 = new ArrayList<>();
     private boolean textFieldClicked = false;
 
     private void search() {
@@ -99,6 +99,7 @@ public class RoomController implements Initializable {
         suggestions.addAll(service.getRoomType());
         suggestions.add("Available Rooms");
         suggestions.add("Unavailable Rooms");
+        suggestions2.addAll(roomDTOList.stream().map(RoomDTO::getRoomNo).toList());
         //        for (String suggestion : suggestions) {
         //            MenuItem item = new MenuItem(suggestion);
         //            item.setOnAction(event -> tfSearch.setText(suggestion));
@@ -115,6 +116,8 @@ public class RoomController implements Initializable {
                 item.setOnAction(e -> {
                             tfSearch.setText("Filter: " + suggestion);
                             gridPane2.getChildren().clear();
+                            String[] searchText = tfSearch.getText().split(",");
+
                             if (suggestion == "Available Rooms") {
                                 getRoomItem(availableRooms);
                             } else if (suggestion == "Unavailable Rooms"){
@@ -122,7 +125,6 @@ public class RoomController implements Initializable {
                             } else {
                                 getRoomItem(service.getRoomsByType(roomDTOList,suggestion));
                             }
-
                         }
                 );
                 contextMenu.getItems().add(item);
@@ -143,6 +145,7 @@ public class RoomController implements Initializable {
 
         tfSearch.setOnKeyReleased(event -> {
             String text = tfSearch.getText();
+
             if (textFieldClicked && event.getCode() == KeyCode.BACK_SPACE) {
                 tfSearch.clear();
                 textFieldClicked = false;
@@ -151,20 +154,26 @@ public class RoomController implements Initializable {
                 gridPane2.getChildren().clear();
                 getRoomItem(roomDTOList);
                 contextMenu.hide();
-            } else {
-                contextMenu.getItems().clear();
-                for (String suggestion : suggestions) {
-                    if (suggestion.toLowerCase().startsWith(text.toLowerCase())) {
-                        MenuItem item = new MenuItem(suggestion);
-                        item.setOnAction(e -> tfSearch.setText(suggestion));
-                        contextMenu.getItems().add(item);
-                    }
-                }
-                if (!contextMenu.getItems().isEmpty()) {
-                    contextMenu.show(tfSearch, Side.BOTTOM, 500, 0);
-                } else {
-                    contextMenu.hide();
-                }
+            }
+                else if(event.getCode() == KeyCode.ENTER ){
+                    getRoomItem(roomService.roomSearchService(text.contains(",")?
+                            text.split(","):new String[]{text}));
+
+//                contextMenu.getItems().clear();
+//                for (String suggestion : suggestions) {
+//                    if (suggestion.toLowerCase().startsWith(text.toLowerCase())) {
+//                        MenuItem item = new MenuItem(suggestion);
+//                        item.setOnAction(e -> tfSearch.setText(suggestion));
+//                        contextMenu.getItems().add(item);
+//                    }
+//                }
+//                if (!contextMenu.getItems().isEmpty()) {
+////                    contextMenu.show(tfSearch, Side.BOTTOM, 500, 0);
+//
+//
+//                } else {
+//                    contextMenu.hide();
+//                }
             }
         });
     }
@@ -178,6 +187,7 @@ public class RoomController implements Initializable {
     }
 
     private void getRoomItem(List<RoomDTO> rooms) {
+        gridPane2.getChildren().clear();
         int n = rooms.size();
         int maxCol = 4;
         int rows = Math.round((float) n / maxCol) + (n % maxCol);
@@ -240,14 +250,14 @@ public class RoomController implements Initializable {
 
                 Label innerLabel = new Label(roomName);
                 innerLabel.setAlignment(javafx.geometry.Pos.TOP_LEFT);
-                innerLabel.setTextFill(Color.WHITE);
+                innerLabel.setTextFill(Color.BLACK);
                 innerLabel.setFont(new Font(55.0));
                 gridPane.getChildren().add(innerLabel);
 
                 Label outerLabel = new Label(roomType);
                 outerLabel.setPrefHeight(35.0);
                 outerLabel.setPrefWidth(217.0);
-                outerLabel.setTextFill(Color.WHITE);
+                outerLabel.setTextFill(Color.BLACK);
                 outerLabel.setFont(new Font(20.0));
                 GridPane.setRowIndex(outerLabel, 1);
                 root.setOnMouseClicked(event -> {
