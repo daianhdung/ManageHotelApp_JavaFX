@@ -96,6 +96,7 @@ public class CheckInServiceImp implements CheckInService {
                 customer.setFullName(bookingDTO.getCustomerName());
                 customer.setIdentity(bookingDTO.getCustomerIDN());
                 customer.setPhone(bookingDTO.getPhoneNumber());
+                customer.setEmail(bookingDTO.getEmail());
                 customer.setCustomerType(new CustomerTypeRepositoryImp().findCustomerTypeByTitle(customerType));
                 customerRepository.insertCustomerCheckIn(customer);
                 customer = setCustomerByIDN(bookingDTO.getCustomerIDN());
