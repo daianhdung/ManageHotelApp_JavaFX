@@ -247,7 +247,7 @@ public class InvoiceController implements Initializable {
             var roomTypeDetail = roomService.getRoomById(roomDTO.getId()).getType();
             room.setRoomNo(roomDTO.getRoomNo());
             room.setType(roomTypeDetail);
-            room.setPrice(roomTypeService.getRoomById(Integer.parseInt(roomTypeDetail)).getPrice());
+            room.setPrice(roomTypeService.getRoomById(roomDTO.getId()).getPrice());
 
             roomInvoiceList.add(room);
         });

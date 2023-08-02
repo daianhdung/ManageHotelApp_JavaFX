@@ -202,6 +202,7 @@ public class BookingRoomServiceImp implements BookingRoomService {
 
             var booking = bookingRepository.findBookingById(bookingRoomDTOList.get(0).getBookingId());
             booking.setActualDateOut(dayOut);
+            booking.setActualDateIn(booking.getEstimateDateIn());
             var customer = customerRepository.findCustomerById(booking.getCustomer().getId());
             customer.setBookingCount(customer.getBookingCount() + 1);
             customerRepository.save(customer);
