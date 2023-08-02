@@ -11,7 +11,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="685.0" prefWidth="991.0" style="-fx-background-color: #dfe3e5" stylesheets="@global-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.booking.CurrentBookingController">
     <Pane layoutX="8.0" layoutY="9.0" prefHeight="74.0" prefWidth="976.0" styleClass="white-radius-section">
         <children>
-            <Button layoutX="607.0" layoutY="20.0" mnemonicParsing="false" onAction="#onSearch" prefHeight="33.0" prefWidth="77.0" text="Search" />
+            <Button fx:id="btnSearch" layoutX="607.0" layoutY="20.0" mnemonicParsing="false" onAction="#onSearch" prefHeight="33.0" prefWidth="77.0" text="Search" />
             <TextField fx:id="searchInput1" layoutX="381.0" layoutY="7.0" prefHeight="26.0" prefWidth="181.0" promptText="Search Customer Name or Room No ..." />
             <TextField fx:id="searchInput11" layoutX="381.0" layoutY="40.0" prefHeight="26.0" prefWidth="181.0" promptText="Search Customer Name or Room No ..." />
             <TextField fx:id="searchInput13" layoutX="82.0" layoutY="7.0" prefHeight="26.0" prefWidth="181.0" promptText="Search Customer Name or Room No ..." />

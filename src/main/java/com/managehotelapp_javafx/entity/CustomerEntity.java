@@ -19,7 +19,7 @@ public class CustomerEntity {
     @JoinColumn(name = "type_id")
     private CustomerTypeEntity customerType;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private Set<BookingEntity> bookingEntities;
 
     @OneToMany(mappedBy = "customer")
@@ -59,8 +59,8 @@ public class CustomerEntity {
     @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT now()")
     private Timestamp createdAt;
 
-    @Column(name = "booking_count")
-    private String bookingCount;
+    @Column(name = "booking_count", columnDefinition = "INT DEFAULT 0")
+    private int bookingCount;
 
 
     public int getId() {
@@ -183,11 +183,11 @@ public class CustomerEntity {
         this.createdAt = createdAt;
     }
 
-    public String getBookingCount() {
+    public int getBookingCount() {
         return bookingCount;
     }
 
-    public void setBookingCount(String bookingCount) {
+    public void setBookingCount(int bookingCount) {
         this.bookingCount = bookingCount;
     }
 }

@@ -62,7 +62,7 @@ public class BookingDetailController  implements Initializable{
         identityText.setText(bookingRoomDTO.getIdentity());
         bookingAgentText.setText(bookingRoomDTO.getBookingAgent());
         depositText.setText(String.valueOf(bookingRoomDTO.getDeposit()));
-        totalExpense.setText(String.valueOf(bookingRoomDTO.getTotalExpenses()));
+        totalExpense.setText(String.valueOf(bookingRoomDTO.getTotalCheckOut()));
         lengthOfStay.setText(String.valueOf(bookingRoomDTO.getLengthOfStay()));
 
         String statusBooking = bookingRoomDTO.getStatus().toUpperCase();

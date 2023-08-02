@@ -33,7 +33,7 @@ public class CustomerServiceImp implements CustomerService {
             customerDTO.setAddress(customerEntity.getAddress());
             customerDTO.setCity(customerEntity.getCity());
             customerDTO.setCountry(customerEntity.getCountry());
-            customerDTO.setBookingCount(customerEntity.getBookingCount());
+            customerDTO.setBookingCount(String.valueOf(customerEntity.getBookingCount()));
 
             customerDTOList.add(customerDTO);
 
@@ -59,7 +59,7 @@ public class CustomerServiceImp implements CustomerService {
         customerDTO.setAddress(customerEntity.getAddress());
         customerDTO.setCity(customerEntity.getCity());
         customerDTO.setCountry(customerEntity.getCountry());
-        customerDTO.setBookingCount(customerEntity.getBookingCount());
+        customerDTO.setBookingCount(String.valueOf(customerEntity.getBookingCount()));
 
         return customerDTO;
     }
@@ -93,7 +93,7 @@ public class CustomerServiceImp implements CustomerService {
         customerEntity.setAddress(customerDTO.getAddress());
         customerEntity.setCity(customerDTO.getCity());
         customerEntity.setCountry(customerDTO.getCountry());
-        customerEntity.setBookingCount(customerDTO.getBookingCount());
+        customerEntity.setBookingCount(Integer.parseInt(customerDTO.getBookingCount()));
 
         return customerRepository.updateCustomer(customerEntity);
     }

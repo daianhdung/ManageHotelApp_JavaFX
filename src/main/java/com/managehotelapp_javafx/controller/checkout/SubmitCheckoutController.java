@@ -115,7 +115,6 @@ public class SubmitCheckoutController implements Initializable {
             alertUtils.alert(Alert.AlertType.INFORMATION, "Checkout", "Checkout successfully");
             primaryStage = (Stage) btnCheckout.getScene().getWindow();
             primaryStage.close();
-
         }
     }
 

@@ -223,8 +223,9 @@ public class InvoiceController implements Initializable {
     public void getInvoiceDetailScene(InvoiceDTO invoiceDTO) {
         int idInvoice = invoiceDTO.getId();
 
+        int idBooking = bookingRoomService.getBookingRoomByIdInvoice(idInvoice).getBooking().getId();
         int idBookingRoom = bookingRoomService.getBookingRoomByIdInvoice(idInvoice).getId();
-        var booking = bookingService.getBookingById(idBookingRoom);
+        var booking = bookingService.getBookingById(idBooking);
         String checkInDay = booking.getActualDateIn().toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         String checkOutDay = booking.getActualDateOut().toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
@@ -241,7 +242,7 @@ public class InvoiceController implements Initializable {
 
         List<RoomDTO> roomInvoiceList = new ArrayList<>();
 
-        bookingRoomService.getRoomByIdBooking(idBookingRoom).forEach(roomDTO -> {
+        bookingRoomService.getRoomByIdBooking(idBooking).forEach(roomDTO -> {
             RoomDTO room = new RoomDTO();
             var roomTypeDetail = roomService.getRoomById(roomDTO.getId()).getType();
             room.setRoomNo(roomDTO.getRoomNo());

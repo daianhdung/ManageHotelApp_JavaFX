@@ -59,12 +59,12 @@ public class HomeController implements Initializable {
         QueryReservation queryReservation = new QueryReservation();
         QueryCheckin queryCheckin = new QueryCheckin();
         QueryRevenue queryRevenue = new QueryRevenue();
-        QueryStorage queryStorage = new QueryStorage();
+//        QueryStorage queryStorage = new QueryStorage();
         queryReservation.setOnSucceeded( e -> reservationCountLabel.setText(queryReservation.getValue()));
         queryCheckin.setOnSucceeded( e -> checkInLabel.setText(queryCheckin.getValue()));
         queryRevenue.setOnSucceeded(e -> incomesLabel.setText(queryRevenue.getValue()));
-        queryStorage.setOnSucceeded(e -> storageScene.getChildren().add(queryStorage.getValue()));
-        queryStorage.start();
+//        queryStorage.setOnSucceeded(e -> storageScene.getChildren().add(queryStorage.getValue()));
+//        queryStorage.start();
         queryCheckin.start();
         queryReservation.start();
         queryRevenue.start();

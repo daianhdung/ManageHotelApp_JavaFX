@@ -4,6 +4,7 @@ import com.managehotelapp_javafx.dto.BookingRoomDTO;
 import com.managehotelapp_javafx.dto.InvoiceDTO;
 import com.managehotelapp_javafx.dto.RoomDTO;
 import com.managehotelapp_javafx.entity.BookingRoomEntity;
+import com.managehotelapp_javafx.utils.enumpackage.BookingStatus;
 
 import java.util.List;
 
@@ -27,4 +28,5 @@ public interface BookingRoomService {
 
     boolean checkOutRoom(List<BookingRoomDTO> bookingRoomDTO, InvoiceDTO invoiceDTO);
 
+    boolean changeStatusRoom(List<BookingRoomDTO> bookingRoomDTOS, BookingStatus bookingStatus);
 }

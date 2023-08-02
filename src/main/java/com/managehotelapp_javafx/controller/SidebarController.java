@@ -11,6 +11,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -116,6 +117,8 @@ public class SidebarController implements Initializable {
         }
     }
 
+    @FXML
+    private ImageView revenueIcon;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -123,7 +126,7 @@ public class SidebarController implements Initializable {
         roleLabel.setText(isManager ? "Manager" : "Receptionist");
         nameLabel.setText(SessionUser.getInstance().getFullName());
         btnRevenue.setVisible(isManager);
-
+        revenueIcon.setVisible(isManager);
 
 //        String buttonHoverStyle = " ;-fx-background-color: #33B5E5; -fx-text-fill: white; -fx-border-color: white;";
 //        for (Node node : paneMaintbns.getChildren()) {

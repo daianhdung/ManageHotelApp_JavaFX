@@ -12,11 +12,11 @@
    <children>
       <Pane layoutX="112.0" layoutY="91.0" prefHeight="526.0" prefWidth="877.0" styleClass="form-login">
          <children>
-            <Button fx:id="btnReceptionist" layoutX="26.0" layoutY="446.0" mnemonicParsing="false" onAction="#onBtnReceptionist" prefHeight="30.0" prefWidth="151.0" style="-fx-background-color: #00CCFF;" text="Generate Receptionist Acc" />
+<!--            <Button fx:id="btnReceptionist" layoutX="26.0" layoutY="446.0" mnemonicParsing="false" onAction="#onBtnReceptionist" prefHeight="30.0" prefWidth="151.0" style="-fx-background-color: #00CCFF;" text="Generate Receptionist Acc" />-->
       
             <Button fx:id="btnLogin" layoutX="262.0" layoutY="346.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="30.0" prefWidth="352.0" style="-fx-background-color: #488290;" text="Login" textFill="#d4d6d7" />
       
-            <Button fx:id="btnManager" layoutX="655.0" layoutY="446.0" mnemonicParsing="false" onAction="#onBtnManager" prefHeight="30.0" prefWidth="151.0" style="-fx-background-color: #00CCFF;" text="Generate Manger Acc" />
+<!--            <Button fx:id="btnManager" layoutX="655.0" layoutY="446.0" mnemonicParsing="false" onAction="#onBtnManager" prefHeight="30.0" prefWidth="151.0" style="-fx-background-color: #00CCFF;" text="Generate Manger Acc" />-->
             <PasswordField fx:id="passwordTxt" layoutX="262.0" layoutY="263.0" prefHeight="27.0" prefWidth="352.0" styleClass="input-field-new" />
             <Label layoutX="260.0" layoutY="127.0" text="UserName" textFill="#abbdc1">
                <font>

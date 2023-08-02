@@ -96,7 +96,6 @@ public class ServiceController implements Initializable {
         roomNo.setText(bookingRoomDTO.getRoomNo());
 
         this.bookingRoomDTO = bookingRoomDTO;
-        System.out.println(bookingRoomDTO.getStatus());
         boolean isNotHistory = bookingRoomDTO.getStatus().toUpperCase().equals(BookingStatus.CHECKED_IN.toString())
                 || bookingRoomDTO.getStatus().toUpperCase().equals(BookingStatus.RESERVED.toString());
         listService.addAll(bookingServicesService.findBooingServicesByBookingRoomId(bookingRoomDTO.getId()));

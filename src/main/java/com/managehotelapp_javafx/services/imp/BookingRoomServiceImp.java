@@ -75,7 +75,7 @@ public class BookingRoomServiceImp implements BookingRoomService {
         if(bookingRoomDTO.getCheckinDate() != null){
             Timestamp currentTimestamp = new Timestamp(System.currentTimeMillis());
             int dayOfStay = (int) TimeUnit.MILLISECONDS.toDays(currentTimestamp.getTime() - bookingRoom.getBooking().getEstimateDateIn().getTime());
-            bookingRoomDTO.setLengthOfStay(dayOfStay);
+            bookingRoomDTO.setLengthOfStay(dayOfStay + 1);
         }
 
         bookingRoomDTO.setStatus(bookingRoom.getStatusBooking().getTitle());
@@ -176,21 +176,21 @@ public class BookingRoomServiceImp implements BookingRoomService {
             invoiceDTO.setIdCustomer(bookingRoomEntityForGetCustomerId.getBooking().getCustomer().getId());
             invoiceDTO.setInvoiceStatus(INVOICE_PAID_TITLE);
             int idInvoice = invoiceService.insertInvoiceDTO(invoiceDTO);
+            SimpleDateFormat sdf = new SimpleDateFormat(DateFormatConstant.DATETIME_FORMAT_PATTERN);
+            Date date = null;
+            try {
+                date = sdf.parse(bookingRoomDTOList.get(0).getCheckoutDate());
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+            Timestamp dayOut = new Timestamp(date.getTime());
             bookingRoomDTOList.forEach(bookingRoomDTO -> {
                 BookingRoomEntity bookingRoomEntity = bookingRoomRepository.findById(bookingRoomDTO.getId());
                 bookingRoomEntity.setInvoice(invoiceRepository.findInvById(idInvoice));
                 bookingRoomEntity.setPayment(invoiceDTO.getPaymentAmount());
 
-
-                SimpleDateFormat sdf = new SimpleDateFormat(DateFormatConstant.DATETIME_FORMAT_PATTERN);
-                Date date = null;
-                try {
-                    date = sdf.parse(bookingRoomDTO.getCheckoutDate());
-                } catch (ParseException e) {
-                    throw new RuntimeException(e);
-                }
-                Timestamp timestamp = new Timestamp(date.getTime());
-                bookingRoomEntity.setCheckoutDate(timestamp);
+                bookingRoomEntity.setCheckoutDate(dayOut);
+                bookingRoomEntity.getBooking().setActualDateOut(dayOut);
 
                 bookingRoomEntity.setStatusBooking(statusBookingRepository.findByIdStatus(BOOKING_CHECKOUT));
                 var roomEntity = roomRepository.findById(bookingRoomEntity.getRoom().getId());
@@ -199,10 +199,34 @@ public class BookingRoomServiceImp implements BookingRoomService {
 
                 bookingRoomRepository.save(bookingRoomEntity);
             });
+
+            var booking = bookingRepository.findBookingById(bookingRoomDTOList.get(0).getBookingId());
+            booking.setActualDateOut(dayOut);
+            var customer = customerRepository.findCustomerById(booking.getCustomer().getId());
+            customer.setBookingCount(customer.getBookingCount() + 1);
+            customerRepository.save(customer);
+            bookingRepository.save(booking);
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
-        return true;
+    }
+
+    @Override
+    public boolean changeStatusRoom(List<BookingRoomDTO> bookingRoomDTOS, BookingStatus bookingStatus) {
+        try{
+            if(bookingStatus.equals(BookingStatus.CHECKED_IN)){
+                bookingRoomDTOS.forEach(item -> {
+                    var bookingRooom = bookingRoomRepository.findById(item.getId());
+                    bookingRooom.setStatusBooking(statusBookingRepository.findByIdStatus(BOOKING_CHECKIN));
+                    bookingRoomRepository.update(bookingRooom);
+                });
+            }
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
     }
 }

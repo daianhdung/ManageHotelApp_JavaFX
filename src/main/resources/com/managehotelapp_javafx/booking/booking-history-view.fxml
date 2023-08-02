@@ -29,13 +29,13 @@
                 <columns>
                     <TableColumn fx:id="idBookingRoom" prefWidth="25.0" style="-fx-alignment: center" text="#" />
                     <TableColumn fx:id="roomNo" prefWidth="63.0" style="-fx-alignment: center" text="Room No" />
-                    <TableColumn fx:id="customerName" prefWidth="150.0" style="-fx-alignment: center" text="Customer Name" />
-                    <TableColumn fx:id="phoneNumber" prefWidth="145.0" style="-fx-alignment: center" text="Phone Number" />
-                    <TableColumn fx:id="bookingDate" prefWidth="152.0" style="-fx-alignment: center" text="Booking Date" />
-                    <TableColumn fx:id="checkinDate" prefWidth="144.0" style="-fx-alignment: center" text="Check-in Date" />
-                    <TableColumn fx:id="checkoutDate" prefWidth="144.0" style="-fx-alignment: center" text="Check-out Date" />
+                    <TableColumn fx:id="customerName" prefWidth="130.0" style="-fx-alignment: center" text="Customer Name" />
+                    <TableColumn fx:id="phoneNumber" prefWidth="112.0" style="-fx-alignment: center" text="Phone Number" />
+                    <TableColumn fx:id="bookingDate" prefWidth="148.0" style="-fx-alignment: center" text="Booking Date" />
+                    <TableColumn fx:id="checkinDate" prefWidth="148.0" style="-fx-alignment: center" text="Check-in Date" />
+                    <TableColumn fx:id="checkoutDate" prefWidth="148.0" style="-fx-alignment: center" text="Check-out Date" />
                     <TableColumn fx:id="statusBooking" style="-fx-alignment: center" text="Status" />
-                    <TableColumn fx:id="action" prefWidth="72.0" style="-fx-alignment: center" text="Action" />
+                    <TableColumn fx:id="action" prefWidth="97.0" style="-fx-alignment: center" text="Action" />
                 </columns>
             </TableView>
         </children>
