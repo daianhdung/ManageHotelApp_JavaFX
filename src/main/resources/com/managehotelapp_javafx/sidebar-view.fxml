@@ -63,7 +63,7 @@
                   <Image url="@../../asset/image/check-list.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="24.0" fitWidth="24.0" layoutX="31.0" layoutY="221.0">
+            <ImageView fx:id="revenueIcon" fitHeight="24.0" fitWidth="24.0" layoutX="31.0" layoutY="221.0">
                <image>
                   <Image url="@../../asset/image/free-revenue-11-827059.png" />
                </image>

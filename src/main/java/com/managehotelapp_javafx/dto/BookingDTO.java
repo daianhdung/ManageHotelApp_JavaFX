@@ -26,6 +26,16 @@ public class BookingDTO {
     private String bookingDate;
     private String checkInDate;
     private String checkOutDate;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    private String email;
     private String status;
     private List<BookingRoomDTO> bookingRoomDTOList = new ArrayList<>();
     private List<BookingDTO> bookingDTOList;

@@ -92,3 +92,7 @@ VALUES('', 'Available');
 INSERT INTO status_service(description, title)
 VALUES('', 'Out of Stock');
 
+INSERT INTO service(description, quantity, price)
+VALUES('Laundry', 0, 10);
+INSERT INTO service(description, quantity, price)
+VALUES('Spaghetti', 0, 10);

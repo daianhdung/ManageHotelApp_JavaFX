@@ -13,144 +13,150 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700" prefWidth="1200" style="-fx-background-color: E5E5E5;" stylesheets="@booking/global-style.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.HomeController">
-   <AnchorPane layoutX="208.0" layoutY="100.0" prefHeight="700.0" prefWidth="992.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <children>
-         <VBox layoutX="302.0" layoutY="134.0" prefHeight="700.0" prefWidth="995.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <children>
-               <AnchorPane prefHeight="500.0" prefWidth="972.0" style="-fx-background-color: white; -fx-background-radius: 50;">
-                  <children>
-                     <HBox layoutX="361.0" layoutY="166.0" prefHeight="335.0" prefWidth="972.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700" prefWidth="1200" style="-fx-background-color: E5E5E5;" stylesheets="@booking/global-style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.managehotelapp_javafx.controller.HomeController">
+    <AnchorPane layoutX="208.0" layoutY="100.0" prefHeight="700.0" prefWidth="992.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <children>
+            <VBox layoutX="302.0" layoutY="134.0" prefHeight="700.0" prefWidth="995.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <children>
+                    <AnchorPane prefHeight="500.0" prefWidth="972.0" style="-fx-background-color: white; -fx-background-radius: 50;">
                         <children>
-                           <Pane prefHeight="335.0" prefWidth="327.0" styleClass="anchor-home">
-                              <HBox.margin>
-                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                              </HBox.margin>
-                              <children>
-                                 <GridPane layoutX="50.0" layoutY="56.0" prefHeight="73.0" prefWidth="209.0">
-                                   <columnConstraints>
-                                     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                     <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                   </columnConstraints>
-                                   <rowConstraints>
-                                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                   </rowConstraints>
-                                    <children>
-                                       <ImageView fitHeight="49.0" fitWidth="81.0">
-                                          <image>
-                                             <Image url="@../../asset/image/edit-new-icon-22.png" />
-                                          </image>
-                                       </ImageView>
-                                       <Label fx:id="reservationCountLabel" text="20" GridPane.columnIndex="1">
-                                          <font>
-                                             <Font size="41.0" />
-                                          </font>
-                                       </Label>
-                                    </children>
-                                 </GridPane>
-                                 <Label alignment="CENTER" layoutY="131.0" prefHeight="26.0" prefWidth="298.0" text="Reservation" textAlignment="CENTER">
-                                    <font>
-                                       <Font size="28.0" />
-                                    </font>
-                                 </Label>
-                              </children>
-                           </Pane>
-                           <Pane prefHeight="335.0" prefWidth="327.0" styleClass="anchor-home">
-                              <HBox.margin>
-                                 <Insets bottom="20.0" right="20.0" top="20.0" />
-                              </HBox.margin>
-                              <children>
-                                 <GridPane layoutX="50.0" layoutY="56.0" prefHeight="73.0" prefWidth="209.0">
-                                    <columnConstraints>
-                                       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    </columnConstraints>
-                                    <rowConstraints>
-                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    </rowConstraints>
-                                    <children>
-                                       <Label fx:id="checkInLabel" text="20" GridPane.columnIndex="1">
-                                          <font>
-                                             <Font size="41.0" />
-                                          </font>
-                                       </Label>
-                                       <ImageView fitHeight="49.0" fitWidth="81.0">
-                                          <image>
-                                             <Image url="@../../asset/image/bedroom_sleeping_4602.png" />
-                                          </image>
-                                       </ImageView>
-                                    </children>
-                                 </GridPane>
-                                 <Label alignment="CENTER" layoutX="1.0" layoutY="128.0" prefHeight="26.0" prefWidth="298.0" text="Today's Check-in" textAlignment="CENTER">
-                                    <font>
-                                       <Font size="28.0" />
-                                    </font>
-                                 </Label>
-                              </children>
-                           </Pane>
-                           <Pane prefHeight="335.0" prefWidth="327.0" styleClass="anchor-home">
-                              <HBox.margin>
-                                 <Insets bottom="20.0" right="20.0" top="20.0" />
-                              </HBox.margin>
-                              <children>
-                                 <Label fx:id="dateLabel" alignment="CENTER" layoutX="1.0" layoutY="129.0" prefHeight="26.0" prefWidth="298.0" text="Today's Income" textAlignment="CENTER">
-                                    <font>
-                                       <Font size="28.0" />
-                                    </font>
-                                 </Label>
-                                 <GridPane layoutX="50.0" layoutY="56.0" prefHeight="73.0" prefWidth="209.0">
-                                    <columnConstraints>
-                                       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    </columnConstraints>
-                                    <rowConstraints>
-                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    </rowConstraints>
-                                    <children>
-                                       <ImageView fitHeight="35.0" fitWidth="32.0">
-                                          <image>
-                                             <Image url="@../../asset/image/dollar-sign.png" />
-                                          </image>
-                                       </ImageView>
-                                       <Label fx:id="incomesLabel" text="20" GridPane.columnIndex="1">
-                                          <font>
-                                             <Font size="41.0" />
-                                          </font>
-                                       </Label>
-                                    </children>
-                                 </GridPane>
-                              </children>
-                           </Pane>
+                            <HBox layoutX="361.0" layoutY="166.0" prefHeight="335.0" prefWidth="972.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <children>
+                                    <Pane prefHeight="335.0" prefWidth="327.0" styleClass="anchor-home">
+                                        <HBox.margin>
+                                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                        </HBox.margin>
+                                        <children>
+                                            <GridPane layoutX="50.0" layoutY="56.0" prefHeight="73.0" prefWidth="209.0">
+                                                <columnConstraints>
+                                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                </columnConstraints>
+                                                <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                </rowConstraints>
+                                                <children>
+                                                    <ImageView fitHeight="49.0" fitWidth="81.0">
+                                                        <image>
+                                                            <Image url="@../../asset/image/edit-new-icon-22.png" />
+                                                        </image>
+                                                    </ImageView>
+                                                    <Label fx:id="reservationCountLabel" text="20" GridPane.columnIndex="1">
+                                                        <font>
+                                                            <Font size="41.0" />
+                                                        </font>
+                                                    </Label>
+                                                </children>
+                                            </GridPane>
+                                            <Label alignment="CENTER" layoutY="131.0" prefHeight="26.0" prefWidth="298.0" text="Reservation" textAlignment="CENTER">
+                                                <font>
+                                                    <Font size="28.0" />
+                                                </font>
+                                            </Label>
+                                        </children>
+                                    </Pane>
+                                    <Pane prefHeight="335.0" prefWidth="327.0" styleClass="anchor-home">
+                                        <HBox.margin>
+                                            <Insets bottom="20.0" right="20.0" top="20.0" />
+                                        </HBox.margin>
+                                        <children>
+                                            <GridPane layoutX="50.0" layoutY="56.0" prefHeight="73.0" prefWidth="209.0">
+                                                <columnConstraints>
+                                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                </columnConstraints>
+                                                <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                </rowConstraints>
+                                                <children>
+                                                    <Label fx:id="checkInLabel" text="20" GridPane.columnIndex="1">
+                                                        <font>
+                                                            <Font size="41.0" />
+                                                        </font>
+                                                    </Label>
+                                                    <ImageView fitHeight="49.0" fitWidth="81.0">
+                                                        <image>
+                                                            <Image url="@../../asset/image/bedroom_sleeping_4602.png" />
+                                                        </image>
+                                                    </ImageView>
+                                                </children>
+                                            </GridPane>
+                                            <Label alignment="CENTER" layoutX="1.0" layoutY="128.0" prefHeight="26.0" prefWidth="298.0" text="Today's Check-in" textAlignment="CENTER">
+                                                <font>
+                                                    <Font size="28.0" />
+                                                </font>
+                                            </Label>
+                                        </children>
+                                    </Pane>
+                                    <Pane prefHeight="335.0" prefWidth="327.0" styleClass="anchor-home">
+                                        <HBox.margin>
+                                            <Insets bottom="20.0" right="20.0" top="20.0" />
+                                        </HBox.margin>
+                                        <children>
+                                            <Label fx:id="dateLabel" alignment="CENTER" layoutX="1.0" layoutY="129.0" prefHeight="26.0" prefWidth="298.0" text="Today's Income" textAlignment="CENTER">
+                                                <font>
+                                                    <Font size="28.0" />
+                                                </font>
+                                            </Label>
+                                            <GridPane layoutX="50.0" layoutY="56.0" prefHeight="73.0" prefWidth="209.0">
+                                                <columnConstraints>
+                                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                </columnConstraints>
+                                                <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                </rowConstraints>
+                                                <children>
+                                                    <ImageView fitHeight="35.0" fitWidth="32.0">
+                                                        <image>
+                                                            <Image url="@../../asset/image/dollar-sign.png" />
+                                                        </image>
+                                                    </ImageView>
+                                                    <Label fx:id="incomesLabel" text="20" GridPane.columnIndex="1">
+                                                        <font>
+                                                            <Font size="41.0" />
+                                                        </font>
+                                                    </Label>
+                                                </children>
+                                            </GridPane>
+                                        </children>
+                                    </Pane>
+                                </children>
+                            </HBox>
                         </children>
-                     </HBox>
-                  </children>
-               </AnchorPane>
-               <AnchorPane prefHeight="674.0" prefWidth="972.0" style="-fx-background-color: white;">
-                  <VBox.margin>
-                     <Insets top="10.0" />
-                  </VBox.margin>
-                  <children>
-                     <ImageView fitHeight="359.0" fitWidth="575.0" layoutX="359.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
-                        <image>
-                           <Image url="@../../asset/image/charts.png" />
-                        </image>
-                     </ImageView>
-                     <AnchorPane fx:id="storageScene" layoutX="26.0" prefHeight="393.0" prefWidth="297.0" style="-fx-border-color: black; -fx-background-radius: 60; -fx-border-radius: 60;" styleClass="anchor-home" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="26.0">
+                    </AnchorPane>
+                    <AnchorPane prefHeight="674.0" prefWidth="972.0" style="-fx-background-color: white;">
+                        <VBox.margin>
+                            <Insets top="10.0" />
+                        </VBox.margin>
                         <children>
-                           <Label alignment="CENTER" layoutX="11.0" layoutY="25.0" prefHeight="67.0" prefWidth="272.0" text="Storage">
-                              <font>
-                                 <Font name="Arial Bold" size="33.0" />
-                              </font>
-                           </Label>
-                        </children></AnchorPane>
-                  </children></AnchorPane>
-            </children>
-            <padding>
-               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-            </padding>
-         </VBox>
-      </children>
-   </AnchorPane>
+                            <ImageView fitHeight="382.0" fitWidth="910.0" layoutX="111.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../../asset/image/charts.png" />
+                                </image>
+                            </ImageView>
+<!--                            <AnchorPane fx:id="storageScene" layoutX="26.0" prefHeight="393.0" prefWidth="297.0"-->
+<!--                                        style="-fx-border-color: black; -fx-background-radius: 60; -fx-border-radius: 60;"-->
+<!--                                        styleClass="anchor-home" AnchorPane.bottomAnchor="17.0"-->
+<!--                                        AnchorPane.leftAnchor="26.0">-->
+<!--                                <children>-->
+<!--                                    <Label alignment="CENTER" layoutX="11.0" layoutY="25.0" prefHeight="67.0"-->
+<!--                                           prefWidth="272.0" text="Storage">-->
+<!--                                        <font>-->
+<!--                                            <Font name="Arial Bold" size="33.0"/>-->
+<!--                                        </font>-->
+<!--                                    </Label>-->
+<!--                                </children>-->
+<!--                            </AnchorPane>-->
+                        </children>
+                    </AnchorPane>
+                </children>
+                <padding>
+                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                </padding>
+            </VBox>
+        </children>
+    </AnchorPane>
 
     <fx:include fx:id="sidebar" source="sidebar-view.fxml" />
 </AnchorPane>

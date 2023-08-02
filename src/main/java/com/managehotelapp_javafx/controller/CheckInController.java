@@ -121,6 +121,7 @@ public class CheckInController implements Initializable {
         bookingDTO.setCheckOutDate(dtpkCheckOut.getValue().toString());
         bookingDTO.setStatus(cbxStatus.getSelectionModel().getSelectedItem().toString());
         bookingDTO.setCustomerRequest(specialRequest);
+        bookingDTO.setEmail(tfEmail.getText());
         bookingDTO.setAdultCount(tfAdult.getText().isEmpty()? 0 : Integer.parseInt(tfAdult.getText()));
         bookingDTO.setChildrenCount(tfChildren.getText().isEmpty()? 0 :Integer.parseInt(tfChildren.getText()));
         confirmBoxController = new ConfirmBoxController(roomsList, bookingDTO);
@@ -255,7 +256,7 @@ public class CheckInController implements Initializable {
         btnBack.setOnAction(actionEvent -> {
             try {
                 Stage pstg = (Stage) btnBack.getScene().getWindow();
-                pstg.setScene(new Scene(FXMLLoaderConstant.getHomeScene().load()));
+                pstg.setScene(new Scene(FXMLLoaderConstant.getRoomScene().load()));
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

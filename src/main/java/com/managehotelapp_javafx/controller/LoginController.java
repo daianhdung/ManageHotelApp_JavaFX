@@ -29,17 +29,17 @@ public class LoginController {
 
     private Alert alert = new Alert(Alert.AlertType.WARNING);
 
-    @FXML
-    void onBtnManager(ActionEvent event) {
-        usernameTxt.setText("nguyenvana");
-        passwordTxt.setText("admin123");
-    }
-
-    @FXML
-    void onBtnReceptionist(ActionEvent event) {
-        usernameTxt.setText("nhanvien");
-        passwordTxt.setText("admin123");
-    }
+//    @FXML
+//    void onBtnManager(ActionEvent event) {
+//        usernameTxt.setText("nguyenvana");
+//        passwordTxt.setText("admin123");
+//    }
+//
+//    @FXML
+//    void onBtnReceptionist(ActionEvent event) {
+//        usernameTxt.setText("nhanvien");
+//        passwordTxt.setText("admin123");
+//    }
 
     @FXML
     void onLogin(ActionEvent event) {

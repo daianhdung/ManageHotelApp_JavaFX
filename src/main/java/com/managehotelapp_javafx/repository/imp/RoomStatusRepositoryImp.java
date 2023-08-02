@@ -16,4 +16,14 @@ public class RoomStatusRepositoryImp extends AbstractRepository<RoomStatusEntity
         List<RoomStatusEntity> result = query("FROM RoomStatusEntity WHERE id = :id", parameters);
         return result.isEmpty() ? null : result.get(0);
     }
+
+    public List<RoomStatusEntity> findAll() {
+        return query("FROM RoomStatusEntity", null).stream().toList();
+    }
+
+    public RoomStatusEntity findByTitle(String title) {
+        var list = findAll().stream()
+                .filter(f -> f.getTitle().toLowerCase().equals(title)).toList();
+        return findAll().stream().filter(f -> f.getTitle().toLowerCase().equals(title)).toList().get(0);
+    }
 }

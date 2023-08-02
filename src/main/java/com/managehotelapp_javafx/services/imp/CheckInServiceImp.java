@@ -28,9 +28,10 @@ public class CheckInServiceImp implements CheckInService {
     {
         return customer = customerRepository.getCustomerByPID(idn);
     }
+    private  String customerType ;
     public void setCustomerType(String type)
     {
-         customer.setCustomerType(new CustomerTypeRepositoryImp().findCustomerTypeByTitle(type));
+        customerType = type;
     }
 //    public BookingEntity getBookingByCustomerId(CustomerEntity customerEntity)
 //    {
@@ -58,6 +59,7 @@ public class CheckInServiceImp implements CheckInService {
         bookingRoomEntity.setStatusBooking(new StatusBookingServiceImp()
                 .statusBookingRepository.findAll().stream()
                 .filter(f -> f.getTitle().equals(status)).toList().get(0));
+
     }
     public void setBookingServices(List<ServiceDTO> serviceDTOList)
     {
@@ -94,6 +96,8 @@ public class CheckInServiceImp implements CheckInService {
                 customer.setFullName(bookingDTO.getCustomerName());
                 customer.setIdentity(bookingDTO.getCustomerIDN());
                 customer.setPhone(bookingDTO.getPhoneNumber());
+                customer.setEmail(bookingDTO.getEmail());
+                customer.setCustomerType(new CustomerTypeRepositoryImp().findCustomerTypeByTitle(customerType));
                 customerRepository.insertCustomerCheckIn(customer);
                 customer = setCustomerByIDN(bookingDTO.getCustomerIDN());
             }
@@ -108,6 +112,9 @@ public class CheckInServiceImp implements CheckInService {
                 bookingEntity.setBookingDate(new Timestamp(date1.getTime()));
                 bookingEntity.setCustomer(customer);
                 bookingEntity.setUserEntity(userEntity);
+                if(bookingRoomEntity.getStatusBooking().getTitle()=="Checked_in"){
+                    bookingEntity.setActualDateIn(new Timestamp(date2.getTime()));
+                }
                 bookingEntity.setEstimateDateIn(new Timestamp(date2.getTime()));
                 bookingEntity.setEstimateDateOut(new Timestamp(date3.getTime()));
                 bookingEntity.setNumAdult(bookingDTO.getAdultCount());
